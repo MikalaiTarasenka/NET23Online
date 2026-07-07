@@ -1,31 +1,76 @@
 @using WebNet23Online.Localizations
 @{
     Layout = "_LayoutAnimalWorld";
+    ViewData["Title"] = AnimalWorld.AddingData;
 }
 
-<title>@AnimalWorld.AddingData</title>
+<section class="page-header">
+    <h1 class="page-title">@AnimalWorld.AddingAnimalData</h1>
+    <div class="title-accent"></div>
+    <p class="page-subtitle">@AnimalWorld.SelectInformationType:</p>
+</section>
 
-<div class="main-place">
-    <div class="green-title">
-        <h2>@AnimalWorld.AddingAnimalData</h2>
+<section class="options-group">
+    <div class="group-header group-header--animals">
+        <span class="group-icon">🐾</span>
+        <h2 class="group-title">Животные</h2>
+        <p class="group-description">Биологические данные: семейства, виды и их привязка к местам обитания</p>
     </div>
-    <hr class="green-line">
-    <p>@AnimalWorld.SelectInformationType:</p>
-    <div class="add-links-grid">
-        <div>
-            <a class="find-animal-button add-link-button" href="/AnimalWorld/AddZoo">@AnimalWorld.AddZoo</a>
-        </div>
-        <div>
-            <a class="find-animal-button add-link-button" href="/AnimalWorld/AddFamily">@AnimalWorld.AddAnimalFamily</a>
-        </div>
-        <div>
-            <a class="find-animal-button add-link-button" href="/AnimalWorld/AddSpecies">@AnimalWorld.AddAnimalSpecies</a>
-        </div>
-        <div>
-            <a class="find-animal-button add-link-button" href="/AnimalWorld/BindZooAndAnimalSpecies">@AnimalWorld.AnimalSpeciesZoosLinksSetup</a>
-        </div>
-        <div>
-            <a class="find-animal-button add-link-button" href="/AnimalWorld/AddPromotion">Добавить акцию</a>
-        </div>
+
+    <div class="add-options-grid">
+        <a href="/AnimalWorld/AddFamily" class="option-card option-card--animals">
+            <div class="option-icon">🌿</div>
+            <h3 class="option-title">@AnimalWorld.AddAnimalFamily</h3>
+            <p class="option-description">Создать новое семейство животных</p>
+            <span class="option-arrow">→</span>
+        </a>
+
+        <a href="/AnimalWorld/AddSpecies" class="option-card option-card--animals">
+            <div class="option-icon">🦁</div>
+            <h3 class="option-title">@AnimalWorld.AddAnimalSpecies</h3>
+            <p class="option-description">Добавить новый вид животного</p>
+            <span class="option-arrow">→</span>
+        </a>
+
+        <a href="/AnimalWorld/BindZooAndAnimalSpecies" class="option-card option-card--animals">
+            <div class="option-icon">🔗</div>
+            <h3 class="option-title">@AnimalWorld.AnimalSpeciesZoosLinksSetup</h3>
+            <p class="option-description">Связать виды животных с зоопарками, где они обитают</p>
+            <span class="option-arrow">→</span>
+        </a>
     </div>
-</div>
+</section>
+
+<section class="options-group">
+    <div class="group-header group-header--infrastructure">
+        <span class="group-icon">🏛️</span>
+        <h2 class="group-title">Инфраструктура</h2>
+        <p class="group-description">Места, где содержатся и демонстрируются животные</p>
+    </div>
+
+    <div class="add-options-grid">
+        <a href="/AnimalWorld/AddZoo" class="option-card option-card--infrastructure">
+            <div class="option-icon">🐘</div>
+            <h3 class="option-title">@AnimalWorld.AddZoo</h3>
+            <p class="option-description">Добавить новый зоопарк в базу данных</p>
+            <span class="option-arrow">→</span>
+        </a>
+    </div>
+</section>
+
+<section class="options-group">
+    <div class="group-header group-header--marketing">
+        <span class="group-icon">🎟️</span>
+        <h2 class="group-title">Маркетинг</h2>
+        <p class="group-description">Акции, предложения и специальные события для посетителей</p>
+    </div>
+
+    <div class="add-options-grid">
+        <a href="/AnimalWorld/AddPromotion" class="option-card option-card--marketing">
+            <div class="option-icon">✨</div>
+            <h3 class="option-title">Добавить акцию</h3>
+            <p class="option-description">Создать новую акцию или специальное предложение</p>
+            <span class="option-arrow">→</span>
+        </a>
+    </div>
+</section>

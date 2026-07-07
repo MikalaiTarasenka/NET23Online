@@ -1,0 +1,204 @@
+﻿.page-header {
+    margin-bottom: 56px;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+.page-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-top: 16px;
+}
+
+.options-group {
+    margin-bottom: 64px;
+}
+
+.options-group:last-child {
+    margin-bottom: 0;
+}
+
+.group-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.group-icon {
+    font-size: 1.75rem;
+    line-height: 1;
+}
+
+.group-title {
+    font-size: 1.5rem;
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+
+.group-description {
+    flex-basis: 100%;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-top: -4px;
+}
+
+.group-header--animals .group-title {
+    color: #3A5A40;
+}
+
+.group-header--infrastructure .group-title {
+    color: #8B6F47;
+}
+
+.group-header--marketing .group-title {
+    color: #B8860B;
+}
+
+.add-options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.option-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.option-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.option-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+}
+
+.option-card:hover::before {
+    transform: scaleX(1);
+}
+
+.option-card--animals::before {
+    background: linear-gradient(to right, #3A5A40, #A8D5BA);
+}
+
+.option-card--animals:hover {
+    border-color: #3A5A40;
+}
+
+.option-card--infrastructure::before {
+    background: linear-gradient(to right, #8B6F47, #D4B896);
+}
+
+.option-card--infrastructure:hover {
+    border-color: #8B6F47;
+}
+
+.option-card--marketing::before {
+    background: linear-gradient(to right, #B8860B, #F0D58C);
+}
+
+.option-card--marketing:hover {
+    border-color: #B8860B;
+}
+
+.option-icon {
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.option-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-main);
+    font-family: var(--font-heading);
+}
+
+.option-description {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    flex-grow: 1;
+}
+
+.option-arrow {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    font-size: 1.5rem;
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: all 0.3s ease;
+}
+
+.option-card--animals:hover .option-arrow {
+    color: #3A5A40;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.option-card--infrastructure:hover .option-arrow {
+    color: #8B6F47;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.option-card--marketing:hover .option-arrow {
+    color: #B8860B;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .options-group {
+        margin-bottom: 48px;
+    }
+
+    .group-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .add-options-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .option-card {
+        padding: 24px;
+    }
+
+    .option-icon {
+        font-size: 2.5rem;
+    }
+}
