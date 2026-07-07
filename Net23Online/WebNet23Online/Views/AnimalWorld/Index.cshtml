@@ -2,71 +2,86 @@
 @model WebNet23Online.Models.AnimalWorld.StartPageAnimalWorldInfoViewModel
 @{
     Layout = "_LayoutAnimalWorld";
+    ViewData["Title"] = AnimalWorld.AnimalWorldTitle;
 }
 
 @section Scripts {
     <script src="~/js/animal-world/index.js"></script>
 }
 
-<title>@AnimalWorld.AnimalWorldTitle</title>
+<section class="hero-section">
+    <div class="hero-content">
+        <h1 class="hero-title">@AnimalWorld.AboutPlanet</h1>
+        <p class="hero-text">@AnimalWorld.IndexDescription</p>
+    </div>
+    <div class="hero-image-wrapper">
+        <img src="~/images/animal-world/animals.jpg" alt="Мир животных" class="hero-image" />
+    </div>
+</section>
 
-<div class="main-place">
-    <div class="green-title">
-        <h2>@AnimalWorld.AboutPlanet</h2>
+<section class="content-section">
+    <div class="section-header">
+        <h2 class="section-title">@AnimalWorld.AnimalFamilies</h2>
+        <div class="title-accent"></div>
     </div>
-    <hr class="green-line">
-    <p>@AnimalWorld.IndexDescription</p>
-    <div class="image-container">
-        <img src="~/images/animal-world/animals.jpg" />
-    </div>
-    <div class="green-title">
-        <h2>@AnimalWorld.AnimalFamilies</h2>
-    </div>
-    <hr class="green-line">
+
     @if (Model.AnimalFamilies.Any())
     {
-        <button id="delete-selected-btn" class="btn btn-danger mb-3">@AnimalWorld.DeleteSelected</button>
-        <div class="entity-grid" data-empty-text="@AnimalWorld.NoAnimalFamilies">
+        <div class="grid grid--families">
             @foreach (var family in Model.AnimalFamilies)
             {
-                <div class="animal entity-card js-family-card">
-                    <h3>@family.AnimalFamilyName</h3>
-                    <p>@family.Description</p>
-                </div>
+                <article class="card card--family">
+                    <h3 class="card-title">@family.AnimalFamilyName</h3>
+                    <p class="card-text">@family.Description</p>
+                </article>
             }
         </div>
     }
     else
     {
-        <p class="empty-list-note">@AnimalWorld.NoAnimalFamilies</p>
+        <p class="empty-state">@AnimalWorld.NoAnimalFamilies</p>
     }
+</section>
 
-    <div class="green-title">
-        <h2>@AnimalWorld.AnimalSpecies</h2>
+<section class="content-section">
+    <div class="section-header">
+        <h2 class="section-title">@AnimalWorld.AnimalSpecies</h2>
+        <div class="title-accent"></div>
     </div>
-    <hr class="green-line">
+
     @if (Model.AnimalSpecies.Any())
     {
-        @foreach (var species in Model.AnimalSpecies)
-        {
-            <div class="animal animal-card entity-card">
-                <div class="entity-image">
-                    <img src="@species.Url" />
-                </div>
-                <div>
-                    <h3>@species.AnimalSpeciesName</h3>
-                    <p><strong>@AnimalWorld.Habitat: </strong>@species.NativeRange</p>
-                    <p>@species.Description</p>
-                    @if (species.Zoos.Any())
-                    {
-                        <p><strong>@AnimalWorld.Zoos: </strong>@string.Join(", ", species.Zoos)</p>
-                    }
-                </div>
-            </div>
-        }
+        <div class="grid grid--species">
+            @foreach (var species in Model.AnimalSpecies)
+            {
+                <article class="card card--species">
+                    <div class="card-image-wrapper">
+                        <img src="@species.Url" alt="@species.AnimalSpeciesName" class="card-image" />
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">@species.AnimalSpeciesName</h3>
+                        <p class="card-meta"><span class="meta-label">Ареал:</span> @species.NativeRange</p>
+                        <p class="card-text">@species.Description</p>
+
+                        @if (species.Zoos.Any())
+                        {
+                            <div class="tags-container">
+                                <span class="meta-label">Где можно увидеть:</span>
+                                <div class="tags">
+                                    @foreach (var zoo in species.Zoos)
+                                    {
+                                        <span class="tag">@zoo</span>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </article>
+            }
+        </div>
     }
     else
     {
-        <p class="empty-list-note">@AnimalWorld.NoAnimalSpecies</p>
+        <p class="empty-state">@AnimalWorld.NoAnimalSpecies</p>
     }
-</div>
+</section>

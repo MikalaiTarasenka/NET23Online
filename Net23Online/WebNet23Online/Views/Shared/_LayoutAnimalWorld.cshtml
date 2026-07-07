@@ -1,84 +1,84 @@
 @using WebNet23Online.Localizations
 @using WebNet23Online.Services.Interfaces
 @inject IAuthService authService
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebNet23Online</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/WebNet23Online.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/animal-world/animal-world-style.css" />
-    <link rel="stylesheet" href="~/css/animal-world/random-animals.css" />
-    <link rel="stylesheet" href="~/css/animal-world/species-table.css" />
-    <link rel="stylesheet" href="~/css/animal-world/notifications.css" />
+    <title>@ViewData["Title"] - @AnimalWorld.AmazingAnimalWorld</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/css/animal-world/variables.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/animal-world/base.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/animal-world/layout.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/animal-world/components.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/animal-world/pages/index.css" asp-append-version="true" />
+
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
-    <div class="header-body">
-        <h1>@AnimalWorld.AmazingAnimalWorld</h1>
-        <div class="header-links">
-            <div class="header-zone-left"></div>
-            <div class="header-zone-center">
-                <a class="header-link main-page" href="/">@AnimalWorld.OnIndex</a>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="/" class="logo">@AnimalWorld.AmazingAnimalWorld</a>
 
-                <div class="dropdown header-link-dropdown">
-                    <a class="header-link dropdown-toggle" href="#" role="button" id="animalDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                        @AnimalWorld.AnimalWorldTitle
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="animalDropdown">
-                        <li>
-                            <a class="dropdown-item" href="/AnimalWorld/Index">@AnimalWorld.AnimalWorldTitle</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="/AnimalWorld/AnimalSpeciesInfo">Виды животных</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="/AnimalWorld/Gallery">Галерея животных</a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="/AnimalWorld/InterestingFacts">@AnimalWorld.Interesting</a>
-                        </li>
-                    </ul>
+            <nav class="main-nav">
+                <a href="/" class="nav-link">Главная</a>
+
+                <div class="nav-dropdown">
+                    <button class="nav-link nav-dropdown-toggle">
+                        @AnimalWorld.AnimalWorldTitle <span class="arrow">▾</span>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="/AnimalWorld/Index" class="dropdown-link">@AnimalWorld.AnimalWorldTitle</a>
+                        <a href="/AnimalWorld/AnimalSpeciesInfo" class="dropdown-link">Виды животных</a>
+                        <a href="/AnimalWorld/Gallery" class="dropdown-link">Галерея</a>
+                        <a href="/AnimalWorld/InterestingFacts" class="dropdown-link">@AnimalWorld.Interesting</a>
+                    </div>
                 </div>
 
                 @if (authService.IsAuthenticated())
                 {
-                    <a class="header-link zoo-book" href="/AnimalWorld/Zoos">@AnimalWorld.Reservation</a>
+                    <a href="/AnimalWorld/Zoos" class="nav-link">@AnimalWorld.Reservation</a>
                 }
-                <a class="header-link promotions" href="/AnimalWorld/Promotions">Акции</a>
+                <a href="/AnimalWorld/Promotions" class="nav-link">Акции</a>
+
                 @if (authService.AtLeastModerator())
                 {
-                    <a class="header-link add-data" href="/AnimalWorld/Add">@AnimalWorld.AddData</a>
+                    <a href="/AnimalWorld/Add" class="nav-link nav-link--accent">@AnimalWorld.AddData</a>
                 }
-            </div>
-            <div class="header-zone-right">
+            </nav>
+
+            <div class="header-actions">
                 @if (authService.IsAuthenticated())
                 {
-                    <a class="header-link header-link-right all-tickets" href="/Tickets/AllMyTickets">Билеты</a>
+                    <a href="/Tickets/AllMyTickets" class="btn btn--secondary">Мои билеты</a>
                 }
             </div>
         </div>
-    </div>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+    </header>
 
-    <footer class="border-top footer text-muted">
-        <div class="container footer-body">
+    <main class="site-main">
+        <div class="main-container">
+            @RenderBody()
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
             <p>@AnimalWorld.FooterText</p>
         </div>
     </footer>
+
     <div class="notifications-container"></div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/lib/jquery/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/js/animal-world/new-animal-species-appeared.js"></script>
     <script src="~/js/animal-world/promotions.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
