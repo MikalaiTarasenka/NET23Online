@@ -2,13 +2,27 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 10px 20px;
-    border-radius: var(--radius-sm);
-    font-weight: 500;
-    font-size: 0.9rem;
+    gap: 8px;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: var(--font-body);
     border: none;
+    border-radius: var(--radius-sm);
     cursor: pointer;
     transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn--primary {
+    background: var(--accent-green);
+    color: white;
+}
+
+.btn--primary:hover {
+    background: var(--accent-green-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(58, 90, 64, 0.3);
 }
 
 .btn--secondary {
@@ -19,6 +33,149 @@
 .btn--secondary:hover {
     background: var(--accent-green);
     color: white;
+}
+
+.btn--danger {
+    background: #FEE2E2;
+    color: #C73E3E;
+}
+
+.btn--danger:hover {
+    background: #C73E3E;
+    color: white;
+}
+
+.btn-icon {
+    font-size: 1.1rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-main);
+}
+
+.required {
+    color: #C73E3E;
+    margin-left: 2px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    color: var(--text-main);
+    background: var(--bg-card);
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--accent-green);
+    box-shadow: 0 0 0 3px rgba(58, 90, 64, 0.1);
+}
+
+.form-control::placeholder {
+    color: #A0A0A0;
+}
+
+.form-textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.6;
+}
+
+select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232C2C2C' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    cursor: pointer;
+}
+
+.file-upload-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.file-input-hidden {
+    display: none;
+}
+
+.file-upload-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    background: var(--accent-green-light);
+    color: var(--accent-green);
+    border: 1.5px dashed var(--accent-green);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 500;
+}
+
+.file-upload-button:hover {
+    background: var(--accent-green);
+    color: white;
+    border-style: solid;
+}
+
+.file-upload-icon {
+    font-size: 1.25rem;
+}
+
+.file-upload-hint {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.validation-error {
+    display: block;
+    font-size: 0.85rem;
+    color: #C73E3E;
+    margin-top: 4px;
+}
+
+.form-control.input-validation-error {
+    border-color: #C73E3E;
+    background: #FEF5F5;
+}
+
+.form-actions {
+    margin-top: 16px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 40px;
+    box-shadow: var(--shadow-sm);
+}
+
+.form-card .form-field {
+    margin-bottom: 24px;
+}
+
+.form-card .form-field:last-of-type {
+    margin-bottom: 0;
 }
 
 .card {

@@ -1,12 +1,13 @@
 ﻿$(document).ready(function () {
     const $deleteBtn = $('#delete-selected-btn');
+    const $selectionActions = $('.selection-actions');
 
     function toggleDeleteButton() {
         const selectedCount = $('.js-family-card.selected').length;
         if (selectedCount > 0) {
-            $deleteBtn.fadeIn(200);
+            $selectionActions.fadeIn(200);
         } else {
-            $deleteBtn.fadeOut(200);
+            $selectionActions.fadeOut(200);
         }
     }
 
@@ -17,15 +18,17 @@
 
     $deleteBtn.on('click', function () {
         const $selectedCards = $('.js-family-card.selected');
+        const selectedCount = $selectedCards.length;
 
-        $selectedCards.fadeOut(300, function () {
-            $(this).remove();
-            toggleDeleteButton();
+        if (confirm(`Вы уверены, что хотите удалить ${selectedCount} семейств?`)) {
+            $selectedCards.fadeOut(300, function () {
+                $(this).remove();
+                toggleDeleteButton();
 
-            if ($('.js-family-card').length === 0) {
-                const emptyText = $('.entity-grid').data('empty-text');
-                $('.entity-grid').replaceWith(`<p class="empty-list-note">${emptyText}</p>`);
-            }
-        });
+                if ($('.js-family-card').length === 0) {
+                    $('.grid--families').replaceWith(`<p class="empty-state">Нет семейств животных</p>`);
+                }
+            });
+        }
     });
 });

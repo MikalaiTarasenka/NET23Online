@@ -123,22 +123,14 @@
     gap: 16px;
 }
 
-.btn--secondary {
+.site-header .btn--secondary {
     background: rgba(255, 255, 255, 0.15);
     color: #FFFFFF;
     border: 1px solid rgba(255, 255, 255, 0.3);
     padding: 10px 20px;
-    border-radius: var(--radius-sm);
-    font-weight: 500;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.btn--secondary:hover {
+.site-header .btn--secondary:hover {
     background: rgba(255, 255, 255, 0.25);
 }
 

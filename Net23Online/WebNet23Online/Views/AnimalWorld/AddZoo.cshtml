@@ -2,44 +2,72 @@
 @model WebNet23Online.Models.AnimalWorld.ZooViewModel
 @{
     Layout = "_LayoutAnimalWorld";
+    ViewData["Title"] = AnimalWorld.AddZoo;
 }
 
 @section Scripts {
     <script src="~/js/animal-world/add-zoo.js"></script>
 }
 
-<title>@AnimalWorld.AddZoo</title>
+<section class="page-header">
+    <h1 class="page-title">@AnimalWorld.AddZoo</h1>
+    <div class="title-accent"></div>
+    <p class="page-subtitle">Заполните информацию о новом зоопарке</p>
+</section>
 
-<div class="main-place">
-    <div class="green-title">
-        <h2>@AnimalWorld.AddZoo</h2>
-    </div>
-    <hr class="green-line">
-    <form method="post" class="js-add-zoo-form">
-        <div class="form-group">
-            <div class="green-title">
-                <h6>@AnimalWorld.ZooName</h6>
-            </div>
-            @Html.TextBoxFor(zoo => zoo.ZooName, new { @class = "form-input", type = "text", placeholder = AnimalWorld.ZooExample, autocomplete = "off" })
+<form method="post" class="zoo-form js-add-zoo-form">
+    <div class="form-card">
+        <div class="form-field">
+            <label for="ZooName" class="form-label">
+                @AnimalWorld.ZooName <span class="required">*</span>
+            </label>
+            @Html.TextBoxFor(zoo => zoo.ZooName, new
+            {
+                @class = "form-control",
+                id = "ZooName",
+                type = "text",
+                placeholder = AnimalWorld.ZooExample,
+                autocomplete = "off"
+            })
+
             <div id="zoo-name-feedback" class="zoo-name-feedback" aria-live="polite"></div>
-            @Html.ValidationMessageFor(zoo => zoo.ZooName)
+
+            @Html.ValidationMessageFor(zoo => zoo.ZooName, "", new { @class = "validation-error" })
         </div>
-        <div class="form-group">
-            <div class="green-title">
-                <h6>@AnimalWorld.Address</h6>
-            </div>
-            @Html.TextBoxFor(zoo => zoo.Address, new { @class = "form-input", type = "text", placeholder = AnimalWorld.AddressExample })
-            @Html.ValidationMessageFor(zoo => zoo.Address)
+
+        <div class="form-field">
+            <label for="Address" class="form-label">
+                @AnimalWorld.Address <span class="required">*</span>
+            </label>
+            @Html.TextBoxFor(zoo => zoo.Address, new
+            {
+                @class = "form-control",
+                id = "Address",
+                type = "text",
+                placeholder = AnimalWorld.AddressExample
+            })
+            @Html.ValidationMessageFor(zoo => zoo.Address, "", new { @class = "validation-error" })
         </div>
-        <div class="form-group">
-            <div class="green-title">
-                <h6>Описание</h6>
-            </div>
-            @Html.TextAreaFor(zoo => zoo.Description, new { @class = "form-input", placeholder = AnimalWorld.ZooSummary })
-            @Html.ValidationMessageFor(zoo => zoo.Description)
+
+        <div class="form-field">
+            <label for="Description" class="form-label">
+                Описание <span class="required">*</span>
+            </label>
+            @Html.TextAreaFor(zoo => zoo.Description, new
+            {
+                @class = "form-control form-textarea",
+                id = "Description",
+                placeholder = AnimalWorld.ZooSummary,
+                rows = 6
+            })
+            @Html.ValidationMessageFor(zoo => zoo.Description, "", new { @class = "validation-error" })
         </div>
-        <div class="button-group">
-            <button class="find-animal-button" type="submit">@AnimalWorld.Add</button>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn--primary">
+                <span class="btn-icon">✓</span>
+                @AnimalWorld.Add
+            </button>
         </div>
-    </form>
-</div>
+    </div>
+</form>

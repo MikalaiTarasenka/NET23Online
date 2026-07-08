@@ -1,8 +1,9 @@
 ﻿$(document).ready(function () {
-    const $previewContainer = $('#preview-container');
     const $previewImage = $('#image-preview');
+    const $previewPlaceholder = $('.preview-placeholder');
 
-    $previewContainer.hide();
+    $previewImage.hide();
+    $previewPlaceholder.show();
 
     $('#image-input').on('change', function (event) {
         const input = event.target;
@@ -12,14 +13,16 @@
 
             reader.onload = function (e) {
                 $previewImage.attr('src', e.target.result);
-                $previewContainer.fadeIn(200);
+                $previewImage.fadeIn(200);
+                $previewPlaceholder.fadeOut(150);
             };
 
             reader.readAsDataURL(input.files[0]);
         } else {
-            $previewContainer.fadeOut(150, function () {
+            $previewImage.fadeOut(150, function () {
                 $previewImage.attr('src', '#');
             });
+            $previewPlaceholder.fadeIn(200);
         }
     });
 });

@@ -27,10 +27,19 @@
 
     @if (Model.AnimalFamilies.Any())
     {
+        <div class="selection-actions" style="display: none;">
+            <button id="delete-selected-btn" class="btn btn--danger">
+                <span class="btn-icon">🗑️</span>
+                @AnimalWorld.DeleteSelected
+            </button>
+            <span class="selection-hint">Кликните по карточкам, чтобы выбрать несколько семейств</span>
+        </div>
+
         <div class="grid grid--families">
             @foreach (var family in Model.AnimalFamilies)
             {
-                <article class="card card--family">
+                <article class="card card--family js-family-card">
+                    <div class="card-selection-indicator"></div>
                     <h3 class="card-title">@family.AnimalFamilyName</h3>
                     <p class="card-text">@family.Description</p>
                 </article>
