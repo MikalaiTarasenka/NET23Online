@@ -2,30 +2,47 @@
 @model List<PromotionViewModel>
 @{
     Layout = "_LayoutAnimalWorld";
+    ViewData["Title"] = "Акции";
 }
 
-<title>Акции</title>
+<section class="page-header">
+    <h1 class="page-title">Акции</h1>
+    <div class="title-accent"></div>
+    <p class="page-subtitle">Специальные предложения для посетителей наших зоопарков</p>
+</section>
 
-<div class="main-place">
-    <div class="green-title">
-        <h2>Список акций</h2>
-    </div>
-    <hr class="green-line">
-
-    @if (Model.Any())
-    {
+@if (Model.Any())
+{
+    <div class="promotions-grid">
         @foreach (var promotion in Model)
         {
-            <div class="animal entity-card">
-                <h3>@promotion.PromotionName</h3>
-                <p>@promotion.Description</p>
-                <p><strong>Место проведения: </strong>@promotion.Place</p>
-                <p><strong>Акция действительна до: </strong>@promotion.EndDate</p>
-            </div>
+            <article class="promotion-card">
+                <div class="promotion-header">
+                    <div class="promotion-icon">🎟️</div>
+                </div>
+
+                <h3 class="promotion-title">@promotion.PromotionName</h3>
+                <p class="promotion-description">@promotion.Description</p>
+
+                <div class="promotion-footer">
+                    <div class="promotion-meta">
+                        <span class="meta-icon">📍</span>
+                        <span>Место проведения: @promotion.Place</span>
+                    </div>
+                    <div class="promotion-meta">
+                        <span class="meta-icon">📅</span>
+                        <span>Действительна до: @promotion.EndDate.ToString("dd.MM.yyyy")</span>
+                    </div>
+                </div>
+            </article>
         }
-    }
-    else
-    {
-        <p class="empty-list-note">В настоящий момент акции не проводятся.</p>
-    }
-</div>
+    </div>
+}
+else
+{
+    <div class="empty-promotions">
+        <div class="empty-icon">🎫</div>
+        <h3 class="empty-title">В настоящий момент акции не проводятся</h3>
+        <p class="empty-text">Следите за обновлениями — скоро появятся новые интересные предложения!</p>
+    </div>
+}
