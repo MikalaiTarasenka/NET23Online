@@ -3,48 +3,76 @@
 @model List<ZooViewModel>
 @{
     Layout = "_LayoutAnimalWorld";
+    ViewData["Title"] = AnimalWorld.Zoos;
 }
 
-<title>@AnimalWorld.Zoos</title>
+<section class="page-header">
+    <h1 class="page-title">@AnimalWorld.ZoosList</h1>
+    <div class="title-accent"></div>
+    <p class="page-subtitle">Места, где вы можете увидеть удивительных животных</p>
+</section>
 
-<div class="main-place">
-    <div class="green-title">
-        <h2>@AnimalWorld.ZoosList</h2>
-    </div>
-    <hr class="green-line">
-
-    @if (Model.Any())
-    {
+@if (Model.Any())
+{
+    <div class="zoos-grid">
         @foreach (var zoo in Model)
         {
-            <div class="animal entity-card">
-                <h3>@zoo.ZooName</h3>
-                <p><strong>@AnimalWorld.Address:</strong> @zoo.Address</p>
-                <p>@zoo.Description</p>
-                @if (zoo.AnimalFamilies.Any())
-                {
-                    <p><strong>@AnimalWorld.AnimalFamilies: </strong>@string.Join(", ", zoo.AnimalFamilies)</p>
-                }
-
-                <div class="zoo-card-actions">
-                    <div class="zoo-card-actions-left">
-                        <form action="/Tickets/ZooReservations" method="post">
-                            <input type="hidden" name="zooName" value="@zoo.ZooName" />
-                            <button class="find-animal-button zoo-book-button" type="submit">@AnimalWorld.BookNow</button>
-                        </form>
-                    </div>
-                    <div class="zoo-card-actions-right">
-                        <form action="/Comments/ZooCommentsIndex" method="get">
-                            <input type="hidden" name="zooId" value="@zoo.Id" />
-                            <button class="find-animal-button zoo-comments-button" type="submit">Отзывы</button>
-                        </form>
-                    </div>
+            <article class="zoo-card">
+                <div class="zoo-card-header">
+                    <span class="zoo-icon">🏛️</span>
+                    <h3 class="zoo-card-title">@zoo.ZooName</h3>
                 </div>
-            </div>
+
+                <div class="zoo-card-body">
+                    <div class="zoo-info-row">
+                        <span class="zoo-info-icon">📍</span>
+                        <div>
+                            <span class="zoo-info-label">@AnimalWorld.Address:</span>
+                            @zoo.Address
+                        </div>
+                    </div>
+
+                    <p class="zoo-description">@zoo.Description</p>
+
+                    @if (zoo.AnimalFamilies != null && zoo.AnimalFamilies.Any())
+                    {
+                        <div class="zoo-families-section">
+                            <div class="zoo-families-label">@AnimalWorld.AnimalFamilies</div>
+                            <div class="zoo-families-list">
+                                @foreach (var family in zoo.AnimalFamilies)
+                                {
+                                    <span class="zoo-family-tag">@family</span>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="zoo-card-footer">
+                    <form action="/Tickets/ZooReservations" method="post">
+                        <input type="hidden" name="zooName" value="@zoo.ZooName" />
+                        <button class="zoo-action-btn zoo-action-btn--primary" type="submit">
+                            <span>🎟️</span>
+                            @AnimalWorld.BookNow
+                        </button>
+                    </form>
+                    <form action="/Comments/ZooCommentsIndex" method="get">
+                        <input type="hidden" name="zooId" value="@zoo.Id" />
+                        <button class="zoo-action-btn zoo-action-btn--secondary" type="submit">
+                            <span>💬</span>
+                            Отзывы
+                        </button>
+                    </form>
+                </div>
+            </article>
         }
-    }
-    else
-    {
-        <p class="empty-list-note">@AnimalWorld.NoZoos.</p>
-    }
-</div>
+    </div>
+}
+else
+{
+    <div class="empty-zoos">
+        <div class="empty-zoos-icon">🐘</div>
+        <h3 class="empty-zoos-title">@AnimalWorld.NoZoos</h3>
+        <p class="empty-zoos-text">В настоящий момент в базе данных нет ни одного зоопарка.</p>
+    </div>
+}

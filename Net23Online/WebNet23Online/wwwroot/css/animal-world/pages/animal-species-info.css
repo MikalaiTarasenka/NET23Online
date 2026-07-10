@@ -1,0 +1,227 @@
+﻿.page-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+.page-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin-top: 16px;
+}
+
+.page-header .title-accent {
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.search-form-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 28px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 40px;
+}
+
+.search-form {
+    display: grid;
+    grid-template-columns: 220px 1fr auto;
+    gap: 16px;
+    align-items: end;
+}
+
+.search-form .form-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.search-form .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.search-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    height: 46px;
+    background: var(--accent-green);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.search-btn:hover {
+    background: var(--accent-green-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(58, 90, 64, 0.3);
+}
+
+.search-btn-icon {
+    font-size: 1rem;
+}
+
+.species-table-wrapper {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.species-table {
+    width: 100%;
+    font-size: 0.95rem;
+}
+
+.species-table-header {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    background: linear-gradient(135deg, #2C4630 0%, #3A5A40 100%);
+}
+
+.species-table-header .table-cell {
+    padding: 18px 24px;
+    color: #FFFFFF;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+.species-table-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s ease;
+}
+
+.species-table-row:last-child {
+    border-bottom: none;
+}
+
+.species-table-row:nth-child(even) {
+    background: var(--bg-secondary);
+}
+
+.species-table-row:hover {
+    background: var(--accent-green-light);
+}
+
+.species-table-row .table-cell {
+    padding: 16px 24px;
+    color: var(--text-main);
+    vertical-align: top;
+    line-height: 1.5;
+}
+
+.species-table-row .cell-name {
+    font-weight: 600;
+    color: var(--accent-green);
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+}
+
+.species-table-row .cell-range {
+    color: var(--text-muted);
+}
+
+.table-empty {
+    padding: 60px 24px;
+    text-align: center;
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 1rem;
+}
+
+.table-empty .empty-icon {
+    font-size: 3.5rem;
+    margin-bottom: 16px;
+    opacity: 0.3;
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .search-form {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .search-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .search-form-card {
+        padding: 20px;
+    }
+
+    .species-table-header {
+        display: none;
+    }
+
+    .species-table-row {
+        display: block;
+        padding: 16px 20px;
+        margin-bottom: 0;
+        background: var(--bg-card);
+        border-bottom: 1px solid var(--border-color);
+    }
+
+    .species-table-row:nth-child(even) {
+        background: var(--bg-secondary);
+    }
+
+    .species-table-row .table-cell {
+        padding: 6px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 16px;
+        font-size: 0.95rem;
+    }
+
+    .species-table-row .table-cell::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        flex-shrink: 0;
+    }
+
+    .species-table-row .cell-name {
+        padding-top: 4px;
+        padding-bottom: 12px;
+        margin-bottom: 8px;
+        border-bottom: 1px solid var(--border-color);
+        display: block;
+        font-size: 1.2rem;
+    }
+
+    .species-table-row .cell-name::before {
+        display: none;
+    }
+}

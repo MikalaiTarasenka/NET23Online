@@ -2,37 +2,41 @@
 @model WebNet23Online.Models.AnimalWorld.GalleryViewModel
 @{
     Layout = "_LayoutAnimalWorld";
+    ViewData["Title"] = "Галерея";
 }
 
 @section Scripts {
     <script src="~/js/animal-world/index.js"></script>
 }
 
-<title>@AnimalWorld.AnimalWorldTitle</title>
+<section class="page-header">
+    <h1 class="page-title">Галерея животных</h1>
+    <div class="title-accent"></div>
+    <p class="page-subtitle">Интересные факты о случайных обитателях нашего мира</p>
+</section>
 
-<div class="main-place">
-    <div class="green-title">
-        <h2>Случайные животные</h2>
-    </div>
-    <hr class="green-line">
-    @if (Model.RandomAnimals.Any())
-    {
-        <div class="random-animals-container">
-            @foreach (var randomAnimal in Model.RandomAnimals)
-            {
-                <div class="random-animal-card">
-                    <div class="random-animal-image">
-                        <img src="@randomAnimal.Image" />
-                    </div>
-                    <div class="random-animal-fact">
-                        <p>@randomAnimal.Fact</p>
-                    </div>
+@if (Model.RandomAnimals.Any())
+{
+    <div class="gallery-grid">
+        @foreach (var randomAnimal in Model.RandomAnimals)
+        {
+            <article class="animal-card">
+                <div class="animal-image-wrapper">
+                    <img src="@randomAnimal.Image" alt="Животное" class="animal-image" />
                 </div>
-            }
-        </div>
-    }
-    else
-    {
-        <p class="empty-list-note">Что-то пошло не так и загрузить изображения не удалось.</p>
-    }
-</div>
+                <div class="animal-fact-wrapper">
+                    <div class="animal-fact-label">Интересный факт</div>
+                    <p class="animal-fact-text">@randomAnimal.Fact</p>
+                </div>
+            </article>
+        }
+    </div>
+}
+else
+{
+    <div class="empty-gallery">
+        <div class="empty-icon">🖼️</div>
+        <h3 class="empty-title">Галерея временно пуста</h3>
+        <p class="empty-text">К сожалению, не удалось загрузить изображения. Попробуйте обновить страницу позже.</p>
+    </div>
+}

@@ -1,40 +1,50 @@
-﻿@{
+﻿@using WebNet23Online.Localizations
+@{
     Layout = "_LayoutAnimalWorld";
+    ViewData["Title"] = "Интересные факты";
 }
 
 @section Scripts {
     <script src="~/js/animal-world/animal-species-facts.js"></script>
 }
 
-<title>Интересные факты</title>
+<section class="page-header">
+    <h1 class="page-title">Интересные факты о животных</h1>
+    <div class="title-accent"></div>
+    <p class="page-subtitle">Узнайте удивительные факты о различных видах животных</p>
+</section>
 
-<div class="main-place">
-    <h2 class="green-title page-title">Факты о животных</h2>
-    <div class="green-line"></div>
-
-    <div class="facts-form-container">
-        <div class="form-group">
-            <label for="animal-type-select" class="form-label">Вид животного:</label>
-            <select id="animal-type-select" class="form-input">
+<div class="fact-form-card">
+    <form class="fact-form" id="fact-form">
+        <div class="form-field">
+            <label for="animal-type-select" class="form-label">Вид животного</label>
+            <select id="animal-type-select" class="form-control">
                 <option>Загрузка...</option>
             </select>
         </div>
 
-        <div class="form-group">
-            <label for="factText" class="form-label">Текст факта:</label>
-            <textarea id="factText" class="form-input comment-textarea" rows="4" placeholder="Введите интересный факт..."></textarea>
+        <div class="form-field">
+            <label for="factText" class="form-label">Текст факта</label>
+            <textarea id="factText" class="form-control form-textarea" rows="4" placeholder="Введите интересный факт..."></textarea>
         </div>
 
-        <div class="find-animal align-items-center">
-            <button type="button" id="addFactBtn" class="find-animal-button">Добавить факт</button>
-            <span id="fact-form-feedback" class="zoo-name-feedback"></span>
+        <div class="fact-form-actions">
+            <button type="button" id="addFactBtn" class="btn btn--primary">
+                <span class="btn-icon">💡</span>
+                Добавить факт
+            </button>
+            <span id="fact-form-feedback" class="fact-feedback"></span>
         </div>
+    </form>
+</div>
+
+<section class="facts-section">
+    <div class="section-header">
+        <h2 class="section-title">Известные факты</h2>
+        <div class="title-accent"></div>
     </div>
-
-    <h3 class="green-title section-title">Известные факты</h3>
-    <div class="green-line"></div>
 
     <div id="facts-container" class="facts-list">
-        <p class="empty-list-note" id="facts-loading-status">Загрузка фактов...</p>
+        <div class="facts-loading" id="facts-loading-status">Загрузка фактов...</div>
     </div>
-</div>
+</section>
