@@ -1,0 +1,131 @@
+﻿.page-header {
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+.page-header .title-accent {
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+.booking-denied-card {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 48px 40px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+}
+
+.booking-denied-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px;
+    background: linear-gradient(to right, #C73E3E, #FEE2E2);
+}
+
+.denied-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 24px;
+    background: #FEE2E2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: #C73E3E;
+    animation: scaleIn 0.5s ease;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.denied-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: #C73E3E;
+    margin-bottom: 16px;
+    line-height: 1.3;
+}
+
+.denied-message {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    line-height: 1.7;
+    margin-bottom: 32px;
+}
+
+.denied-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 32px;
+    background: var(--accent-green);
+    color: white;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.denied-action:hover {
+    background: var(--accent-green-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(58, 90, 64, 0.3);
+}
+
+.denied-action-icon {
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .booking-denied-card {
+        padding: 32px 24px;
+    }
+
+    .denied-icon {
+        width: 64px;
+        height: 64px;
+        font-size: 2.5rem;
+    }
+
+    .denied-title {
+        font-size: 1.6rem;
+    }
+
+    .denied-message {
+        font-size: 1rem;
+    }
+
+    .denied-action {
+        width: 100%;
+        justify-content: center;
+    }
+}

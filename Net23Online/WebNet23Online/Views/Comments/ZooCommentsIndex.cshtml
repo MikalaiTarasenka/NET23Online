@@ -4,56 +4,78 @@
 @model AllCommentsViewModel
 @{
     Layout = "_LayoutAnimalWorld";
+    ViewData["Title"] = $"Отзывы — {Model.DisplayName}";
 }
 
 @section Scripts {
     <script src="~/js/comments/add-zoo-comment.js"></script>
 }
 
-<title>Отзывы — @Model.DisplayName</title>
+<section class="page-header">
+    <h1 class="page-title">Отзывы: @Model.DisplayName</h1>
+    <div class="title-accent"></div>
+    <p class="page-subtitle">Мнения посетителей о зоопарке</p>
+</section>
 
-<div class="main-place">
-    <div class="green-title">
-        <h2>Отзывы: @Model.DisplayName</h2>
+@if (authService.IsAuthenticated())
+{
+    <div class="comment-form-card">
+        <h2 class="comment-form-title">Оставить комментарий</h2>
+        <form id="comment-form" class="comment-form">
+            <input type="hidden" name="CommentsType" id="form-comments-type" value="@((int)Model.CommentsType)" />
+            <input type="hidden" name="EntityId" id="form-entity-id" value="@Model.EntityId" />
+
+            <div class="form-field">
+                <label for="form-comment-text" class="form-label">Ваш отзыв</label>
+                <textarea name="NewCommentText"
+                          id="form-comment-text"
+                          class="form-control form-textarea"
+                          rows="4"
+                          placeholder="Поделитесь вашими впечатлениями..."
+                          required></textarea>
+            </div>
+
+            <div class="comment-form-actions">
+                <button type="submit" class="btn btn--primary">
+                    <span class="btn-icon">📨</span>
+                    Отправить
+                </button>
+            </div>
+        </form>
     </div>
-    <hr class="green-line">
-    @if (authService.IsAuthenticated())
-    {
-        <div class="comments-form-section animal entity-card">
-            <form id="comment-form">
-                <h3 class="green-title">Оставить комментарий</h3>
-                <input type="hidden" name="CommentsType" id="form-comments-type" value="@((int)Model.CommentsType)" />
-                <input type="hidden" name="EntityId" id="form-entity-id" value="@Model.EntityId" />
-                <div class="form-group">
-                    <div for="form-comment-text">Ваш отзыв:</div>
-                    <textarea name="NewCommentText" id="form-comment-text" class="form-input comment-textarea" rows="4" placeholder="Поделитесь вашими впечатлениями..." required></textarea>
-                </div>
-                <button type="submit" class="find-animal-button">Отправить</button>
-            </form>
-        </div>
-    }
-    else
-    {
-        <p class="empty-list-note">Войдите в аккаунт, чтобы оставить отзыв.</p>
-    }
+}
+else
+{
+    <div class="auth-hint">
+        <span class="auth-hint-icon">🔒</span>
+        <span>Войдите в аккаунт, чтобы оставить отзыв.</span>
+    </div>
+}
 
-    <h3 class="green-title">Что говорят посетители:</h3>
-    <p id="empty-note" class="empty-comments-note @(Model.HasComments ? "d-none" : "")">
-        Пока нет отзывов. Будьте первым!
+<section class="comments-section">
+    <div class="comments-section-header">
+        <h2 class="comments-section-title">Что говорят посетители</h2>
+        <div class="title-accent"></div>
+    </div>
+
+    <p id="empty-note" class="empty-comments @(Model.HasComments ? "hidden" : "")">
+        <span class="empty-comments-icon">💬</span>
+        <span class="empty-comments-text">Пока нет отзывов. Будьте первым!</span>
     </p>
-    <div id="comments-container">
+
+    <div id="comments-container" class="comments-list">
         @if (Model.HasComments)
         {
             @foreach (var comment in Model.Comments)
             {
-                <div class="animal comment-item-box">
+                <article class="comment-item">
                     <div class="comment-item-header">
                         <strong class="comment-author">@comment.AuthorDisplayName</strong>
                         <div class="comment-date">@comment.CreatedAt.ToString("dd.MM.yyyy HH:mm")</div>
                     </div>
                     <p class="comment-text">@comment.Text</p>
-                </div>
+                </article>
             }
         }
     </div>
-</div>
+</section>

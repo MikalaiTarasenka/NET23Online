@@ -1,18 +1,20 @@
 ﻿@using WebNet23Online.Localizations
 @{
     Layout = "_LayoutAnimalWorld";
+    ViewData["Title"] = AnimalWorld.VisitBooked;
 }
 
-<title>@AnimalWorld.VisitBooked</title>
+<section class="page-header">
+    <h1 class="page-title">@AnimalWorld.Booked</h1>
+    <div class="title-accent"></div>
+</section>
 
-<div class="main-place">
-    <div class="green-title">
-        <h2>@AnimalWorld.Booked</h2>
-    </div>
-    <hr class="green-line">
-
-    <div class="animal entity-card book-successful">
-        <p>@AnimalWorld.VisitBookedCompleteMessage</p>
-        <a href="/AnimalWorld/Zoos">@AnimalWorld.BackToZoos</a>
-    </div>
+<div class="booking-success-card">
+    <div class="success-icon">✓</div>
+    <h2 class="success-title">Бронирование успешно оформлено!</h2>
+    <p class="success-message">@AnimalWorld.VisitBookedCompleteMessage</p>
+    <a href="/AnimalWorld/Zoos" class="success-action">
+        <span class="success-action-icon">←</span>
+        @AnimalWorld.BackToZoos
+    </a>
 </div>

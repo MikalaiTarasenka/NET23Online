@@ -1,18 +1,20 @@
 @using WebNet23Online.Localizations
 @{
     Layout = "_LayoutAnimalWorld";
+    ViewData["Title"] = AnimalWorld.NoBooked;
 }
 
-<title>@AnimalWorld.NoBooked</title>
+<section class="page-header">
+    <h1 class="page-title">@AnimalWorld.NoBooked</h1>
+    <div class="title-accent"></div>
+</section>
 
-<div class="main-place">
-    <div class="green-title">
-        <h2>@AnimalWorld.NoBooked</h2>
-    </div>
-    <hr class="green-line">
-
-    <div class="animal entity-card book-denied">
-        <p>@AnimalWorld.VisitBookedDenyMessage</p>
-        <a href="/AnimalWorld/Zoos">@AnimalWorld.BackToZoos</a>
-    </div>
+<div class="booking-denied-card">
+    <div class="denied-icon">✗</div>
+    <h2 class="denied-title">Бронирование не удалось</h2>
+    <p class="denied-message">@AnimalWorld.VisitBookedDenyMessage</p>
+    <a href="/AnimalWorld/Zoos" class="denied-action">
+        <span class="denied-action-icon">←</span>
+        @AnimalWorld.BackToZoos
+    </a>
 </div>
