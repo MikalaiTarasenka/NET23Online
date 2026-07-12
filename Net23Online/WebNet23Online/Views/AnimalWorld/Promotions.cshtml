@@ -5,6 +5,10 @@
     ViewData["Title"] = "Акции";
 }
 
+@section Styles {
+    <link rel="stylesheet" href="~/css/animal-world/pages/promotions.css" asp-append-version="true" />
+}
+
 <section class="page-header">
     <h1 class="page-title">Акции</h1>
     <div class="title-accent"></div>
@@ -20,10 +24,8 @@
                 <div class="promotion-header">
                     <div class="promotion-icon">🎟️</div>
                 </div>
-
                 <h3 class="promotion-title">@promotion.PromotionName</h3>
                 <p class="promotion-description">@promotion.Description</p>
-
                 <div class="promotion-footer">
                     <div class="promotion-meta">
                         <span class="meta-icon">📍</span>

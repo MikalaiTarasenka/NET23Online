@@ -5,6 +5,10 @@
     ViewData["Title"] = AnimalWorld.AnimalSpeciesZoosLinks;
 }
 
+@section Styles {
+    <link rel="stylesheet" href="~/css/animal-world/pages/bind-zoo-species.css" asp-append-version="true" />
+}
+
 <section class="page-header">
     <h1 class="page-title">@AnimalWorld.AnimalSpeciesZoosLinksSetup</h1>
     <div class="title-accent"></div>
@@ -24,7 +28,6 @@
             })
             @Html.ValidationMessageFor(zoo => zoo.ZooId, "", new { @class = "validation-error" })
         </div>
-
         <div class="form-field">
             <label for="AnimalSpeciesId" class="form-label">
                 @AnimalWorld.AnimalSpecies <span class="required">*</span>
@@ -36,7 +39,6 @@
             })
             @Html.ValidationMessageFor(animalSpecies => animalSpecies.AnimalSpeciesId, "", new { @class = "validation-error" })
         </div>
-
         <div class="form-actions">
             <button type="submit" class="btn btn--primary">
                 <span class="btn-icon">🔗</span>

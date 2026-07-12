@@ -5,6 +5,10 @@
     ViewData["Title"] = AnimalWorld.AnimalWorldTitle;
 }
 
+@section Styles {
+    <link rel="stylesheet" href="~/css/animal-world/pages/index.css" asp-append-version="true" />
+}
+
 @section Scripts {
     <script src="~/js/animal-world/index.js"></script>
 }
@@ -24,7 +28,6 @@
         <h2 class="section-title">@AnimalWorld.AnimalFamilies</h2>
         <div class="title-accent"></div>
     </div>
-
     @if (Model.AnimalFamilies.Any())
     {
         <div class="selection-actions" style="display: none;">
@@ -34,7 +37,6 @@
             </button>
             <span class="selection-hint">Кликните по карточкам, чтобы выбрать несколько семейств</span>
         </div>
-
         <div class="grid grid--families">
             @foreach (var family in Model.AnimalFamilies)
             {
@@ -57,7 +59,6 @@
         <h2 class="section-title">@AnimalWorld.AnimalSpecies</h2>
         <div class="title-accent"></div>
     </div>
-
     @if (Model.AnimalSpecies.Any())
     {
         <div class="grid grid--species">
@@ -71,7 +72,6 @@
                         <h3 class="card-title">@species.AnimalSpeciesName</h3>
                         <p class="card-meta"><span class="meta-label">Ареал:</span> @species.NativeRange</p>
                         <p class="card-text">@species.Description</p>
-
                         @if (species.Zoos.Any())
                         {
                             <div class="tags-container">

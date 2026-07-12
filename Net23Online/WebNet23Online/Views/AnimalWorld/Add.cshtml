@@ -4,6 +4,10 @@
     ViewData["Title"] = AnimalWorld.AddingData;
 }
 
+@section Styles {
+    <link rel="stylesheet" href="~/css/animal-world/pages/add-data.css" asp-append-version="true" />
+}
+
 <section class="page-header">
     <h1 class="page-title">@AnimalWorld.AddingAnimalData</h1>
     <div class="title-accent"></div>
@@ -16,7 +20,6 @@
         <h2 class="group-title">Животные</h2>
         <p class="group-description">Биологические данные: семейства, виды и их привязка к местам обитания</p>
     </div>
-
     <div class="add-options-grid">
         <a href="/AnimalWorld/AddFamily" class="option-card option-card--animals">
             <div class="option-icon">🌿</div>
@@ -24,14 +27,12 @@
             <p class="option-description">Создать новое семейство животных</p>
             <span class="option-arrow">→</span>
         </a>
-
         <a href="/AnimalWorld/AddSpecies" class="option-card option-card--animals">
             <div class="option-icon">🦁</div>
             <h3 class="option-title">@AnimalWorld.AddAnimalSpecies</h3>
             <p class="option-description">Добавить новый вид животного</p>
             <span class="option-arrow">→</span>
         </a>
-
         <a href="/AnimalWorld/BindZooAndAnimalSpecies" class="option-card option-card--animals">
             <div class="option-icon">🔗</div>
             <h3 class="option-title">@AnimalWorld.AnimalSpeciesZoosLinksSetup</h3>
@@ -47,7 +48,6 @@
         <h2 class="group-title">Инфраструктура</h2>
         <p class="group-description">Места, где содержатся и демонстрируются животные</p>
     </div>
-
     <div class="add-options-grid">
         <a href="/AnimalWorld/AddZoo" class="option-card option-card--infrastructure">
             <div class="option-icon">🐘</div>
@@ -64,7 +64,6 @@
         <h2 class="group-title">Маркетинг</h2>
         <p class="group-description">Акции, предложения и специальные события для посетителей</p>
     </div>
-
     <div class="add-options-grid">
         <a href="/AnimalWorld/AddPromotion" class="option-card option-card--marketing">
             <div class="option-icon">✨</div>

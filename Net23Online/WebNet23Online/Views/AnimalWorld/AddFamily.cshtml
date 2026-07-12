@@ -5,6 +5,10 @@
     ViewData["Title"] = AnimalWorld.AddAnimalFamily;
 }
 
+@section Styles {
+    <link rel="stylesheet" href="~/css/animal-world/pages/add-family.css" asp-append-version="true" />
+}
+
 <section class="page-header">
     <h1 class="page-title">@AnimalWorld.AddAnimalFamily</h1>
     <div class="title-accent"></div>
@@ -26,7 +30,6 @@
             })
             @Html.ValidationMessageFor(family => family.AnimalFamilyName, "", new { @class = "validation-error" })
         </div>
-
         <div class="form-field">
             <label for="Description" class="form-label">
                 @AnimalWorld.Description <span class="required">*</span>
@@ -40,7 +43,6 @@
             })
             @Html.ValidationMessageFor(family => family.Description, "", new { @class = "validation-error" })
         </div>
-
         <div class="form-actions">
             <button type="submit" class="btn btn--primary">
                 <span class="btn-icon">✓</span>

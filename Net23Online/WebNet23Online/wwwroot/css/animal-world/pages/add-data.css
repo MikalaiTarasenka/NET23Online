@@ -1,16 +1,10 @@
-﻿.page-header {
+﻿/* Уникальные переопределения */
+.page-header {
     margin-bottom: 56px;
-}
-
-.page-title {
-    font-size: 2.5rem;
-    margin-bottom: 16px;
 }
 
 .page-subtitle {
     font-size: 1.1rem;
-    color: var(--text-muted);
-    margin-top: 16px;
 }
 
 .options-group {
@@ -176,10 +170,6 @@
 }
 
 @media (max-width: 768px) {
-    .page-title {
-        font-size: 2rem;
-    }
-
     .options-group {
         margin-bottom: 48px;
     }

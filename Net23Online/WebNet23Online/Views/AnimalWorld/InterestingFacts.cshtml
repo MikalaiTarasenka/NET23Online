@@ -4,6 +4,10 @@
     ViewData["Title"] = "Интересные факты";
 }
 
+@section Styles {
+    <link rel="stylesheet" href="~/css/animal-world/pages/interesting-facts.css" asp-append-version="true" />
+}
+
 @section Scripts {
     <script src="~/js/animal-world/animal-species-facts.js"></script>
 }
@@ -22,12 +26,10 @@
                 <option>Загрузка...</option>
             </select>
         </div>
-
         <div class="form-field">
             <label for="factText" class="form-label">Текст факта</label>
             <textarea id="factText" class="form-control form-textarea" rows="4" placeholder="Введите интересный факт..."></textarea>
         </div>
-
         <div class="fact-form-actions">
             <button type="button" id="addFactBtn" class="btn btn--primary">
                 <span class="btn-icon">💡</span>
@@ -43,7 +45,6 @@
         <h2 class="section-title">Известные факты</h2>
         <div class="title-accent"></div>
     </div>
-
     <div id="facts-container" class="facts-list">
         <div class="facts-loading" id="facts-loading-status">Загрузка фактов...</div>
     </div>

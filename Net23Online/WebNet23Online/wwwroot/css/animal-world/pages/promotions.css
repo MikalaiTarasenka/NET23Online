@@ -1,25 +1,4 @@
-﻿.page-header {
-    margin-bottom: 48px;
-    text-align: center;
-}
-
-.page-title {
-    font-size: 2.5rem;
-    margin-bottom: 16px;
-}
-
-.page-subtitle {
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    margin-top: 16px;
-}
-
-.page-header .title-accent {
-    max-width: 200px;
-    margin: 0 auto;
-}
-
-.promotions-grid {
+﻿.promotions-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 24px;
@@ -130,10 +109,6 @@
 }
 
 @media (max-width: 768px) {
-    .page-title {
-        font-size: 2rem;
-    }
-
     .promotions-grid {
         grid-template-columns: 1fr;
         gap: 16px;

@@ -5,6 +5,10 @@
     ViewData["Title"] = "Добавление акции";
 }
 
+@section Styles {
+    <link rel="stylesheet" href="~/css/animal-world/pages/add-promotion.css" asp-append-version="true" />
+}
+
 <section class="page-header">
     <h1 class="page-title">Добавить акцию</h1>
     <div class="title-accent"></div>
@@ -26,7 +30,6 @@
             })
             @Html.ValidationMessageFor(promotion => promotion.PromotionName, "", new { @class = "validation-error" })
         </div>
-
         <div class="form-field">
             <label for="Description" class="form-label">
                 Описание <span class="required">*</span>
@@ -40,7 +43,6 @@
             })
             @Html.ValidationMessageFor(promotion => promotion.Description, "", new { @class = "validation-error" })
         </div>
-
         <div class="form-field">
             <label for="ZooId" class="form-label">
                 Место проведения <span class="required">*</span>
@@ -52,7 +54,6 @@
             })
             @Html.ValidationMessageFor(promotion => promotion.ZooId, "", new { @class = "validation-error" })
         </div>
-
         <div class="form-field">
             <label for="EndDate" class="form-label">
                 Дата окончания <span class="required">*</span>
@@ -66,7 +67,6 @@
             })
             @Html.ValidationMessageFor(promotion => promotion.EndDate, "", new { @class = "validation-error" })
         </div>
-
         <div class="form-actions">
             <button type="submit" class="btn btn--primary">
                 <span class="btn-icon">🎟️</span>

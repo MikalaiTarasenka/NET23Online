@@ -5,8 +5,8 @@
     ViewData["Title"] = AnimalWorld.AnimalSpecies;
 }
 
-@section Scripts {
-    <script src="~/js/animal-world/index.js"></script>
+@section Styles {
+    <link rel="stylesheet" href="~/css/animal-world/pages/animal-species-info.css" asp-append-version="true" />
 }
 
 <section class="page-header">
@@ -26,7 +26,6 @@
                 <option value="Range">Среда обитания</option>
             </select>
         </div>
-
         <div class="form-field">
             <label for="searchQuery" class="form-label">Поисковый запрос</label>
             <input type="text"
@@ -36,7 +35,6 @@
                    class="form-control"
                    placeholder="Введите текст для поиска..." />
         </div>
-
         <button type="submit" class="search-btn">
             <span class="search-btn-icon">🔍</span>
             Найти
@@ -53,7 +51,6 @@
                 <div class="table-cell">Семейство</div>
                 <div class="table-cell">Среда обитания</div>
             </div>
-
             @foreach (var animal in Model.AnimalSpeciesInfoViewModels)
             {
                 <div class="species-table-row">

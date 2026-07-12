@@ -1,6 +1,10 @@
 ﻿@using WebNet23Online.Localizations
 @using WebNet23Online.Models.Tickets
 @model AllTicketsViewModel
+@{
+    Layout = "_LayoutAnimalWorld";
+    ViewData["Title"] = "Мои билеты";
+}
 
 @section Styles {
     <link rel="stylesheet" href="~/css/tickets/my-tickets.css" asp-append-version="true" />
@@ -27,7 +31,6 @@
         @if (Model.CanShowZooTickets)
         {
             <p class="tickets-zoo-hint">Предъявите QR-код на входе в зоопарк</p>
-
             <div class="tickets-zoo-list">
                 @foreach (var ticket in Model.ZooTickets)
                 {

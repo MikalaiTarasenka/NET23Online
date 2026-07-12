@@ -1,14 +1,4 @@
-﻿
-.page-header {
-    margin-bottom: 48px;
-}
-
-.page-title {
-    font-size: 2.5rem;
-    margin-bottom: 16px;
-}
-
-.form-layout {
+﻿.form-layout {
     display: grid;
     grid-template-columns: 1fr 400px;
     gap: 48px;
@@ -92,11 +82,5 @@
 
     .form-preview {
         position: static;
-    }
-}
-
-@media (max-width: 768px) {
-    .page-title {
-        font-size: 2rem;
     }
 }

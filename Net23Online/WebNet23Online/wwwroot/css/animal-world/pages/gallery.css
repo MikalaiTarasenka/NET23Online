@@ -1,25 +1,4 @@
-﻿.page-header {
-    margin-bottom: 48px;
-    text-align: center;
-}
-
-.page-title {
-    font-size: 2.5rem;
-    margin-bottom: 16px;
-}
-
-.page-subtitle {
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    margin-top: 16px;
-}
-
-.page-header .title-accent {
-    max-width: 200px;
-    margin: 0 auto;
-}
-
-.gallery-grid {
+﻿.gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 32px;
@@ -36,11 +15,11 @@
     flex-direction: column;
 }
 
-    .animal-card:hover {
-        transform: translateY(-6px);
-        box-shadow: var(--shadow-md);
-        border-color: var(--accent-green);
-    }
+.animal-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent-green);
+}
 
 .animal-image-wrapper {
     width: 100%;
@@ -80,10 +59,10 @@
     letter-spacing: 0.5px;
 }
 
-    .animal-fact-label::before {
-        content: '💡';
-        font-size: 1rem;
-    }
+.animal-fact-label::before {
+    content: '💡';
+    font-size: 1rem;
+}
 
 .animal-fact-text {
     font-size: 1rem;
@@ -122,10 +101,6 @@
 }
 
 @media (max-width: 768px) {
-    .page-title {
-        font-size: 2rem;
-    }
-
     .gallery-grid {
         grid-template-columns: 1fr;
         gap: 24px;

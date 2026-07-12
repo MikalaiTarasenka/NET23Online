@@ -7,6 +7,10 @@
     ViewData["Title"] = $"Отзывы — {Model.DisplayName}";
 }
 
+@section Styles {
+    <link rel="stylesheet" href="~/css/animal-world/pages/zoo-comments.css" asp-append-version="true" />
+}
+
 @section Scripts {
     <script src="~/js/comments/add-zoo-comment.js"></script>
 }
@@ -24,7 +28,6 @@
         <form id="comment-form" class="comment-form">
             <input type="hidden" name="CommentsType" id="form-comments-type" value="@((int)Model.CommentsType)" />
             <input type="hidden" name="EntityId" id="form-entity-id" value="@Model.EntityId" />
-
             <div class="form-field">
                 <label for="form-comment-text" class="form-label">Ваш отзыв</label>
                 <textarea name="NewCommentText"
@@ -34,7 +37,6 @@
                           placeholder="Поделитесь вашими впечатлениями..."
                           required></textarea>
             </div>
-
             <div class="comment-form-actions">
                 <button type="submit" class="btn btn--primary">
                     <span class="btn-icon">📨</span>
@@ -57,12 +59,10 @@ else
         <h2 class="comments-section-title">Что говорят посетители</h2>
         <div class="title-accent"></div>
     </div>
-
     <p id="empty-note" class="empty-comments @(Model.HasComments ? "hidden" : "")">
         <span class="empty-comments-icon">💬</span>
         <span class="empty-comments-text">Пока нет отзывов. Будьте первым!</span>
     </p>
-
     <div id="comments-container" class="comments-list">
         @if (Model.HasComments)
         {

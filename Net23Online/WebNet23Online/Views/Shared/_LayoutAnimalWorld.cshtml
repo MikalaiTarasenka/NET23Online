@@ -1,7 +1,6 @@
 @using WebNet23Online.Localizations
 @using WebNet23Online.Services.Interfaces
 @inject IAuthService authService
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -13,26 +12,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 
+    <!-- Базовые стили (нужны на всех страницах) -->
     <link rel="stylesheet" href="~/css/animal-world/variables.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/animal-world/base.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/animal-world/layout.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/animal-world/components.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/animal-world/pages/index.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/animal-world/pages/add-data.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/animal-world/pages/add-species.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/animal-world/pages/add-family.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/animal-world/pages/add-zoo.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/animal-world/pages/bind-zoo-species.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/animal-world/pages/add-promotion.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/animal-world/pages/gallery.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/animal-world/pages/animal-species-info.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/animal-world/pages/interesting-facts.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/animal-world/pages/zoos.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/animal-world/pages/notifications.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/animal-world/pages/zoo-comments.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/animal-world/pages/booking-denied.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/animal-world/pages/booking-success.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/animal-world/pages/promotions.css" asp-append-version="true" />
 
     @await RenderSectionAsync("Styles", required: false)
 </head>
@@ -40,10 +25,8 @@
     <header class="site-header">
         <div class="header-container">
             <a href="/" class="logo">@AnimalWorld.AmazingAnimalWorld</a>
-
             <nav class="main-nav">
                 <a href="/" class="nav-link">Главная</a>
-
                 <div class="nav-dropdown">
                     <button class="nav-link nav-dropdown-toggle">
                         @AnimalWorld.AnimalWorldTitle <span class="arrow">▾</span>
@@ -55,19 +38,16 @@
                         <a href="/AnimalWorld/InterestingFacts" class="dropdown-link">@AnimalWorld.Interesting</a>
                     </div>
                 </div>
-
                 @if (authService.IsAuthenticated())
                 {
                     <a href="/AnimalWorld/Zoos" class="nav-link">@AnimalWorld.Reservation</a>
                 }
                 <a href="/AnimalWorld/Promotions" class="nav-link">Акции</a>
-
                 @if (authService.AtLeastModerator())
                 {
                     <a href="/AnimalWorld/Add" class="nav-link nav-link--accent">@AnimalWorld.AddData</a>
                 }
             </nav>
-
             <div class="header-actions">
                 @if (authService.IsAuthenticated())
                 {
@@ -96,6 +76,7 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/animal-world/new-animal-species-appeared.js"></script>
     <script src="~/js/animal-world/promotions.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -1,19 +1,4 @@
-﻿.page-header {
-    margin-bottom: 48px;
-    text-align: center;
-}
-
-.page-title {
-    font-size: 2.5rem;
-    margin-bottom: 16px;
-}
-
-.page-header .title-accent {
-    max-width: 200px;
-    margin: 0 auto;
-}
-
-.booking-denied-card {
+﻿.booking-denied-card {
     max-width: 600px;
     margin: 0 auto;
     background: var(--bg-card);
@@ -102,10 +87,6 @@
 }
 
 @media (max-width: 768px) {
-    .page-title {
-        font-size: 2rem;
-    }
-
     .booking-denied-card {
         padding: 32px 24px;
     }

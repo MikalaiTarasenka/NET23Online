@@ -288,3 +288,48 @@ select.form-control {
     background: var(--bg-secondary);
     border-radius: var(--radius-md);
 }
+
+/* ==========================================================================
+   Общие стили заголовков страниц
+   ========================================================================== */
+.page-header {
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+.page-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin-top: 16px;
+}
+
+.page-header .title-accent {
+    max-width: 200px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   Адаптивность для форм (общая для всех страниц с формами)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .form-card {
+        padding: 24px;
+    }
+
+    .form-card .form-actions {
+        justify-content: stretch;
+    }
+
+    .form-card .btn {
+        width: 100%;
+    }
+}

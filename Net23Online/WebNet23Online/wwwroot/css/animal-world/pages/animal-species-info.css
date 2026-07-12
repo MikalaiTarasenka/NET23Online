@@ -1,25 +1,4 @@
-﻿.page-header {
-    margin-bottom: 40px;
-    text-align: center;
-}
-
-.page-title {
-    font-size: 2.5rem;
-    margin-bottom: 16px;
-}
-
-.page-subtitle {
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    margin-top: 16px;
-}
-
-.page-header .title-accent {
-    max-width: 200px;
-    margin: 0 auto;
-}
-
-.search-form-card {
+﻿.search-form-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
@@ -169,10 +148,6 @@
 }
 
 @media (max-width: 768px) {
-    .page-title {
-        font-size: 2rem;
-    }
-
     .search-form-card {
         padding: 20px;
     }
