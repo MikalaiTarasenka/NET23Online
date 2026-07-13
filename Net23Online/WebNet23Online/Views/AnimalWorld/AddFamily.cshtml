@@ -5,17 +5,12 @@
     ViewData["Title"] = AnimalWorld.AddAnimalFamily;
 }
 
-@section Styles {
-    <link rel="stylesheet" href="~/css/animal-world/pages/add-family.css" asp-append-version="true" />
-}
-
 <section class="page-header">
     <h1 class="page-title">@AnimalWorld.AddAnimalFamily</h1>
     <div class="title-accent"></div>
     <p class="page-subtitle">Заполните информацию о новом семействе животных</p>
 </section>
-
-<form method="post" class="family-form">
+<form method="post" class="form-container">
     <div class="form-card">
         <div class="form-field">
             <label for="AnimalFamilyName" class="form-label">

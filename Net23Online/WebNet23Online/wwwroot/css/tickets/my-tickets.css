@@ -1,40 +1,4 @@
-﻿.my-tickets-page {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-}
-
-.my-tickets-header {
-    text-align: center;
-    margin-bottom: 56px;
-}
-
-.my-tickets-title {
-    font-family: var(--font-heading);
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: var(--text-main);
-    margin-bottom: 16px;
-    line-height: 1.2;
-}
-
-.my-tickets-intro {
-    font-size: 1.1rem;
-    color: var(--text-muted);
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-.title-accent-line {
-    max-width: 200px;
-    height: 2px;
-    background: linear-gradient(to right, var(--accent-green), transparent);
-    border-radius: 2px;
-    margin: 20px auto 0;
-}
-
-.tickets-zoo-section {
+﻿.tickets-zoo-section {
     margin-bottom: 64px;
 }
 
@@ -55,17 +19,10 @@
     gap: 12px;
 }
 
-.tickets-zoo-section-title::before {
-    content: '🎟️';
-    font-size: 1.5rem;
-}
-
-.tickets-zoo-section-header .section-accent {
-    flex-grow: 1;
-    height: 2px;
-    background: linear-gradient(to right, var(--accent-green), transparent);
-    border-radius: 2px;
-}
+    .tickets-zoo-section-title::before {
+        content: '🎟️';
+        font-size: 1.5rem;
+    }
 
 .tickets-zoo-hint {
     font-size: 0.95rem;
@@ -80,10 +37,10 @@
     gap: 10px;
 }
 
-.tickets-zoo-hint::before {
-    content: '💡';
-    font-size: 1.1rem;
-}
+    .tickets-zoo-hint::before {
+        content: '💡';
+        font-size: 1.1rem;
+    }
 
 .tickets-zoo-list {
     display: grid;
@@ -100,21 +57,21 @@
     position: relative;
 }
 
-.tickets-zoo-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(to right, #2C4630, #3A5A40, #A8D5BA);
-}
+    .tickets-zoo-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(to right, #2C4630, #3A5A40, #A8D5BA);
+    }
 
-.tickets-zoo-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--accent-green);
-}
+    .tickets-zoo-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--accent-green);
+    }
 
 .tickets-zoo-card-inner {
     display: flex;
@@ -131,16 +88,16 @@
     position: relative;
 }
 
-.tickets-zoo-card-body::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-    height: calc(100% - 32px);
-    background: repeating-linear-gradient( to bottom, var(--border-color) 0, var(--border-color) 6px, transparent 6px, transparent 12px );
-}
+    .tickets-zoo-card-body::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: calc(100% - 32px);
+        background: repeating-linear-gradient(to bottom, var(--border-color) 0, var(--border-color) 6px, transparent 6px, transparent 12px);
+    }
 
 .tickets-zoo-name {
     font-family: var(--font-heading);
@@ -160,22 +117,10 @@
     gap: 6px;
 }
 
-.tickets-zoo-meta strong {
-    color: var(--text-main);
-    font-weight: 600;
-}
-
-.tickets-zoo-key-row {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin: 0;
-    font-family: var(--font-body);
-}
-
-.tickets-zoo-key-row strong {
-    color: var(--text-main);
-    font-weight: 600;
-}
+    .tickets-zoo-meta strong {
+        color: var(--text-main);
+        font-weight: 600;
+    }
 
 .tickets-zoo-status {
     display: inline-flex;
@@ -196,39 +141,39 @@
     color: var(--accent-green);
 }
 
-.tickets-zoo-status-active::before {
-    content: '✓';
-    font-size: 0.9rem;
-    font-weight: bold;
-}
+    .tickets-zoo-status-active::before {
+        content: '✓';
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
 
 .tickets-zoo-status-used {
     background: var(--bg-secondary);
     color: var(--text-muted);
 }
 
-.tickets-zoo-status-used::before {
-    content: '✓';
-    font-size: 0.9rem;
-    font-weight: bold;
-}
+    .tickets-zoo-status-used::before {
+        content: '✓';
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
 
 .tickets-zoo-card-used {
     opacity: 0.75;
 }
 
-.tickets-zoo-card-used::before {
-    background: linear-gradient(to right, #A0A0A0, #D0D0D0);
-}
+    .tickets-zoo-card-used::before {
+        background: linear-gradient(to right, #A0A0A0, #D0D0D0);
+    }
 
-.tickets-zoo-card-used:hover {
-    transform: translateY(-2px);
-    border-color: var(--border-color);
-}
+    .tickets-zoo-card-used:hover {
+        transform: translateY(-2px);
+        border-color: var(--border-color);
+    }
 
-.tickets-zoo-card-used .tickets-zoo-name {
-    color: var(--text-muted);
-}
+    .tickets-zoo-card-used .tickets-zoo-name {
+        color: var(--text-muted);
+    }
 
 .tickets-zoo-qrcode-panel {
     width: 180px;
@@ -262,52 +207,6 @@
     box-shadow: var(--shadow-sm);
 }
 
-.tickets-zoo-empty {
-    text-align: center;
-    padding: 60px 40px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 16px;
-}
-
-.tickets-zoo-empty::before {
-    content: '🎫';
-    font-size: 3.5rem;
-    opacity: 0.3;
-}
-
-.tickets-zoo-empty-text {
-    font-size: 1rem;
-    color: var(--text-muted);
-    font-style: italic;
-    margin: 0;
-}
-
-.tickets-zoo-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 28px;
-    background: var(--accent-green);
-    color: white;
-    border-radius: var(--radius-sm);
-    font-size: 0.95rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    margin-top: 8px;
-}
-
-.tickets-zoo-link:hover {
-    background: var(--accent-green-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(58, 90, 64, 0.3);
-}
-
 @media (max-width: 900px) {
     .tickets-zoo-list {
         grid-template-columns: 1fr;
@@ -315,10 +214,6 @@
 }
 
 @media (max-width: 768px) {
-    .my-tickets-title {
-        font-size: 2rem;
-    }
-
     .tickets-zoo-section-title {
         font-size: 1.5rem;
     }
@@ -331,9 +226,9 @@
         padding: 24px;
     }
 
-    .tickets-zoo-card-body::after {
-        display: none;
-    }
+        .tickets-zoo-card-body::after {
+            display: none;
+        }
 
     .tickets-zoo-qrcode-panel {
         width: 100%;

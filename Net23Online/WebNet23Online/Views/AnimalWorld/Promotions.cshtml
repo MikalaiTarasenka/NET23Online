@@ -4,17 +4,14 @@
     Layout = "_LayoutAnimalWorld";
     ViewData["Title"] = "Акции";
 }
-
 @section Styles {
     <link rel="stylesheet" href="~/css/animal-world/pages/promotions.css" asp-append-version="true" />
 }
-
 <section class="page-header">
     <h1 class="page-title">Акции</h1>
     <div class="title-accent"></div>
     <p class="page-subtitle">Специальные предложения для посетителей наших зоопарков</p>
 </section>
-
 @if (Model.Any())
 {
     <div class="promotions-grid">
@@ -42,7 +39,7 @@
 }
 else
 {
-    <div class="empty-promotions">
+    <div class="empty-container">
         <div class="empty-icon">🎫</div>
         <h3 class="empty-title">В настоящий момент акции не проводятся</h3>
         <p class="empty-text">Следите за обновлениями — скоро появятся новые интересные предложения!</p>

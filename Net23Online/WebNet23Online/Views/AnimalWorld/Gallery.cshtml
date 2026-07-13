@@ -4,17 +4,14 @@
     Layout = "_LayoutAnimalWorld";
     ViewData["Title"] = "Галерея";
 }
-
 @section Styles {
     <link rel="stylesheet" href="~/css/animal-world/pages/gallery.css" asp-append-version="true" />
 }
-
 <section class="page-header">
     <h1 class="page-title">Галерея животных</h1>
     <div class="title-accent"></div>
     <p class="page-subtitle">Интересные факты о случайных обитателях нашего мира</p>
 </section>
-
 @if (Model.RandomAnimals.Any())
 {
     <div class="gallery-grid">
@@ -34,7 +31,7 @@
 }
 else
 {
-    <div class="empty-gallery">
+    <div class="empty-container">
         <div class="empty-icon">🖼️</div>
         <h3 class="empty-title">Галерея временно пуста</h3>
         <p class="empty-text">К сожалению, не удалось загрузить изображения. Попробуйте обновить страницу позже.</p>

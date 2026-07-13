@@ -63,15 +63,16 @@
 
                 if (facts.length === 0) {
                     $container.html(`
-                        <div class="facts-empty">
-                            <span class="facts-empty-icon">💭</span>
-                            <p class="facts-empty-text">Пока нет ни одного факта. Будьте первым, кто поделится интересной информацией!</p>
+                        <div class="empty-container">
+                            <div class="empty-icon">💭</div>
+                            <p class="empty-text">Пока нет ни одного факта. Будьте первым, кто поделится интересной информацией!</p>
                         </div>
                     `);
                     return;
                 }
 
                 $container.find('.fact-item').remove();
+
                 facts.forEach(function (fact) {
                     $(`<article class="fact-item">
                         <span class="fact-animal-type">${fact.animalSpeciesName}</span>
@@ -80,7 +81,13 @@
                 });
             })
             .fail(function () {
-                $('#facts-loading-status').text('Ошибка загрузки фактов').addClass('facts-empty');
+                $('#facts-loading-status').remove();
+                $container.html(`
+                    <div class="empty-container">
+                        <div class="empty-icon">⚠️</div>
+                        <p class="empty-text">Ошибка загрузки фактов</p>
+                    </div>
+                `);
             });
     }
 

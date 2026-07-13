@@ -5,17 +5,14 @@
     Layout = "_LayoutAnimalWorld";
     ViewData["Title"] = AnimalWorld.Zoos;
 }
-
 @section Styles {
     <link rel="stylesheet" href="~/css/animal-world/pages/zoos.css" asp-append-version="true" />
 }
-
 <section class="page-header">
     <h1 class="page-title">@AnimalWorld.ZoosList</h1>
     <div class="title-accent"></div>
     <p class="page-subtitle">Места, где вы можете увидеть удивительных животных</p>
 </section>
-
 @if (Model.Any())
 {
     <div class="zoos-grid">
@@ -70,9 +67,9 @@
 }
 else
 {
-    <div class="empty-zoos">
-        <div class="empty-zoos-icon">🐘</div>
-        <h3 class="empty-zoos-title">@AnimalWorld.NoZoos</h3>
-        <p class="empty-zoos-text">В настоящий момент в базе данных нет ни одного зоопарка.</p>
+    <div class="empty-container">
+        <div class="empty-icon">🐘</div>
+        <h3 class="empty-title">@AnimalWorld.NoZoos</h3>
+        <p class="empty-text">В настоящий момент в базе данных нет ни одного зоопарка.</p>
     </div>
 }

@@ -1,4 +1,9 @@
-﻿.form-layout {
+﻿/* Увеличиваем ширину контейнера формы для страницы AddSpecies */
+.form-container:has(.form-layout) {
+    max-width: 1100px;
+}
+
+.form-layout {
     display: grid;
     grid-template-columns: 1fr 400px;
     gap: 48px;
@@ -74,7 +79,14 @@
     text-align: center;
 }
 
+/* ==========================================================================
+АДАПТИВНОСТЬ
+========================================================================== */
 @media (max-width: 1024px) {
+    .form-container:has(.form-layout) {
+        max-width: 640px;
+    }
+
     .form-layout {
         grid-template-columns: 1fr;
         gap: 32px;

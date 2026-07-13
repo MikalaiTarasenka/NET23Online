@@ -1,4 +1,7 @@
-﻿.hero-section {
+﻿/* ==========================================================================
+ГЕРОЙ-СЕКЦИЯ
+========================================================================== */
+.hero-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 48px;
@@ -32,28 +35,16 @@
     object-fit: cover;
 }
 
+/* ==========================================================================
+СЕКЦИИ КОНТЕНТА
+========================================================================== */
 .content-section {
     margin-bottom: 64px;
 }
 
-.section-header {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 32px;
-}
-
-.section-title {
-    font-size: 2rem;
-}
-
-.title-accent {
-    flex-grow: 1;
-    height: 2px;
-    background: linear-gradient(to right, var(--accent-green), transparent);
-    border-radius: 2px;
-}
-
+/* ==========================================================================
+ГРИДЫ
+========================================================================== */
 .grid {
     display: grid;
     gap: 24px;
@@ -67,37 +58,9 @@
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 }
 
-@media (max-width: 768px) {
-    .header-container {
-        flex-wrap: wrap;
-        height: auto;
-        padding: 16px 24px;
-        gap: 16px;
-    }
-
-    .main-nav {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 16px;
-    }
-
-    .hero-section {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 32px;
-    }
-
-    .hero-title {
-        font-size: 2.5rem;
-    }
-
-    .hero-text {
-        margin: 0 auto;
-    }
-}
-
+/* ==========================================================================
+КАРТОЧКИ СЕМЕЙСТВ (с выбором)
+========================================================================== */
 .card--family {
     cursor: pointer;
     position: relative;
@@ -127,16 +90,19 @@
     box-shadow: var(--shadow-md);
 }
 
-.card--family.selected .card-selection-indicator {
-    background: var(--accent-green);
-    border-color: var(--accent-green);
-    color: white;
-}
+    .card--family.selected .card-selection-indicator {
+        background: var(--accent-green);
+        border-color: var(--accent-green);
+        color: white;
+    }
 
-.card--family.selected .card-selection-indicator::after {
-    content: '✓';
-}
+        .card--family.selected .card-selection-indicator::after {
+            content: '✓';
+        }
 
+/* ==========================================================================
+ПАНЕЛЬ ДЕЙСТВИЙ ВЫБОРА
+========================================================================== */
 .selection-actions {
     display: flex;
     align-items: center;
@@ -151,4 +117,23 @@
 .selection-hint {
     font-size: 0.9rem;
     color: var(--text-muted);
+}
+
+/* ==========================================================================
+АДАПТИВНОСТЬ
+========================================================================== */
+@media (max-width: 768px) {
+    .hero-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 32px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-text {
+        margin: 0 auto;
+    }
 }

@@ -4,15 +4,12 @@
     Layout = "_LayoutAnimalWorld";
     ViewData["Title"] = AnimalWorld.AnimalWorldTitle;
 }
-
 @section Styles {
     <link rel="stylesheet" href="~/css/animal-world/pages/index.css" asp-append-version="true" />
 }
-
 @section Scripts {
     <script src="~/js/animal-world/index.js"></script>
 }
-
 <section class="hero-section">
     <div class="hero-content">
         <h1 class="hero-title">@AnimalWorld.AboutPlanet</h1>
@@ -22,7 +19,6 @@
         <img src="~/images/animal-world/animals.jpg" alt="Мир животных" class="hero-image" />
     </div>
 </section>
-
 <section class="content-section">
     <div class="section-header">
         <h2 class="section-title">@AnimalWorld.AnimalFamilies</h2>
@@ -53,7 +49,6 @@
         <p class="empty-state">@AnimalWorld.NoAnimalFamilies</p>
     }
 </section>
-
 <section class="content-section">
     <div class="section-header">
         <h2 class="section-title">@AnimalWorld.AnimalSpecies</h2>

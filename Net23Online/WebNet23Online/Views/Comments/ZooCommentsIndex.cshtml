@@ -6,21 +6,17 @@
     Layout = "_LayoutAnimalWorld";
     ViewData["Title"] = $"Отзывы — {Model.DisplayName}";
 }
-
 @section Styles {
     <link rel="stylesheet" href="~/css/animal-world/pages/zoo-comments.css" asp-append-version="true" />
 }
-
 @section Scripts {
     <script src="~/js/comments/add-zoo-comment.js"></script>
 }
-
 <section class="page-header">
     <h1 class="page-title">Отзывы: @Model.DisplayName</h1>
     <div class="title-accent"></div>
     <p class="page-subtitle">Мнения посетителей о зоопарке</p>
 </section>
-
 @if (authService.IsAuthenticated())
 {
     <div class="comment-form-card">
@@ -53,16 +49,15 @@ else
         <span>Войдите в аккаунт, чтобы оставить отзыв.</span>
     </div>
 }
-
 <section class="comments-section">
     <div class="comments-section-header">
         <h2 class="comments-section-title">Что говорят посетители</h2>
         <div class="title-accent"></div>
     </div>
-    <p id="empty-note" class="empty-comments @(Model.HasComments ? "hidden" : "")">
-        <span class="empty-comments-icon">💬</span>
-        <span class="empty-comments-text">Пока нет отзывов. Будьте первым!</span>
-    </p>
+    <div id="empty-note" class="empty-container @(Model.HasComments ? "hidden" : "")">
+        <div class="empty-icon">💬</div>
+        <p class="empty-text">Пока нет отзывов. Будьте первым!</p>
+    </div>
     <div id="comments-container" class="comments-list">
         @if (Model.HasComments)
         {

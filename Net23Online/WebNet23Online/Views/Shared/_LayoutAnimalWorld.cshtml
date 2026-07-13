@@ -7,18 +7,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - @AnimalWorld.AmazingAnimalWorld</title>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-
+    
     <!-- Базовые стили (нужны на всех страницах) -->
     <link rel="stylesheet" href="~/css/animal-world/variables.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/animal-world/base.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/animal-world/layout.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/animal-world/components.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/animal-world/pages/notifications.css" asp-append-version="true" />
-
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
@@ -56,27 +54,22 @@
             </div>
         </div>
     </header>
-
     <main class="site-main">
         <div class="main-container">
             @RenderBody()
         </div>
     </main>
-
     <footer class="site-footer">
         <div class="footer-container">
             <p>@AnimalWorld.FooterText</p>
         </div>
     </footer>
-
     <div class="notifications-container"></div>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/animal-world/new-animal-species-appeared.js"></script>
     <script src="~/js/animal-world/promotions.js"></script>
-
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

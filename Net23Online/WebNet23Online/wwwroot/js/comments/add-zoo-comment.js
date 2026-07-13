@@ -5,13 +5,13 @@
         $.post('/api/Comments/AddComment', $(this).serialize())
             .done(function (result) {
                 const $newComment = $(`
-                    <div class="comment-item-box comment-item-new" style="display: none;">
+                    <article class="comment-item comment-item-new" style="display: none;">
                         <div class="comment-item-header">
                             <strong class="comment-author">${result.author}</strong>
                             <span class="comment-date">${result.createdAt}</span>
                         </div>
                         <p class="comment-text"></p>
-                    </div>
+                    </article>
                 `);
 
                 $newComment

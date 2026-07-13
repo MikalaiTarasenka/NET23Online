@@ -4,22 +4,15 @@
     Layout = "_LayoutAnimalWorld";
     ViewData["Title"] = AnimalWorld.AddZoo;
 }
-
-@section Styles {
-    <link rel="stylesheet" href="~/css/animal-world/pages/add-zoo.css" asp-append-version="true" />
-}
-
 @section Scripts {
     <script src="~/js/animal-world/add-zoo.js"></script>
 }
-
 <section class="page-header">
     <h1 class="page-title">@AnimalWorld.AddZoo</h1>
     <div class="title-accent"></div>
     <p class="page-subtitle">Заполните информацию о новом зоопарке</p>
 </section>
-
-<form method="post" class="zoo-form js-add-zoo-form">
+<form method="post" class="form-container js-add-zoo-form">
     <div class="form-card">
         <div class="form-field">
             <label for="ZooName" class="form-label">

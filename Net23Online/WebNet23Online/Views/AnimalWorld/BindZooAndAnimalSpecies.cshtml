@@ -5,17 +5,12 @@
     ViewData["Title"] = AnimalWorld.AnimalSpeciesZoosLinks;
 }
 
-@section Styles {
-    <link rel="stylesheet" href="~/css/animal-world/pages/bind-zoo-species.css" asp-append-version="true" />
-}
-
 <section class="page-header">
     <h1 class="page-title">@AnimalWorld.AnimalSpeciesZoosLinksSetup</h1>
     <div class="title-accent"></div>
-    <p class="page-subtitle">@AnimalWorld.SelectZooThenAnimalSpecies</p>
+    <p class="page-subtitle" style="max-width: 500px; margin-left: auto; margin-right: auto;">@AnimalWorld.SelectZooThenAnimalSpecies</p>
 </section>
-
-<form method="post" class="bind-form">
+<form method="post" class="form-container">
     <div class="form-card">
         <div class="form-field">
             <label for="ZooId" class="form-label">

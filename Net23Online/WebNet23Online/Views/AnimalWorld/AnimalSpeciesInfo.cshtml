@@ -4,17 +4,14 @@
     Layout = "_LayoutAnimalWorld";
     ViewData["Title"] = AnimalWorld.AnimalSpecies;
 }
-
 @section Styles {
     <link rel="stylesheet" href="~/css/animal-world/pages/animal-species-info.css" asp-append-version="true" />
 }
-
 <section class="page-header">
     <h1 class="page-title">@AnimalWorld.AnimalSpecies</h1>
     <div class="title-accent"></div>
     <p class="page-subtitle">Полный каталог видов животных нашего мира</p>
 </section>
-
 <div class="search-form-card">
     <form method="get" class="search-form">
         <div class="form-field">
@@ -41,7 +38,6 @@
         </button>
     </form>
 </div>
-
 <div class="species-table-wrapper">
     @if (Model.AnimalSpeciesInfoViewModels.Any())
     {
@@ -63,9 +59,9 @@
     }
     else
     {
-        <div class="table-empty">
-            <span class="empty-icon">🔎</span>
-            <span>Ничего не найдено. Попробуйте изменить поисковый запрос.</span>
+        <div class="empty-container">
+            <div class="empty-icon">🔎</div>
+            <p class="empty-text">Ничего не найдено. Попробуйте изменить поисковый запрос.</p>
         </div>
     }
 </div>

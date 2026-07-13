@@ -3,22 +3,19 @@
     Layout = "_LayoutAnimalWorld";
     ViewData["Title"] = AnimalWorld.NoBooked;
 }
-
 @section Styles {
-    <link rel="stylesheet" href="~/css/animal-world/pages/booking-denied.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/animal-world/pages/booking-result.css" asp-append-version="true" />
 }
-
 <section class="page-header">
     <h1 class="page-title">@AnimalWorld.NoBooked</h1>
     <div class="title-accent"></div>
 </section>
-
-<div class="booking-denied-card">
-    <div class="denied-icon">✗</div>
-    <h2 class="denied-title">Бронирование не удалось</h2>
-    <p class="denied-message">@AnimalWorld.VisitBookedDenyMessage</p>
-    <a href="/AnimalWorld/Zoos" class="denied-action">
-        <span class="denied-action-icon">←</span>
+<div class="booking-card booking-card--denied">
+    <div class="booking-icon">✗</div>
+    <h2 class="booking-title">Бронирование не удалось</h2>
+    <p class="booking-message">@AnimalWorld.VisitBookedDenyMessage</p>
+    <a href="/AnimalWorld/Zoos" class="btn btn--danger">
+        <span class="btn-icon">←</span>
         @AnimalWorld.BackToZoos
     </a>
 </div>
