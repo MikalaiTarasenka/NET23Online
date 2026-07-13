@@ -1,4 +1,70 @@
-﻿.tickets-zoo-section {
+﻿/* ==========================================================================
+ЗАГОЛОВКИ СТРАНИЦЫ
+========================================================================== */
+.page-header {
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+.page-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.page-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.title-accent {
+    max-width: 200px;
+    height: 2px;
+    background: linear-gradient(to right, var(--accent-green), transparent);
+    border-radius: 2px;
+    margin: 20px auto 0;
+}
+
+/* ==========================================================================
+КНОПКИ
+========================================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn--primary {
+    background: var(--accent-green);
+    color: white;
+}
+
+    .btn--primary:hover {
+        background: var(--accent-green-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(58, 90, 64, 0.3);
+    }
+
+/* ==========================================================================
+СЕКЦИЯ БИЛЕТОВ
+========================================================================== */
+.tickets-zoo-section {
     margin-bottom: 64px;
 }
 
@@ -24,6 +90,13 @@
         font-size: 1.5rem;
     }
 
+.tickets-zoo-section-header .section-accent {
+    flex-grow: 1;
+    height: 2px;
+    background: linear-gradient(to right, var(--accent-green), transparent);
+    border-radius: 2px;
+}
+
 .tickets-zoo-hint {
     font-size: 0.95rem;
     color: var(--text-muted);
@@ -48,6 +121,9 @@
     gap: 24px;
 }
 
+/* ==========================================================================
+КАРТОЧКА БИЛЕТА
+========================================================================== */
 .tickets-zoo-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -207,6 +283,37 @@
     box-shadow: var(--shadow-sm);
 }
 
+/* ==========================================================================
+ПУСТОЕ СОСТОЯНИЕ
+========================================================================== */
+.empty-container {
+    text-align: center;
+    padding: 60px 40px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.empty-icon {
+    font-size: 4rem;
+    opacity: 0.3;
+}
+
+.empty-text {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+АДАПТИВНОСТЬ
+========================================================================== */
 @media (max-width: 900px) {
     .tickets-zoo-list {
         grid-template-columns: 1fr;
@@ -214,6 +321,10 @@
 }
 
 @media (max-width: 768px) {
+    .page-title {
+        font-size: 2rem;
+    }
+
     .tickets-zoo-section-title {
         font-size: 1.5rem;
     }

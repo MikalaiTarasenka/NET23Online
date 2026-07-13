@@ -1,0 +1,18 @@
+﻿:root {
+    --bg-body: #F9F8F4;
+    --bg-card: #FFFFFF;
+    --bg-secondary: #F0EFE9;
+    --text-main: #2C2C2C;
+    --text-muted: #6B6B6B;
+    --accent-green: #3A5A40;
+    --accent-green-hover: #2C4630;
+    --accent-green-light: #E8F0E9;
+    --border-color: #E5E4DE;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.06);
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+}

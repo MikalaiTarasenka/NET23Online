@@ -2,10 +2,11 @@
 @using WebNet23Online.Models.Tickets
 @model AllTicketsViewModel
 @{
+    Layout = "_LayoutTickets";
     ViewData["Title"] = "Мои билеты";
 }
 @section Styles {
-    <link rel="stylesheet" href="~/css/tickets/my-tickets.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/tickets/animal-tickets.css" asp-append-version="true" />
 }
 @section Scripts {
     <script src="~/js/tickets/qrcode.js"></script>
@@ -19,7 +20,7 @@
 <section class="tickets-zoo-section" aria-labelledby="zoo-tickets-heading">
     <div class="tickets-zoo-section-header">
         <h2 id="zoo-tickets-heading" class="tickets-zoo-section-title">Зоопарки — Мир животных</h2>
-        <div class="title-accent"></div>
+        <div class="section-accent"></div>
     </div>
     @if (Model.CanShowZooTickets)
     {
