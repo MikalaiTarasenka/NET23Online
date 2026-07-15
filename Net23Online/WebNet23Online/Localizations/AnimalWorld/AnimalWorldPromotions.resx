@@ -117,11 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddPromotion" xml:space="preserve">
+    <value>Adding a promotion</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Promotion details, participation conditions and restrictions</value>
+  </data>
   <data name="NoPromotions" xml:space="preserve">
     <value>There are no promotions running at the moment</value>
   </data>
+  <data name="PromotionExample" xml:space="preserve">
+    <value>For example: Family discount</value>
+  </data>
+  <data name="PromotionName" xml:space="preserve">
+    <value>Name of promotion</value>
+  </data>
   <data name="Promotions" xml:space="preserve">
     <value>Promotions</value>
+  </data>
+  <data name="PromotionTitle" xml:space="preserve">
+    <value>Create a new special offer for visitors</value>
+  </data>
+  <data name="SelectVenue" xml:space="preserve">
+    <value>Select a venue</value>
   </data>
   <data name="SpecialOffers" xml:space="preserve">
     <value>Special offers for visitors to our zoos</value>

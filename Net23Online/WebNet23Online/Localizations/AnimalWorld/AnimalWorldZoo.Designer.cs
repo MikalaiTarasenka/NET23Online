@@ -88,6 +88,33 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Links between zoos and animal species.
+        /// </summary>
+        public static string AnimalSpeciesZoosLinks {
+            get {
+                return ResourceManager.GetString("AnimalSpeciesZoosLinks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose a zoo.
+        /// </summary>
+        public static string ChooseZoo {
+            get {
+                return ResourceManager.GetString("ChooseZoo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Links setup.
+        /// </summary>
+        public static string LinksSetup {
+            get {
+                return ResourceManager.GetString("LinksSetup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is no data on zoos yet.
         /// </summary>
         public static string NoZoos {
@@ -102,6 +129,15 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         public static string NoZoosDb {
             get {
                 return ResourceManager.GetString("NoZoosDb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First select a zoo, then an animal species.
+        /// </summary>
+        public static string SelectOrder {
+            get {
+                return ResourceManager.GetString("SelectOrder", resourceCulture);
             }
         }
         

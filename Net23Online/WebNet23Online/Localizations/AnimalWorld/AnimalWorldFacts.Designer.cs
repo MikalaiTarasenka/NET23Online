@@ -22,14 +22,14 @@ namespace WebNet23Online.Localizations.AnimalWorld {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class AnimalWorldPromotions {
+    public class AnimalWorldFacts {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal AnimalWorldPromotions() {
+        internal AnimalWorldFacts() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WebNet23Online.Localizations.AnimalWorld.AnimalWorldPromotions", typeof(AnimalWorldPromotions).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WebNet23Online.Localizations.AnimalWorld.AnimalWorldFacts", typeof(AnimalWorldFacts).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,110 +61,110 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adding a promotion.
+        ///   Looks up a localized string similar to Interesting facts about animals.
         /// </summary>
-        public static string AddPromotion {
+        public static string AnimalFacts {
             get {
-                return ResourceManager.GetString("AddPromotion", resourceCulture);
+                return ResourceManager.GetString("AnimalFacts", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Promotion details, participation conditions and restrictions.
+        ///   Looks up a localized string similar to Gallery of animals.
         /// </summary>
-        public static string Details {
+        public static string AnimalsGallery {
             get {
-                return ResourceManager.GetString("Details", resourceCulture);
+                return ResourceManager.GetString("AnimalsGallery", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are no promotions running at the moment.
+        ///   Looks up a localized string similar to Enter an interesting fact....
         /// </summary>
-        public static string NoPromotions {
+        public static string EnterFact {
             get {
-                return ResourceManager.GetString("NoPromotions", resourceCulture);
+                return ResourceManager.GetString("EnterFact", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For example: Family discount.
+        ///   Looks up a localized string similar to Fact.
         /// </summary>
-        public static string PromotionExample {
+        public static string Fact {
             get {
-                return ResourceManager.GetString("PromotionExample", resourceCulture);
+                return ResourceManager.GetString("Fact", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name of promotion.
+        ///   Looks up a localized string similar to Gallery.
         /// </summary>
-        public static string PromotionName {
+        public static string Gallery {
             get {
-                return ResourceManager.GetString("PromotionName", resourceCulture);
+                return ResourceManager.GetString("Gallery", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Promotions.
+        ///   Looks up a localized string similar to The gallery is temporarily empty.
         /// </summary>
-        public static string Promotions {
+        public static string GalleryEmpty {
             get {
-                return ResourceManager.GetString("Promotions", resourceCulture);
+                return ResourceManager.GetString("GalleryEmpty", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create a new special offer for visitors.
+        ///   Looks up a localized string similar to Interesting facts.
         /// </summary>
-        public static string PromotionTitle {
+        public static string InterestingFacts {
             get {
-                return ResourceManager.GetString("PromotionTitle", resourceCulture);
+                return ResourceManager.GetString("InterestingFacts", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select a venue.
+        ///   Looks up a localized string similar to Known facts.
         /// </summary>
-        public static string SelectVenue {
+        public static string KnownFacts {
             get {
-                return ResourceManager.GetString("SelectVenue", resourceCulture);
+                return ResourceManager.GetString("KnownFacts", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Special offers for visitors to our zoos.
+        ///   Looks up a localized string similar to Learn amazing facts about different types of animals.
         /// </summary>
-        public static string SpecialOffers {
+        public static string LearnFacts {
             get {
-                return ResourceManager.GetString("SpecialOffers", resourceCulture);
+                return ResourceManager.GetString("LearnFacts", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stay tuned for more exciting offers coming soon!.
+        ///   Looks up a localized string similar to Loading facts.
         /// </summary>
-        public static string StayTuned {
+        public static string LoadingFacts {
             get {
-                return ResourceManager.GetString("StayTuned", resourceCulture);
+                return ResourceManager.GetString("LoadingFacts", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Valid until.
+        ///   Looks up a localized string similar to Sorry, we couldn&apos;t load the images. Please try refreshing the page later..
         /// </summary>
-        public static string Valid {
+        public static string Sorry {
             get {
-                return ResourceManager.GetString("Valid", resourceCulture);
+                return ResourceManager.GetString("Sorry", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Venue.
+        ///   Looks up a localized string similar to Text of a fact.
         /// </summary>
-        public static string Venue {
+        public static string TextFact {
             get {
-                return ResourceManager.GetString("Venue", resourceCulture);
+                return ResourceManager.GetString("TextFact", resourceCulture);
             }
         }
     }

@@ -1,16 +1,16 @@
-﻿@using WebNet23Online.Localizations
+﻿@using WebNet23Online.Localizations.AnimalWorld
 @model WebNet23Online.Models.AnimalWorld.GalleryViewModel
 @{
     Layout = "_LayoutAnimalWorld";
-    ViewData["Title"] = "Галерея";
+    ViewData["Title"] = AnimalWorldFacts.Gallery;
 }
 @section Styles {
     <link rel="stylesheet" href="~/css/animal-world/pages/gallery.css" asp-append-version="true" />
 }
 <section class="page-header">
-    <h1 class="page-title">Галерея животных</h1>
+    <h1 class="page-title">@AnimalWorldFacts.AnimalsGallery</h1>
     <div class="title-accent"></div>
-    <p class="page-subtitle">Интересные факты о случайных обитателях нашего мира</p>
+    <p class="page-subtitle">@AnimalWorldFacts.AnimalFacts</p>
 </section>
 @if (Model.RandomAnimals.Any())
 {
@@ -19,10 +19,10 @@
         {
             <article class="animal-card">
                 <div class="animal-image-wrapper">
-                    <img src="@randomAnimal.Image" alt="Животное" class="animal-image" />
+                    <img src="@randomAnimal.Image" alt=@AnimalWorldCommon.Animal class="animal-image" />
                 </div>
                 <div class="animal-fact-wrapper">
-                    <div class="animal-fact-label">Интересный факт</div>
+                    <div class="animal-fact-label">@AnimalWorldFacts.Fact</div>
                     <p class="animal-fact-text">@randomAnimal.Fact</p>
                 </div>
             </article>
@@ -33,7 +33,7 @@ else
 {
     <div class="empty-container">
         <div class="empty-icon">🖼️</div>
-        <h3 class="empty-title">Галерея временно пуста</h3>
-        <p class="empty-text">К сожалению, не удалось загрузить изображения. Попробуйте обновить страницу позже.</p>
+        <h3 class="empty-title">@AnimalWorldFacts.GalleryEmpty</h3>
+        <p class="empty-text">@AnimalWorldFacts.Sorry</p>
     </div>
 }

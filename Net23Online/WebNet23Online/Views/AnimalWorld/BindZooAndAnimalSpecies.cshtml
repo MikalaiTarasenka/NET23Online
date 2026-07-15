@@ -1,22 +1,22 @@
-@using WebNet23Online.Localizations
+@using WebNet23Online.Localizations.AnimalWorld
 @model WebNet23Online.Models.AnimalWorld.BindZooWithAnimalSpeciesViewModel
 @{
     Layout = "_LayoutAnimalWorld";
-    ViewData["Title"] = AnimalWorld.AnimalSpeciesZoosLinks;
+    ViewData["Title"] = AnimalWorldZoo.AnimalSpeciesZoosLinks;
 }
 
 <section class="page-header">
-    <h1 class="page-title">@AnimalWorld.AnimalSpeciesZoosLinksSetup</h1>
+    <h1 class="page-title">@AnimalWorldZoo.LinksSetup</h1>
     <div class="title-accent"></div>
-    <p class="page-subtitle" style="max-width: 500px; margin-left: auto; margin-right: auto;">@AnimalWorld.SelectZooThenAnimalSpecies</p>
+    <p class="page-subtitle" style="max-width: 500px; margin-left: auto; margin-right: auto;">@AnimalWorldZoo.SelectOrder</p>
 </section>
 <form method="post" class="form-container">
     <div class="form-card">
         <div class="form-field">
             <label for="ZooId" class="form-label">
-                @AnimalWorld.Zoo <span class="required">*</span>
+                @AnimalWorldZoo.Zoos <span class="required">*</span>
             </label>
-            @Html.DropDownListFor(zoo => zoo.ZooId, Model.Zoos, AnimalWorld.ChooseZoo, new
+            @Html.DropDownListFor(zoo => zoo.ZooId, Model.Zoos, AnimalWorldZoo.ChooseZoo, new
             {
                 @class = "form-control",
                 id = "ZooId"
@@ -25,9 +25,9 @@
         </div>
         <div class="form-field">
             <label for="AnimalSpeciesId" class="form-label">
-                @AnimalWorld.AnimalSpecies <span class="required">*</span>
+                @AnimalWorldAnimalSpecies.AnimalSpecies <span class="required">*</span>
             </label>
-            @Html.DropDownListFor(animalSpecies => animalSpecies.AnimalSpeciesId, Model.AnimalSpecies, AnimalWorld.ChooseAnimalSpecies, new
+            @Html.DropDownListFor(animalSpecies => animalSpecies.AnimalSpeciesId, Model.AnimalSpecies, AnimalWorldAnimalSpecies.ChooseAnimalSpecies, new
             {
                 @class = "form-control",
                 id = "AnimalSpeciesId"
@@ -37,7 +37,7 @@
         <div class="form-actions">
             <button type="submit" class="btn btn--primary">
                 <span class="btn-icon">🔗</span>
-                @AnimalWorld.SaveLink
+                @AnimalWorldCommon.Save
             </button>
         </div>
     </div>

@@ -70,6 +70,15 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All columns.
+        /// </summary>
+        public static string AllColumns {
+            get {
+                return ResourceManager.GetString("AllColumns", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Animal species.
         /// </summary>
         public static string AnimalSpecies {
@@ -106,6 +115,24 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Catalog of animal species of our world.
+        /// </summary>
+        public static string Catalog {
+            get {
+                return ResourceManager.GetString("Catalog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the animal type.
+        /// </summary>
+        public static string ChooseAnimalSpecies {
+            get {
+                return ResourceManager.GetString("ChooseAnimalSpecies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Habitat.
         /// </summary>
         public static string Habitat {
@@ -124,11 +151,47 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nothing found. Try changing your search query.
+        /// </summary>
+        public static string NothingFound {
+            get {
+                return ResourceManager.GetString("NothingFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Animal species.
+        /// </summary>
+        public static string One {
+            get {
+                return ResourceManager.GetString("One", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Preview.
         /// </summary>
         public static string Preview {
             get {
                 return ResourceManager.GetString("Preview", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search in column.
+        /// </summary>
+        public static string SearchColumn {
+            get {
+                return ResourceManager.GetString("SearchColumn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search query.
+        /// </summary>
+        public static string SearchQuery {
+            get {
+                return ResourceManager.GetString("SearchQuery", resourceCulture);
             }
         }
         
@@ -147,6 +210,15 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         public static string SpeciesName {
             get {
                 return ResourceManager.GetString("SpeciesName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter text to search....
+        /// </summary>
+        public static string TextToSearch {
+            get {
+                return ResourceManager.GetString("TextToSearch", resourceCulture);
             }
         }
         

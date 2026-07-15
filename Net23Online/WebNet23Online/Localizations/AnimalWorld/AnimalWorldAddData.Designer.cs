@@ -22,14 +22,14 @@ namespace WebNet23Online.Localizations.AnimalWorld {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class AnimalWorldPromotions {
+    public class AnimalWorldAddData {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal AnimalWorldPromotions() {
+        internal AnimalWorldAddData() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WebNet23Online.Localizations.AnimalWorld.AnimalWorldPromotions", typeof(AnimalWorldPromotions).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WebNet23Online.Localizations.AnimalWorld.AnimalWorldAddData", typeof(AnimalWorldAddData).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,7 +61,43 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Adding a promotion.
+        ///   Looks up a localized string similar to Adding animal data.
+        /// </summary>
+        public static string AddingAnimalData {
+            get {
+                return ResourceManager.GetString("AddingAnimalData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adding data.
+        /// </summary>
+        public static string AddingData {
+            get {
+                return ResourceManager.GetString("AddingData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adding a new genus of animals.
+        /// </summary>
+        public static string AddingGenus {
+            get {
+                return ResourceManager.GetString("AddingGenus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add a new animal species.
+        /// </summary>
+        public static string AddingSpecies {
+            get {
+                return ResourceManager.GetString("AddingSpecies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add a promotion.
         /// </summary>
         public static string AddPromotion {
             get {
@@ -70,101 +106,56 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Promotion details, participation conditions and restrictions.
+        ///   Looks up a localized string similar to Add a new zoo to the database.
         /// </summary>
-        public static string Details {
+        public static string AddZoo {
             get {
-                return ResourceManager.GetString("Details", resourceCulture);
+                return ResourceManager.GetString("AddZoo", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to There are no promotions running at the moment.
+        ///   Looks up a localized string similar to Associate animal species with the zoos where they live.
         /// </summary>
-        public static string NoPromotions {
+        public static string Associate {
             get {
-                return ResourceManager.GetString("NoPromotions", resourceCulture);
+                return ResourceManager.GetString("Associate", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to For example: Family discount.
+        ///   Looks up a localized string similar to Biological data: families, species and their habitats.
         /// </summary>
-        public static string PromotionExample {
+        public static string BiologicalData {
             get {
-                return ResourceManager.GetString("PromotionExample", resourceCulture);
+                return ResourceManager.GetString("BiologicalData", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Name of promotion.
+        ///   Looks up a localized string similar to Infrastructure.
         /// </summary>
-        public static string PromotionName {
+        public static string Infrastructure {
             get {
-                return ResourceManager.GetString("PromotionName", resourceCulture);
+                return ResourceManager.GetString("Infrastructure", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Promotions.
+        ///   Looks up a localized string similar to Marketing.
         /// </summary>
-        public static string Promotions {
+        public static string Marketing {
             get {
-                return ResourceManager.GetString("Promotions", resourceCulture);
+                return ResourceManager.GetString("Marketing", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create a new special offer for visitors.
+        ///   Looks up a localized string similar to Select what information you want to add.
         /// </summary>
-        public static string PromotionTitle {
+        public static string SelectInformationType {
             get {
-                return ResourceManager.GetString("PromotionTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select a venue.
-        /// </summary>
-        public static string SelectVenue {
-            get {
-                return ResourceManager.GetString("SelectVenue", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Special offers for visitors to our zoos.
-        /// </summary>
-        public static string SpecialOffers {
-            get {
-                return ResourceManager.GetString("SpecialOffers", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Stay tuned for more exciting offers coming soon!.
-        /// </summary>
-        public static string StayTuned {
-            get {
-                return ResourceManager.GetString("StayTuned", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Valid until.
-        /// </summary>
-        public static string Valid {
-            get {
-                return ResourceManager.GetString("Valid", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Venue.
-        /// </summary>
-        public static string Venue {
-            get {
-                return ResourceManager.GetString("Venue", resourceCulture);
+                return ResourceManager.GetString("SelectInformationType", resourceCulture);
             }
         }
     }

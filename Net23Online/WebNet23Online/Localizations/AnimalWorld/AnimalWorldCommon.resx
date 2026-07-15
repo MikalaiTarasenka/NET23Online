@@ -120,8 +120,23 @@
   <data name="Add" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="Animal" xml:space="preserve">
+    <value>Animal</value>
+  </data>
+  <data name="Animals" xml:space="preserve">
+    <value>Animals</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>Find</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Loading</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Save</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>Send</value>

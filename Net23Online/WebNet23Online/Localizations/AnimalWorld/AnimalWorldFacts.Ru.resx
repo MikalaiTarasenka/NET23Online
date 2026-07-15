@@ -117,67 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddAnimalSpecies" xml:space="preserve">
-    <value>Добавление вида животного</value>
+  <data name="AnimalFacts" xml:space="preserve">
+    <value>Интересные факты о животных</value>
   </data>
-  <data name="AllColumns" xml:space="preserve">
-    <value>Все столбцы</value>
+  <data name="AnimalsGallery" xml:space="preserve">
+    <value>Галерея животных</value>
   </data>
-  <data name="AnimalSpecies" xml:space="preserve">
-    <value>Виды животных</value>
+  <data name="EnterFact" xml:space="preserve">
+    <value>Введите интересный факт...</value>
   </data>
-  <data name="AnimalSpeciesExample" xml:space="preserve">
-    <value>Например: Бурый медведь</value>
+  <data name="Fact" xml:space="preserve">
+    <value>Факт</value>
   </data>
-  <data name="AnimalSpeciesSummary" xml:space="preserve">
-    <value>Описание вида</value>
+  <data name="Gallery" xml:space="preserve">
+    <value>Галерея</value>
   </data>
-  <data name="CardLook" xml:space="preserve">
-    <value>Так карточка будет выглядеть на сайте</value>
+  <data name="GalleryEmpty" xml:space="preserve">
+    <value>Галерея временно пуста</value>
   </data>
-  <data name="Catalog" xml:space="preserve">
-    <value>Каталог видов животных нашего мира</value>
+  <data name="InterestingFacts" xml:space="preserve">
+    <value>Интересные факты</value>
   </data>
-  <data name="ChooseAnimalSpecies" xml:space="preserve">
-    <value>Выберите вид животного</value>
+  <data name="KnownFacts" xml:space="preserve">
+    <value>Известные факты</value>
   </data>
-  <data name="Habitat" xml:space="preserve">
-    <value>Ареал</value>
+  <data name="LearnFacts" xml:space="preserve">
+    <value>Узнайте удивительные факты о различных видах животных</value>
   </data>
-  <data name="HabitatExample" xml:space="preserve">
-    <value>Обширные территории лесной и горной зон Северного полушария</value>
+  <data name="LoadingFacts" xml:space="preserve">
+    <value>Загрузка фактов</value>
   </data>
-  <data name="NothingFound" xml:space="preserve">
-    <value>Ничего не найдено. Попробуйте изменить поисковый запрос</value>
+  <data name="Sorry" xml:space="preserve">
+    <value>К сожалению, не удалось загрузить изображения. Попробуйте обновить страницу позже.</value>
   </data>
-  <data name="One" xml:space="preserve">
-    <value>Вид животных</value>
-  </data>
-  <data name="Preview" xml:space="preserve">
-    <value>Предварительный просмотр</value>
-  </data>
-  <data name="SearchColumn" xml:space="preserve">
-    <value>Искать в столбце</value>
-  </data>
-  <data name="SearchQuery" xml:space="preserve">
-    <value>Поисковый запрос</value>
-  </data>
-  <data name="SelectImage" xml:space="preserve">
-    <value>Выберите изображение</value>
-  </data>
-  <data name="SpeciesName" xml:space="preserve">
-    <value>Название вида</value>
-  </data>
-  <data name="TextToSearch" xml:space="preserve">
-    <value>Введите текст для поиска...</value>
-  </data>
-  <data name="Till" xml:space="preserve">
-    <value>до</value>
-  </data>
-  <data name="UploadImage" xml:space="preserve">
-    <value>Загрузка изображения</value>
-  </data>
-  <data name="UploadImageHint" xml:space="preserve">
-    <value>Загрузите изображение, чтобы увидеть превью</value>
+  <data name="TextFact" xml:space="preserve">
+    <value>Текст факта</value>
   </data>
 </root>

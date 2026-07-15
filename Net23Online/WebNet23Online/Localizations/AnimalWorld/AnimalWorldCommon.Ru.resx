@@ -120,8 +120,23 @@
   <data name="Add" xml:space="preserve">
     <value>Добавить</value>
   </data>
+  <data name="Animal" xml:space="preserve">
+    <value>Животное</value>
+  </data>
+  <data name="Animals" xml:space="preserve">
+    <value>Животные</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Описание</value>
+  </data>
+  <data name="Find" xml:space="preserve">
+    <value>Найти</value>
+  </data>
+  <data name="Loading" xml:space="preserve">
+    <value>Загрузка</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Сохранить</value>
   </data>
   <data name="Send" xml:space="preserve">
     <value>Отправить</value>

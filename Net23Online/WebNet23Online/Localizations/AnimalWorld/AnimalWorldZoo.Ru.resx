@@ -126,11 +126,23 @@
   <data name="AddZoo" xml:space="preserve">
     <value>Добавление зоопарка</value>
   </data>
+  <data name="AnimalSpeciesZoosLinks" xml:space="preserve">
+    <value>Связи между зоопарком и животными</value>
+  </data>
+  <data name="ChooseZoo" xml:space="preserve">
+    <value>Выберите зоопарк</value>
+  </data>
+  <data name="LinksSetup" xml:space="preserve">
+    <value>Настройка связей</value>
+  </data>
   <data name="NoZoos" xml:space="preserve">
     <value>Данные о зоопарках отсутствуют</value>
   </data>
   <data name="NoZoosDb" xml:space="preserve">
     <value>В настоящий момент в базе данных нет ни одного зоопарка</value>
+  </data>
+  <data name="SelectOrder" xml:space="preserve">
+    <value>Сначала выберите зоопарк, затем вид животного</value>
   </data>
   <data name="ZooExample" xml:space="preserve">
     <value>Сингапурский зоопарк</value>

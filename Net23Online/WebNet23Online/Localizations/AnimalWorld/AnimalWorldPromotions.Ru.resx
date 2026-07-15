@@ -117,11 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddPromotion" xml:space="preserve">
+    <value>Добавление акции</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Подробности акции, условия участия и ограничения</value>
+  </data>
   <data name="NoPromotions" xml:space="preserve">
     <value>В настоящий момент акции не проводятся</value>
   </data>
+  <data name="PromotionExample" xml:space="preserve">
+    <value>Например: Семейная скидка</value>
+  </data>
+  <data name="PromotionName" xml:space="preserve">
+    <value>Название акции</value>
+  </data>
   <data name="Promotions" xml:space="preserve">
     <value>Акции</value>
+  </data>
+  <data name="PromotionTitle" xml:space="preserve">
+    <value>Создайте новое специальное предложение для посетителей</value>
+  </data>
+  <data name="SelectVenue" xml:space="preserve">
+    <value>Выберите место проведения</value>
   </data>
   <data name="SpecialOffers" xml:space="preserve">
     <value>Специальные предложения для посетителей наших зоопарков</value>

@@ -1,48 +1,48 @@
-﻿@using WebNet23Online.Localizations
+﻿@using WebNet23Online.Localizations.AnimalWorld
 @model WebNet23Online.Models.AnimalWorld.PromotionViewModel
 @{
     Layout = "_LayoutAnimalWorld";
-    ViewData["Title"] = "Добавление акции";
+    ViewData["Title"] = AnimalWorldPromotions.AddPromotion;
 }
 
 <section class="page-header">
-    <h1 class="page-title">Добавить акцию</h1>
+    <h1 class="page-title">@AnimalWorldPromotions.AddPromotion</h1>
     <div class="title-accent"></div>
-    <p class="page-subtitle">Создайте новое специальное предложение для посетителей</p>
+    <p class="page-subtitle">@AnimalWorldPromotions.PromotionTitle</p>
 </section>
 <form method="post" class="form-container">
     <div class="form-card">
         <div class="form-field">
             <label for="PromotionName" class="form-label">
-                Название акции <span class="required">*</span>
+                @AnimalWorldPromotions.PromotionName <span class="required">*</span>
             </label>
             @Html.TextBoxFor(promotion => promotion.PromotionName, new
             {
                 @class = "form-control",
                 id = "PromotionName",
                 type = "text",
-                placeholder = "Например: Семейная скидка"
+                placeholder = AnimalWorldPromotions.PromotionExample
             })
             @Html.ValidationMessageFor(promotion => promotion.PromotionName, "", new { @class = "validation-error" })
         </div>
         <div class="form-field">
             <label for="Description" class="form-label">
-                Описание <span class="required">*</span>
+                @AnimalWorldCommon.Description <span class="required">*</span>
             </label>
             @Html.TextAreaFor(promotion => promotion.Description, new
             {
                 @class = "form-control form-textarea",
                 id = "Description",
-                placeholder = "Подробности акции, условия участия и ограничения",
+                placeholder = AnimalWorldPromotions.Details,
                 rows = 5
             })
             @Html.ValidationMessageFor(promotion => promotion.Description, "", new { @class = "validation-error" })
         </div>
         <div class="form-field">
             <label for="ZooId" class="form-label">
-                Место проведения <span class="required">*</span>
+                @AnimalWorldPromotions.Venue <span class="required">*</span>
             </label>
-            @Html.DropDownListFor(promotion => promotion.ZooId, Model.Zoos, "Выберите место проведения", new
+            @Html.DropDownListFor(promotion => promotion.ZooId, Model.Zoos, AnimalWorldPromotions.SelectVenue, new
             {
                 @class = "form-control",
                 id = "ZooId"
@@ -51,7 +51,7 @@
         </div>
         <div class="form-field">
             <label for="EndDate" class="form-label">
-                Дата окончания <span class="required">*</span>
+                @AnimalWorldPromotions.Valid <span class="required">*</span>
             </label>
             @Html.TextBoxFor(promotion => promotion.EndDate, "{0:yyyy-MM-dd}", new
             {
@@ -65,7 +65,7 @@
         <div class="form-actions">
             <button type="submit" class="btn btn--primary">
                 <span class="btn-icon">🎟️</span>
-                @AnimalWorld.Add
+                @AnimalWorldCommon.Add
             </button>
         </div>
     </div>

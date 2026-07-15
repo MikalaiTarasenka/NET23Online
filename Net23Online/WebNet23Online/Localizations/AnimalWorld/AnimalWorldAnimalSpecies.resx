@@ -120,6 +120,9 @@
   <data name="AddAnimalSpecies" xml:space="preserve">
     <value>Adding an animal species</value>
   </data>
+  <data name="AllColumns" xml:space="preserve">
+    <value>All columns</value>
+  </data>
   <data name="AnimalSpecies" xml:space="preserve">
     <value>Animal species</value>
   </data>
@@ -132,20 +135,41 @@
   <data name="CardLook" xml:space="preserve">
     <value>This is how the card will look on the website</value>
   </data>
+  <data name="Catalog" xml:space="preserve">
+    <value>Catalog of animal species of our world</value>
+  </data>
+  <data name="ChooseAnimalSpecies" xml:space="preserve">
+    <value>Select the animal type</value>
+  </data>
   <data name="Habitat" xml:space="preserve">
     <value>Habitat</value>
   </data>
   <data name="HabitatExample" xml:space="preserve">
     <value>Vast areas of forest and mountain zones of the Northern Hemisphere</value>
   </data>
+  <data name="NothingFound" xml:space="preserve">
+    <value>Nothing found. Try changing your search query</value>
+  </data>
+  <data name="One" xml:space="preserve">
+    <value>Animal species</value>
+  </data>
   <data name="Preview" xml:space="preserve">
     <value>Preview</value>
+  </data>
+  <data name="SearchColumn" xml:space="preserve">
+    <value>Search in column</value>
+  </data>
+  <data name="SearchQuery" xml:space="preserve">
+    <value>Search query</value>
   </data>
   <data name="SelectImage" xml:space="preserve">
     <value>Select an image</value>
   </data>
   <data name="SpeciesName" xml:space="preserve">
     <value>Species name</value>
+  </data>
+  <data name="TextToSearch" xml:space="preserve">
+    <value>Enter text to search...</value>
   </data>
   <data name="Till" xml:space="preserve">
     <value>till</value>

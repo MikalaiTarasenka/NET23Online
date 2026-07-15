@@ -126,11 +126,23 @@
   <data name="AddZoo" xml:space="preserve">
     <value>Add zoo</value>
   </data>
+  <data name="AnimalSpeciesZoosLinks" xml:space="preserve">
+    <value>Links between zoos and animal species</value>
+  </data>
+  <data name="ChooseZoo" xml:space="preserve">
+    <value>Choose a zoo</value>
+  </data>
+  <data name="LinksSetup" xml:space="preserve">
+    <value>Links setup</value>
+  </data>
   <data name="NoZoos" xml:space="preserve">
     <value>There is no data on zoos yet</value>
   </data>
   <data name="NoZoosDb" xml:space="preserve">
     <value>There are currently no zoos in the database.</value>
+  </data>
+  <data name="SelectOrder" xml:space="preserve">
+    <value>First select a zoo, then an animal species</value>
   </data>
   <data name="ZooExample" xml:space="preserve">
     <value>Singapore Zoo</value>

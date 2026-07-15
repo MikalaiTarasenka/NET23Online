@@ -117,67 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AddAnimalSpecies" xml:space="preserve">
-    <value>Добавление вида животного</value>
+  <data name="AddingAnimalData" xml:space="preserve">
+    <value>Добавление данных о животных</value>
   </data>
-  <data name="AllColumns" xml:space="preserve">
-    <value>Все столбцы</value>
+  <data name="AddingData" xml:space="preserve">
+    <value>Добавление данных</value>
   </data>
-  <data name="AnimalSpecies" xml:space="preserve">
-    <value>Виды животных</value>
+  <data name="AddingGenus" xml:space="preserve">
+    <value>Добавление нового рода животных</value>
   </data>
-  <data name="AnimalSpeciesExample" xml:space="preserve">
-    <value>Например: Бурый медведь</value>
+  <data name="AddingSpecies" xml:space="preserve">
+    <value>Добавить нового вида животного</value>
   </data>
-  <data name="AnimalSpeciesSummary" xml:space="preserve">
-    <value>Описание вида</value>
+  <data name="AddPromotion" xml:space="preserve">
+    <value>Добавить акцию</value>
   </data>
-  <data name="CardLook" xml:space="preserve">
-    <value>Так карточка будет выглядеть на сайте</value>
+  <data name="AddZoo" xml:space="preserve">
+    <value>Добавить новый зоопарк в базу данных</value>
   </data>
-  <data name="Catalog" xml:space="preserve">
-    <value>Каталог видов животных нашего мира</value>
+  <data name="Associate" xml:space="preserve">
+    <value>Связать виды животных с зоопарками, где они обитают</value>
   </data>
-  <data name="ChooseAnimalSpecies" xml:space="preserve">
-    <value>Выберите вид животного</value>
+  <data name="BiologicalData" xml:space="preserve">
+    <value>Биологические данные: семейства, виды и их привязка к местам обитания</value>
   </data>
-  <data name="Habitat" xml:space="preserve">
-    <value>Ареал</value>
+  <data name="Infrastructure" xml:space="preserve">
+    <value>Инфраструктура</value>
   </data>
-  <data name="HabitatExample" xml:space="preserve">
-    <value>Обширные территории лесной и горной зон Северного полушария</value>
+  <data name="Marketing" xml:space="preserve">
+    <value>Маркетинг</value>
   </data>
-  <data name="NothingFound" xml:space="preserve">
-    <value>Ничего не найдено. Попробуйте изменить поисковый запрос</value>
-  </data>
-  <data name="One" xml:space="preserve">
-    <value>Вид животных</value>
-  </data>
-  <data name="Preview" xml:space="preserve">
-    <value>Предварительный просмотр</value>
-  </data>
-  <data name="SearchColumn" xml:space="preserve">
-    <value>Искать в столбце</value>
-  </data>
-  <data name="SearchQuery" xml:space="preserve">
-    <value>Поисковый запрос</value>
-  </data>
-  <data name="SelectImage" xml:space="preserve">
-    <value>Выберите изображение</value>
-  </data>
-  <data name="SpeciesName" xml:space="preserve">
-    <value>Название вида</value>
-  </data>
-  <data name="TextToSearch" xml:space="preserve">
-    <value>Введите текст для поиска...</value>
-  </data>
-  <data name="Till" xml:space="preserve">
-    <value>до</value>
-  </data>
-  <data name="UploadImage" xml:space="preserve">
-    <value>Загрузка изображения</value>
-  </data>
-  <data name="UploadImageHint" xml:space="preserve">
-    <value>Загрузите изображение, чтобы увидеть превью</value>
+  <data name="SelectInformationType" xml:space="preserve">
+    <value>Выберите тип добавляемой информации</value>
   </data>
 </root>
