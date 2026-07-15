@@ -1,29 +1,29 @@
-@using WebNet23Online.Localizations
+@using WebNet23Online.Localizations.AnimalWorld
 @model WebNet23Online.Models.AnimalWorld.ZooViewModel
 @{
     Layout = "_LayoutAnimalWorld";
-    ViewData["Title"] = AnimalWorld.AddZoo;
+    ViewData["Title"] = @AnimalWorldZoo.AddZoo;
 }
 @section Scripts {
     <script src="~/js/animal-world/add-zoo.js"></script>
 }
 <section class="page-header">
-    <h1 class="page-title">@AnimalWorld.AddZoo</h1>
+    <h1 class="page-title">@AnimalWorldZoo.AddZoo</h1>
     <div class="title-accent"></div>
-    <p class="page-subtitle">Заполните информацию о новом зоопарке</p>
+    <p class="page-subtitle">@AnimalWorldZoo.ZooInfo</p>
 </section>
 <form method="post" class="form-container js-add-zoo-form">
     <div class="form-card">
         <div class="form-field">
             <label for="ZooName" class="form-label">
-                @AnimalWorld.ZooName <span class="required">*</span>
+                @AnimalWorldZoo.ZooName <span class="required">*</span>
             </label>
             @Html.TextBoxFor(zoo => zoo.ZooName, new
             {
                 @class = "form-control",
                 id = "ZooName",
                 type = "text",
-                placeholder = AnimalWorld.ZooExample,
+                placeholder = @AnimalWorldZoo.ZooExample,
                 autocomplete = "off"
             })
             <div id="zoo-name-feedback" class="zoo-name-feedback" aria-live="polite"></div>
@@ -31,26 +31,26 @@
         </div>
         <div class="form-field">
             <label for="Address" class="form-label">
-                @AnimalWorld.Address <span class="required">*</span>
+                @AnimalWorldZoo.Address <span class="required">*</span>
             </label>
             @Html.TextBoxFor(zoo => zoo.Address, new
             {
                 @class = "form-control",
                 id = "Address",
                 type = "text",
-                placeholder = AnimalWorld.AddressExample
+                placeholder = @AnimalWorldZoo.AddressExample
             })
             @Html.ValidationMessageFor(zoo => zoo.Address, "", new { @class = "validation-error" })
         </div>
         <div class="form-field">
             <label for="Description" class="form-label">
-                Описание <span class="required">*</span>
+                @AnimalWorldCommon.Description <span class="required">*</span>
             </label>
             @Html.TextAreaFor(zoo => zoo.Description, new
             {
                 @class = "form-control form-textarea",
                 id = "Description",
-                placeholder = AnimalWorld.ZooSummary,
+                placeholder = @AnimalWorldZoo.ZooSummary,
                 rows = 6
             })
             @Html.ValidationMessageFor(zoo => zoo.Description, "", new { @class = "validation-error" })
@@ -58,7 +58,7 @@
         <div class="form-actions">
             <button type="submit" class="btn btn--primary">
                 <span class="btn-icon">✓</span>
-                @AnimalWorld.Add
+                @AnimalWorldCommon.Add
             </button>
         </div>
     </div>

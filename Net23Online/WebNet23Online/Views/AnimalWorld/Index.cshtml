@@ -1,8 +1,8 @@
-@using WebNet23Online.Localizations
+@using WebNet23Online.Localizations.AnimalWorld
 @model WebNet23Online.Models.AnimalWorld.StartPageAnimalWorldInfoViewModel
 @{
     Layout = "_LayoutAnimalWorld";
-    ViewData["Title"] = AnimalWorld.AnimalWorldTitle;
+    ViewData["Title"] = @AnimalWorldIndex.AnimalWorldTitle;
 }
 @section Styles {
     <link rel="stylesheet" href="~/css/animal-world/pages/index.css" asp-append-version="true" />
@@ -12,16 +12,16 @@
 }
 <section class="hero-section">
     <div class="hero-content">
-        <h1 class="hero-title">@AnimalWorld.AboutPlanet</h1>
-        <p class="hero-text">@AnimalWorld.IndexDescription</p>
+        <h1 class="hero-title">@AnimalWorldIndex.AboutPlanet</h1>
+        <p class="hero-text">@AnimalWorldIndex.IndexDescription</p>
     </div>
     <div class="hero-image-wrapper">
-        <img src="~/images/animal-world/animals.jpg" alt="Мир животных" class="hero-image" />
+        <img src="~/images/animal-world/animals.jpg" alt=@AnimalWorldIndex.AnimalWorldTitle class="hero-image" />
     </div>
 </section>
 <section class="content-section">
     <div class="section-header">
-        <h2 class="section-title">@AnimalWorld.AnimalFamilies</h2>
+        <h2 class="section-title">@AnimalWorldAnimalFamily.AnimalFamilies</h2>
         <div class="title-accent"></div>
     </div>
     @if (Model.AnimalFamilies.Any())
@@ -29,9 +29,9 @@
         <div class="selection-actions" style="display: none;">
             <button id="delete-selected-btn" class="btn btn--danger">
                 <span class="btn-icon">🗑️</span>
-                @AnimalWorld.DeleteSelected
+                @AnimalWorldIndex.DeleteSelected
             </button>
-            <span class="selection-hint">Кликните по карточкам, чтобы выбрать несколько семейств</span>
+            <span class="selection-hint">@AnimalWorldIndex.SelectionHint</span>
         </div>
         <div class="grid grid--families">
             @foreach (var family in Model.AnimalFamilies)
@@ -46,12 +46,12 @@
     }
     else
     {
-        <p class="empty-state">@AnimalWorld.NoAnimalFamilies</p>
+        <p class="empty-state">@AnimalWorldIndex.NoAnimalFamilies</p>
     }
 </section>
 <section class="content-section">
     <div class="section-header">
-        <h2 class="section-title">@AnimalWorld.AnimalSpecies</h2>
+        <h2 class="section-title">@AnimalWorldAnimalSpecies.AnimalSpecies</h2>
         <div class="title-accent"></div>
     </div>
     @if (Model.AnimalSpecies.Any())
@@ -65,12 +65,12 @@
                     </div>
                     <div class="card-body">
                         <h3 class="card-title">@species.AnimalSpeciesName</h3>
-                        <p class="card-meta"><span class="meta-label">Ареал:</span> @species.NativeRange</p>
+                        <p class="card-meta"><span class="meta-label">@AnimalWorldAnimalSpecies.Habitat:</span> @species.NativeRange</p>
                         <p class="card-text">@species.Description</p>
                         @if (species.Zoos.Any())
                         {
                             <div class="tags-container">
-                                <span class="meta-label">Где можно увидеть:</span>
+                                <span class="meta-label">@AnimalWorldIndex.Places:</span>
                                 <div class="tags">
                                     @foreach (var zoo in species.Zoos)
                                     {
@@ -86,6 +86,6 @@
     }
     else
     {
-        <p class="empty-state">@AnimalWorld.NoAnimalSpecies</p>
+        <p class="empty-state">@AnimalWorldIndex.NoAnimalSpecies</p>
     }
 </section>

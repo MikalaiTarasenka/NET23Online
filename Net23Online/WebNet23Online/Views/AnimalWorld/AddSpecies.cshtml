@@ -1,8 +1,8 @@
-@using WebNet23Online.Localizations
+@using WebNet23Online.Localizations.AnimalWorld
 @model WebNet23Online.Models.AnimalWorld.AnimalSpeciesViewModel
 @{
     Layout = "_LayoutAnimalWorld";
-    ViewData["Title"] = AnimalWorld.AddAnimalSpecies;
+    ViewData["Title"] = @AnimalWorldAnimalSpecies.AddAnimalSpecies;
 }
 @section Styles {
     <link rel="stylesheet" href="~/css/animal-world/pages/add-species.css" asp-append-version="true" />
@@ -11,7 +11,7 @@
     <script src="~/js/animal-world/add-species.js"></script>
 }
 <section class="page-header">
-    <h1 class="page-title">@AnimalWorld.AddAnimalSpecies</h1>
+    <h1 class="page-title">@AnimalWorldAnimalSpecies.AddAnimalSpecies</h1>
     <div class="title-accent"></div>
 </section>
 <form method="post" enctype="multipart/form-data" class="form-container">
@@ -19,35 +19,35 @@
         <div class="form-fields">
             <div class="form-field">
                 <label for="AnimalSpeciesName" class="form-label">
-                    @AnimalWorld.SpeciesName <span class="required">*</span>
+                    @AnimalWorldAnimalSpecies.SpeciesName <span class="required">*</span>
                 </label>
                 @Html.TextBoxFor(species => species.AnimalSpeciesName, new
                 {
                     @class = "form-control",
                     id = "AnimalSpeciesName",
                     type = "text",
-                    placeholder = AnimalWorld.AnimalSpeciesExample
+                    placeholder = @AnimalWorldAnimalSpecies.AnimalSpeciesExample
                 })
                 @Html.ValidationMessageFor(species => species.AnimalSpeciesName, "", new { @class = "validation-error" })
             </div>
             <div class="form-field">
                 <label class="form-label">
-                    @AnimalWorld.UploadImage
+                    @AnimalWorldAnimalSpecies.UploadImage
                 </label>
                 <div class="file-upload-wrapper">
                     <input id="image-input" type="file" name="AnimalSpeciesImage" class="file-input-hidden" accept="image/*" />
                     <label for="image-input" class="file-upload-button">
                         <span class="file-upload-icon">📷</span>
-                        <span class="file-upload-text">Выбрать изображение</span>
+                        <span class="file-upload-text">@AnimalWorldAnimalSpecies.SelectImage</span>
                     </label>
-                    <span class="file-upload-hint">JPG, PNG до 5MB</span>
+                    <span class="file-upload-hint">JPG, PNG @AnimalWorldAnimalSpecies.Till 5MB</span>
                 </div>
             </div>
             <div class="form-field">
                 <label for="AnimalFamilyId" class="form-label">
-                    @AnimalWorld.AnimalFamily <span class="required">*</span>
+                    @AnimalWorldAnimalFamily.AnimalFamily <span class="required">*</span>
                 </label>
-                @Html.DropDownListFor(species => species.AnimalFamilyId, Model.AnimalFamilyNames, AnimalWorld.ChooseAnimalFamily, new
+                @Html.DropDownListFor(species => species.AnimalFamilyId, Model.AnimalFamilyNames, @AnimalWorldAnimalFamily.ChooseAnimalFamily, new
                 {
                     @class = "form-control",
                     id = "AnimalFamilyId"
@@ -56,26 +56,26 @@
             </div>
             <div class="form-field">
                 <label for="NativeRange" class="form-label">
-                    @AnimalWorld.Habitat <span class="required">*</span>
+                    @AnimalWorldAnimalSpecies.Habitat <span class="required">*</span>
                 </label>
                 @Html.TextBoxFor(species => species.NativeRange, new
                 {
                     @class = "form-control",
                     id = "NativeRange",
                     type = "text",
-                    placeholder = AnimalWorld.HabitatExample
+                    placeholder = @AnimalWorldAnimalSpecies.HabitatExample
                 })
                 @Html.ValidationMessageFor(species => species.NativeRange, "", new { @class = "validation-error" })
             </div>
             <div class="form-field">
                 <label for="Description" class="form-label">
-                    @AnimalWorld.AnimalSpeciesSummary <span class="required">*</span>
+                    @AnimalWorldCommon.Description <span class="required">*</span>
                 </label>
                 @Html.TextAreaFor(species => species.Description, new
                 {
                     @class = "form-control form-textarea",
                     id = "Description",
-                    placeholder = AnimalWorld.AnimalSpeciesSummary + "...",
+                    placeholder = @AnimalWorldAnimalSpecies.AnimalSpeciesSummary + "...",
                     rows = 6
                 })
                 @Html.ValidationMessageFor(species => species.Description, "", new { @class = "validation-error" })
@@ -83,22 +83,22 @@
             <div class="form-actions">
                 <button type="submit" class="btn btn--primary">
                     <span class="btn-icon">✓</span>
-                    @AnimalWorld.Add
+                    @AnimalWorldCommon.Add
                 </button>
             </div>
         </div>
         <div class="form-preview">
             <div class="preview-card">
-                <h3 class="preview-title">Предварительный просмотр</h3>
+                <h3 class="preview-title">@AnimalWorldAnimalSpecies.Preview</h3>
                 <div id="preview-container" class="preview-image-wrapper">
-                    <img id="image-preview" src="#" alt="Превью" class="preview-image" style="display: none;" />
+                    <img id="image-preview" src="#" alt=@AnimalWorldAnimalSpecies.Preview class="preview-image" style="display: none;" />
                     <div class="preview-placeholder">
                         <span class="placeholder-icon">🖼️</span>
-                        <p class="placeholder-text">Загрузите изображение, чтобы увидеть превью</p>
+                        <p class="placeholder-text">@AnimalWorldAnimalSpecies.UploadImageHint</p>
                     </div>
                 </div>
                 <div class="preview-info">
-                    <p class="preview-hint">💡 Так карточка будет выглядеть на сайте</p>
+                    <p class="preview-hint">💡 @AnimalWorldAnimalSpecies.CardLook</p>
                 </div>
             </div>
         </div>

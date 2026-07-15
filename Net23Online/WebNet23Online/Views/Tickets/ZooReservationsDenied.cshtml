@@ -1,21 +1,21 @@
-@using WebNet23Online.Localizations
+@using WebNet23Online.Localizations.AnimalWorld
 @{
     Layout = "_LayoutAnimalWorld";
-    ViewData["Title"] = AnimalWorld.NoBooked;
+    ViewData["Title"] = @AnimalWorldReservations.NoBooked;
 }
 @section Styles {
     <link rel="stylesheet" href="~/css/animal-world/pages/booking-result.css" asp-append-version="true" />
 }
 <section class="page-header">
-    <h1 class="page-title">@AnimalWorld.NoBooked</h1>
+    <h1 class="page-title">@AnimalWorldReservations.NoBooked</h1>
     <div class="title-accent"></div>
 </section>
 <div class="booking-card booking-card--denied">
     <div class="booking-icon">✗</div>
-    <h2 class="booking-title">Бронирование не удалось</h2>
-    <p class="booking-message">@AnimalWorld.VisitBookedDenyMessage</p>
+    <h2 class="booking-title">@AnimalWorldReservations.ReservationFailed</h2>
+    <p class="booking-message">@AnimalWorldReservations.VisitBookedDenyMessage</p>
     <a href="/AnimalWorld/Zoos" class="btn btn--danger">
         <span class="btn-icon">←</span>
-        @AnimalWorld.BackToZoos
+        @AnimalWorldReservations.Back
     </a>
 </div>

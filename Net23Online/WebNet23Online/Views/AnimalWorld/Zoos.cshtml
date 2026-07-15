@@ -1,17 +1,17 @@
-@using WebNet23Online.Localizations
+@using WebNet23Online.Localizations.AnimalWorld
 @using WebNet23Online.Models.AnimalWorld
 @model List<ZooViewModel>
 @{
     Layout = "_LayoutAnimalWorld";
-    ViewData["Title"] = AnimalWorld.Zoos;
+    ViewData["Title"] = @AnimalWorldZoo.Zoos;
 }
 @section Styles {
     <link rel="stylesheet" href="~/css/animal-world/pages/zoos.css" asp-append-version="true" />
 }
 <section class="page-header">
-    <h1 class="page-title">@AnimalWorld.ZoosList</h1>
+    <h1 class="page-title">@AnimalWorldZoo.Zoos</h1>
     <div class="title-accent"></div>
-    <p class="page-subtitle">Места, где вы можете увидеть удивительных животных</p>
+    <p class="page-subtitle">@AnimalWorldZoo.ZoosTitle</p>
 </section>
 @if (Model.Any())
 {
@@ -27,7 +27,7 @@
                     <div class="zoo-info-row">
                         <span class="zoo-info-icon">📍</span>
                         <div>
-                            <span class="zoo-info-label">@AnimalWorld.Address:</span>
+                            <span class="zoo-info-label">@AnimalWorldZoo.Address:</span>
                             @zoo.Address
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                     @if (zoo.AnimalFamilies != null && zoo.AnimalFamilies.Any())
                     {
                         <div class="zoo-families-section">
-                            <div class="zoo-families-label">@AnimalWorld.AnimalFamilies</div>
+                            <div class="zoo-families-label">@AnimalWorldAnimalFamily.AnimalFamilies</div>
                             <div class="zoo-families-list">
                                 @foreach (var family in zoo.AnimalFamilies)
                                 {
@@ -50,14 +50,14 @@
                         <input type="hidden" name="zooName" value="@zoo.ZooName" />
                         <button class="zoo-action-btn zoo-action-btn--primary" type="submit">
                             <span>🎟️</span>
-                            @AnimalWorld.BookNow
+                            @AnimalWorldReservations.BookNow
                         </button>
                     </form>
                     <form action="/Comments/ZooCommentsIndex" method="get">
                         <input type="hidden" name="zooId" value="@zoo.Id" />
                         <button class="zoo-action-btn zoo-action-btn--secondary" type="submit">
                             <span>💬</span>
-                            Отзывы
+                            @AnimalWorldComments.Comments
                         </button>
                     </form>
                 </div>
@@ -69,7 +69,7 @@ else
 {
     <div class="empty-container">
         <div class="empty-icon">🐘</div>
-        <h3 class="empty-title">@AnimalWorld.NoZoos</h3>
-        <p class="empty-text">В настоящий момент в базе данных нет ни одного зоопарка.</p>
+        <h3 class="empty-title">@AnimalWorldZoo.NoZoos</h3>
+        <p class="empty-text">@AnimalWorldZoo.NoZoosDb</p>
     </div>
 }

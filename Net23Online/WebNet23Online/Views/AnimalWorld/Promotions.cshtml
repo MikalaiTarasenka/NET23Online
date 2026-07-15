@@ -1,16 +1,17 @@
-﻿@using WebNet23Online.Models.AnimalWorld
+﻿@using WebNet23Online.Localizations.AnimalWorld
+@using WebNet23Online.Models.AnimalWorld
 @model List<PromotionViewModel>
 @{
     Layout = "_LayoutAnimalWorld";
-    ViewData["Title"] = "Акции";
+    ViewData["Title"] = AnimalWorldPromotions.Promotions;
 }
 @section Styles {
     <link rel="stylesheet" href="~/css/animal-world/pages/promotions.css" asp-append-version="true" />
 }
 <section class="page-header">
-    <h1 class="page-title">Акции</h1>
+    <h1 class="page-title">@AnimalWorldPromotions.Promotions</h1>
     <div class="title-accent"></div>
-    <p class="page-subtitle">Специальные предложения для посетителей наших зоопарков</p>
+    <p class="page-subtitle">@AnimalWorldPromotions.SpecialOffers</p>
 </section>
 @if (Model.Any())
 {
@@ -26,11 +27,11 @@
                 <div class="promotion-footer">
                     <div class="promotion-meta">
                         <span class="meta-icon">📍</span>
-                        <span>Место проведения: @promotion.Place</span>
+                        <span>@AnimalWorldPromotions.Venue: @promotion.Place</span>
                     </div>
                     <div class="promotion-meta">
                         <span class="meta-icon">📅</span>
-                        <span>Действительна до: @promotion.EndDate.ToString("dd.MM.yyyy")</span>
+                        <span>@AnimalWorldPromotions.Valid: @promotion.EndDate.ToString("dd.MM.yyyy")</span>
                     </div>
                 </div>
             </article>
@@ -41,7 +42,7 @@ else
 {
     <div class="empty-container">
         <div class="empty-icon">🎫</div>
-        <h3 class="empty-title">В настоящий момент акции не проводятся</h3>
-        <p class="empty-text">Следите за обновлениями — скоро появятся новые интересные предложения!</p>
+        <h3 class="empty-title">@AnimalWorldPromotions.NoPromotions</h3>
+        <p class="empty-text">@AnimalWorldPromotions.StayTuned</p>
     </div>
 }
