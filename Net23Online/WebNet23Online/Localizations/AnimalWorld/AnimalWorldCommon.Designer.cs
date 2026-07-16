@@ -70,6 +70,15 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Amazing Animal world.
+        /// </summary>
+        public static string AmazingAnimalWorld {
+            get {
+                return ResourceManager.GetString("AmazingAnimalWorld", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Animal.
         /// </summary>
         public static string Animal {
@@ -88,6 +97,15 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to World of animals.
+        /// </summary>
+        public static string AnimalWorldTitle {
+            get {
+                return ResourceManager.GetString("AnimalWorldTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         public static string Description {
@@ -102,6 +120,24 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         public static string Find {
             get {
                 return ResourceManager.GetString("Find", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to © 2026 Animal World. Protect Nature!.
+        /// </summary>
+        public static string Footer {
+            get {
+                return ResourceManager.GetString("Footer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Index.
+        /// </summary>
+        public static string Index {
+            get {
+                return ResourceManager.GetString("Index", resourceCulture);
             }
         }
         
@@ -129,6 +165,15 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         public static string Send {
             get {
                 return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to © 2026 My Tickets - All your events in one place.
+        /// </summary>
+        public static string TicketsFooter {
+            get {
+                return ResourceManager.GetString("TicketsFooter", resourceCulture);
             }
         }
     }

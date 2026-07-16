@@ -31,7 +31,10 @@
                 <span class="btn-icon">💡</span>
                 @AnimalWorldCommon.Add
             </button>
-            <span id="fact-form-feedback" class="fact-feedback"></span>
+            <span id="fact-form-feedback" class="fact-feedback" 
+                  data-msg-error-empty="@AnimalWorldFacts.EnterFact"
+                  data-msg-success="@AnimalWorldFacts.SuccessAdded"
+                  data-msg-error-submit="@AnimalWorldFacts.ErrorSubmit"></span>
         </div>
     </form>
 </div>
@@ -40,7 +43,9 @@
         <h2 class="section-title">@AnimalWorldFacts.KnownFacts</h2>
         <div class="title-accent"></div>
     </div>
-    <div id="facts-container" class="facts-list">
+    <div id="facts-container" class="facts-list" 
+         data-empty-text="@AnimalWorldFacts.EmptyStateText"
+         data-error-text="@AnimalWorldFacts.ErrorLoad">
         <div class="facts-loading" id="facts-loading-status">@AnimalWorldFacts.LoadingFacts...</div>
     </div>
 </section>

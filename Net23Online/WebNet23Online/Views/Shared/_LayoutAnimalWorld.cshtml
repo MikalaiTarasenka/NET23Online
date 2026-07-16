@@ -1,4 +1,4 @@
-@using WebNet23Online.Localizations
+@using WebNet23Online.Localizations.AnimalWorld
 @using WebNet23Online.Services.Interfaces
 @inject IAuthService authService
 <!DOCTYPE html>
@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - @AnimalWorld.AmazingAnimalWorld</title>
+    <title>@ViewData["Title"] - @AnimalWorldCommon.AmazingAnimalWorld</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -22,34 +22,34 @@
 <body>
     <header class="site-header">
         <div class="header-container">
-            <a href="/" class="logo">@AnimalWorld.AmazingAnimalWorld</a>
+            <a href="/" class="logo">@AnimalWorldCommon.AmazingAnimalWorld</a>
             <nav class="main-nav">
-                <a href="/" class="nav-link">Главная</a>
+                <a href="/" class="nav-link">@AnimalWorldCommon.Index</a>
                 <div class="nav-dropdown">
                     <button class="nav-link nav-dropdown-toggle">
-                        @AnimalWorld.AnimalWorldTitle <span class="arrow">▾</span>
+                        @AnimalWorldCommon.AnimalWorldTitle <span class="arrow">▾</span>
                     </button>
                     <div class="nav-dropdown-menu">
-                        <a href="/AnimalWorld/Index" class="dropdown-link">@AnimalWorld.AnimalWorldTitle</a>
-                        <a href="/AnimalWorld/AnimalSpeciesInfo" class="dropdown-link">Виды животных</a>
-                        <a href="/AnimalWorld/Gallery" class="dropdown-link">Галерея</a>
-                        <a href="/AnimalWorld/InterestingFacts" class="dropdown-link">@AnimalWorld.Interesting</a>
+                        <a href="/AnimalWorld/Index" class="dropdown-link">@AnimalWorldCommon.AnimalWorldTitle</a>
+                        <a href="/AnimalWorld/AnimalSpeciesInfo" class="dropdown-link">@AnimalWorldAnimalSpecies.AnimalSpecies</a>
+                        <a href="/AnimalWorld/Gallery" class="dropdown-link">@AnimalWorldFacts.Gallery</a>
+                        <a href="/AnimalWorld/InterestingFacts" class="dropdown-link">@AnimalWorldFacts.InterestingFacts</a>
                     </div>
                 </div>
                 @if (authService.IsAuthenticated())
                 {
-                    <a href="/AnimalWorld/Zoos" class="nav-link">@AnimalWorld.Reservation</a>
+                    <a href="/AnimalWorld/Zoos" class="nav-link">@AnimalWorldZoo.Zoos</a>
                 }
-                <a href="/AnimalWorld/Promotions" class="nav-link">Акции</a>
+                <a href="/AnimalWorld/Promotions" class="nav-link">@AnimalWorldPromotions.Promotions</a>
                 @if (authService.AtLeastModerator())
                 {
-                    <a href="/AnimalWorld/Add" class="nav-link nav-link--accent">@AnimalWorld.AddData</a>
+                    <a href="/AnimalWorld/Add" class="nav-link nav-link--accent">@AnimalWorldAddData.AddingData</a>
                 }
             </nav>
             <div class="header-actions">
                 @if (authService.IsAuthenticated())
                 {
-                    <a href="/Tickets/AllMyTickets" class="btn btn--secondary">Мои билеты</a>
+                    <a href="/Tickets/AllMyTickets" class="btn btn--secondary">@AnimalWorldReservations.MyTickets</a>
                 }
             </div>
         </div>
@@ -61,7 +61,7 @@
     </main>
     <footer class="site-footer">
         <div class="footer-container">
-            <p>@AnimalWorld.FooterText</p>
+            <p>@AnimalWorldCommon.Footer</p>
         </div>
     </footer>
     <div class="notifications-container"></div>

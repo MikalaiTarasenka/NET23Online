@@ -79,11 +79,38 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are no facts yet. Be the first to share interesting information!.
+        /// </summary>
+        public static string EmptyStateText {
+            get {
+                return ResourceManager.GetString("EmptyStateText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter an interesting fact....
         /// </summary>
         public static string EnterFact {
             get {
                 return ResourceManager.GetString("EnterFact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error loading facts.
+        /// </summary>
+        public static string ErrorLoad {
+            get {
+                return ResourceManager.GetString("ErrorLoad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error adding fact.
+        /// </summary>
+        public static string ErrorSubmit {
+            get {
+                return ResourceManager.GetString("ErrorSubmit", resourceCulture);
             }
         }
         
@@ -156,6 +183,15 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         public static string Sorry {
             get {
                 return ResourceManager.GetString("Sorry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fact successfully added!.
+        /// </summary>
+        public static string SuccessAdded {
+            get {
+                return ResourceManager.GetString("SuccessAdded", resourceCulture);
             }
         }
         

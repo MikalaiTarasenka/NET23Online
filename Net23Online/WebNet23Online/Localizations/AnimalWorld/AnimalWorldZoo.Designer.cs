@@ -106,6 +106,15 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check error.
+        /// </summary>
+        public static string Error {
+            get {
+                return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Links setup.
         /// </summary>
         public static string LinksSetup {
@@ -165,6 +174,33 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         public static string ZooName {
             get {
                 return ResourceManager.GetString("ZooName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name is available.
+        /// </summary>
+        public static string ZooNameAvailable {
+            get {
+                return ResourceManager.GetString("ZooNameAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Checking availability....
+        /// </summary>
+        public static string ZooNameChecking {
+            get {
+                return ResourceManager.GetString("ZooNameChecking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This name is already taken.
+        /// </summary>
+        public static string ZooNameTaken {
+            get {
+                return ResourceManager.GetString("ZooNameTaken", resourceCulture);
             }
         }
         

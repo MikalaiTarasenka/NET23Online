@@ -27,13 +27,13 @@
     @if (Model.AnimalFamilies.Any())
     {
         <div class="selection-actions" style="display: none;">
-            <button id="delete-selected-btn" class="btn btn--danger">
+            <button id="delete-selected-btn" class="btn btn--danger" data-confirm-msg="@AnimalWorldIndex.ConfirmDeleteSelected">
                 <span class="btn-icon">🗑️</span>
                 @AnimalWorldIndex.DeleteSelected
             </button>
             <span class="selection-hint">@AnimalWorldIndex.SelectionHint</span>
         </div>
-        <div class="grid grid--families">
+        <div class="grid grid--families" data-empty-msg="@AnimalWorldIndex.EmptyStateNoFamilies">
             @foreach (var family in Model.AnimalFamilies)
             {
                 <article class="card card--family js-family-card">

@@ -120,17 +120,29 @@
   <data name="Add" xml:space="preserve">
     <value>Add</value>
   </data>
+  <data name="AmazingAnimalWorld" xml:space="preserve">
+    <value>Amazing Animal world</value>
+  </data>
   <data name="Animal" xml:space="preserve">
     <value>Animal</value>
   </data>
   <data name="Animals" xml:space="preserve">
     <value>Animals</value>
   </data>
+  <data name="AnimalWorldTitle" xml:space="preserve">
+    <value>World of animals</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
   <data name="Find" xml:space="preserve">
     <value>Find</value>
+  </data>
+  <data name="Footer" xml:space="preserve">
+    <value>© 2026 Animal World. Protect Nature!</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Index</value>
   </data>
   <data name="Loading" xml:space="preserve">
     <value>Loading</value>
@@ -140,5 +152,8 @@
   </data>
   <data name="Send" xml:space="preserve">
     <value>Send</value>
+  </data>
+  <data name="TicketsFooter" xml:space="preserve">
+    <value>© 2026 My Tickets - All your events in one place</value>
   </data>
 </root>

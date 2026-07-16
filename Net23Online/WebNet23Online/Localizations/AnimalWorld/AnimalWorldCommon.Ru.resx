@@ -120,17 +120,29 @@
   <data name="Add" xml:space="preserve">
     <value>Добавить</value>
   </data>
+  <data name="AmazingAnimalWorld" xml:space="preserve">
+    <value>Удивительный мир животных</value>
+  </data>
   <data name="Animal" xml:space="preserve">
     <value>Животное</value>
   </data>
   <data name="Animals" xml:space="preserve">
     <value>Животные</value>
   </data>
+  <data name="AnimalWorldTitle" xml:space="preserve">
+    <value>Мир животных</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Описание</value>
   </data>
   <data name="Find" xml:space="preserve">
     <value>Найти</value>
+  </data>
+  <data name="Footer" xml:space="preserve">
+    <value>© 2026 Мир животных. Берегите природу!</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Главная</value>
   </data>
   <data name="Loading" xml:space="preserve">
     <value>Загрузка</value>
@@ -140,5 +152,8 @@
   </data>
   <data name="Send" xml:space="preserve">
     <value>Отправить</value>
+  </data>
+  <data name="TicketsFooter" xml:space="preserve">
+    <value>© 2026 Мои билеты — все ваши события в одном месте</value>
   </data>
 </root>

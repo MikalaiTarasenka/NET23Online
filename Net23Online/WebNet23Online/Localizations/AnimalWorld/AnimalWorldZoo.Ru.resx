@@ -132,6 +132,9 @@
   <data name="ChooseZoo" xml:space="preserve">
     <value>Выберите зоопарк</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Ошибка проверки</value>
+  </data>
   <data name="LinksSetup" xml:space="preserve">
     <value>Настройка связей</value>
   </data>
@@ -152,6 +155,15 @@
   </data>
   <data name="ZooName" xml:space="preserve">
     <value>Название зоопарка</value>
+  </data>
+  <data name="ZooNameAvailable" xml:space="preserve">
+    <value>Имя свободно</value>
+  </data>
+  <data name="ZooNameChecking" xml:space="preserve">
+    <value>Проверяем доступность...</value>
+  </data>
+  <data name="ZooNameTaken" xml:space="preserve">
+    <value>Это имя уже занято</value>
   </data>
   <data name="Zoos" xml:space="preserve">
     <value>Зоопарки</value>

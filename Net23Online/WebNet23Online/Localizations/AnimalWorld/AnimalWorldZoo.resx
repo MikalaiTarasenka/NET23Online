@@ -132,6 +132,9 @@
   <data name="ChooseZoo" xml:space="preserve">
     <value>Choose a zoo</value>
   </data>
+  <data name="Error" xml:space="preserve">
+    <value>Check error</value>
+  </data>
   <data name="LinksSetup" xml:space="preserve">
     <value>Links setup</value>
   </data>
@@ -152,6 +155,15 @@
   </data>
   <data name="ZooName" xml:space="preserve">
     <value>Name of the zoo</value>
+  </data>
+  <data name="ZooNameAvailable" xml:space="preserve">
+    <value>The name is available</value>
+  </data>
+  <data name="ZooNameChecking" xml:space="preserve">
+    <value>Checking availability...</value>
+  </data>
+  <data name="ZooNameTaken" xml:space="preserve">
+    <value>This name is already taken</value>
   </data>
   <data name="Zoos" xml:space="preserve">
     <value>Zoos</value>

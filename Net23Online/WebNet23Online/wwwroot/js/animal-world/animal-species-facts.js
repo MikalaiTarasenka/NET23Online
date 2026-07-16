@@ -4,6 +4,14 @@
     const $container = $('#facts-container');
     const $feedback = $('#fact-form-feedback');
 
+    const messages = {
+        errorEmpty: $feedback.data('msg-error-empty'),
+        success: $feedback.data('msg-success'),
+        errorSubmit: $feedback.data('msg-error-submit'),
+        emptyState: $container.data('empty-text'),
+        errorLoad: $container.data('error-text')
+    };
+
     $.getJSON('/api/AnimalWorld/GetAnimalSpeciesNames')
         .done(function (list) {
             $select.html(list.map(function (name) {
@@ -17,7 +25,7 @@
         const val = $text.val().trim();
 
         if (!val) {
-            showFeedback('error', 'Введите текст факта');
+            showFeedback('error', messages.errorEmpty);
             return;
         }
 
@@ -31,7 +39,7 @@
             }),
             success: function () {
                 $text.val('');
-                showFeedback('success', 'Факт успешно добавлен!');
+                showFeedback('success', messages.success);
 
                 const $newFact = $(`
                     <article class="fact-item fact-item--new">
@@ -51,7 +59,7 @@
                 }, 3000);
             },
             error: function () {
-                showFeedback('error', 'Ошибка при добавлении факта');
+                showFeedback('error', messages.errorSubmit);
             }
         });
     });
@@ -65,7 +73,7 @@
                     $container.html(`
                         <div class="empty-container">
                             <div class="empty-icon">💭</div>
-                            <p class="empty-text">Пока нет ни одного факта. Будьте первым, кто поделится интересной информацией!</p>
+                            <p class="empty-text">${messages.emptyState}</p>
                         </div>
                     `);
                     return;
@@ -85,7 +93,7 @@
                 $container.html(`
                     <div class="empty-container">
                         <div class="empty-icon">⚠️</div>
-                        <p class="empty-text">Ошибка загрузки фактов</p>
+                        <p class="empty-text">${messages.errorLoad}</p>
                     </div>
                 `);
             });

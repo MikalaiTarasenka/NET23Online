@@ -1,11 +1,12 @@
-﻿@using WebNet23Online.Services.Interfaces
+﻿@using WebNet23Online.Localizations.AnimalWorld
+@using WebNet23Online.Services.Interfaces
 @inject IAuthService authService
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Мои билеты</title>
+    <title>@ViewData["Title"] - @AnimalWorldReservations.MyTickets</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
@@ -17,21 +18,21 @@
 <body>
     <header class="tickets-header">
         <div class="tickets-header-container">
-            <a href="/" class="tickets-logo">Мои билеты</a>
+            <a href="/" class="tickets-logo">@AnimalWorldReservations.MyTickets</a>
             <nav class="tickets-nav">
                 <a href="/" class="tickets-nav-link">
                     <span class="tickets-nav-link-icon">🏠</span>
-                    Главная
+                    @AnimalWorldCommon.Index
                 </a>
                 <a href="/AnimalWorld/Index" class="tickets-nav-link">
                     <span class="tickets-nav-link-icon">🦁</span>
-                    Мир животных
+                    @AnimalWorldCommon.AnimalWorldTitle
                 </a>
                 @if (authService.IsAuthenticated())
                 {
                     <a href="/Tickets/AllMyTickets" class="tickets-nav-link tickets-nav-link--active">
                         <span class="tickets-nav-link-icon">🎫</span>
-                        Мои билеты
+                        @AnimalWorldReservations.MyTickets
                     </a>
                 }
             </nav>
@@ -44,7 +45,7 @@
     </main>
     <footer class="tickets-footer">
         <div class="tickets-footer-container">
-            <p>© 2026 Мои билеты — все ваши события в одном месте</p>
+            <p>@AnimalWorldCommon.TicketsFooter</p>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

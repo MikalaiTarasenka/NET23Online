@@ -123,8 +123,14 @@
   <data name="AnimalWorldTitle" xml:space="preserve">
     <value>Animal World</value>
   </data>
+  <data name="ConfirmDeleteSelected" xml:space="preserve">
+    <value>Are you sure you want to delete the selected families?</value>
+  </data>
   <data name="DeleteSelected" xml:space="preserve">
     <value>Delete selected</value>
+  </data>
+  <data name="EmptyStateNoFamilies" xml:space="preserve">
+    <value>There are no animal families</value>
   </data>
   <data name="IndexDescription" xml:space="preserve">
     <value>The Earth is home to millions of amazing creatures, from tiny insects to giant blue whales</value>

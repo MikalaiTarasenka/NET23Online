@@ -26,7 +26,11 @@
                 placeholder = @AnimalWorldZoo.ZooExample,
                 autocomplete = "off"
             })
-            <div id="zoo-name-feedback" class="zoo-name-feedback" aria-live="polite"></div>
+            <div id="zoo-name-feedback" class="zoo-name-feedback" aria-live="polite" 
+                 data-msg-checking="@AnimalWorldZoo.ZooNameChecking"
+                 data-msg-available="@AnimalWorldZoo.ZooNameAvailable"
+                 data-msg-taken="@AnimalWorldZoo.ZooNameTaken"
+                 data-msg-error="@AnimalWorldZoo.Error"></div>
             @Html.ValidationMessageFor(zoo => zoo.ZooName, "", new { @class = "validation-error" })
         </div>
         <div class="form-field">

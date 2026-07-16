@@ -123,8 +123,17 @@
   <data name="AnimalsGallery" xml:space="preserve">
     <value>Галерея животных</value>
   </data>
+  <data name="EmptyStateText" xml:space="preserve">
+    <value>Пока нет ни одного факта. Будьте первым, кто поделится интересной информацией!</value>
+  </data>
   <data name="EnterFact" xml:space="preserve">
     <value>Введите интересный факт...</value>
+  </data>
+  <data name="ErrorLoad" xml:space="preserve">
+    <value>Ошибка загрузки фактов</value>
+  </data>
+  <data name="ErrorSubmit" xml:space="preserve">
+    <value>Ошибка при добавлении факта</value>
   </data>
   <data name="Fact" xml:space="preserve">
     <value>Факт</value>
@@ -149,6 +158,9 @@
   </data>
   <data name="Sorry" xml:space="preserve">
     <value>К сожалению, не удалось загрузить изображения. Попробуйте обновить страницу позже.</value>
+  </data>
+  <data name="SuccessAdded" xml:space="preserve">
+    <value>Факт успешно добавлен!</value>
   </data>
   <data name="TextFact" xml:space="preserve">
     <value>Текст факта</value>

@@ -123,8 +123,14 @@
   <data name="AnimalWorldTitle" xml:space="preserve">
     <value>Мир животных</value>
   </data>
+  <data name="ConfirmDeleteSelected" xml:space="preserve">
+    <value>Вы уверены, что хотите удалить выбранные семейства?</value>
+  </data>
   <data name="DeleteSelected" xml:space="preserve">
     <value>Удалить выбранное</value>
+  </data>
+  <data name="EmptyStateNoFamilies" xml:space="preserve">
+    <value>Нет семейств животных</value>
   </data>
   <data name="IndexDescription" xml:space="preserve">
     <value>Земля является домом для миллионов удивительных существ, от маленьких насекомых до гигантских синих китов</value>

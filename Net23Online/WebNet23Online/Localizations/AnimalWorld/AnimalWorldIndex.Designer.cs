@@ -79,11 +79,29 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete the selected families?.
+        /// </summary>
+        public static string ConfirmDeleteSelected {
+            get {
+                return ResourceManager.GetString("ConfirmDeleteSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delete selected.
         /// </summary>
         public static string DeleteSelected {
             get {
                 return ResourceManager.GetString("DeleteSelected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There are no animal families.
+        /// </summary>
+        public static string EmptyStateNoFamilies {
+            get {
+                return ResourceManager.GetString("EmptyStateNoFamilies", resourceCulture);
             }
         }
         
