@@ -207,9 +207,9 @@ namespace WebNet23Online.Services
             return true;
         }
 
-        public bool BindZooWithAnimalSpecies(int zooId, int animalSpeciesId)
+        public bool BindZooWithAnimalSpecies(int zooId, List<int> animalSpeciesIds)
         {
-            _zooRepository.AddAnimalSpecies(zooId, animalSpeciesId);
+            _zooRepository.AddAnimalSpecies(zooId, animalSpeciesIds);
             return true;
         }
 

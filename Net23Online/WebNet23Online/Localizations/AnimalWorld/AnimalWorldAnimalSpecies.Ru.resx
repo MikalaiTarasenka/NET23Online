@@ -147,6 +147,9 @@
   <data name="HabitatExample" xml:space="preserve">
     <value>Обширные территории лесной и горной зон Северного полушария</value>
   </data>
+  <data name="NoAnimalSpeciesAvailable" xml:space="preserve">
+    <value>Нет доступных видов животных для привязки</value>
+  </data>
   <data name="NothingFound" xml:space="preserve">
     <value>Ничего не найдено. Попробуйте изменить поисковый запрос</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="SelectImage" xml:space="preserve">
     <value>Выберите изображение</value>
+  </data>
+  <data name="SelectSeveral" xml:space="preserve">
+    <value>Можно выбрать несколько</value>
   </data>
   <data name="SpeciesName" xml:space="preserve">
     <value>Название вида</value>

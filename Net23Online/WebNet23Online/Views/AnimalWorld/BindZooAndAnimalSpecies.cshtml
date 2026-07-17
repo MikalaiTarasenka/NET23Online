@@ -5,40 +5,79 @@
     ViewData["Title"] = AnimalWorldZoo.AnimalSpeciesZoosLinks;
 }
 
+@section Styles {
+    <link rel="stylesheet" href="~/css/animal-world/pages/bind-zoo-animal.css" asp-append-version="true" />
+}
+
 <section class="page-header">
     <h1 class="page-title">@AnimalWorldZoo.LinksSetup</h1>
     <div class="title-accent"></div>
-    <p class="page-subtitle" style="max-width: 500px; margin-left: auto; margin-right: auto;">@AnimalWorldZoo.SelectOrder</p>
+    <p class="page-subtitle" style="max-width: 500px; margin-left: auto; margin-right: auto;">
+        @AnimalWorldZoo.SelectOrder
+    </p>
 </section>
-<form method="post" class="form-container">
-    <div class="form-card">
-        <div class="form-field">
-            <label for="ZooId" class="form-label">
-                @AnimalWorldZoo.Zoos <span class="required">*</span>
-            </label>
-            @Html.DropDownListFor(zoo => zoo.ZooId, Model.Zoos, AnimalWorldZoo.ChooseZoo, new
-            {
-                @class = "form-control",
-                id = "ZooId"
-            })
-            @Html.ValidationMessageFor(zoo => zoo.ZooId, "", new { @class = "validation-error" })
+
+<form method="post" class="bind-form">
+    <div class="bind-layout">
+        <div class="bind-column">
+            <div class="form-field">
+                <label for="ZooId" class="form-label">
+                    @AnimalWorldZoo.Zoos <span class="required">*</span>
+                </label>
+                @Html.DropDownListFor(zoo => zoo.ZooId, Model.Zoos, AnimalWorldZoo.ChooseZoo, new
+                {
+                    @class = "form-control",
+                    id = "ZooId"
+                })
+                @Html.ValidationMessageFor(zoo => zoo.ZooId, "", new { @class = "validation-error" })
+            </div>
         </div>
-        <div class="form-field">
-            <label for="AnimalSpeciesId" class="form-label">
-                @AnimalWorldAnimalSpecies.AnimalSpecies <span class="required">*</span>
-            </label>
-            @Html.DropDownListFor(animalSpecies => animalSpecies.AnimalSpeciesId, Model.AnimalSpecies, AnimalWorldAnimalSpecies.ChooseAnimalSpecies, new
-            {
-                @class = "form-control",
-                id = "AnimalSpeciesId"
-            })
-            @Html.ValidationMessageFor(animalSpecies => animalSpecies.AnimalSpeciesId, "", new { @class = "validation-error" })
-        </div>
-        <div class="form-actions">
-            <button type="submit" class="btn btn--primary">
-                <span class="btn-icon">🔗</span>
-                @AnimalWorldCommon.Save
-            </button>
+
+        <div class="bind-column">
+            <div class="form-field">
+                <div class="checkbox-field-header">
+                    <label class="form-label">
+                        @AnimalWorldAnimalSpecies.AnimalSpecies <span class="required">*</span>
+                    </label>
+                    <span class="checkbox-hint">@AnimalWorldAnimalSpecies.SelectSeveral</span>
+                </div>
+
+                @if (Model.AnimalSpecies.Any())
+                {
+                    <div class="checkbox-scroll-container">
+                        @foreach (var species in Model.AnimalSpecies)
+                        {
+                            <label class="checkbox-item">
+                                <input type="checkbox"
+                                       name="SelectedAnimalSpeciesIds"
+                                       value="@species.Value"
+                                       class="checkbox-input" />
+                                <span class="checkbox-box"></span>
+                                <span class="checkbox-label-text">@species.Text</span>
+                            </label>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="empty-state">
+                        @AnimalWorldAnimalSpecies.NoAnimalSpeciesAvailable
+                    </div>
+                }
+
+                @Html.ValidationMessageFor(m => m.SelectedAnimalSpeciesIds, "", new { @class = "validation-error" })
+            </div>
         </div>
     </div>
+
+    <div class="form-actions form-actions--centered">
+        <button type="submit" class="btn btn--primary">
+            <span class="btn-icon">🔗</span>
+            @AnimalWorldCommon.Save
+        </button>
+    </div>
 </form>
+
+@section Scripts {
+    <script src="~/js/animal-world/bind-zoo-animal.js" asp-append-version="true"></script>
+}

@@ -151,6 +151,15 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There are no animal species available for binding.
+        /// </summary>
+        public static string NoAnimalSpeciesAvailable {
+            get {
+                return ResourceManager.GetString("NoAnimalSpeciesAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nothing found. Try changing your search query.
         /// </summary>
         public static string NothingFound {
@@ -201,6 +210,15 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         public static string SelectImage {
             get {
                 return ResourceManager.GetString("SelectImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You can select several.
+        /// </summary>
+        public static string SelectSeveral {
+            get {
+                return ResourceManager.GetString("SelectSeveral", resourceCulture);
             }
         }
         

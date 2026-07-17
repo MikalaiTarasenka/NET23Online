@@ -23,11 +23,13 @@ namespace WebNet23Online.Data.Repositories.AnimalWorld
             return _dbSet.FirstOrDefault(animal => animal.ZooName.ToLower() == name.ToLower());
         }
 
-        public void AddAnimalSpecies(int zooId, int animalSpeciesId)
+        public void AddAnimalSpecies(int zooId, List<int> animalSpeciesIds)
         {
             var zoo = _dbSet.Include(animal => animal.AnimalSpecies).First(zoo => zoo.Id == zooId);
-            var animalSpecies = _context.AnimalSpecies.First(animalSpecies => animalSpecies.Id == animalSpeciesId);
-            zoo.AnimalSpecies.Add(animalSpecies);
+            var existsAnimalSpeciesIds = zoo.AnimalSpecies.Select(a => a.Id);
+            var animalSpeciesToAdd = animalSpeciesIds.Except(existsAnimalSpeciesIds).ToList();
+            var animalSpecies = _context.AnimalSpecies.Where(animalSpecies => animalSpeciesToAdd.Contains(animalSpecies.Id)).ToList();
+            zoo.AnimalSpecies.AddRange(animalSpecies);
             _context.SaveChanges();
         }
 

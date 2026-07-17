@@ -147,6 +147,9 @@
   <data name="HabitatExample" xml:space="preserve">
     <value>Vast areas of forest and mountain zones of the Northern Hemisphere</value>
   </data>
+  <data name="NoAnimalSpeciesAvailable" xml:space="preserve">
+    <value>There are no animal species available for binding</value>
+  </data>
   <data name="NothingFound" xml:space="preserve">
     <value>Nothing found. Try changing your search query</value>
   </data>
@@ -164,6 +167,9 @@
   </data>
   <data name="SelectImage" xml:space="preserve">
     <value>Select an image</value>
+  </data>
+  <data name="SelectSeveral" xml:space="preserve">
+    <value>You can select several</value>
   </data>
   <data name="SpeciesName" xml:space="preserve">
     <value>Species name</value>
