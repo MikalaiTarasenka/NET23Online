@@ -28,6 +28,11 @@ namespace WebNet23Online.Data.Repositories.AnimalWorld
             var zoo = _dbSet.Include(animal => animal.AnimalSpecies).First(zoo => zoo.Id == zooId);
             var existsAnimalSpeciesIds = zoo.AnimalSpecies.Select(a => a.Id);
             var animalSpeciesToAdd = animalSpeciesIds.Except(existsAnimalSpeciesIds).ToList();
+            if (!animalSpeciesToAdd.Any())
+            {
+                return;
+            }
+
             var animalSpecies = _context.AnimalSpecies.Where(animalSpecies => animalSpeciesToAdd.Contains(animalSpecies.Id)).ToList();
             zoo.AnimalSpecies.AddRange(animalSpecies);
             _context.SaveChanges();
