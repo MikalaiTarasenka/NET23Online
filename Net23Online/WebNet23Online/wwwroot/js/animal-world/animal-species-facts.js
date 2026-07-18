@@ -12,6 +12,8 @@
         errorLoad: $container.data('error-text')
     };
 
+    const factsApiUrl = $('.fact-form-card').data('url');
+
     $.getJSON('/api/AnimalWorld/GetAnimalSpeciesNames')
         .done(function (list) {
             $select.html(list.map(function (name) {
@@ -30,7 +32,7 @@
         }
 
         $.ajax({
-            url: 'https://localhost:7264/AddFact',
+            url: `${factsApiUrl}/AddFact`,
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({
@@ -65,7 +67,7 @@
     });
 
     function loadFacts() {
-        $.getJSON('https://localhost:7264/GetFacts')
+        $.getJSON(`${factsApiUrl}/GetFacts`)
             .done(function (facts) {
                 $('#facts-loading-status').remove();
 

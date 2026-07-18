@@ -12,11 +12,13 @@ namespace WebNet23Online.Controllers
     {
         private IAnimalWorldService _animalWorldService;
         private IHubContext<AnimalWorldHub, IAnimalWorldHub> _animalWorldHub;
+        private IConfiguration _configuration;
 
-        public AnimalWorldController(IAnimalWorldService animalWorldService, IHubContext<AnimalWorldHub, IAnimalWorldHub> animalWorldHub)
+        public AnimalWorldController(IAnimalWorldService animalWorldService, IHubContext<AnimalWorldHub, IAnimalWorldHub> animalWorldHub, IConfiguration configuration)
         {
             _animalWorldService = animalWorldService;
             _animalWorldHub = animalWorldHub;
+            _configuration = configuration;
         }
 
         public IActionResult Index()
@@ -197,7 +199,11 @@ namespace WebNet23Online.Controllers
 
         public IActionResult InterestingFacts()
         {
-            return View();
+            InterestingFactsViewModel viewModel = new InterestingFactsViewModel
+            {
+                FactsApiUrl = _configuration["ApiEndpoints:FactsApi"]
+            };
+            return View(viewModel);
         }
     }
 }
