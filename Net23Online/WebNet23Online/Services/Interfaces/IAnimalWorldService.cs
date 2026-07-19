@@ -21,7 +21,7 @@ namespace WebNet23Online.Services.Interfaces
         bool AddAnimalSpecies(AnimalSpeciesViewModel viewModel);
         bool AddPromotion(PromotionViewModel viewModel);
         bool BindZooWithAnimalSpecies(int zooId, List<int> animalSpeciesIds);
-        List<ZooViewModel> GetAllZoos();
+        PagedZooListViewModel GetZoos(int page);
         string GetZooName(int zooId);
         string GetAnimalSpeciesName(int animalSpeciesId);
         List<PromotionViewModel> GetAllPromotions();

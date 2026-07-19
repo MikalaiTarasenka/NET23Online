@@ -6,5 +6,7 @@ namespace WebNet23Online.Data.Repositories.Interfaces.AnimalWorld
     {
         void AddAnimalSpecies(int zooId, List<int> animalSpeciesIds);
         List<string> GetZooAnimalFamilies(int id);
+        List<ZooData> GetZoos(int page, int count);
+        int GetZoosCount();
     }
 }

@@ -124,6 +124,15 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Next page.
+        /// </summary>
+        public static string NextPage {
+            get {
+                return ResourceManager.GetString("NextPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to There is no data on zoos yet.
         /// </summary>
         public static string NoZoos {
@@ -138,6 +147,24 @@ namespace WebNet23Online.Localizations.AnimalWorld {
         public static string NoZoosDb {
             get {
                 return ResourceManager.GetString("NoZoosDb", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Page navigation.
+        /// </summary>
+        public static string PageNavigation {
+            get {
+                return ResourceManager.GetString("PageNavigation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Previous page.
+        /// </summary>
+        public static string PreviousPage {
+            get {
+                return ResourceManager.GetString("PreviousPage", resourceCulture);
             }
         }
         

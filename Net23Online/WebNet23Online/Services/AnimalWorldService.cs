@@ -20,6 +20,7 @@ namespace WebNet23Online.Services
         private IWebHostEnvironment _webHostEnvironment;
         private AnimalWorldRandomAnimalApi _randomAnimalApi;
         private const int RANDOM_ANIMAL_IMAGE_COUNT = 9;
+        public const int COUNT_ZOOS_PER_PAGE = 4;
         private Random _random;
 
         public AnimalWorldService(IZooRepository zooRepository, IAnimalFamilyRepository animalFamilyRepository, IAnimalSpeciesRepository animalSpeciesRepository, IAnimalWorldMapper animalWorldMapper, IAuthService authService, IWebHostEnvironment webHostEnvironment, AnimalWorldRandomAnimalApi randomAnimalApi, IPromotionRepository promotionRepository)
@@ -213,15 +214,46 @@ namespace WebNet23Online.Services
             return true;
         }
 
-        public List<ZooViewModel> GetAllZoos()
+        public PagedZooListViewModel GetZoos(int page)
         {
-            var zoos = _animalWorldMapper.FromZooDataToZooViewModel(_zooRepository.GetAll());
+            var zoosCount = _zooRepository.GetZoosCount();
+            if (zoosCount == 0)
+            {
+                return new PagedZooListViewModel
+                {
+                    Zoos = new List<ZooViewModel>()
+                };
+            }
+
+            var totalPages = (zoosCount + COUNT_ZOOS_PER_PAGE - 1) / COUNT_ZOOS_PER_PAGE;
+            if (page < 1)
+            {
+                page = 1;
+            }
+
+            if (page > totalPages)
+            {
+                page = totalPages;
+            }
+
+            var zoos = _animalWorldMapper.FromZooDataToZooViewModel(_zooRepository.GetZoos(page, COUNT_ZOOS_PER_PAGE));
             foreach (var zoo in zoos)
             {
                 zoo.AnimalFamilies = _zooRepository.GetZooAnimalFamilies(zoo.Id);
             }
 
-            return zoos;
+
+            var zooPage = new PagedZooListViewModel
+            {
+                CurrentPage = page,
+                HasNextPage = page < totalPages,
+                HasPreviousPage = page > 1,
+                PageNumbers = Enumerable.Range(1, totalPages).ToList(),
+                TotalPages = totalPages,
+                Zoos = zoos,
+            };
+
+            return zooPage;
         }
 
         public string GetZooName(int zooId)

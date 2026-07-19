@@ -54,5 +54,15 @@ namespace WebNet23Online.Data.Repositories.AnimalWorld
                 [Z].Id = {id}";
             return _context.Database.SqlQueryRaw<string>(sql).ToList();
         }
+
+        public List<ZooData> GetZoos(int page, int count)
+        {
+            return _dbSet.Skip((page - 1) * count).Take(count).ToList();
+        }
+
+        public int GetZoosCount()
+        {
+            return _dbSet.Count();
+        }
     }
 }

@@ -138,11 +138,20 @@
   <data name="LinksSetup" xml:space="preserve">
     <value>Настройка связей</value>
   </data>
+  <data name="NextPage" xml:space="preserve">
+    <value>Следующая страница</value>
+  </data>
   <data name="NoZoos" xml:space="preserve">
     <value>Данные о зоопарках отсутствуют</value>
   </data>
   <data name="NoZoosDb" xml:space="preserve">
     <value>В настоящий момент в базе данных нет ни одного зоопарка</value>
+  </data>
+  <data name="PageNavigation" xml:space="preserve">
+    <value>Навигация по страницам</value>
+  </data>
+  <data name="PreviousPage" xml:space="preserve">
+    <value>Предыдущая страница</value>
   </data>
   <data name="SelectOrder" xml:space="preserve">
     <value>Сначала выберите зоопарк, затем вид животного</value>

@@ -138,11 +138,20 @@
   <data name="LinksSetup" xml:space="preserve">
     <value>Links setup</value>
   </data>
+  <data name="NextPage" xml:space="preserve">
+    <value>Next page</value>
+  </data>
   <data name="NoZoos" xml:space="preserve">
     <value>There is no data on zoos yet</value>
   </data>
   <data name="NoZoosDb" xml:space="preserve">
     <value>There are currently no zoos in the database.</value>
+  </data>
+  <data name="PageNavigation" xml:space="preserve">
+    <value>Page navigation</value>
+  </data>
+  <data name="PreviousPage" xml:space="preserve">
+    <value>Previous page</value>
   </data>
   <data name="SelectOrder" xml:space="preserve">
     <value>First select a zoo, then an animal species</value>

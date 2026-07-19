@@ -147,9 +147,9 @@ namespace WebNet23Online.Controllers
         }
 
         [Authorize]
-        public IActionResult Zoos()
+        public IActionResult Zoos(int page = 1)
         {
-            return View(_animalWorldService.GetAllZoos());
+            return View(_animalWorldService.GetZoos(page));
         }
 
         public IActionResult Promotions()
