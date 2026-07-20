@@ -11,7 +11,6 @@ using WebNet23Online.Services.Apis;
 using WebNet23Online.Services.BackgroundServices;
 using WebNet23Online.Services.BackgroundServices.steam;
 using WebNet23Online.Services.Apis.steam;
-using WebNet23Online.Services.BackgroundServices;
 using WebNet23Online.Services.DelightBistro;
 using WebNet23Online.Services.Interfaces;
 using WebNet23Online.Services.Interfaces.LittleLemon;
@@ -23,7 +22,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSignalR();
 
-var connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=WebNet23Online;Integrated Security=True;Connect Timeout=30;";
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<WebContext>(op => op.UseSqlServer(connectionString));
 
 // Add services to the container.

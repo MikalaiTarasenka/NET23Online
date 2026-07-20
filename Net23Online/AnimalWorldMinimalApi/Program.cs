@@ -18,7 +18,7 @@ builder.Services.AddCors(o =>
     });
 });
 
-var connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=WebNet23AnimalFacts;Integrated Security=True;Connect Timeout=30;";
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<AnimalWorldDbContext>(op => op.UseSqlServer(connectionString));
 
 var app = builder.Build();
