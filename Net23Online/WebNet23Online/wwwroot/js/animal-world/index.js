@@ -2,6 +2,10 @@
     const $deleteBtn = $('#delete-selected-btn');
     const $selectionActions = $('.selection-actions');
 
+    const $grid = $('.grid--families');
+    const confirmMsg = $deleteBtn.data('confirm-msg');
+    const emptyMsg = $grid.data('empty-msg');
+
     function toggleDeleteButton() {
         const selectedCount = $('.js-family-card.selected').length;
         if (selectedCount > 0) {
@@ -20,13 +24,13 @@
         const $selectedCards = $('.js-family-card.selected');
         const selectedCount = $selectedCards.length;
 
-        if (confirm(`Вы уверены, что хотите удалить ${selectedCount} семейств?`)) {
+        if (confirm(`${confirmMsg} (${selectedCount})`)) {
             $selectedCards.fadeOut(300, function () {
                 $(this).remove();
                 toggleDeleteButton();
 
                 if ($('.js-family-card').length === 0) {
-                    $('.grid--families').replaceWith(`<p class="empty-state">Нет семейств животных</p>`);
+                    $('.grid--families').replaceWith(`<p class="empty-state">${emptyMsg}</p>`);
                 }
             });
         }

@@ -117,169 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutPlanet" xml:space="preserve">
-    <value>О нашей планете</value>
-  </data>
-  <data name="Add" xml:space="preserve">
-    <value>Добавить</value>
-  </data>
-  <data name="AddAnimalFamily" xml:space="preserve">
-    <value>Добавление рода животных</value>
-  </data>
-  <data name="AddAnimalSpecies" xml:space="preserve">
-    <value>Добавление вида животного</value>
-  </data>
-  <data name="AddData" xml:space="preserve">
-    <value>Добавить данные</value>
-  </data>
-  <data name="AddingAnimalData" xml:space="preserve">
-    <value>Добавление данных о животных</value>
-  </data>
-  <data name="AddingData" xml:space="preserve">
-    <value>Добавление данных</value>
-  </data>
   <data name="Address" xml:space="preserve">
     <value>Адрес</value>
   </data>
   <data name="AddressExample" xml:space="preserve">
-    <value>Город, улица, дом</value>
+    <value>Адрес зоопарка</value>
   </data>
   <data name="AddZoo" xml:space="preserve">
     <value>Добавление зоопарка</value>
   </data>
-  <data name="AmazingAnimalWorld" xml:space="preserve">
-    <value>Удивительный мир животных</value>
-  </data>
-  <data name="AnimalFamilies" xml:space="preserve">
-    <value>Животные</value>
-  </data>
-  <data name="AnimalFamily" xml:space="preserve">
-    <value>Род</value>
-  </data>
-  <data name="AnimalFamilyExample" xml:space="preserve">
-    <value>Например: Кошки</value>
-  </data>
-  <data name="AnimalFamilySummary" xml:space="preserve">
-    <value>Ключевые особенности рода...</value>
-  </data>
-  <data name="AnimalSpecies" xml:space="preserve">
-    <value>Виды животных</value>
-  </data>
-  <data name="AnimalSpeciesExample" xml:space="preserve">
-    <value>Например: Лесной кот</value>
-  </data>
-  <data name="AnimalSpeciesSummary" xml:space="preserve">
-    <value>Описание вида</value>
-  </data>
   <data name="AnimalSpeciesZoosLinks" xml:space="preserve">
-    <value>Связи между зоопарками и видами животных</value>
-  </data>
-  <data name="AnimalSpeciesZoosLinksSetup" xml:space="preserve">
-    <value>Настройка связи между парками и видами животных</value>
-  </data>
-  <data name="AnimalWorldTitle" xml:space="preserve">
-    <value>Мир животных</value>
-  </data>
-  <data name="BackToZoos" xml:space="preserve">
-    <value>Вернуться к списку зоопарков</value>
-  </data>
-  <data name="Booked" xml:space="preserve">
-    <value>Забронировано</value>
-  </data>
-  <data name="BookNow" xml:space="preserve">
-    <value>Забронировать</value>
-  </data>
-  <data name="ChooseAnimalFamily" xml:space="preserve">
-    <value>Выберите род животного</value>
-  </data>
-  <data name="ChooseAnimalSpecies" xml:space="preserve">
-    <value>Выберите вид животного</value>
+    <value>Связи между зоопарком и животными</value>
   </data>
   <data name="ChooseZoo" xml:space="preserve">
     <value>Выберите зоопарк</value>
   </data>
-  <data name="DeleteSelected" xml:space="preserve">
-    <value>Удалить выбранные</value>
+  <data name="Error" xml:space="preserve">
+    <value>Ошибка проверки</value>
   </data>
-  <data name="Description" xml:space="preserve">
-    <value>Описание</value>
+  <data name="LinksSetup" xml:space="preserve">
+    <value>Настройка связей</value>
   </data>
-  <data name="FamilyName" xml:space="preserve">
-    <value>Название рода</value>
-  </data>
-  <data name="FooterText" xml:space="preserve">
-    <value>&amp;copy; 2026 Мир Животных. Берегите природу!</value>
-  </data>
-  <data name="Habitat" xml:space="preserve">
-    <value>Ареал</value>
-  </data>
-  <data name="HabitatExample" xml:space="preserve">
-    <value>Например: территория Европы и Малой Азии</value>
-  </data>
-  <data name="IndexDescription" xml:space="preserve">
-    <value>Земля населена миллионами удивительных существ. От крошечных насекомых до гигантских синих китов.</value>
-  </data>
-  <data name="Interesting" xml:space="preserve">
-    <value>Интересные факты</value>
-  </data>
-  <data name="NoAnimalFamilies" xml:space="preserve">
-    <value>Пока нет данных о животных.</value>
-  </data>
-  <data name="NoAnimalSpecies" xml:space="preserve">
-    <value>Пока нет данных о видах животных.</value>
-  </data>
-  <data name="NoBooked" xml:space="preserve">
-    <value>Бронирование недоступно</value>
+  <data name="NextPage" xml:space="preserve">
+    <value>Следующая страница</value>
   </data>
   <data name="NoZoos" xml:space="preserve">
-    <value>Пока нет данных о зоопарках</value>
+    <value>Данные о зоопарках отсутствуют</value>
   </data>
-  <data name="OnIndex" xml:space="preserve">
-    <value>На главную</value>
+  <data name="NoZoosDb" xml:space="preserve">
+    <value>В настоящий момент в базе данных нет ни одного зоопарка</value>
   </data>
-  <data name="Reservation" xml:space="preserve">
-    <value>Бронирование</value>
+  <data name="PageNavigation" xml:space="preserve">
+    <value>Навигация по страницам</value>
   </data>
-  <data name="SaveLink" xml:space="preserve">
-    <value>Сохранить связь</value>
+  <data name="PreviousPage" xml:space="preserve">
+    <value>Предыдущая страница</value>
   </data>
-  <data name="SelectInformationType" xml:space="preserve">
-    <value>Выберите, какую информацию хотите добавить</value>
-  </data>
-  <data name="SelectZooThenAnimalSpecies" xml:space="preserve">
-    <value>Сначала выберите зоопарк, затем вид животного.</value>
-  </data>
-  <data name="SpeciesName" xml:space="preserve">
-    <value>Название вида</value>
-  </data>
-  <data name="UploadImage" xml:space="preserve">
-    <value>Загрузить изображение</value>
-  </data>
-  <data name="VisitBooked" xml:space="preserve">
-    <value>Посещение забронировано</value>
-  </data>
-  <data name="VisitBookedCompleteMessage" xml:space="preserve">
-    <value>Посещение зоопарка забронировано. Билет действителен в течении месяца. При покупке билета используйте Имя, фамилию и номер телефона из вашей учётной записи.</value>
-  </data>
-  <data name="VisitBookedDenyMessage" xml:space="preserve">
-    <value>Не удалось продолжить бронирование. Для бронирования необходимо заполнить профиль: имя, фамилию и номер телефона. После обновления данных профиля попробуйте снова.</value>
-  </data>
-  <data name="Zoo" xml:space="preserve">
-    <value>Зоопарк</value>
+  <data name="SelectOrder" xml:space="preserve">
+    <value>Сначала выберите зоопарк, затем вид животного</value>
   </data>
   <data name="ZooExample" xml:space="preserve">
-    <value>Например: Сингапурский зоопарк</value>
+    <value>Сингапурский зоопарк</value>
+  </data>
+  <data name="ZooInfo" xml:space="preserve">
+    <value>Заполните информацию о новом зоопарке</value>
   </data>
   <data name="ZooName" xml:space="preserve">
     <value>Название зоопарка</value>
   </data>
+  <data name="ZooNameAvailable" xml:space="preserve">
+    <value>Имя свободно</value>
+  </data>
+  <data name="ZooNameChecking" xml:space="preserve">
+    <value>Проверяем доступность...</value>
+  </data>
+  <data name="ZooNameTaken" xml:space="preserve">
+    <value>Это имя уже занято</value>
+  </data>
   <data name="Zoos" xml:space="preserve">
     <value>Зоопарки</value>
   </data>
-  <data name="ZoosList" xml:space="preserve">
-    <value>Список зоопарков</value>
+  <data name="ZoosTitle" xml:space="preserve">
+    <value>Места, где вы можете увидеть удивительных животных</value>
   </data>
   <data name="ZooSummary" xml:space="preserve">
-    <value>Кратко о зоопарке...</value>
+    <value>Описание зоопарка</value>
   </data>
 </root>

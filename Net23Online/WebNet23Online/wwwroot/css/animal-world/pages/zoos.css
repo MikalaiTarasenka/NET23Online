@@ -1,25 +1,4 @@
-﻿.page-header {
-    margin-bottom: 48px;
-    text-align: center;
-}
-
-.page-title {
-    font-size: 2.5rem;
-    margin-bottom: 16px;
-}
-
-.page-subtitle {
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    margin-top: 16px;
-}
-
-.page-header .title-accent {
-    max-width: 200px;
-    margin: 0 auto;
-}
-
-.zoos-grid {
+﻿.zoos-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     gap: 32px;
@@ -37,21 +16,21 @@
     position: relative;
 }
 
-.zoo-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 4px;
-    background: linear-gradient(to right, #2C4630, #3A5A40);
-}
+    .zoo-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(to right, #2C4630, #3A5A40);
+    }
 
-.zoo-card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-md);
-    border-color: var(--accent-green);
-}
+    .zoo-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--accent-green);
+    }
 
 .zoo-card-header {
     padding: 28px 28px 0;
@@ -129,10 +108,10 @@
     gap: 6px;
 }
 
-.zoo-families-label::before {
-    content: '🐾';
-    font-size: 0.9rem;
-}
+    .zoo-families-label::before {
+        content: '🐾';
+        font-size: 0.9rem;
+    }
 
 .zoo-families-list {
     display: flex;
@@ -157,9 +136,9 @@
     background: var(--bg-secondary);
 }
 
-.zoo-card-footer form {
-    flex: 1;
-}
+    .zoo-card-footer form {
+        flex: 1;
+    }
 
 .zoo-action-btn {
     width: 100%;
@@ -183,11 +162,11 @@
     color: white;
 }
 
-.zoo-action-btn--primary:hover {
-    background: var(--accent-green-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(58, 90, 64, 0.3);
-}
+    .zoo-action-btn--primary:hover {
+        background: var(--accent-green-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(58, 90, 64, 0.3);
+    }
 
 .zoo-action-btn--secondary {
     background: var(--bg-card);
@@ -195,45 +174,12 @@
     border: 1.5px solid var(--accent-green);
 }
 
-.zoo-action-btn--secondary:hover {
-    background: var(--accent-green);
-    color: white;
-}
-
-.empty-zoos {
-    text-align: center;
-    padding: 80px 40px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.empty-zoos-icon {
-    font-size: 4rem;
-    margin-bottom: 16px;
-    opacity: 0.3;
-}
-
-.empty-zoos-title {
-    font-size: 1.5rem;
-    font-family: var(--font-heading);
-    color: var(--text-main);
-    margin-bottom: 12px;
-}
-
-.empty-zoos-text {
-    font-size: 1rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-}
-
-@media (max-width: 768px) {
-    .page-title {
-        font-size: 2rem;
+    .zoo-action-btn--secondary:hover {
+        background: var(--accent-green);
+        color: white;
     }
 
+@media (max-width: 768px) {
     .zoos-grid {
         grid-template-columns: 1fr;
         gap: 24px;

@@ -1,0 +1,111 @@
+﻿/* ==========================================================================
+КАРТОЧКА РЕЗУЛЬТАТА БРОНИРОВАНИЯ
+========================================================================== */
+.booking-card {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 48px 40px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    overflow: hidden;
+}
+
+    .booking-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+    }
+
+.booking-card--success::before {
+    background: linear-gradient(to right, #2C4630, #3A5A40, #A8D5BA);
+}
+
+.booking-card--denied::before {
+    background: linear-gradient(to right, #C73E3E, #FEE2E2);
+}
+
+.booking-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    animation: scaleIn 0.5s ease;
+}
+
+.booking-card--success .booking-icon {
+    background: var(--accent-green-light);
+    color: var(--accent-green);
+}
+
+.booking-card--denied .booking-icon {
+    background: #FEE2E2;
+    color: #C73E3E;
+}
+
+.booking-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    margin-bottom: 16px;
+    line-height: 1.3;
+}
+
+.booking-card--success .booking-title {
+    color: var(--accent-green);
+}
+
+.booking-card--denied .booking-title {
+    color: #C73E3E;
+}
+
+.booking-message {
+    font-size: 1.1rem;
+    color: var(--text-main);
+    line-height: 1.7;
+    margin-bottom: 32px;
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ==========================================================================
+АДАПТИВНОСТЬ
+========================================================================== */
+@media (max-width: 768px) {
+    .booking-card {
+        padding: 32px 24px;
+    }
+
+    .booking-icon {
+        width: 64px;
+        height: 64px;
+        font-size: 2.5rem;
+    }
+
+    .booking-title {
+        font-size: 1.6rem;
+    }
+
+    .booking-message {
+        font-size: 1rem;
+    }
+}

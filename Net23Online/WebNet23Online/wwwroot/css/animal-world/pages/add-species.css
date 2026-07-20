@@ -1,11 +1,6 @@
-﻿
-.page-header {
-    margin-bottom: 48px;
-}
-
-.page-title {
-    font-size: 2.5rem;
-    margin-bottom: 16px;
+﻿/* Увеличиваем ширину контейнера формы для страницы AddSpecies */
+.form-container:has(.form-layout) {
+    max-width: 1100px;
 }
 
 .form-layout {
@@ -84,7 +79,14 @@
     text-align: center;
 }
 
+/* ==========================================================================
+АДАПТИВНОСТЬ
+========================================================================== */
 @media (max-width: 1024px) {
+    .form-container:has(.form-layout) {
+        max-width: 640px;
+    }
+
     .form-layout {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -92,11 +94,5 @@
 
     .form-preview {
         position: static;
-    }
-}
-
-@media (max-width: 768px) {
-    .page-title {
-        font-size: 2rem;
     }
 }

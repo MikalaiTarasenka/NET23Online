@@ -1,0 +1,364 @@
+﻿/* ==========================================================================
+ЗАГОЛОВКИ СТРАНИЦЫ
+========================================================================== */
+.page-header {
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+.page-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.page-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.title-accent {
+    max-width: 200px;
+    height: 2px;
+    background: linear-gradient(to right, var(--accent-green), transparent);
+    border-radius: 2px;
+    margin: 20px auto 0;
+}
+
+/* ==========================================================================
+КНОПКИ
+========================================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: var(--font-body);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.btn--primary {
+    background: var(--accent-green);
+    color: white;
+}
+
+    .btn--primary:hover {
+        background: var(--accent-green-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(58, 90, 64, 0.3);
+    }
+
+/* ==========================================================================
+СЕКЦИЯ БИЛЕТОВ
+========================================================================== */
+.tickets-zoo-section {
+    margin-bottom: 64px;
+}
+
+.tickets-zoo-section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.tickets-zoo-section-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+    .tickets-zoo-section-title::before {
+        content: '🎟️';
+        font-size: 1.5rem;
+    }
+
+.tickets-zoo-section-header .section-accent {
+    flex-grow: 1;
+    height: 2px;
+    background: linear-gradient(to right, var(--accent-green), transparent);
+    border-radius: 2px;
+}
+
+.tickets-zoo-hint {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    padding: 12px 20px;
+    background: var(--accent-green-light);
+    border-left: 3px solid var(--accent-green);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+    .tickets-zoo-hint::before {
+        content: '💡';
+        font-size: 1.1rem;
+    }
+
+.tickets-zoo-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+    gap: 24px;
+}
+
+/* ==========================================================================
+КАРТОЧКА БИЛЕТА
+========================================================================== */
+.tickets-zoo-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+    .tickets-zoo-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(to right, #2C4630, #3A5A40, #A8D5BA);
+    }
+
+    .tickets-zoo-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--accent-green);
+    }
+
+.tickets-zoo-card-inner {
+    display: flex;
+    align-items: stretch;
+    min-height: 180px;
+}
+
+.tickets-zoo-card-body {
+    flex: 1;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+}
+
+    .tickets-zoo-card-body::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 1px;
+        height: calc(100% - 32px);
+        background: repeating-linear-gradient(to bottom, var(--border-color) 0, var(--border-color) 6px, transparent 6px, transparent 12px);
+    }
+
+.tickets-zoo-name {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-main);
+    margin: 0;
+    line-height: 1.3;
+}
+
+.tickets-zoo-meta {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+    .tickets-zoo-meta strong {
+        color: var(--text-main);
+        font-weight: 600;
+    }
+
+.tickets-zoo-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: auto;
+    width: fit-content;
+}
+
+.tickets-zoo-status-active {
+    background: var(--accent-green-light);
+    color: var(--accent-green);
+}
+
+    .tickets-zoo-status-active::before {
+        content: '✓';
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+
+.tickets-zoo-status-used {
+    background: var(--bg-secondary);
+    color: var(--text-muted);
+}
+
+    .tickets-zoo-status-used::before {
+        content: '✓';
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+
+.tickets-zoo-card-used {
+    opacity: 0.75;
+}
+
+    .tickets-zoo-card-used::before {
+        background: linear-gradient(to right, #A0A0A0, #D0D0D0);
+    }
+
+    .tickets-zoo-card-used:hover {
+        transform: translateY(-2px);
+        border-color: var(--border-color);
+    }
+
+    .tickets-zoo-card-used .tickets-zoo-name {
+        color: var(--text-muted);
+    }
+
+.tickets-zoo-qrcode-panel {
+    width: 180px;
+    background: var(--bg-secondary);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.tickets-zoo-qrcode-caption {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.ticket-qrcode {
+    width: 120px;
+    height: 120px;
+    background: var(--bg-card);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================================
+ПУСТОЕ СОСТОЯНИЕ
+========================================================================== */
+.empty-container {
+    text-align: center;
+    padding: 60px 40px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.empty-icon {
+    font-size: 4rem;
+    opacity: 0.3;
+}
+
+.empty-text {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+АДАПТИВНОСТЬ
+========================================================================== */
+@media (max-width: 900px) {
+    .tickets-zoo-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .tickets-zoo-section-title {
+        font-size: 1.5rem;
+    }
+
+    .tickets-zoo-card-inner {
+        flex-direction: column;
+    }
+
+    .tickets-zoo-card-body {
+        padding: 24px;
+    }
+
+        .tickets-zoo-card-body::after {
+            display: none;
+        }
+
+    .tickets-zoo-qrcode-panel {
+        width: 100%;
+        padding: 20px;
+        border-top: 1px dashed var(--border-color);
+    }
+
+    .ticket-qrcode {
+        width: 140px;
+        height: 140px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tickets-zoo-name {
+        font-size: 1.2rem;
+    }
+
+    .tickets-zoo-card-body {
+        padding: 20px;
+    }
+}

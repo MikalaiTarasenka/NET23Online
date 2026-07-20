@@ -1,0 +1,181 @@
+﻿/* ==========================================================================
+   СТРАНИЦА: Привязка зоопарка к видам животных
+   ========================================================================== */
+
+/* Форма без ограничения ширины (в отличие от .form-container) */
+.bind-form {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Двухколоночная сетка */
+.bind-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+.bind-column {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Заголовок поля с подсказкой */
+.checkbox-field-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.checkbox-hint {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+/* Прокручиваемый контейнер для чекбоксов */
+.checkbox-scroll-container {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: var(--bg-card);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+    /* Кастомный скроллбар (Webkit) */
+    .checkbox-scroll-container::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .checkbox-scroll-container::-webkit-scrollbar-track {
+        background: var(--bg-secondary);
+        border-radius: 4px;
+    }
+
+    .checkbox-scroll-container::-webkit-scrollbar-thumb {
+        background: var(--border-color);
+        border-radius: 4px;
+        transition: background 0.2s ease;
+    }
+
+        .checkbox-scroll-container::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+
+/* Firefox */
+.checkbox-scroll-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) var(--bg-secondary);
+}
+
+/* Отдельный чекбокс (label) */
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+    user-select: none;
+}
+
+    .checkbox-item:hover {
+        background: var(--bg-secondary);
+    }
+
+/* Скрываем нативный чекбокс, но оставляем доступным для клавиатуры */
+.checkbox-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+
+/* Кастомный "квадратик" чекбокса */
+.checkbox-box {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--bg-card);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+    position: relative;
+}
+
+    /* Галочка внутри (через псевдоэлемент) */
+    .checkbox-box::after {
+        content: '';
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg) scale(0);
+        transform-origin: center;
+        transition: transform 0.15s ease;
+        margin-top: -2px;
+    }
+
+/* Состояние :checked */
+.checkbox-input:checked + .checkbox-box {
+    background: var(--accent-green);
+    border-color: var(--accent-green);
+}
+
+    .checkbox-input:checked + .checkbox-box::after {
+        transform: rotate(45deg) scale(1);
+    }
+
+/* Состояние :focus (для клавиатурной навигации) */
+.checkbox-input:focus-visible + .checkbox-box {
+    border-color: var(--accent-green);
+    box-shadow: 0 0 0 3px rgba(58, 90, 64, 0.15);
+}
+
+/* Hover на квадрате при наведении на label */
+.checkbox-item:hover .checkbox-box {
+    border-color: var(--accent-green);
+}
+
+/* Текст рядом с чекбоксом */
+.checkbox-label-text {
+    font-size: 0.95rem;
+    color: var(--text-main);
+    line-height: 1.4;
+}
+
+/* Кнопка по центру */
+.form-actions--centered {
+    justify-content: center;
+}
+
+/* ==========================================================================
+   АДАПТИВНОСТЬ
+   ========================================================================== */
+@media (max-width: 768px) {
+    .bind-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .checkbox-scroll-container {
+        max-height: 320px;
+    }
+
+    .form-actions--centered .btn {
+        width: 100%;
+    }
+}

@@ -1,43 +1,43 @@
-@using WebNet23Online.Localizations
+@using WebNet23Online.Localizations.AnimalWorld
 @using WebNet23Online.Models.AnimalWorld
-@model List<ZooViewModel>
+@model PagedZooListViewModel
 @{
     Layout = "_LayoutAnimalWorld";
-    ViewData["Title"] = AnimalWorld.Zoos;
+    ViewData["Title"] = @AnimalWorldZoo.Zoos;
 }
-
+@section Styles {
+    <link rel="stylesheet" href="~/css/animal-world/pages/zoos.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/animal-world/pagination.css" asp-append-version="true" />
+}
 <section class="page-header">
-    <h1 class="page-title">@AnimalWorld.ZoosList</h1>
+    <h1 class="page-title">@AnimalWorldZoo.Zoos</h1>
     <div class="title-accent"></div>
-    <p class="page-subtitle">Места, где вы можете увидеть удивительных животных</p>
+    <p class="page-subtitle">@AnimalWorldZoo.ZoosTitle</p>
 </section>
 
-@if (Model.Any())
+@if (Model.Zoos.Any())
 {
     <div class="zoos-grid">
-        @foreach (var zoo in Model)
+        @foreach (var zoo in Model.Zoos)
         {
             <article class="zoo-card">
                 <div class="zoo-card-header">
                     <span class="zoo-icon">🏛️</span>
                     <h3 class="zoo-card-title">@zoo.ZooName</h3>
                 </div>
-
                 <div class="zoo-card-body">
                     <div class="zoo-info-row">
                         <span class="zoo-info-icon">📍</span>
                         <div>
-                            <span class="zoo-info-label">@AnimalWorld.Address:</span>
+                            <span class="zoo-info-label">@AnimalWorldZoo.Address:</span>
                             @zoo.Address
                         </div>
                     </div>
-
                     <p class="zoo-description">@zoo.Description</p>
-
                     @if (zoo.AnimalFamilies != null && zoo.AnimalFamilies.Any())
                     {
                         <div class="zoo-families-section">
-                            <div class="zoo-families-label">@AnimalWorld.AnimalFamilies</div>
+                            <div class="zoo-families-label">@AnimalWorldAnimalFamily.AnimalFamilies</div>
                             <div class="zoo-families-list">
                                 @foreach (var family in zoo.AnimalFamilies)
                                 {
@@ -47,32 +47,74 @@
                         </div>
                     }
                 </div>
-
                 <div class="zoo-card-footer">
                     <form action="/Tickets/ZooReservations" method="post">
                         <input type="hidden" name="zooName" value="@zoo.ZooName" />
                         <button class="zoo-action-btn zoo-action-btn--primary" type="submit">
                             <span>🎟️</span>
-                            @AnimalWorld.BookNow
+                            @AnimalWorldReservations.BookNow
                         </button>
                     </form>
                     <form action="/Comments/ZooCommentsIndex" method="get">
                         <input type="hidden" name="zooId" value="@zoo.Id" />
                         <button class="zoo-action-btn zoo-action-btn--secondary" type="submit">
                             <span>💬</span>
-                            Отзывы
+                            @AnimalWorldComments.Comments
                         </button>
                     </form>
                 </div>
             </article>
         }
     </div>
+
+    @if (Model.TotalPages > 1)
+    {
+        <nav class="pagination" aria-label="@AnimalWorldZoo.PageNavigation">
+            @if (Model.HasPreviousPage)
+            {
+                <a href="?page=@(Model.CurrentPage - 1)" class="pagination-btn pagination-btn--arrow" aria-label="@AnimalWorldZoo.PreviousPage">
+                    <span class="pagination-arrow">←</span>
+                </a>
+            }
+            else
+            {
+                <span class="pagination-btn pagination-btn--arrow pagination-btn--disabled" aria-disabled="true">
+                    <span class="pagination-arrow">←</span>
+                </span>
+            }
+
+            @foreach (var pageNum in Model.PageNumbers)
+            {
+                if (pageNum == Model.CurrentPage)
+                {
+                    <span class="pagination-btn pagination-btn--active" aria-current="page">@pageNum</span>
+                }
+                else
+                {
+                    <a href="?page=@pageNum" class="pagination-btn">@pageNum</a>
+                }
+            }
+
+            @if (Model.HasNextPage)
+            {
+                <a href="?page=@(Model.CurrentPage + 1)" class="pagination-btn pagination-btn--arrow" aria-label="@AnimalWorldZoo.NextPage">
+                    <span class="pagination-arrow">→</span>
+                </a>
+            }
+            else
+            {
+                <span class="pagination-btn pagination-btn--arrow pagination-btn--disabled" aria-disabled="true">
+                    <span class="pagination-arrow">→</span>
+                </span>
+            }
+        </nav>
+    }
 }
 else
 {
-    <div class="empty-zoos">
-        <div class="empty-zoos-icon">🐘</div>
-        <h3 class="empty-zoos-title">@AnimalWorld.NoZoos</h3>
-        <p class="empty-zoos-text">В настоящий момент в базе данных нет ни одного зоопарка.</p>
+    <div class="empty-container">
+        <div class="empty-icon">🐘</div>
+        <h3 class="empty-title">@AnimalWorldZoo.NoZoos</h3>
+        <p class="empty-text">@AnimalWorldZoo.NoZoosDb</p>
     </div>
 }

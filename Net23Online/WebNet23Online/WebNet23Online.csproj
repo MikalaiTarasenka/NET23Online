@@ -27,10 +27,55 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Localizations\AnimalWorld.Designer.cs">
+    <Compile Update="Localizations\AnimalWorld\AnimalWorldAddData.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>AnimalWorld.resx</DependentUpon>
+      <DependentUpon>AnimalWorldAddData.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localizations\AnimalWorld\AnimalWorldAnimalFamily.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AnimalWorldAnimalFamily.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localizations\AnimalWorld\AnimalWorldAnimalSpecies.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AnimalWorldAnimalSpecies.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localizations\AnimalWorld\AnimalWorldComments.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AnimalWorldComments.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localizations\AnimalWorld\AnimalWorldCommon.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AnimalWorldCommon.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localizations\AnimalWorld\AnimalWorldFacts.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AnimalWorldFacts.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localizations\AnimalWorld\AnimalWorldIndex.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AnimalWorldIndex.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localizations\AnimalWorld\AnimalWorldPromotions.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AnimalWorldPromotions.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localizations\AnimalWorld\AnimalWorldReservations.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AnimalWorldReservations.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Localizations\AnimalWorld\AnimalWorldZoo.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AnimalWorldZoo.resx</DependentUpon>
     </Compile>
     <Compile Update="Localizations\AnimeGirl.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -110,9 +155,45 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Localizations\AnimalWorld.resx">
+    <EmbeddedResource Update="Localizations\AnimalWorld\AnimalWorldAddData.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>AnimalWorld.Designer.cs</LastGenOutput>
+      <LastGenOutput>AnimalWorldAddData.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localizations\AnimalWorld\AnimalWorldAnimalFamily.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AnimalWorldAnimalFamily.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localizations\AnimalWorld\AnimalWorldAnimalSpecies.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AnimalWorldAnimalSpecies.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localizations\AnimalWorld\AnimalWorldComments.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AnimalWorldComments.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localizations\AnimalWorld\AnimalWorldCommon.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AnimalWorldCommon.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localizations\AnimalWorld\AnimalWorldFacts.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AnimalWorldFacts.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localizations\AnimalWorld\AnimalWorldIndex.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AnimalWorldIndex.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localizations\AnimalWorld\AnimalWorldPromotions.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AnimalWorldPromotions.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localizations\AnimalWorld\AnimalWorldReservations.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AnimalWorldReservations.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Localizations\AnimalWorld\AnimalWorldZoo.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>AnimalWorldZoo.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Localizations\AnimeGirl.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

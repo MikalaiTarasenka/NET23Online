@@ -1,0 +1,129 @@
+﻿/* ==========================================================================
+ШАПКА
+========================================================================== */
+.tickets-header {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.tickets-header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 70px;
+    gap: 32px;
+}
+
+.tickets-logo {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-main);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+    .tickets-logo::before {
+        content: '🎫';
+        font-size: 1.5rem;
+    }
+
+.tickets-nav {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tickets-nav-link {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    padding: 8px 16px;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+    .tickets-nav-link:hover {
+        color: var(--accent-green);
+        background: var(--accent-green-light);
+    }
+
+.tickets-nav-link--active {
+    color: var(--accent-green);
+    background: var(--accent-green-light);
+    font-weight: 600;
+}
+
+.tickets-nav-link-icon {
+    font-size: 1.1rem;
+}
+
+/* ==========================================================================
+ОСНОВНОЙ КОНТЕНТ
+========================================================================== */
+.tickets-main {
+    padding: 40px 0;
+    min-height: calc(100vh - 70px - 80px);
+}
+
+.tickets-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ==========================================================================
+ПОДВАЛ
+========================================================================== */
+.tickets-footer {
+    margin-top: 80px;
+    padding: 24px 0;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.tickets-footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ==========================================================================
+АДАПТИВНОСТЬ
+========================================================================== */
+@media (max-width: 768px) {
+    .tickets-header-container {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 16px 24px;
+        gap: 16px;
+    }
+
+    .tickets-nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .tickets-nav-link {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+}

@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    const url = `https://localhost:7284/my-hub/animal-world`;
+    const url = '/my-hub/animal-world';
     const hub = new signalR.HubConnectionBuilder().withUrl(url).build();
 
     hub.on('NewAnimalInZooAppeared', function (zooName, animalSpeciesName) {

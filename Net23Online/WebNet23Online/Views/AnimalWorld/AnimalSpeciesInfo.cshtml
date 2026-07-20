@@ -1,74 +1,67 @@
-﻿@using WebNet23Online.Localizations
+﻿@using WebNet23Online.Localizations.AnimalWorld
 @model WebNet23Online.Models.AnimalWorld.AnimalSpeciesPageInfoViewModel
 @{
     Layout = "_LayoutAnimalWorld";
-    ViewData["Title"] = AnimalWorld.AnimalSpecies;
+    ViewData["Title"] = AnimalWorldAnimalSpecies.AnimalSpecies;
 }
-
-@section Scripts {
-    <script src="~/js/animal-world/index.js"></script>
+@section Styles {
+    <link rel="stylesheet" href="~/css/animal-world/pages/animal-species-info.css" asp-append-version="true" />
 }
-
 <section class="page-header">
-    <h1 class="page-title">@AnimalWorld.AnimalSpecies</h1>
+    <h1 class="page-title">@AnimalWorldAnimalSpecies.AnimalSpecies</h1>
     <div class="title-accent"></div>
-    <p class="page-subtitle">Полный каталог видов животных нашего мира</p>
+    <p class="page-subtitle">@AnimalWorldAnimalSpecies.Catalog</p>
 </section>
-
 <div class="search-form-card">
     <form method="get" class="search-form">
         <div class="form-field">
-            <label for="searchCategory" class="form-label">Искать в столбце</label>
+            <label for="searchCategory" class="form-label">@AnimalWorldAnimalSpecies.SearchColumn</label>
             <select id="searchCategory" name="searchCategory" class="form-control" asp-for="SearchCategory">
-                <option value="All">Все столбцы</option>
-                <option value="Species">Название вида</option>
-                <option value="Family">Семейство</option>
-                <option value="Range">Среда обитания</option>
+                <option value="All">@AnimalWorldAnimalSpecies.AllColumns</option>
+                <option value="Species">@AnimalWorldAnimalSpecies.SpeciesName</option>
+                <option value="Family">@AnimalWorldAnimalFamily.AnimalFamilies</option>
+                <option value="Range">@AnimalWorldAnimalSpecies.Habitat</option>
             </select>
         </div>
-
         <div class="form-field">
-            <label for="searchQuery" class="form-label">Поисковый запрос</label>
+            <label for="searchQuery" class="form-label">@AnimalWorldAnimalSpecies.SearchQuery</label>
             <input type="text"
                    id="searchQuery"
                    name="searchQuery"
                    value="@Model.SearchQuery"
                    class="form-control"
-                   placeholder="Введите текст для поиска..." />
+                   placeholder=@AnimalWorldAnimalSpecies.TextToSearch />
         </div>
-
         <button type="submit" class="search-btn">
             <span class="search-btn-icon">🔍</span>
-            Найти
+            @AnimalWorldCommon.Find
         </button>
     </form>
 </div>
-
 <div class="species-table-wrapper">
     @if (Model.AnimalSpeciesInfoViewModels.Any())
     {
         <div class="species-table">
             <div class="species-table-header">
-                <div class="table-cell">Название вида</div>
-                <div class="table-cell">Семейство</div>
-                <div class="table-cell">Среда обитания</div>
+                <div class="table-cell">@AnimalWorldAnimalSpecies.SpeciesName</div>
+                <div class="table-cell">@AnimalWorldAnimalFamily.AnimalFamilies</div>
+                <div class="table-cell">@AnimalWorldAnimalSpecies.Habitat</div>
             </div>
-
             @foreach (var animal in Model.AnimalSpeciesInfoViewModels)
             {
                 <div class="species-table-row">
-                    <div class="table-cell cell-name" data-label="Вид">@animal.AnimalSpeciesName</div>
-                    <div class="table-cell" data-label="Семейство">@animal.AnimalFamilyName</div>
-                    <div class="table-cell cell-range" data-label="Ареал">@animal.NativeRange</div>
+                    <div class="table-cell cell-name" data-label=@AnimalWorldAnimalSpecies.SpeciesName>@animal.AnimalSpeciesName</div>
+                    <div class="table-cell" data-label=@AnimalWorldAnimalFamily.AnimalFamilies>@animal.AnimalFamilyName</div>
+                    <div class="table-cell cell-range" data-label=@AnimalWorldAnimalSpecies.Habitat>@animal.NativeRange</div>
                 </div>
             }
         </div>
     }
     else
     {
-        <div class="table-empty">
-            <span class="empty-icon">🔎</span>
-            <span>Ничего не найдено. Попробуйте изменить поисковый запрос.</span>
+        <div class="empty-container">
+            <div class="empty-icon">🔎</div>
+            <p class="empty-text">@AnimalWorldAnimalSpecies.NothingFound</p>
         </div>
     }
 </div>

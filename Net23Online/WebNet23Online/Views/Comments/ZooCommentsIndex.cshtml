@@ -1,44 +1,43 @@
-﻿@using WebNet23Online.Models.Comments
+﻿@using WebNet23Online.Localizations.AnimalWorld
+@using WebNet23Online.Models.Comments
 @using WebNet23Online.Services.Interfaces
 @inject IAuthService authService
 @model AllCommentsViewModel
 @{
     Layout = "_LayoutAnimalWorld";
-    ViewData["Title"] = $"Отзывы — {Model.DisplayName}";
+    ViewData["Title"] = @AnimalWorldComments.Comments + $" — {Model.DisplayName}";
 }
-
+@section Styles {
+    <link rel="stylesheet" href="~/css/animal-world/pages/zoo-comments.css" asp-append-version="true" />
+}
 @section Scripts {
     <script src="~/js/comments/add-zoo-comment.js"></script>
 }
-
 <section class="page-header">
-    <h1 class="page-title">Отзывы: @Model.DisplayName</h1>
+    <h1 class="page-title">@AnimalWorldComments.Comments: @Model.DisplayName</h1>
     <div class="title-accent"></div>
-    <p class="page-subtitle">Мнения посетителей о зоопарке</p>
+    <p class="page-subtitle">@AnimalWorldComments.Opinions</p>
 </section>
-
 @if (authService.IsAuthenticated())
 {
     <div class="comment-form-card">
-        <h2 class="comment-form-title">Оставить комментарий</h2>
+        <h2 class="comment-form-title">@AnimalWorldComments.LeaveComment</h2>
         <form id="comment-form" class="comment-form">
             <input type="hidden" name="CommentsType" id="form-comments-type" value="@((int)Model.CommentsType)" />
             <input type="hidden" name="EntityId" id="form-entity-id" value="@Model.EntityId" />
-
             <div class="form-field">
-                <label for="form-comment-text" class="form-label">Ваш отзыв</label>
+                <label for="form-comment-text" class="form-label">@AnimalWorldComments.YourFeedback</label>
                 <textarea name="NewCommentText"
                           id="form-comment-text"
                           class="form-control form-textarea"
                           rows="4"
-                          placeholder="Поделитесь вашими впечатлениями..."
+                          placeholder=@AnimalWorldComments.Impressions
                           required></textarea>
             </div>
-
             <div class="comment-form-actions">
                 <button type="submit" class="btn btn--primary">
                     <span class="btn-icon">📨</span>
-                    Отправить
+                    @AnimalWorldCommon.Send
                 </button>
             </div>
         </form>
@@ -48,21 +47,18 @@ else
 {
     <div class="auth-hint">
         <span class="auth-hint-icon">🔒</span>
-        <span>Войдите в аккаунт, чтобы оставить отзыв.</span>
+        <span>@AnimalWorldComments.SignInToReview</span>
     </div>
 }
-
 <section class="comments-section">
     <div class="comments-section-header">
-        <h2 class="comments-section-title">Что говорят посетители</h2>
+        <h2 class="comments-section-title">@AnimalWorldComments.VisitorsSay</h2>
         <div class="title-accent"></div>
     </div>
-
-    <p id="empty-note" class="empty-comments @(Model.HasComments ? "hidden" : "")">
-        <span class="empty-comments-icon">💬</span>
-        <span class="empty-comments-text">Пока нет отзывов. Будьте первым!</span>
-    </p>
-
+    <div id="empty-note" class="empty-container @(Model.HasComments ? "hidden" : "")">
+        <div class="empty-icon">💬</div>
+        <p class="empty-text">@AnimalWorldComments.BeFirst</p>
+    </div>
     <div id="comments-container" class="comments-list">
         @if (Model.HasComments)
         {

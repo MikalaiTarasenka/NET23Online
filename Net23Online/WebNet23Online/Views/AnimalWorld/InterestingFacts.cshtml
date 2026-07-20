@@ -1,50 +1,52 @@
-﻿@using WebNet23Online.Localizations
+﻿@using WebNet23Online.Localizations.AnimalWorld
+@model WebNet23Online.Models.AnimalWorld.InterestingFactsViewModel 
 @{
     Layout = "_LayoutAnimalWorld";
-    ViewData["Title"] = "Интересные факты";
+    ViewData["Title"] = AnimalWorldFacts.InterestingFacts;
 }
-
+@section Styles {
+    <link rel="stylesheet" href="~/css/animal-world/pages/interesting-facts.css" asp-append-version="true" />
+}
 @section Scripts {
     <script src="~/js/animal-world/animal-species-facts.js"></script>
 }
-
 <section class="page-header">
-    <h1 class="page-title">Интересные факты о животных</h1>
+    <h1 class="page-title">@AnimalWorldFacts.AnimalFacts</h1>
     <div class="title-accent"></div>
-    <p class="page-subtitle">Узнайте удивительные факты о различных видах животных</p>
+    <p class="page-subtitle">@AnimalWorldFacts.LearnFacts</p>
 </section>
-
-<div class="fact-form-card">
+<div class="fact-form-card" data-url="@Model.FactsApiUrl">
     <form class="fact-form" id="fact-form">
         <div class="form-field">
-            <label for="animal-type-select" class="form-label">Вид животного</label>
+            <label for="animal-type-select" class="form-label">@AnimalWorldAnimalSpecies.One</label>
             <select id="animal-type-select" class="form-control">
-                <option>Загрузка...</option>
+                <option>@AnimalWorldCommon.Loading...</option>
             </select>
         </div>
-
         <div class="form-field">
-            <label for="factText" class="form-label">Текст факта</label>
-            <textarea id="factText" class="form-control form-textarea" rows="4" placeholder="Введите интересный факт..."></textarea>
+            <label for="factText" class="form-label">@AnimalWorldFacts.TextFact</label>
+            <textarea id="factText" class="form-control form-textarea" rows="4" placeholder=@AnimalWorldFacts.EnterFact></textarea>
         </div>
-
         <div class="fact-form-actions">
             <button type="button" id="addFactBtn" class="btn btn--primary">
                 <span class="btn-icon">💡</span>
-                Добавить факт
+                @AnimalWorldCommon.Add
             </button>
-            <span id="fact-form-feedback" class="fact-feedback"></span>
+            <span id="fact-form-feedback" class="fact-feedback" 
+                  data-msg-error-empty="@AnimalWorldFacts.EnterFact"
+                  data-msg-success="@AnimalWorldFacts.SuccessAdded"
+                  data-msg-error-submit="@AnimalWorldFacts.ErrorSubmit"></span>
         </div>
     </form>
 </div>
-
 <section class="facts-section">
     <div class="section-header">
-        <h2 class="section-title">Известные факты</h2>
+        <h2 class="section-title">@AnimalWorldFacts.KnownFacts</h2>
         <div class="title-accent"></div>
     </div>
-
-    <div id="facts-container" class="facts-list">
-        <div class="facts-loading" id="facts-loading-status">Загрузка фактов...</div>
+    <div id="facts-container" class="facts-list" 
+         data-empty-text="@AnimalWorldFacts.EmptyStateText"
+         data-error-text="@AnimalWorldFacts.ErrorLoad">
+        <div class="facts-loading" id="facts-loading-status">@AnimalWorldFacts.LoadingFacts...</div>
     </div>
 </section>

@@ -12,11 +12,13 @@ namespace WebNet23Online.Controllers
     {
         private IAnimalWorldService _animalWorldService;
         private IHubContext<AnimalWorldHub, IAnimalWorldHub> _animalWorldHub;
+        private IConfiguration _configuration;
 
-        public AnimalWorldController(IAnimalWorldService animalWorldService, IHubContext<AnimalWorldHub, IAnimalWorldHub> animalWorldHub)
+        public AnimalWorldController(IAnimalWorldService animalWorldService, IHubContext<AnimalWorldHub, IAnimalWorldHub> animalWorldHub, IConfiguration configuration)
         {
             _animalWorldService = animalWorldService;
             _animalWorldHub = animalWorldHub;
+            _configuration = configuration;
         }
 
         public IActionResult Index()
@@ -131,11 +133,13 @@ namespace WebNet23Online.Controllers
                 return View(viewModel);
             }
 
-            if (_animalWorldService.BindZooWithAnimalSpecies(viewModel.ZooId, viewModel.AnimalSpeciesId))
+            if (_animalWorldService.BindZooWithAnimalSpecies(viewModel.ZooId, viewModel.SelectedAnimalSpeciesIds))
             {
                 var zooName = _animalWorldService.GetZooName(viewModel.ZooId);
-                var animalSpeciesName = _animalWorldService.GetAnimalSpeciesName(viewModel.AnimalSpeciesId);
-                _animalWorldHub.Clients.All.NewAnimalInZooAppeared(zooName, animalSpeciesName);
+                var random = new Random();
+                var randomId = random.Next(viewModel.SelectedAnimalSpeciesIds.Count);
+                var animalSpeciesName = _animalWorldService.GetAnimalSpeciesName(viewModel.SelectedAnimalSpeciesIds[randomId]);
+                _animalWorldHub.Clients.All.NewAnimalInZooAppeared(zooName, $"{animalSpeciesName} и другие");
                 return RedirectToAction("Index");
             }
 
@@ -143,9 +147,9 @@ namespace WebNet23Online.Controllers
         }
 
         [Authorize]
-        public IActionResult Zoos()
+        public IActionResult Zoos(int page = 1)
         {
-            return View(_animalWorldService.GetAllZoos());
+            return View(_animalWorldService.GetZoos(page));
         }
 
         public IActionResult Promotions()
@@ -195,7 +199,11 @@ namespace WebNet23Online.Controllers
 
         public IActionResult InterestingFacts()
         {
-            return View();
+            InterestingFactsViewModel viewModel = new InterestingFactsViewModel
+            {
+                FactsApiUrl = _configuration["ApiEndpoints:FactsApi"]
+            };
+            return View(viewModel);
         }
     }
 }

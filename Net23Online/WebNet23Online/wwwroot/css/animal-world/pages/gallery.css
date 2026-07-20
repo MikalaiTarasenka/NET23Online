@@ -1,25 +1,4 @@
-﻿.page-header {
-    margin-bottom: 48px;
-    text-align: center;
-}
-
-.page-title {
-    font-size: 2.5rem;
-    margin-bottom: 16px;
-}
-
-.page-subtitle {
-    font-size: 1.05rem;
-    color: var(--text-muted);
-    margin-top: 16px;
-}
-
-.page-header .title-accent {
-    max-width: 200px;
-    margin: 0 auto;
-}
-
-.gallery-grid {
+﻿.gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 32px;
@@ -92,40 +71,7 @@
     flex-grow: 1;
 }
 
-.empty-gallery {
-    text-align: center;
-    padding: 80px 40px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.empty-icon {
-    font-size: 4rem;
-    margin-bottom: 16px;
-    opacity: 0.3;
-}
-
-.empty-title {
-    font-size: 1.5rem;
-    font-family: var(--font-heading);
-    color: var(--text-main);
-    margin-bottom: 12px;
-}
-
-.empty-text {
-    font-size: 1rem;
-    color: var(--text-muted);
-    line-height: 1.6;
-}
-
 @media (max-width: 768px) {
-    .page-title {
-        font-size: 2rem;
-    }
-
     .gallery-grid {
         grid-template-columns: 1fr;
         gap: 24px;

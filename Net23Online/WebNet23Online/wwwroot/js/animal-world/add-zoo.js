@@ -4,6 +4,13 @@ $(document).ready(function () {
     const $submit = $('.js-add-zoo-form button[type="submit"]');
     let checkTimeout;
 
+    const messages = {
+        checking: $feedback.data('msg-checking'),
+        available: $feedback.data('msg-available'),
+        taken: $feedback.data('msg-taken'),
+        error: $feedback.data('msg-error')
+    };
+
     $input.on('input', function () {
         const value = $.trim($input.val());
 
@@ -18,7 +25,7 @@ $(document).ready(function () {
 
         $submit.prop('disabled', true);
         $feedback.removeClass().addClass('zoo-name-feedback zoo-name-feedback--checking');
-        $feedback.text('Проверяем доступность...');
+        $feedback.text(messages.checking);
 
         checkTimeout = setTimeout(function () {
             $.getJSON('/api/AnimalWorld/IsZooNameFree', {
@@ -27,17 +34,17 @@ $(document).ready(function () {
                 .done(function (isFree) {
                     if (isFree) {
                         $feedback.removeClass().addClass('zoo-name-feedback zoo-name-feedback--available');
-                        $feedback.text('Имя свободно');
+                        $feedback.text(messages.available);
                         $submit.prop('disabled', false);
                     } else {
                         $feedback.removeClass().addClass('zoo-name-feedback zoo-name-feedback--taken');
-                        $feedback.text('Это имя уже занято');
+                        $feedback.text(messages.taken);
                         $submit.prop('disabled', true);
                     }
                 })
                 .fail(function () {
                     $feedback.removeClass().addClass('zoo-name-feedback zoo-name-feedback--taken');
-                    $feedback.text('Ошибка проверки');
+                    $feedback.text(messages.error);
                     $submit.prop('disabled', true);
                 });
         }, 500);

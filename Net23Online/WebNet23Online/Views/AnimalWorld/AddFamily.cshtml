@@ -1,50 +1,47 @@
-@using WebNet23Online.Localizations
+@using WebNet23Online.Localizations.AnimalWorld
 @model WebNet23Online.Models.AnimalWorld.AnimalFamilyViewModel
 @{
     Layout = "_LayoutAnimalWorld";
-    ViewData["Title"] = AnimalWorld.AddAnimalFamily;
+    ViewData["Title"] = @AnimalWorldAnimalFamily.AddAnimalFamily;
 }
 
 <section class="page-header">
-    <h1 class="page-title">@AnimalWorld.AddAnimalFamily</h1>
+    <h1 class="page-title">@AnimalWorldAnimalFamily.AddAnimalFamily</h1>
     <div class="title-accent"></div>
-    <p class="page-subtitle">Заполните информацию о новом семействе животных</p>
+    <p class="page-subtitle">@AnimalWorldAnimalFamily.FillInformation</p>
 </section>
-
-<form method="post" class="family-form">
+<form method="post" class="form-container">
     <div class="form-card">
         <div class="form-field">
             <label for="AnimalFamilyName" class="form-label">
-                @AnimalWorld.FamilyName <span class="required">*</span>
+                @AnimalWorldAnimalFamily.FamilyName <span class="required">*</span>
             </label>
             @Html.TextBoxFor(family => family.AnimalFamilyName, new
             {
                 @class = "form-control",
                 id = "AnimalFamilyName",
                 type = "text",
-                placeholder = AnimalWorld.AnimalFamilyExample
+                placeholder = AnimalWorldAnimalFamily.AnimalFamilyExample
             })
             @Html.ValidationMessageFor(family => family.AnimalFamilyName, "", new { @class = "validation-error" })
         </div>
-
         <div class="form-field">
             <label for="Description" class="form-label">
-                @AnimalWorld.Description <span class="required">*</span>
+                @AnimalWorldCommon.Description <span class="required">*</span>
             </label>
             @Html.TextAreaFor(family => family.Description, new
             {
                 @class = "form-control form-textarea",
                 id = "Description",
-                placeholder = AnimalWorld.AnimalFamilySummary,
+                placeholder = @AnimalWorldAnimalFamily.AnimalFamilySummary,
                 rows = 8
             })
             @Html.ValidationMessageFor(family => family.Description, "", new { @class = "validation-error" })
         </div>
-
         <div class="form-actions">
             <button type="submit" class="btn btn--primary">
                 <span class="btn-icon">✓</span>
-                @AnimalWorld.Add
+                @AnimalWorldCommon.Add
             </button>
         </div>
     </div>

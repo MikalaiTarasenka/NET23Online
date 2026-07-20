@@ -1,4 +1,7 @@
-﻿.btn {
+﻿/* ==========================================================================
+КНОПКИ
+========================================================================== */
+.btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -19,36 +22,39 @@
     color: white;
 }
 
-.btn--primary:hover {
-    background: var(--accent-green-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(58, 90, 64, 0.3);
-}
+    .btn--primary:hover {
+        background: var(--accent-green-hover);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(58, 90, 64, 0.3);
+    }
 
 .btn--secondary {
     background: var(--accent-green-light);
     color: var(--accent-green);
 }
 
-.btn--secondary:hover {
-    background: var(--accent-green);
-    color: white;
-}
+    .btn--secondary:hover {
+        background: var(--accent-green);
+        color: white;
+    }
 
 .btn--danger {
     background: #FEE2E2;
     color: #C73E3E;
 }
 
-.btn--danger:hover {
-    background: #C73E3E;
-    color: white;
-}
+    .btn--danger:hover {
+        background: #C73E3E;
+        color: white;
+    }
 
 .btn-icon {
     font-size: 1.1rem;
 }
 
+/* ==========================================================================
+ФОРМЫ
+========================================================================== */
 .form-field {
     display: flex;
     flex-direction: column;
@@ -78,15 +84,15 @@
     transition: all 0.2s ease;
 }
 
-.form-control:focus {
-    outline: none;
-    border-color: var(--accent-green);
-    box-shadow: 0 0 0 3px rgba(58, 90, 64, 0.1);
-}
+    .form-control:focus {
+        outline: none;
+        border-color: var(--accent-green);
+        box-shadow: 0 0 0 3px rgba(58, 90, 64, 0.1);
+    }
 
-.form-control::placeholder {
-    color: #A0A0A0;
-}
+    .form-control::placeholder {
+        color: #A0A0A0;
+    }
 
 .form-textarea {
     resize: vertical;
@@ -100,6 +106,10 @@ select.form-control {
     background-repeat: no-repeat;
     background-position: right 16px center;
     padding-right: 40px;
+    cursor: pointer;
+}
+
+input[type="date"].form-control {
     cursor: pointer;
 }
 
@@ -127,11 +137,11 @@ select.form-control {
     font-weight: 500;
 }
 
-.file-upload-button:hover {
-    background: var(--accent-green);
-    color: white;
-    border-style: solid;
-}
+    .file-upload-button:hover {
+        background: var(--accent-green);
+        color: white;
+        border-style: solid;
+    }
 
 .file-upload-icon {
     font-size: 1.25rem;
@@ -162,6 +172,13 @@ select.form-control {
     justify-content: flex-end;
 }
 
+/* Универсальный контейнер для форм */
+.form-container {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+/* Карточка формы */
 .form-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -170,14 +187,17 @@ select.form-control {
     box-shadow: var(--shadow-sm);
 }
 
-.form-card .form-field {
-    margin-bottom: 24px;
-}
+    .form-card .form-field {
+        margin-bottom: 24px;
+    }
 
-.form-card .form-field:last-of-type {
-    margin-bottom: 0;
-}
+        .form-card .form-field:last-of-type {
+            margin-bottom: 0;
+        }
 
+/* ==========================================================================
+КАРТОЧКИ
+========================================================================== */
 .card {
     background: var(--bg-card);
     border-radius: var(--radius-md);
@@ -186,10 +206,10 @@ select.form-control {
     overflow: hidden;
 }
 
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-}
+    .card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+    }
 
 .card--family {
     padding: 32px;
@@ -280,6 +300,95 @@ select.form-control {
     font-weight: 500;
 }
 
+/* ==========================================================================
+ЗАГОЛОВКИ СТРАНИЦ
+========================================================================== */
+.page-header {
+    margin-bottom: 48px;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+.page-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin-top: 16px;
+}
+
+/* ==========================================================================
+АКЦЕНТНАЯ ЛИНИЯ (универсальная)
+========================================================================== */
+.title-accent {
+    height: 2px;
+    background: linear-gradient(to right, var(--accent-green), transparent);
+    border-radius: 2px;
+}
+
+.page-header .title-accent {
+    max-width: 200px;
+    margin: 20px auto 0;
+}
+
+.section-header .title-accent,
+.comments-section-header .title-accent,
+.tickets-zoo-section-header .title-accent {
+    flex-grow: 1;
+}
+
+/* ==========================================================================
+ЗАГОЛОВКИ СЕКЦИЙ (универсальные)
+========================================================================== */
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-family: var(--font-heading);
+    color: var(--text-main);
+}
+
+/* ==========================================================================
+ПУСТЫЕ СОСТОЯНИЯ (универсальные)
+========================================================================== */
+.empty-container {
+    text-align: center;
+    padding: 80px 40px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.empty-icon {
+    font-size: 4rem;
+    opacity: 0.3;
+}
+
+.empty-title {
+    font-size: 1.5rem;
+    font-family: var(--font-heading);
+    color: var(--text-main);
+}
+
+.empty-text {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
 .empty-state {
     text-align: center;
     padding: 40px;
@@ -287,4 +396,88 @@ select.form-control {
     font-style: italic;
     background: var(--bg-secondary);
     border-radius: var(--radius-md);
+}
+
+/* ==========================================================================
+FEEDBACK ПОЛЯ (перенесено из add-zoo.css)
+========================================================================== */
+.zoo-name-feedback {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    padding: 8px 12px;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    min-height: 36px;
+}
+
+    .zoo-name-feedback:empty {
+        display: none;
+    }
+
+.zoo-name-feedback--checking {
+    background: #FEF3C7;
+    color: #92400E;
+    border: 1px solid #FDE68A;
+}
+
+    .zoo-name-feedback--checking::before {
+        content: '⏳';
+        font-size: 1rem;
+    }
+
+.zoo-name-feedback--available {
+    background: #D1FAE5;
+    color: #065F46;
+    border: 1px solid #A7F3D0;
+}
+
+    .zoo-name-feedback--available::before {
+        content: '✓';
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+.zoo-name-feedback--taken {
+    background: #FEE2E2;
+    color: #991B1B;
+    border: 1px solid #FECACA;
+}
+
+    .zoo-name-feedback--taken::before {
+        content: '✗';
+        font-size: 1.1rem;
+        font-weight: bold;
+    }
+
+/* ==========================================================================
+АДАПТИВНОСТЬ
+========================================================================== */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .form-card {
+        padding: 24px;
+    }
+
+        .form-card .form-actions {
+            justify-content: stretch;
+        }
+
+        .form-card .btn {
+            width: 100%;
+        }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .empty-container {
+        padding: 40px 24px;
+    }
 }
