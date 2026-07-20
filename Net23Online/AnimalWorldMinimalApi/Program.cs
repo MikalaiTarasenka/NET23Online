@@ -23,6 +23,12 @@ builder.Services.AddDbContext<AnimalWorldDbContext>(op => op.UseSqlServer(connec
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<AnimalWorldDbContext>();
+    dbContext.Database.EnsureCreated();
+}
+
 app.UseCors();
 
 app.MapGet("/", () => "Hello World!");

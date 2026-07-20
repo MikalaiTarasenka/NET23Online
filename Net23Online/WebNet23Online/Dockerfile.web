@@ -1,0 +1,24 @@
+﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+USER app
+WORKDIR /app
+EXPOSE 8080
+
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+ARG BUILD_CONFIGURATION=Release
+WORKDIR /src
+COPY ["WebNet23Online/WebNet23Online.csproj", "WebNet23Online/"]
+COPY ["WebNet23Online.Data/WebNet23Online.Data.csproj", "WebNet23Online.Data/"]
+COPY ["MazeCore/MazeCore.csproj", "MazeCore/"]
+RUN dotnet restore "./WebNet23Online/WebNet23Online.csproj"
+COPY . .
+WORKDIR "/src/WebNet23Online"
+RUN dotnet build "./WebNet23Online.csproj" -c $BUILD_CONFIGURATION -o /app/build
+
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "./WebNet23Online.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "WebNet23Online.dll"]

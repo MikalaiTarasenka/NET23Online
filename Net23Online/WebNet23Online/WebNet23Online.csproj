@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>73b94761-958c-409b-b738-dae7cc66131f</UserSecretsId>
-  </PropertyGroup>
+	</PropertyGroup>
 
   <ItemGroup>
     <Folder Include="wwwroot\images\japanese-domestic-market\history-inspection\" />
