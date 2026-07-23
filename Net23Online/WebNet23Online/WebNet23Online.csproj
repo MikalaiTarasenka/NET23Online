@@ -7,9 +7,11 @@
 		<UserSecretsId>73b94761-958c-409b-b738-dae7cc66131f</UserSecretsId>
 	</PropertyGroup>
 
-	<Content Include="Resources\**\*.resx">
-		<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	</Content>
+	<ItemGroup>
+		<Content Include="Resources\**\*.resx">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
 
 	<ItemGroup>
 		<Folder Include="wwwroot\images\japanese-domestic-market\history-inspection\" />
