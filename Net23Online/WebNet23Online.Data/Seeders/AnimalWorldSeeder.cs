@@ -46,26 +46,26 @@ namespace WebNet23Online.Data.Seeders
             var species = new List<AnimalSpeciesData>
             {
                 // Род: Медведи (bears)
-                new() { AnimalSpeciesName = "Бурый медведь", AnimalSpeciesUrl = "https://example.com", NativeRange = "Евразия, Северная Америка", Description = "Один из самых крупных наземных хищников.", AnimalFamilyId = bears.Id, UserId = admin.Id },
-                new() { AnimalSpeciesName = "Белый медведь", AnimalSpeciesUrl = "https://example.com", NativeRange = "Арктика", Description = "Крупнейший сухопутный представитель млекопитающих отряда хищных.", AnimalFamilyId = bears.Id, UserId = admin.Id },
-                new() { AnimalSpeciesName = "Гималайский медведь", AnimalSpeciesUrl = "https://example.com", NativeRange = "Азия", Description = "Отличается белым пятном на груди в форме полумесяца.", AnimalFamilyId = bears.Id, UserId = admin.Id },
+                new() { AnimalSpeciesName = "Бурый медведь", AnimalSpeciesUrl = "https://cdn.pixabay.com/photo/2024/11/16/09/56/bear-9201157_1280.jpg", NativeRange = "Евразия, Северная Америка", Description = "Один из самых крупных наземных хищников.", AnimalFamilyId = bears.Id, UserId = admin.Id },
+                new() { AnimalSpeciesName = "Белый медведь", AnimalSpeciesUrl = "https://cdn.pixabay.com/photo/2025/01/08/21/50/polar-bear-9320260_1280.jpg", NativeRange = "Арктика", Description = "Крупнейший сухопутный представитель млекопитающих отряда хищных.", AnimalFamilyId = bears.Id, UserId = admin.Id },
+                new() { AnimalSpeciesName = "Гималайский медведь", AnimalSpeciesUrl = "https://cdn.pixabay.com/photo/2020/11/04/04/58/bear-5711467_1280.jpg", NativeRange = "Азия", Description = "Отличается белым пятном на груди в форме полумесяца.", AnimalFamilyId = bears.Id, UserId = admin.Id },
                 
                 // Род: Пантеры (panthers)
-                new() { AnimalSpeciesName = "Леопард", AnimalSpeciesUrl = "https://example.com", NativeRange = "Африка, Азия", Description = "Крупная кошка с характерным пятнистым окрасом.", AnimalFamilyId = panthers.Id, UserId = admin.Id },
-                new() { AnimalSpeciesName = "Тигр", AnimalSpeciesUrl = "https://example.com", NativeRange = "Азия", Description = "Один из крупнейших наземных хищников с полосатым окрасом.", AnimalFamilyId = panthers.Id, UserId = admin.Id },
-                new() { AnimalSpeciesName = "Лев", AnimalSpeciesUrl = "https://example.com", NativeRange = "Африка, Индия", Description = "Социальные хищники, живущие в прайдах.", AnimalFamilyId = panthers.Id, UserId = admin.Id },
+                new() { AnimalSpeciesName = "Леопард", AnimalSpeciesUrl = "https://cdn.pixabay.com/photo/2021/11/11/13/08/leopard-6786267_1280.jpg", NativeRange = "Африка, Азия", Description = "Крупная кошка с характерным пятнистым окрасом.", AnimalFamilyId = panthers.Id, UserId = admin.Id },
+                new() { AnimalSpeciesName = "Тигр", AnimalSpeciesUrl = "https://pixabay.com/ru/images/download/ambquinn-tiger-8214815_1920.png", NativeRange = "Азия", Description = "Один из крупнейших наземных хищников с полосатым окрасом.", AnimalFamilyId = panthers.Id, UserId = admin.Id },
+                new() { AnimalSpeciesName = "Лев", AnimalSpeciesUrl = "https://pixabay.com/ru/images/download/ambquinn-lion-8096155_1920.png", NativeRange = "Африка, Индия", Description = "Социальные хищники, живущие в прайдах.", AnimalFamilyId = panthers.Id, UserId = admin.Id },
                 
                 // Род: Рыси (lynxes)
-                new() { AnimalSpeciesName = "Обыкновенная рысь", AnimalSpeciesUrl = "https://example.com", NativeRange = "Евразия", Description = "Хищник с характерными кисточками на ушах.", AnimalFamilyId = lynxes.Id, UserId = admin.Id },
-                new() { AnimalSpeciesName = "Канадская рысь", AnimalSpeciesUrl = "https://example.com", NativeRange = "Северная Америка", Description = "Плотный мех и широкие лапы для хождения по снегу.", AnimalFamilyId = lynxes.Id, UserId = admin.Id },
+                new() { AnimalSpeciesName = "Обыкновенная рысь", AnimalSpeciesUrl = "https://pixabay.com/ru/images/download/nilshornschuh-lynx-8443540_1920.jpg", NativeRange = "Евразия", Description = "Хищник с характерными кисточками на ушах.", AnimalFamilyId = lynxes.Id, UserId = admin.Id },
+                new() { AnimalSpeciesName = "Канадская рысь", AnimalSpeciesUrl = "https://pixabay.com/ru/images/download/lois0002-lynx-8289649_1920.jpg", NativeRange = "Северная Америка", Description = "Плотный мех и широкие лапы для хождения по снегу.", AnimalFamilyId = lynxes.Id, UserId = admin.Id },
                 
                 // Род: Волки / Псовые (canis)
-                new() { AnimalSpeciesName = "Койот", AnimalSpeciesUrl = "https://example.com", NativeRange = "Северная Америка", Description = "Хищник, известный своей адаптивностью и воем.", AnimalFamilyId = canis.Id, UserId = admin.Id },
-                new() { AnimalSpeciesName = "Серый волк", AnimalSpeciesUrl = "https://example.com", NativeRange = "Евразия, Северная Америка", Description = "Прямой предок домашней собаки, стайный охотник.", AnimalFamilyId = canis.Id, UserId = admin.Id },
+                new() { AnimalSpeciesName = "Койот", AnimalSpeciesUrl = "https://pixabay.com/ru/images/download/rauschenberger-coyote-3512704_1920.jpg", NativeRange = "Северная Америка", Description = "Хищник, известный своей адаптивностью и воем.", AnimalFamilyId = canis.Id, UserId = admin.Id },
+                new() { AnimalSpeciesName = "Серый волк", AnimalSpeciesUrl = "https://pixabay.com/ru/images/download/keyouest-wolf-5360340_1920.jpg", NativeRange = "Евразия, Северная Америка", Description = "Прямой предок домашней собаки, стайный охотник.", AnimalFamilyId = canis.Id, UserId = admin.Id },
                 
                 // Род: Орлы (eagles)
-                new() { AnimalSpeciesName = "Беркут", AnimalSpeciesUrl = "https://example.com", NativeRange = "Северное полушарие", Description = "Один из самых известных и крупных хищных птиц.", AnimalFamilyId = eagles.Id, UserId = admin.Id },
-                new() { AnimalSpeciesName = "Могильник", AnimalSpeciesUrl = "https://example.com", NativeRange = "Евразия", Description = "Крупный орел, гнездящийся преимущественно в лесостепной зоне.", AnimalFamilyId = eagles.Id, UserId = admin.Id }
+                new() { AnimalSpeciesName = "Беркут", AnimalSpeciesUrl = "https://pixabay.com/ru/images/download/andrea-l-golden-eagle-4214907_1920.jpg", NativeRange = "Северное полушарие", Description = "Один из самых известных и крупных хищных птиц.", AnimalFamilyId = eagles.Id, UserId = admin.Id },
+                new() { AnimalSpeciesName = "Могильник", AnimalSpeciesUrl = "https://pixabay.com/ru/images/download/sajeevbhaskaran-eagle-6082143_1920.jpg", NativeRange = "Евразия", Description = "Крупный орел, гнездящийся преимущественно в лесостепной зоне.", AnimalFamilyId = eagles.Id, UserId = admin.Id }
             };
 
             context.AnimalSpecies.AddRange(species);
