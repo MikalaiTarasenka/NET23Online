@@ -19,14 +19,26 @@ builder.Services.AddCors(o =>
 });
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<AnimalWorldDbContext>(op => op.UseSqlServer(connectionString));
+var useSqlite = Environment.GetEnvironmentVariable("USE_SQLITE") == "true";
+
+if (useSqlite)
+{
+    builder.Services.AddDbContext<AnimalWorldDbContext>(op => op.UseSqlite(connectionString));
+}
+else
+{
+    builder.Services.AddDbContext<AnimalWorldDbContext>(op => op.UseSqlServer(connectionString));
+}
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
+if (useSqlite)
 {
-    var dbContext = scope.ServiceProvider.GetRequiredService<AnimalWorldDbContext>();
-    dbContext.Database.EnsureCreated();
+    using (var scope = app.Services.CreateScope())
+    {
+        var dbContext = scope.ServiceProvider.GetRequiredService<AnimalWorldDbContext>();
+        dbContext.Database.EnsureCreated();
+    }
 }
 
 app.UseCors();

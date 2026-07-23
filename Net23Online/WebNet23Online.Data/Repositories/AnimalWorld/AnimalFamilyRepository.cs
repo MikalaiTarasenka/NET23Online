@@ -13,7 +13,7 @@ namespace WebNet23Online.Data.Repositories.AnimalWorld
 
         public List<AnimalFamilyData> GetRandomElements()
         {
-            return _dbSet.OrderBy(animal => Guid.NewGuid()).Take(START_PAGE_COUNT_ANIMAL_FAMILIES).ToList();
+            return _dbSet.ToList().OrderBy(animal => Guid.NewGuid()).Take(START_PAGE_COUNT_ANIMAL_FAMILIES).ToList();
         }
 
         public AnimalFamilyData GetElementByName(string name)

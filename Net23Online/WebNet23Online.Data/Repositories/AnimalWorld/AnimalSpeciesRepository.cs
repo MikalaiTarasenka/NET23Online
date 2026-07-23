@@ -18,7 +18,7 @@ namespace WebNet23Online.Data.Repositories.AnimalWorld
 
         public List<AnimalSpeciesData> GetRandomElements()
         {
-            return _dbSet.Include(s => s.ZooData).OrderBy(r => Guid.NewGuid()).Take(START_PAGE_COUNT_ANIMAL_SPECIES).ToList();
+            return _dbSet.Include(s => s.ZooData).ToList().OrderBy(r => Guid.NewGuid()).Take(START_PAGE_COUNT_ANIMAL_SPECIES).ToList();
         }
 
         public AnimalSpeciesData GetElementByName(string name)
