@@ -9,7 +9,7 @@ WORKDIR /src
 COPY ["Net23Online/WebNet23Online/WebNet23Online.csproj", "Net23Online/WebNet23Online/"]
 COPY ["Net23Online/WebNet23Online.Data/WebNet23Online.Data.csproj", "Net23Online/WebNet23Online.Data/"]
 COPY ["Net23Online/MazeCore/MazeCore.csproj", "MazeCore/"]
-RUN dotnet restore "./WebNet23Online/WebNet23Online.csproj"
+RUN dotnet restore "./Net23Online/WebNet23Online/WebNet23Online.csproj"
 COPY . .
 WORKDIR "/src/Net23Online/WebNet23Online"
 RUN dotnet build "./WebNet23Online.csproj" -c $BUILD_CONFIGURATION -o /app/build
