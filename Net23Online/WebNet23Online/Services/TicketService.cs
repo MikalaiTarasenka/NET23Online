@@ -42,7 +42,7 @@ namespace WebNet23Online.Services
             var zooTicketsViewModel = zooTicketsData.Select(x => new ZooTicketsViewModel
             {
                 UniqueKey = x.UniqueKey,
-                ZooName = x.Zoo.ZooName,
+                ZooName = x.Zoo?.ZooName ?? "Неизвестный зоопарк",
                 IsUsed = x.IsUsed,
                 EventDate = x.EventDate,
             }).ToList();

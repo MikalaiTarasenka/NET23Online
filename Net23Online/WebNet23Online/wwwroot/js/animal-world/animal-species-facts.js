@@ -3,6 +3,7 @@
     const $text = $('#factText');
     const $container = $('#facts-container');
     const $feedback = $('#fact-form-feedback');
+    const $addBtn = $('#addFactBtn');
 
     const messages = {
         errorEmpty: $feedback.data('msg-error-empty'),
@@ -14,15 +15,23 @@
 
     const factsApiUrl = $('.fact-form-card').data('url');
 
+    // Загрузка видов животных
     $.getJSON('/api/AnimalWorld/GetAnimalSpeciesNames')
         .done(function (list) {
-            $select.html(list.map(function (name) {
-                return new Option(name, name);
-            }));
+            $select.empty();
+            list.forEach(function (name) {
+                $select.append(new Option(name, name));
+            });
             loadFacts();
+        })
+        .fail(function () {
+            $select.empty().append(new Option('—', ''));
+            $('#facts-loading-status').remove();
+            renderState(messages.errorLoad, '⚠️');
         });
 
-    $('#addFactBtn').on('click', function () {
+    // Добавление факта
+    $addBtn.on('click', function () {
         const animal = $select.val();
         const val = $text.val().trim();
 
@@ -30,6 +39,13 @@
             showFeedback('error', messages.errorEmpty);
             return;
         }
+
+        if (!animal) {
+            showFeedback('error', messages.errorSubmit);
+            return;
+        }
+
+        $addBtn.prop('disabled', true);
 
         $.ajax({
             url: `${factsApiUrl}/AddFact`,
@@ -39,68 +55,76 @@
                 animalSpeciesName: animal,
                 text: val
             }),
-            success: function () {
+            success: function (createdFact) {
                 $text.val('');
                 showFeedback('success', messages.success);
 
-                const $newFact = $(`
-                    <article class="fact-item fact-item--new">
-                        <span class="fact-animal-type">${animal}</span>
-                        <p class="fact-text">${val}</p>
-                    </article>
-                `);
+                // Если список был пуст — убираем заглушку
+                $container.find('.empty-container').remove();
+
+                // Если индикатор загрузки ещё висит — убираем
+                $('#facts-loading-status').remove();
+
+                // Используем данные от сервера, если пришли, иначе локальные
+                const factData = createdFact && createdFact.text
+                    ? createdFact
+                    : { animalSpeciesName: animal, text: val };
+
+                // Безопасное создание DOM (защита от XSS)
+                const $newFact = $('<article>', { class: 'fact-item fact-item--new' });
+                $('<span>', { class: 'fact-animal-type', text: factData.animalSpeciesName }).appendTo($newFact);
+                $('<p>', { class: 'fact-text', text: factData.text }).appendTo($newFact);
 
                 $container.prepend($newFact);
 
-                setTimeout(() => {
-                    $newFact.removeClass('fact-item--new');
-                }, 500);
-
-                setTimeout(() => {
-                    $feedback.text('').hide();
-                }, 3000);
+                setTimeout(() => $newFact.removeClass('fact-item--new'), 500);
+                setTimeout(() => $feedback.text('').hide(), 3000);
             },
             error: function () {
                 showFeedback('error', messages.errorSubmit);
+            },
+            complete: function () {
+                $addBtn.prop('disabled', false);
             }
         });
     });
 
+    // Загрузка списка фактов
     function loadFacts() {
         $.getJSON(`${factsApiUrl}/GetFacts`)
             .done(function (facts) {
                 $('#facts-loading-status').remove();
 
-                if (facts.length === 0) {
-                    $container.html(`
-                        <div class="empty-container">
-                            <div class="empty-icon">💭</div>
-                            <p class="empty-text">${messages.emptyState}</p>
-                        </div>
-                    `);
+                if (!facts || facts.length === 0) {
+                    renderState(messages.emptyState, '💭');
                     return;
                 }
 
-                $container.find('.fact-item').remove();
+                // Очищаем только элементы фактов, не трогая индикатор загрузки
+                $container.find('.fact-item, .empty-container').remove();
 
                 facts.forEach(function (fact) {
-                    $(`<article class="fact-item">
-                        <span class="fact-animal-type">${fact.animalSpeciesName}</span>
-                        <p class="fact-text">${fact.text}</p>
-                    </article>`).appendTo($container);
+                    const $fact = $('<article>', { class: 'fact-item' });
+                    $('<span>', { class: 'fact-animal-type', text: fact.animalSpeciesName }).appendTo($fact);
+                    $('<p>', { class: 'fact-text', text: fact.text }).appendTo($fact);
+                    $container.append($fact);
                 });
             })
             .fail(function () {
                 $('#facts-loading-status').remove();
-                $container.html(`
-                    <div class="empty-container">
-                        <div class="empty-icon">⚠️</div>
-                        <p class="empty-text">${messages.errorLoad}</p>
-                    </div>
-                `);
+                renderState(messages.errorLoad, '⚠️');
             });
     }
 
+    // Рендер состояния "пусто" или "ошибка"
+    function renderState(text, icon) {
+        const $state = $('<div>', { class: 'empty-container' });
+        $('<div>', { class: 'empty-icon', text: icon }).appendTo($state);
+        $('<p>', { class: 'empty-text', text: text }).appendTo($state);
+        $container.html($state);
+    }
+
+    // Показ сообщения-фидбека
     function showFeedback(type, message) {
         $feedback
             .removeClass('fact-feedback--success fact-feedback--error')
