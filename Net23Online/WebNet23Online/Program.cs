@@ -3,14 +3,15 @@ using MazeCore.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Quartz;
 using WebNet23Online.Data;
+using WebNet23Online.Data.Seeders;
 using WebNet23Online.Hubs;
 using WebNet23Online.MiddlewareServices;
 using WebNet23Online.RelfectionTools;
 using WebNet23Online.Services;
 using WebNet23Online.Services.Apis;
+using WebNet23Online.Services.Apis.steam;
 using WebNet23Online.Services.BackgroundServices;
 using WebNet23Online.Services.BackgroundServices.steam;
-using WebNet23Online.Services.Apis.steam;
 using WebNet23Online.Services.DelightBistro;
 using WebNet23Online.Services.Interfaces;
 using WebNet23Online.Services.Interfaces.LittleLemon;
@@ -207,6 +208,7 @@ if (useSqlite)
     {
         var dbContext = scope.ServiceProvider.GetRequiredService<WebContext>();
         dbContext.Database.EnsureCreated();
+        await DbSeeder.SeedAsync(dbContext);
     }
 }
 
