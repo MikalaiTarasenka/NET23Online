@@ -1,10 +1,8 @@
 ﻿@using WebNet23Online.Localizations.AnimalWorld
-@inject Microsoft.Extensions.Localization.IStringLocalizer<AnimalWorldFacts> LocalizerFacts
-@inject Microsoft.Extensions.Localization.IStringLocalizer<WebNet23Online.Localizations.AnimalWorld.AnimalWorldCommon> LocalizerCommon
-@model WebNet23Online.Models.AnimalWorld.InterestingFactsViewModel
+@model WebNet23Online.Models.AnimalWorld.InterestingFactsViewModel 
 @{
     Layout = "_LayoutAnimalWorld";
-    ViewData["Title"] = LocalizerFacts["InterestingFacts"];
+    ViewData["Title"] = AnimalWorldFacts.InterestingFacts;
 }
 @section Styles {
     <link rel="stylesheet" href="~/css/animal-world/pages/interesting-facts.css" asp-append-version="true" />
@@ -13,10 +11,9 @@
     <script src="~/js/animal-world/animal-species-facts.js"></script>
 }
 <section class="page-header">
-    <!-- Заменяем статические вызовы на вызовы через локализатор -->
-    <h1 class="page-title">@LocalizerFacts["AnimalFacts"]</h1>
+    <h1 class="page-title">@AnimalWorldFacts.AnimalFacts</h1>
     <div class="title-accent"></div>
-    <p class="page-subtitle">@LocalizerFacts["LearnFacts"]</p>
+    <p class="page-subtitle">@AnimalWorldFacts.LearnFacts</p>
 </section>
 <div class="fact-form-card" data-url="@Model.FactsApiUrl">
     <form class="fact-form" id="fact-form">
