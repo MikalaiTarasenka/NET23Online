@@ -281,5 +281,26 @@ else
 Console.WriteLine("==================================================");
 // ==============================================
 
+// === ВРЕМЕННАЯ СТРАНИЦА ДЛЯ ПРОВЕРКИ ЛОКАЛИЗАЦИИ ===
+app.MapGet("/debug-loc", (Microsoft.AspNetCore.Hosting.IWebHostEnvironment env,
+                          Microsoft.Extensions.Options.IOptions<Microsoft.AspNetCore.Builder.RequestLocalizationOptions> locOptions) =>
+{
+    var resPath = System.IO.Path.Combine(env.ContentRootPath, "Localizations");
+    var files = System.IO.Directory.Exists(resPath)
+        ? System.IO.Directory.GetFiles(resPath, "*.resx", System.IO.SearchOption.AllDirectories).ToList()
+        : new List<string>();
+
+    return new
+    {
+        ContentRootPath = env.ContentRootPath,
+        SupportedCultures = locOptions.Value.SupportedCultures.Select(c => c.Name),
+        LocalizationsFolderExists = System.IO.Directory.Exists(resPath),
+        ResxFilesFoundCount = files.Count,
+        SampleFiles = files.Take(5) // Покажем первые 5 найденных файлов
+    };
+});
+// ====================================================
+
+app.Run();
 
 app.Run();
