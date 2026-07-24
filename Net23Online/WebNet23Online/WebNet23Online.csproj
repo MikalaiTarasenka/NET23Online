@@ -8,12 +8,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Content Include="Resources\**\*.resx">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
-	</ItemGroup>
-
-	<ItemGroup>
 		<Folder Include="wwwroot\images\japanese-domestic-market\history-inspection\" />
 		<Folder Include="wwwroot\js\rock-band\" />
 		<Folder Include="wwwroot\temp\" />

@@ -36,7 +36,13 @@ else
 }
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+// Add services to the container.
+builder.Services.AddControllersWithViews()
+    .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
+    .AddDataAnnotationsLocalization();
+
+// ДОБАВИТЬ ЭТО: Указываем ASP.NET Core, где искать файлы .resx
+builder.Services.AddLocalization(options => options.ResourcesPath = "Localizations");
 
 builder.Services
     .AddAuthentication(AuthService.AUTH_KEY)

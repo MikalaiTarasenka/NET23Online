@@ -30,11 +30,21 @@ public class MyLocalizationMiddleware
         }
         else
         {
-            // Guest
+            var queryCulture = context.Request.Query["culture"].FirstOrDefault();
 
-            // just and example of header value
-            // ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7,la;q=0.6
-            context.Request.Headers.AcceptLanguage.First();
+            if (!string.IsNullOrEmpty(queryCulture))
+            {
+                culture = new CultureInfo(queryCulture);
+            }
+            else
+            {
+                // Если в URL нет, проверяем заголовки браузера
+                var acceptLanguage = context.Request.Headers.AcceptLanguage.FirstOrDefault();
+                if (!string.IsNullOrEmpty(acceptLanguage) && acceptLanguage.Contains("ru", StringComparison.OrdinalIgnoreCase))
+                {
+                    culture = new CultureInfo("ru-RU");
+                }
+            }
         }
 
         Thread.CurrentThread.CurrentCulture = culture;
