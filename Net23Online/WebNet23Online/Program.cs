@@ -41,8 +41,15 @@ builder.Services.AddControllersWithViews()
     .AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix)
     .AddDataAnnotationsLocalization();
 
-// ДОБАВИТЬ ЭТО: Указываем ASP.NET Core, где искать файлы .resx
 builder.Services.AddLocalization(options => options.ResourcesPath = "Localizations");
+
+var supportedCultures = new[] { "en-US", "ru-RU", "de-DE" };
+builder.Services.Configure<Microsoft.AspNetCore.Builder.RequestLocalizationOptions>(options =>
+{
+    options.SetDefaultCulture(supportedCultures[0])
+           .AddSupportedCultures(supportedCultures)
+           .AddSupportedUICultures(supportedCultures);
+});
 
 builder.Services
     .AddAuthentication(AuthService.AUTH_KEY)
