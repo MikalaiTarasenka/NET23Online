@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebNet23Online.Data.DataModels;
+using WebNet23Online.Data.HelperModels;
 using WebNet23Online.Data.Models.AnimalWorld;
 using WebNet23Online.Data.Repositories.Interfaces.AnimalWorld;
 
@@ -38,21 +39,18 @@ namespace WebNet23Online.Data.Repositories.AnimalWorld
             _context.SaveChanges();
         }
 
-        public List<string> GetZooAnimalFamilies(int id)
+        public List<ZooWithAnimalFamilyDto> GetZooAnimalFamilies(List<int> ids)
         {
-            var sql = @$"SELECT DISTINCT 
-                [AF].AnimalFamilyName
+            var sql = @$"SELECT [BZAAS].ZooDataId, [AF].AnimalFamilyName
             FROM 
-                Zoos [Z] 
-            JOIN 
-                BindZooAndAnimalSpecies [BZAAS] ON [Z].Id = [BZAAS].ZooDataId 
+                BindZooAndAnimalSpecies [BZAAS]
             JOIN 
                 AnimalSpecies [AS] ON [AS].Id = [BZAAS].AnimalSpeciesId
             JOIN 
                 AnimalFamilies [AF] ON [AF].Id = [AS].AnimalFamilyId
             WHERE 
-                [Z].Id = {id}";
-            return _context.Database.SqlQueryRaw<string>(sql).ToList();
+                [BZAAS].ZooDataId IN ({string.Join(",", ids)})";
+            return _context.Database.SqlQueryRaw<ZooWithAnimalFamilyDto>(sql).ToList();
         }
 
         public List<ZooData> GetZoos(int page, int count)

@@ -237,11 +237,13 @@ namespace WebNet23Online.Services
             }
 
             var zoos = _animalWorldMapper.FromZooDataToZooViewModel(_zooRepository.GetZoos(page, COUNT_ZOOS_PER_PAGE));
+            var zooIds = zoos.Select(z => z.Id).ToList();
+            var animalFamiliesData = _zooRepository.GetZooAnimalFamilies(zooIds);
+            var familiesByZooId = animalFamiliesData.ToLookup(f => f.ZooDataId, f => f.AnimalFamilyName);
             foreach (var zoo in zoos)
             {
-                zoo.AnimalFamilies = _zooRepository.GetZooAnimalFamilies(zoo.Id);
+                zoo.AnimalFamilies = familiesByZooId[zoo.Id].Distinct().ToList();
             }
-
 
             var zooPage = new PagedZooListViewModel
             {
