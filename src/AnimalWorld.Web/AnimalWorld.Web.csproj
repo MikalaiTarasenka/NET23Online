@@ -14,4 +14,8 @@
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AnimalWorld.Core\AnimalWorld.Core.csproj" />
+  </ItemGroup>
+
 </Project>

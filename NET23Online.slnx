@@ -3,6 +3,8 @@
     <File Path="README.md" />
   </Folder>
   <Folder Name="/src/">
+    <Project Path="src/AnimalWorld.Core/AnimalWorld.Core.csproj" Id="e676314c-7b53-44e4-a1e7-d27d4903bc12" />
+    <Project Path="src/AnimalWorld.Data/AnimalWorld.Data.csproj" Id="5ae44f2b-bb06-4371-a7ca-365cfdaf0d30" />
     <Project Path="src/AnimalWorld.Web/AnimalWorld.Web.csproj" />
   </Folder>
 </Solution>
