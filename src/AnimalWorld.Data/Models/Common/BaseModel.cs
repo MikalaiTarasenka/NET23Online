@@ -1,4 +1,4 @@
-﻿namespace AnimalWorld.Data.Models
+﻿namespace AnimalWorld.Data.Models.Common
 {
     public abstract class BaseModel
     {
