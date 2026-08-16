@@ -1,8 +1,8 @@
 ﻿using AnimalWorld.Data.Models.Common;
-using AnimalWorld.Data.Models.User;
-using AnimalWorld.Data.Models.Zoo;
+using AnimalWorld.Data.Models.Users;
+using AnimalWorld.Data.Models.Zoos;
 
-namespace AnimalWorld.Data.Models.Animal
+namespace AnimalWorld.Data.Models.Animals
 {
     public class AnimalSpeciesData : NamedBaseModel
     {
@@ -18,7 +18,7 @@ namespace AnimalWorld.Data.Models.Animal
 
         public AnimalFamilyData AnimalFamily { get; set; }
 
-        public List<ZooData> ZooData { get; set; }
+        public List<ZooData> Zoos { get; set; }
 
         public UserData Creator { get; set; }
     }

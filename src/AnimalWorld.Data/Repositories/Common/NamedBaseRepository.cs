@@ -3,7 +3,7 @@ using AnimalWorld.Data.Repositories.Interfaces.Common;
 
 namespace AnimalWorld.Data.Repositories.Common
 {
-    internal class NamedBaseRepository<DataModel> : BaseRepository<DataModel>, INamedBaseRepository<DataModel> where DataModel : NamedBaseModel
+    internal abstract class NamedBaseRepository<DataModel> : BaseRepository<DataModel>, INamedBaseRepository<DataModel> where DataModel : NamedBaseModel
     {
         public NamedBaseRepository(WebContext context) : base(context) { }
 

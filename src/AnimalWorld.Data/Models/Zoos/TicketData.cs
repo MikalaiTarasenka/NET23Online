@@ -1,7 +1,7 @@
 ﻿using AnimalWorld.Data.Models.Common;
-using AnimalWorld.Data.Models.User;
+using AnimalWorld.Data.Models.Users;
 
-namespace AnimalWorld.Data.Models.Zoo
+namespace AnimalWorld.Data.Models.Zoos
 {
     public class TicketData : BaseModel
     {
