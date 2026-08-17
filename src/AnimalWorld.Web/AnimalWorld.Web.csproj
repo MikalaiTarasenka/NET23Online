@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\AnimalWorld.Core\AnimalWorld.Core.csproj" />
+    <ProjectReference Include="..\AnimalWorld.Data\AnimalWorld.Data.csproj" />
   </ItemGroup>
 
 </Project>
