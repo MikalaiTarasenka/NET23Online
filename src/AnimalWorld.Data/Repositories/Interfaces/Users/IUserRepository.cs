@@ -5,6 +5,6 @@ namespace AnimalWorld.Data.Repositories.Interfaces.Users
 {
     public interface IUserRepository : IBaseRepository<UserData>
     {
-        bool LoginIsFree(string login);
+        bool UserNameIsFree(string userName);
     }
 }

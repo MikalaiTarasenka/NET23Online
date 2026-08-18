@@ -7,7 +7,7 @@ namespace AnimalWorld.Data.Models.Users
 {
     public class UserData : BaseModel
     {
-        public string Login { get; set; }
+        public string UserName { get; set; }
 
         public string PasswordHash { get; set; }
 

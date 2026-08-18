@@ -1,12 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AnimalWorld.Data.Enums;
+using AnimalWorld.Data.Models.Users;
 
 namespace AnimalWorld.Core.Services.Interfaces.Users
 {
-    internal interface IAuthService
+    public interface IAuthService
     {
+        int GetUserId();
+
+        string GetUserName();
+
+        UserData GetUser();
+
+        bool IsAuthenticated();
+
+        UserRole GetRole();
+
+        bool IsAtLeastModerator();
+
+        Language GetLanguage();
+
+        void SignIn(UserData user);
     }
 }

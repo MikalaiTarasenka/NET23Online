@@ -8,9 +8,9 @@ namespace AnimalWorld.Data.Repositories.Users
     {
         public UserRepository(WebContext context) : base(context) { }
 
-        public bool LoginIsFree(string login)
+        public bool UserNameIsFree(string userName)
         {
-            return _dbSet.FirstOrDefault(x => x.Login == login) == null;
+            return _dbSet.FirstOrDefault(x => x.UserName == userName) == null;
         }
     }
 }
