@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AnimalWorld.Data.Models.Animals;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,8 @@ using System.Threading.Tasks;
 
 namespace AnimalWorld.Core.Services.Interfaces.Animals
 {
-    internal interface IAnimalSpeciesService
+    public interface IAnimalSpeciesService : IBaseService<AnimalFamilyData>
     {
+        List<AnimalFamilyData> GetRandomAnimals();
     }
 }

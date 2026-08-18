@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AnimalWorld.Core.HelperModels;
 
 namespace AnimalWorld.Core.Services.Interfaces.Animals
 {
-    internal interface IAnimalGalleryService
+    public interface IAnimalGalleryService
     {
+        Task<GalleryHelperModel> GetRandomAnimalsAsync();
     }
 }
