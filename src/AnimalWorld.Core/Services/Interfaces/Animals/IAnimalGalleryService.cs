@@ -1,9 +1,9 @@
-﻿using AnimalWorld.Core.HelperModels;
+﻿using AnimalWorld.Core.Dtos.Animals;
 
 namespace AnimalWorld.Core.Services.Interfaces.Animals
 {
     public interface IAnimalGalleryService
     {
-        Task<GalleryHelperModel> GetRandomAnimalsAsync();
+        Task<AnimalGalleryDto> GetRandomAnimalsAsync();
     }
 }

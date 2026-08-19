@@ -1,5 +1,5 @@
 ﻿using AnimalWorld.Core.Apis;
-using AnimalWorld.Core.HelperModels;
+using AnimalWorld.Core.Dtos.Animals;
 using AnimalWorld.Core.Services.Interfaces.Animals;
 
 namespace AnimalWorld.Core.Services.Animals
@@ -16,20 +16,20 @@ namespace AnimalWorld.Core.Services.Animals
             _random = new Random();
         }
 
-        public async Task<GalleryHelperModel> GetRandomAnimalsAsync()
+        public async Task<AnimalGalleryDto> GetRandomAnimalsAsync()
         {
             var animalImages = await GetRandomAnimalImages();
-            var gallery = new GalleryHelperModel
+            var gallery = new AnimalGalleryDto
             {
                 RandomAnimals = animalImages,
             };
             return gallery;
         }
 
-        private async Task<List<RandomAnimalHelperModel>> GetRandomAnimalImages()
+        private async Task<List<RandomAnimalDto>> GetRandomAnimalImages()
         {
             var animalSpecies = await _randomAnimalApi.GetAnimalSpecies();
-            var tasks = new List<Task<RandomAnimalHelperModel>>();
+            var tasks = new List<Task<RandomAnimalDto>>();
             for (var i = 0; i < RANDOM_ANIMAL_IMAGE_COUNT; i++)
             {
                 var index = _random.Next(animalSpecies.Count);

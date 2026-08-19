@@ -1,4 +1,4 @@
-﻿using AnimalWorld.Core.HelperModels;
+﻿using AnimalWorld.Core.Dtos.Animals;
 using System.Net.Http.Json;
 
 namespace AnimalWorld.Core.Apis
@@ -14,13 +14,13 @@ namespace AnimalWorld.Core.Apis
 
         public async Task<List<string>> GetAnimalSpecies()
         {
-            var endpoints = await _httpClient.GetFromJsonAsync<RandomAnimalEndpointsHelperModel>("/animal");
+            var endpoints = await _httpClient.GetFromJsonAsync<RandomAnimalEndpointsDto>("/animal");
             return endpoints.Endpoints;
         }
 
-        public async Task<RandomAnimalHelperModel> GetRandomAnimal(string type)
+        public async Task<RandomAnimalDto> GetRandomAnimal(string type)
         {
-            return await _httpClient.GetFromJsonAsync<RandomAnimalHelperModel>(type);
+            return await _httpClient.GetFromJsonAsync<RandomAnimalDto>(type);
         }
     }
 }

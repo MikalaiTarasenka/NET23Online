@@ -1,8 +1,8 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace AnimalWorld.Core.HelperModels
+namespace AnimalWorld.Core.Dtos.Animals
 {
-    public class RandomAnimalEndpointsHelperModel
+    public class RandomAnimalEndpointsDto
     {
         [JsonPropertyName("endpoints")]
         public List<string> Endpoints { get; set; }
