@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AnimalWorld.Data.Models.Zoos;
 
 namespace AnimalWorld.Core.Services.Interfaces.Zoos
 {
-    internal interface ITicketService
+    public interface ITicketService
     {
+        void BookZooVisit(string zooName);
+
+        List<TicketData> GetUserTickets(int userId);
     }
 }
