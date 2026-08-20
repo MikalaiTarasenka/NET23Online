@@ -1,6 +1,18 @@
+using AnimalWorld.Core;
+using AnimalWorld.Data;
+using AnimalWorld.Data.Models.Animals;
+using AnimalWorld.Web.Mappers;
+using AnimalWorld.Web.Mappers.Animals;
+using AnimalWorld.Web.Models.Animals;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddAnimalWorldData(builder.Configuration.GetConnectionString("DefaultDbConnection"));
+builder.Services.AddAnimalWorldCore();
+builder.Services.AddScoped<IMapper<AnimalFamilyData, AnimalFamilyViewModel>, AnimalFamilyMapper>();
+builder.Services.AddScoped<IMapper<AnimalSpeciesData, AnimalSpeciesViewModel>, AnimalSpeciesMapper>();
 
 var app = builder.Build();
 
