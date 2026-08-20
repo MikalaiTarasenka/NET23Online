@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AnimalWorld.Data.Models.Zoos;
 
 namespace AnimalWorld.Core.Services.Interfaces.Zoos
 {
-    internal interface IZooService
+    public interface IZooService : IBaseService<ZooData>
     {
     }
 }

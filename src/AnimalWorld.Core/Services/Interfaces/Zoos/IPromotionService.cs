@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AnimalWorld.Data.Models.Zoos;
 
 namespace AnimalWorld.Core.Services.Interfaces.Zoos
 {
-    internal interface IPromotionService
+    public interface IPromotionService : IBaseService<PromotionData>
     {
     }
 }
