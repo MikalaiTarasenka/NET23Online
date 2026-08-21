@@ -1,4 +1,35 @@
 ﻿@model AnimalWorld.Web.Models.Home.HomePageViewModel
 @{
     Layout = "_Layout";
+    ViewData["Title"] = "Главная";
 }
+<div>
+
+</div>
+<div>
+    <div>Рода животных</div>
+    <div>
+        @foreach (var family in Model.AnimalFamilies)
+        {
+            <div>@family.Name</div>
+            <div>@family.Description</div>
+        }
+    </div>
+</div>
+<div>
+    <div>Виды животных</div>
+    <div>
+        @foreach (var species in Model.AnimalSpecies)
+        {
+            <div>@species.Url</div>
+            <div>@species.Name</div>
+            <div>@species.NativeRange</div>
+            <div>@species.Description</div>
+            <div>Зоопарки:</div>
+            @foreach(var zoo in species.Zoos)
+            {
+                <div>@zoo</div>
+            }
+        }
+    </div>
+</div>
