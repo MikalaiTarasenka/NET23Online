@@ -1,35 +1,92 @@
 ﻿@model AnimalWorld.Web.Models.Home.HomePageViewModel
+
 @{
     Layout = "_Layout";
-    ViewData["Title"] = "Главная";
+    ViewData["Title"] = "Главная страница";
 }
-<div>
 
-</div>
-<div>
-    <div>Рода животных</div>
-    <div>
-        @foreach (var family in Model.AnimalFamilies)
+<!-- СЕКЦИЯ 1: Приветствие и картинка -->
+<section style="text-align: center; padding: 40px 20px; background-color: #eef2f3; border-radius: 8px; margin-bottom: 40px;">
+    <h1 style="margin: 0 0 15px 0; color: #2c3e50; font-size: 2rem;">Добро пожаловать в мир животных</h1>
+    <p style="color: #555; font-size: 1.1rem; max-width: 700px; margin: 0 auto 25px auto; line-height: 1.5;">
+        Узнайте больше о разнообразии видов, их среде обитания и о том, в каких зоопарках мира их можно увидеть.
+    </p>
+    <img src="https://images.unsplash.com/photo-1549366021-9f761d450615?auto=format&fit=crop&w=1000&q=80"
+         alt="Животные"
+         style="max-width: 100%; height: auto; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+</section>
+
+<!-- СЕКЦИЯ 2: 3 семейства животных -->
+<section style="margin-bottom: 50px;">
+    <h2 style="text-align: center; color: #2c3e50; margin-bottom: 25px; font-size: 1.5rem;">Популярные семейства</h2>
+
+    <!-- Flex-контейнер для карточек -->
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+        @if (Model?.AnimalFamilies != null && Model.AnimalFamilies.Any())
         {
-            <div>@family.Name</div>
-            <div>@family.Description</div>
-        }
-    </div>
-</div>
-<div>
-    <div>Виды животных</div>
-    <div>
-        @foreach (var species in Model.AnimalSpecies)
-        {
-            <div>@species.Url</div>
-            <div>@species.Name</div>
-            <div>@species.NativeRange</div>
-            <div>@species.Description</div>
-            <div>Зоопарки:</div>
-            @foreach(var zoo in species.Zoos)
+            foreach (var family in Model.AnimalFamilies.Take(3))
             {
-                <div>@zoo</div>
+                <div style="flex: 1 1 300px; max-width: 380px; background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <h3 style="margin: 0 0 10px 0; color: #2980b9; font-size: 1.25rem;">@family.Name</h3>
+                    <p style="margin: 0; color: #555; line-height: 1.6; font-size: 0.95rem;">
+                        @(family.Description.Length > 180 ? family.Description.Substring(0, 180) + "..." : family.Description)
+                    </p>
+                </div>
             }
         }
+        else
+        {
+            <p style="color: #777; width: 100%; text-align: center;">Информация о семействах временно отсутствует.</p>
+        }
     </div>
-</div>
+</section>
+
+<hr style="border: 0; border-top: 1px solid #e0e0e0; margin: 40px 0;" />
+
+<!-- СЕКЦИЯ 3: 3 вида животных -->
+<section style="margin-bottom: 50px;">
+    <h2 style="text-align: center; color: #2c3e50; margin-bottom: 25px; font-size: 1.5rem;">Интересные виды</h2>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+        @if (Model?.AnimalSpecies != null && Model.AnimalSpecies.Any())
+        {
+            foreach (var species in Model.AnimalSpecies.Take(3))
+            {
+                <div style="flex: 1 1 300px; max-width: 380px; background: white; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+
+                    <!-- Картинка -->
+                    <img src="@(string.IsNullOrEmpty(species.Url) ? "https://via.placeholder.com/400x250?text=Нет+фото" : species.Url)"
+                         alt="@species.Name"
+                         style="width: 100%; height: 200px; object-fit: cover; background-color: #f0f0f0;">
+
+                    <div style="padding: 20px; flex-grow: 1; display: flex; flex-direction: column;">
+                        <h3 style="margin: 0 0 15px 0; color: #2c3e50; font-size: 1.2rem;">@species.Name</h3>
+
+                        <div style="margin-bottom: 12px;">
+                            <span style="display: block; font-size: 0.75rem; text-transform: uppercase; color: #888; font-weight: bold; margin-bottom: 4px;">Место обитания</span>
+                            <span style="color: #333; font-size: 0.95rem;">@species.NativeRange</span>
+                        </div>
+
+                        <div style="margin-bottom: 15px;">
+                            <span style="display: block; font-size: 0.75rem; text-transform: uppercase; color: #888; font-weight: bold; margin-bottom: 4px;">Описание</span>
+                            <p style="margin: 0; color: #555; font-size: 0.9rem; line-height: 1.5;">
+                                @(species.Description.Length > 120 ? species.Description.Substring(0, 120) + "..." : species.Description)
+                            </p>
+                        </div>
+
+                        <div style="margin-top: auto; padding-top: 10px; border-top: 1px solid #f0f0f0;">
+                            <span style="display: block; font-size: 0.75rem; text-transform: uppercase; color: #888; font-weight: bold; margin-bottom: 4px;">Можно увидеть в</span>
+                            <span style="color: #2980b9; font-size: 0.9rem; font-style: italic;">
+                                @(species.Zoos != null && species.Zoos.Any() ? string.Join(", ", species.Zoos) : "Информация уточняется")
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p style="color: #777; width: 100%; text-align: center;">Информация о видах временно отсутствует.</p>
+        }
+    </div>
+</section>

@@ -13,7 +13,7 @@ namespace AnimalWorld.Web.Mappers.Animals
                 Description = source.Description,
                 NativeRange = source.NativeRange,
                 Url = source.Url,
-                Zoos = source.Zoos.Select(s => s.Name).ToList(),
+                Zoos = source.Zoos?.Select(s => s.Name).ToList() ?? new List<string>(),
             };
         }
 

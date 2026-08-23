@@ -8,6 +8,7 @@ using AnimalWorld.Web.Models.Animals;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddAnimalWorldData(builder.Configuration.GetConnectionString("DefaultDbConnection"));
 builder.Services.AddAnimalWorldCore();

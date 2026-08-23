@@ -13,7 +13,7 @@ namespace AnimalWorld.Data
     {
         public static IServiceCollection AddAnimalWorldData(this IServiceCollection services, string connectionString)
         {
-            services.AddDbContext<WebContext>(options => options.UseNpgsql(connectionString));
+            services.AddDbContext<WebContext>(options => options.UseNpgsql(connectionString).UseSnakeCaseNamingConvention());
             services.AddScoped<IAnimalFamilyRepository, AnimalFamilyRepository>();
             services.AddScoped<IAnimalSpeciesRepository, AnimalSpeciesRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
