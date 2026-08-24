@@ -1,9 +1,12 @@
-﻿using AnimalWorld.Core.Services.Interfaces.Users;
+﻿using AnimalWorld.Core.Dtos.Users;
+using AnimalWorld.Core.Services.Interfaces.Users;
 using AnimalWorld.Data.Enums;
 using AnimalWorld.Data.Models.Users;
 using AnimalWorld.Data.Repositories.Interfaces.Users;
+using BCrypt.Net;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity.Data;
 using System.Security.Claims;
 
 namespace AnimalWorld.Core.Services.Users
@@ -91,6 +94,39 @@ namespace AnimalWorld.Core.Services.Users
             var languageStr = _httpContextAccessor.HttpContext!.User.Claims.First(x => x.Type == COOCKIE_LANGUAGE_KEY).Value;
             var language = Enum.Parse<Language>(languageStr);
             return language;
+        }
+
+        public void Login(CredentialsDto credentialsDto)
+        {
+            var user = _userRepository.GetUser(credentialsDto.UserName);
+            if (user == null)
+            {
+                return;
+            }
+
+            if (!BCrypt.Net.BCrypt.Verify(credentialsDto.Password, user.PasswordHash))
+            {
+                return;
+            }
+
+            SignIn(user);
+        }
+
+        public void Register(CredentialsDto credentialsDto)
+        {
+            if (!_userRepository.UserNameIsFree(credentialsDto.UserName))
+            {
+                return;
+            }
+
+            var user = new UserData
+            {
+                UserName = credentialsDto.UserName,
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(credentialsDto.Password),
+                Role = UserRole.User,
+                Language = Language.English
+            };
+            _userRepository.Create(user);
         }
 
         public void SignIn(UserData user)

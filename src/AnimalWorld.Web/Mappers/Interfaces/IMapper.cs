@@ -1,4 +1,4 @@
-﻿namespace AnimalWorld.Web.Mappers
+﻿namespace AnimalWorld.Web.Mappers.Interfaces
 {
     public interface IMapper<TSource, TDestination>
     {

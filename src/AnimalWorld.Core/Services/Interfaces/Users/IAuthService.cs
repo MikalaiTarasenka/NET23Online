@@ -1,4 +1,5 @@
-﻿using AnimalWorld.Data.Enums;
+﻿using AnimalWorld.Core.Dtos.Users;
+using AnimalWorld.Data.Enums;
 using AnimalWorld.Data.Models.Users;
 
 namespace AnimalWorld.Core.Services.Interfaces.Users
@@ -18,6 +19,10 @@ namespace AnimalWorld.Core.Services.Interfaces.Users
         bool IsAtLeastModerator();
 
         Language GetLanguage();
+
+        void Login(CredentialsDto credentialsDto);
+
+        void Register(CredentialsDto credentialsDto);
 
         void SignIn(UserData user);
     }

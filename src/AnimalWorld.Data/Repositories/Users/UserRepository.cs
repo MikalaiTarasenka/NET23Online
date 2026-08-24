@@ -12,5 +12,10 @@ namespace AnimalWorld.Data.Repositories.Users
         {
             return _dbSet.FirstOrDefault(x => x.UserName == userName) == null;
         }
+
+        public UserData GetUser(string userName)
+        {
+            return _dbSet.FirstOrDefault(x => x.UserName == userName);
+        }
     }
 }

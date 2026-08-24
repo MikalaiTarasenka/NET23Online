@@ -1,4 +1,5 @@
 ﻿using AnimalWorld.Data.Models.Animals;
+using AnimalWorld.Web.Mappers.Interfaces;
 using AnimalWorld.Web.Models.Animals;
 
 namespace AnimalWorld.Web.Mappers.Animals

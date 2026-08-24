@@ -1,6 +1,7 @@
 ﻿using AnimalWorld.Core.Services.Interfaces.Animals;
 using AnimalWorld.Data.Models.Animals;
 using AnimalWorld.Web.Mappers;
+using AnimalWorld.Web.Mappers.Interfaces;
 using AnimalWorld.Web.Models.Animals;
 using AnimalWorld.Web.Models.Home;
 using Microsoft.AspNetCore.Mvc;

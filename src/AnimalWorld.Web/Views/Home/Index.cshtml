@@ -24,7 +24,7 @@
     <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
         @if (Model?.AnimalFamilies != null && Model.AnimalFamilies.Any())
         {
-            foreach (var family in Model.AnimalFamilies.Take(3))
+            foreach (var family in Model.AnimalFamilies)
             {
                 <div style="flex: 1 1 300px; max-width: 380px; background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
                     <h3 style="margin: 0 0 10px 0; color: #2980b9; font-size: 1.25rem;">@family.Name</h3>
@@ -50,7 +50,7 @@
     <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
         @if (Model?.AnimalSpecies != null && Model.AnimalSpecies.Any())
         {
-            foreach (var species in Model.AnimalSpecies.Take(3))
+            foreach (var species in Model.AnimalSpecies)
             {
                 <div style="flex: 1 1 300px; max-width: 380px; background: white; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
 
