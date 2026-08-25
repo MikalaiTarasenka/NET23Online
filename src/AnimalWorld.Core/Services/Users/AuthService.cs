@@ -96,27 +96,43 @@ namespace AnimalWorld.Core.Services.Users
             return language;
         }
 
-        public void Login(CredentialsDto credentialsDto)
+        public AuthResultDto Login(CredentialsDto credentialsDto)
         {
             var user = _userRepository.GetUser(credentialsDto.UserName);
             if (user == null)
             {
-                return;
+                return new AuthResultDto
+                {
+                    Success = false,
+                    Error = "Неверные имя пользователя и/или пароль"
+                };
             }
 
             if (!BCrypt.Net.BCrypt.Verify(credentialsDto.Password, user.PasswordHash))
             {
-                return;
+                return new AuthResultDto
+                {
+                    Success = false,
+                    Error = "Неверные имя пользователя и/или пароль"
+                };
             }
 
             SignIn(user);
+            return new AuthResultDto
+            {
+                Success = true
+            };
         }
 
-        public void Register(CredentialsDto credentialsDto)
+        public AuthResultDto Register(CredentialsDto credentialsDto)
         {
             if (!_userRepository.UserNameIsFree(credentialsDto.UserName))
             {
-                return;
+                return new AuthResultDto
+                {
+                    Success = false,
+                    Error = "Имя пользователя занято"
+                };
             }
 
             var user = new UserData
@@ -127,6 +143,10 @@ namespace AnimalWorld.Core.Services.Users
                 Language = Language.English
             };
             _userRepository.Create(user);
+            return new AuthResultDto
+            {
+                Success = true
+            };
         }
 
         public void SignIn(UserData user)

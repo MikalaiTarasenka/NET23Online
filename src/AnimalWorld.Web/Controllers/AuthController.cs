@@ -32,8 +32,16 @@ namespace AnimalWorld.Web.Controllers
             }
 
             var credentialsDto = _authMapper.Map(viewModel);
-            _authService.Login(credentialsDto);
-            return RedirectToAction("Index", "Home");
+            var loginResult = _authService.Login(credentialsDto);
+            if (loginResult.Success)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("", loginResult.Error);
+                return View(viewModel);
+            }
         }
 
         [HttpGet]
@@ -51,8 +59,16 @@ namespace AnimalWorld.Web.Controllers
             }
 
             var credentialsDto = _authMapper.Map(viewModel);
-            _authService.Register(credentialsDto);
-            return RedirectToAction("Index", "Home");
+            var registerResult = _authService.Register(credentialsDto);
+            if (registerResult.Success)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ModelState.AddModelError("UserName", registerResult.Error);
+                return View(viewModel);
+            }
         }
 
         public IActionResult Logout()
