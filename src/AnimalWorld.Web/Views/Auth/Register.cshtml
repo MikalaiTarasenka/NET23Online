@@ -7,7 +7,6 @@
 
 <div>
     <form method="post" asp-controller="Auth" asp-action="Register">
-        @Html.ValidationSummary(true)
         <div>
             @Html.TextBoxFor(x => x.UserName, new { placeholder = "UserName" })
             @Html.ValidationMessageFor(x => x.UserName)

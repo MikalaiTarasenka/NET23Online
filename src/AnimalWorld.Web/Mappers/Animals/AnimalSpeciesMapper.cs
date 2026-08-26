@@ -17,10 +17,5 @@ namespace AnimalWorld.Web.Mappers.Animals
                 Zoos = source.Zoos?.Select(s => s.Name).ToList() ?? new List<string>(),
             };
         }
-
-        public List<AnimalSpeciesViewModel> MapList(List<AnimalSpeciesData> source)
-        {
-            return source.Select(Map).ToList();
-        }
     }
 }

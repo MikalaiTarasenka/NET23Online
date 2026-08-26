@@ -1,0 +1,34 @@
+﻿@model AnimalWorld.Web.Models.Users.UserProfileViewModel
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Profile";
+}
+
+<div>
+    <form method="post" asp-controller="Auth" asp-action="Profile">
+        <div>
+            <label>First Name:</label><br />
+            @Html.TextBoxFor(x => x.FirstName, new { placeholder = "First Name" })
+            @Html.ValidationMessageFor(x => x.FirstName)
+        </div>
+        <div>
+            <label>Last Name:</label><br />
+            @Html.TextBoxFor(x => x.LastName, new { placeholder = "Last Name" })
+            @Html.ValidationMessageFor(x => x.LastName)
+        </div>
+        <div>
+            <label>Phone Number:</label><br />
+            @Html.TextBoxFor(x => x.PhoneNumber, new { placeholder = "+375..." })
+            @Html.ValidationMessageFor(x => x.PhoneNumber)
+        </div>
+        <div>
+            <label>Language:</label><br />
+            @Html.DropDownListFor(x => x.Language, Model.Languages)
+            @Html.ValidationMessageFor(x => x.Language)
+        </div>
+        <div>
+            <button type="submit">Save</button>
+        </div>
+    </form>
+</div>

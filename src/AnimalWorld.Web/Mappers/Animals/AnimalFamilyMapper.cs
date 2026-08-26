@@ -14,10 +14,5 @@ namespace AnimalWorld.Web.Mappers.Animals
                 Description = source.Description,
             };
         }
-
-        public List<AnimalFamilyViewModel> MapList(List<AnimalFamilyData> source)
-        {
-            return source.Select(Map).ToList();
-        }
     }
 }

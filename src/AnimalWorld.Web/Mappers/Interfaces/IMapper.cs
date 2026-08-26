@@ -4,6 +4,11 @@
     {
         TDestination Map(TSource source);
 
-        List<TDestination> MapList(List<TSource> source);
+        List<TDestination> MapList(List<TSource> source)
+        {
+            return source
+                .Select(Map)
+                .ToList();
+        }
     }
 }

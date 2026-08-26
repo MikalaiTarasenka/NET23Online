@@ -1,5 +1,6 @@
-﻿using AnimalWorld.Core.Services.Interfaces.Users;
-using AnimalWorld.Web.Mappers.Interfaces.Users;
+﻿using AnimalWorld.Core.Dtos.Users;
+using AnimalWorld.Core.Services.Interfaces.Users;
+using AnimalWorld.Web.Mappers.Interfaces;
 using AnimalWorld.Web.Models.Users;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
@@ -9,9 +10,9 @@ namespace AnimalWorld.Web.Controllers
     public class AuthController : Controller
     {
         private IAuthService _authService;
-        private IAuthMapper _authMapper;
+        private IMapper<CredentialsViewModel, CredentialsDto> _authMapper;
 
-        public AuthController(IAuthService authService, IAuthMapper authMapper)
+        public AuthController(IAuthService authService, IMapper<CredentialsViewModel, CredentialsDto> authMapper)
         {
             _authService = authService;
             _authMapper = authMapper;

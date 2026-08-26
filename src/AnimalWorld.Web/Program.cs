@@ -1,12 +1,14 @@
 using AnimalWorld.Core;
+using AnimalWorld.Core.Dtos.Users;
 using AnimalWorld.Data;
 using AnimalWorld.Data.Models.Animals;
+using AnimalWorld.Data.Models.Users;
 using AnimalWorld.Web.Mappers;
 using AnimalWorld.Web.Mappers.Animals;
 using AnimalWorld.Web.Mappers.Interfaces;
-using AnimalWorld.Web.Mappers.Interfaces.Users;
 using AnimalWorld.Web.Mappers.Users;
 using AnimalWorld.Web.Models.Animals;
+using AnimalWorld.Web.Models.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,7 +22,8 @@ builder.Services.AddAuthentication("QGHyrFBGxnQR")
 
 builder.Services.AddAnimalWorldData(builder.Configuration.GetConnectionString("DefaultDbConnection"));
 builder.Services.AddAnimalWorldCore();
-builder.Services.AddScoped<IAuthMapper, AuthMapper>();
+builder.Services.AddScoped<IMapper<CredentialsViewModel, CredentialsDto>, AuthMapper>();
+builder.Services.AddScoped<IReverseMapper<UserData, UserProfileViewModel>, UserProfileMapper>();
 builder.Services.AddScoped<IMapper<AnimalFamilyData, AnimalFamilyViewModel>, AnimalFamilyMapper>();
 builder.Services.AddScoped<IMapper<AnimalSpeciesData, AnimalSpeciesViewModel>, AnimalSpeciesMapper>();
 
