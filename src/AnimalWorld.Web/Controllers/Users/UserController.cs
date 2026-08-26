@@ -6,14 +6,14 @@ using AnimalWorld.Web.Models.Users;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace AnimalWorld.Web.Controllers
+namespace AnimalWorld.Web.Controllers.Users
 {
-    public class UsersController : Controller
+    public class UserController : Controller
     {
         private IUserProfileService _userProfileService;
         private IReverseMapper<UserData, UserProfileViewModel> _userMapper;
 
-        public UsersController(IUserProfileService userProfileService, IReverseMapper<UserData, UserProfileViewModel> userMapper)
+        public UserController(IUserProfileService userProfileService, IReverseMapper<UserData, UserProfileViewModel> userMapper)
         {
             _userProfileService = userProfileService;
             _userMapper = userMapper;

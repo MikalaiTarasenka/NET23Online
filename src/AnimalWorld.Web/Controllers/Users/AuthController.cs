@@ -5,7 +5,7 @@ using AnimalWorld.Web.Models.Users;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AnimalWorld.Web.Controllers
+namespace AnimalWorld.Web.Controllers.Users
 {
     public class AuthController : Controller
     {

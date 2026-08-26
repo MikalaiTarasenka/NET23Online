@@ -11,6 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Controllers\Animals\" />
+    <Folder Include="Controllers\Zoos\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

@@ -173,7 +173,7 @@
                 @if (authService.IsAuthenticated())
                 {
                     <span>Здравствуйте, @authService.GetUserName()</span>
-                    <a href="/Users/Profile" class="btn btn-register">Личный кабинет</a>
+                    <a href="/User/Profile" class="btn btn-register">Личный кабинет</a>
                     <a href="/Auth/Logout" class="btn btn-login">Выход</a>
                 }
                 else
