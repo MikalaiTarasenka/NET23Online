@@ -1,4 +1,6 @@
 using AnimalWorld.Core;
+using AnimalWorld.Core.Apis;
+using AnimalWorld.Core.Dtos.Animals;
 using AnimalWorld.Core.Dtos.Users;
 using AnimalWorld.Data;
 using AnimalWorld.Data.Models.Animals;
@@ -8,6 +10,7 @@ using AnimalWorld.Web.Mappers.Animals;
 using AnimalWorld.Web.Mappers.Interfaces;
 using AnimalWorld.Web.Mappers.Users;
 using AnimalWorld.Web.Models.Animals;
+using AnimalWorld.Web.Models.Home;
 using AnimalWorld.Web.Models.Users;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +29,12 @@ builder.Services.AddScoped<IMapper<CredentialsViewModel, CredentialsDto>, AuthMa
 builder.Services.AddScoped<IReverseMapper<UserData, UserProfileViewModel>, UserProfileMapper>();
 builder.Services.AddScoped<IMapper<AnimalFamilyData, AnimalFamilyViewModel>, AnimalFamilyMapper>();
 builder.Services.AddScoped<IMapper<AnimalSpeciesData, AnimalSpeciesViewModel>, AnimalSpeciesMapper>();
+builder.Services.AddScoped<IMapper<RandomAnimalDto, RandomAnimalViewModel>, RandomAnimalMapper>();
+
+builder.Services.AddHttpClient<RandomAnimalApi>(x =>
+{
+    x.BaseAddress = new Uri("https://api.some-random-api.com");
+});
 
 var app = builder.Build();
 

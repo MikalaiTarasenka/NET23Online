@@ -2,5 +2,6 @@
 {
     public class AnimalGalleryViewModel
     {
+        public List<RandomAnimalViewModel> RandomAnimals { get; set; }
     }
 }

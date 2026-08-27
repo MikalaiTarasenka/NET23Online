@@ -19,6 +19,7 @@ namespace AnimalWorld.Core
             services.AddScoped<IAnimalSpeciesService, AnimalSpeciesService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IUserProfileService, UserProfileService>();
+            services.AddScoped<IAnimalGalleryService, AnimalGalleryService>();
             return services;
         }
     }
