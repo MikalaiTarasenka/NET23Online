@@ -1,0 +1,42 @@
+﻿@model AnimalWorld.Web.Models.Zoos.PromotionViewModel
+
+@{
+    ViewData["Title"] = Model.Id == 0 ? "Create Promotion" : "Edit Promotion";
+}
+
+<div>
+    <h2>@(Model.Id == 0 ? "Create" : "Edit") Promotion</h2>
+    <form method="post" asp-controller="Promotions" asp-action="@(Model.Id == 0 ? "Create" : "Edit")">
+        @if (Model.Id != 0)
+        {
+            <input type="hidden" asp-for="Id" />
+        }
+        <div>
+            <label>Name:</label><br />
+            @Html.TextBoxFor(x => x.Name, new { placeholder = "Promotion name" })
+            @Html.ValidationMessageFor(x => x.Name)
+        </div>
+        <div>
+            <label>Description:</label><br />
+            @Html.TextAreaFor(x => x.Description, new { placeholder = "Description", rows = 5 })
+            @Html.ValidationMessageFor(x => x.Description)
+        </div>
+        <div>
+            <label>Zoo:</label><br />
+            @Html.DropDownListFor(x => x.ZooId, Model.Zoos, "-- Select --")
+            @Html.ValidationMessageFor(x => x.ZooId)
+        </div>
+        <div>
+            <label>Place:</label><br />
+            @Html.TextBoxFor(x => x.Place, new { placeholder = "Place" })
+        </div>
+        <div>
+            <label>End Date:</label><br />
+            @Html.TextBoxFor(x => x.EndDate, new { type = "date" })
+            @Html.ValidationMessageFor(x => x.EndDate)
+        </div>
+        <div>
+            <button type="submit">@(Model.Id == 0 ? "Create" : "Save")</button>
+        </div>
+    </form>
+</div>

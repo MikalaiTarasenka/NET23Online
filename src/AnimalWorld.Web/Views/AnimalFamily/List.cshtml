@@ -1,0 +1,41 @@
+﻿@model List<AnimalWorld.Web.Models.Animals.AnimalFamilyViewModel>
+
+@{
+    ViewData["Title"] = "Edit Families";
+}
+
+<div>
+    <h2>Animal Families</h2>
+    <table style="width: 100%; border-collapse: collapse;">
+        <thead>
+            <tr style="background-color: #f0f0f0;">
+                <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Name</th>
+                <th style="padding: 10px; text-align: center; border: 1px solid #ddd;">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (var family in Model)
+                {
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #ddd;">@family.Name</td>
+                        <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">
+                            <a href="/AnimalFamily/Form?Id=@family.Id" style="margin-right: 10px; color: #2980b9;">Изменить</a>
+                            <form method="post" asp-controller="AnimalFamily" asp-action="Delete" style="display: inline;">
+                                <input type="hidden" name="Id" value="@family.Id" />
+                                <button type="submit" style="color: #c0392b; background: none; border: none; cursor: pointer;" onclick="return confirm('Are you sure?')">Удалить</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="2" style="padding: 10px; text-align: center; border: 1px solid #ddd;">No families found.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,51 @@
+﻿@model AnimalWorld.Web.Models.Animals.AnimalSpeciesViewModel
+
+@{
+    ViewData["Title"] = Model.Id == 0 ? "Create Species" : "Edit Species";
+}
+
+<div>
+    <h2>@(Model.Id == 0 ? "Create" : "Edit") Animal Species</h2>
+    <form method="post" enctype="multipart/form-data" asp-controller="Species" asp-action="@(Model.Id == 0 ? "Create" : "Edit")">
+        @if (Model.Id != 0)
+        {
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Url" />
+        }
+        <div>
+            <label>Name:</label><br />
+            @Html.TextBoxFor(x => x.Name, new { placeholder = "Species name" })
+            @Html.ValidationMessageFor(x => x.Name)
+        </div>
+        <div>
+            <label>Image:</label><br />
+            <input type="file" name="Image" accept="image/*" />
+            @if (Model.Id != 0 && !string.IsNullOrEmpty(Model.Url))
+            {
+                <p>Current image: <a href="@Model.Url" target="_blank">View</a></p>
+            }
+        </div>
+        <div>
+            <label>Animal Family:</label><br />
+            @Html.DropDownListFor(x => x.AnimalFamilyId, Model.AnimalFamilies, "-- Select --")
+            @Html.ValidationMessageFor(x => x.AnimalFamilyId)
+        </div>
+        <div>
+            <label>Native Range:</label><br />
+            @Html.TextBoxFor(x => x.NativeRange, new { placeholder = "Native range" })
+            @Html.ValidationMessageFor(x => x.NativeRange)
+        </div>
+        <div>
+            <label>Description:</label><br />
+            @Html.TextAreaFor(x => x.Description, new { placeholder = "Description", rows = 5 })
+            @Html.ValidationMessageFor(x => x.Description)
+        </div>
+        <div>
+            <label>Zoos (comma-separated):</label><br />
+            @Html.TextBoxFor(x => x.Zoos, new { placeholder = "Zoo1, Zoo2, Zoo3", Value = Model.Zoos != null ? string.Join(", ", Model.Zoos) : "" })
+        </div>
+        <div>
+            <button type="submit">@(Model.Id == 0 ? "Create" : "Save")</button>
+        </div>
+    </form>
+</div>

@@ -5,6 +5,8 @@ namespace AnimalWorld.Web.Models.Animals
 {
     public class AnimalSpeciesViewModel
     {
+        public int Id { get; set; }
+
         [Required]
         public string Name { get; set; }
 

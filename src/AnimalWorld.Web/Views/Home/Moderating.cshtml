@@ -1,0 +1,81 @@
+﻿@{
+    ViewData["Title"] = "Hub";
+}
+
+<div style="padding: 20px;">
+    <h1 style="text-align: center; color: #2c3e50; margin-bottom: 30px;">Панель управления</h1>
+
+    <!-- Группа: Животные -->
+    <div style="margin-bottom: 40px;">
+        <h2 style="color: #2c3e50; margin-bottom: 20px; border-bottom: 2px solid #2c3e50; padding-bottom: 8px;">Животные</h2>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+
+            <!-- Карточка: Вид животных -->
+            <div style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 25px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <h3 style="margin: 0 0 20px 0; color: #2980b9; font-size: 1.3rem;">Вид животных</h3>
+                <div style="display: flex; gap: 10px;">
+                    <a href="/AnimalSpecies/Form" style="flex: 1; padding: 10px; background-color: #27ae60; color: white; text-align: center; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background-color 0.2s;"
+                       onmouseover="this.style.backgroundColor='#229954'" onmouseout="this.style.backgroundColor='#27ae60'">
+                        Создать
+                    </a>
+                    <a href="/AnimalSpecies/List" style="flex: 1; padding: 10px; background-color: #2980b9; color: white; text-align: center; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background-color 0.2s;"
+                       onmouseover="this.style.backgroundColor='#2471a3'" onmouseout="this.style.backgroundColor='#2980b9'">
+                        Изменить
+                    </a>
+                </div>
+            </div>
+
+            <!-- Карточка: Род животных -->
+            <div style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 25px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <h3 style="margin: 0 0 20px 0; color: #2980b9; font-size: 1.3rem;">Род животных</h3>
+                <div style="display: flex; gap: 10px;">
+                    <a href="/AnimalFamily/Form" style="flex: 1; padding: 10px; background-color: #27ae60; color: white; text-align: center; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background-color 0.2s;"
+                       onmouseover="this.style.backgroundColor='#229954'" onmouseout="this.style.backgroundColor='#27ae60'">
+                        Создать
+                    </a>
+                    <a href="/AnimalFamily/List" style="flex: 1; padding: 10px; background-color: #2980b9; color: white; text-align: center; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background-color 0.2s;"
+                       onmouseover="this.style.backgroundColor='#2471a3'" onmouseout="this.style.backgroundColor='#2980b9'">
+                        Изменить
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Группа: Зоопарк -->
+    <div style="margin-bottom: 40px;">
+        <h2 style="color: #2c3e50; margin-bottom: 20px; border-bottom: 2px solid #2c3e50; padding-bottom: 8px;">Зоопарк</h2>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+
+            <!-- Карточка: Зоопарк -->
+            <div style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 25px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <h3 style="margin: 0 0 20px 0; color: #2980b9; font-size: 1.3rem;">Зоопарк</h3>
+                <div style="display: flex; gap: 10px;">
+                    <a href="/Zoo/Form" style="flex: 1; padding: 10px; background-color: #27ae60; color: white; text-align: center; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background-color 0.2s;"
+                       onmouseover="this.style.backgroundColor='#229954'" onmouseout="this.style.backgroundColor='#27ae60'">
+                        Создать
+                    </a>
+                    <a href="/Zoo/List" style="flex: 1; padding: 10px; background-color: #2980b9; color: white; text-align: center; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background-color 0.2s;"
+                       onmouseover="this.style.backgroundColor='#2471a3'" onmouseout="this.style.backgroundColor='#2980b9'">
+                        Изменить
+                    </a>
+                </div>
+            </div>
+
+            <!-- Карточка: Акции -->
+            <div style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 25px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                <h3 style="margin: 0 0 20px 0; color: #2980b9; font-size: 1.3rem;">Акции</h3>
+                <div style="display: flex; gap: 10px;">
+                    <a href="/Promotion/Form" style="flex: 1; padding: 10px; background-color: #27ae60; color: white; text-align: center; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background-color 0.2s;"
+                       onmouseover="this.style.backgroundColor='#229954'" onmouseout="this.style.backgroundColor='#27ae60'">
+                        Создать
+                    </a>
+                    <a href="/Promotion/List" style="flex: 1; padding: 10px; background-color: #2980b9; color: white; text-align: center; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background-color 0.2s;"
+                       onmouseover="this.style.backgroundColor='#2471a3'" onmouseout="this.style.backgroundColor='#2980b9'">
+                        Изменить
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+﻿@model AnimalWorld.Web.Models.Zoos.ZooViewModel
+
+@{
+    ViewData["Title"] = Model.Id == 0 ? "Create Zoo" : "Edit Zoo";
+}
+
+<div>
+    <h2>@(Model.Id == 0 ? "Create" : "Edit") Zoo</h2>
+    <form method="post" asp-controller="Zoos" asp-action="@(Model.Id == 0 ? "Create" : "Edit")">
+        @if (Model.Id != 0)
+        {
+            <input type="hidden" asp-for="Id" />
+        }
+        <div>
+            <label>Name:</label><br />
+            @Html.TextBoxFor(x => x.Name, new { placeholder = "Zoo name" })
+            @Html.ValidationMessageFor(x => x.Name)
+        </div>
+        <div>
+            <label>Address:</label><br />
+            @Html.TextBoxFor(x => x.Address, new { placeholder = "Address" })
+            @Html.ValidationMessageFor(x => x.Address)
+        </div>
+        <div>
+            <label>Description:</label><br />
+            @Html.TextAreaFor(x => x.Description, new { placeholder = "Description", rows = 5 })
+            @Html.ValidationMessageFor(x => x.Description)
+        </div>
+        <div>
+            <label>Animal Families (comma-separated):</label><br />
+            @Html.TextBoxFor(x => x.AnimalFamilies, new { placeholder = "Family1, Family2", Value = Model.AnimalFamilies != null ? string.Join(", ", Model.AnimalFamilies) : "" })
+        </div>
+        <div>
+            <button type="submit">@(Model.Id == 0 ? "Create" : "Save")</button>
+        </div>
+    </form>
+</div>

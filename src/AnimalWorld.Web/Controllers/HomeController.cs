@@ -55,5 +55,10 @@ namespace AnimalWorld.Web.Controllers
             };
             return View(animalGalleryViewModel);
         }
+
+        public IActionResult Moderating()
+        {
+            return View();
+        }
     }
 }

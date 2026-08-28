@@ -164,7 +164,11 @@
                         <a href="/Home/Gallery">Галерея</a>
                     </div>
                 </li>
-                <li><a href="/About">О нас</a></li>
+                @if (authService.IsAtLeastModerator())
+                {
+                    <li><a href="/Home/Moderating">Панель управления</a></li>
+                }
+
             </ul>
 
             <div class="auth-section">

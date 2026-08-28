@@ -5,6 +5,8 @@ namespace AnimalWorld.Web.Models.Zoos
 {
     public class PromotionViewModel
     {
+        public int Id { get; set; }
+
         [Required]
         public string Name { get; set; }
 
