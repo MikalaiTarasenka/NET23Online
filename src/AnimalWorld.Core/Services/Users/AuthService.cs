@@ -96,12 +96,12 @@ namespace AnimalWorld.Core.Services.Users
             return language;
         }
 
-        public AuthResultDto Login(CredentialsDto credentialsDto)
+        public ResponseDto Login(CredentialsDto credentialsDto)
         {
             var user = _userRepository.GetUser(credentialsDto.UserName);
             if (user == null)
             {
-                return new AuthResultDto
+                return new ResponseDto
                 {
                     Success = false,
                     Error = "Неверные имя пользователя и/или пароль"
@@ -110,7 +110,7 @@ namespace AnimalWorld.Core.Services.Users
 
             if (!BCrypt.Net.BCrypt.Verify(credentialsDto.Password, user.PasswordHash))
             {
-                return new AuthResultDto
+                return new ResponseDto
                 {
                     Success = false,
                     Error = "Неверные имя пользователя и/или пароль"
@@ -118,17 +118,17 @@ namespace AnimalWorld.Core.Services.Users
             }
 
             SignIn(user);
-            return new AuthResultDto
+            return new ResponseDto
             {
                 Success = true
             };
         }
 
-        public AuthResultDto Register(CredentialsDto credentialsDto)
+        public ResponseDto Register(CredentialsDto credentialsDto)
         {
             if (!_userRepository.UserNameIsFree(credentialsDto.UserName))
             {
-                return new AuthResultDto
+                return new ResponseDto
                 {
                     Success = false,
                     Error = "Имя пользователя занято"
@@ -143,7 +143,7 @@ namespace AnimalWorld.Core.Services.Users
                 Language = Language.English
             };
             _userRepository.Create(user);
-            return new AuthResultDto
+            return new ResponseDto
             {
                 Success = true
             };

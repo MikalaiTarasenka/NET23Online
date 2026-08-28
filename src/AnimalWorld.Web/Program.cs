@@ -27,7 +27,7 @@ builder.Services.AddAnimalWorldData(builder.Configuration.GetConnectionString("D
 builder.Services.AddAnimalWorldCore();
 builder.Services.AddScoped<IMapper<CredentialsViewModel, CredentialsDto>, AuthMapper>();
 builder.Services.AddScoped<IReverseMapper<UserData, UserProfileViewModel>, UserProfileMapper>();
-builder.Services.AddScoped<IMapper<AnimalFamilyData, AnimalFamilyViewModel>, AnimalFamilyMapper>();
+builder.Services.AddScoped<IReverseMapper<AnimalFamilyData, AnimalFamilyViewModel>, AnimalFamilyMapper>();
 builder.Services.AddScoped<IMapper<AnimalSpeciesData, AnimalSpeciesViewModel>, AnimalSpeciesMapper>();
 builder.Services.AddScoped<IMapper<RandomAnimalDto, RandomAnimalViewModel>, RandomAnimalMapper>();
 

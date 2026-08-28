@@ -20,9 +20,9 @@ namespace AnimalWorld.Core.Services.Interfaces.Users
 
         Language GetLanguage();
 
-        AuthResultDto Login(CredentialsDto credentialsDto);
+        ResponseDto Login(CredentialsDto credentialsDto);
 
-        AuthResultDto Register(CredentialsDto credentialsDto);
+        ResponseDto Register(CredentialsDto credentialsDto);
 
         void SignIn(UserData user);
     }
