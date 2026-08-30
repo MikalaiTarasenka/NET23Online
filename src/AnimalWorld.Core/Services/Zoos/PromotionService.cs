@@ -37,22 +37,30 @@ namespace AnimalWorld.Core.Services.Zoos
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _promotionRepository.Delete(id);
         }
 
         public PromotionData Get(int id)
         {
-            throw new NotImplementedException();
+            var promotion = _promotionRepository.GetById(id);
+            return promotion;
         }
 
         public List<PromotionData> GetAll()
         {
-            throw new NotImplementedException();
+            var promotions = _promotionRepository.GetAll();
+            return promotions;
         }
 
-        public void Update(PromotionData model)
+        public void Update(PromotionData promotionData)
         {
-            throw new NotImplementedException();
+            var promotion = _promotionRepository.GetById(promotionData.Id);
+            promotion.Name = promotionData.Name;
+            promotion.Description = promotionData.Description;
+            promotion.EndDate = promotionData.EndDate;
+            promotion.Venue = promotionData.Venue;
+            promotion.VenueId = promotionData.VenueId;
+            _promotionRepository.Update(promotion);
         }
     }
 }

@@ -37,22 +37,28 @@ namespace AnimalWorld.Core.Services.Zoos
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _zooRepository.Delete(id);
         }
 
         public ZooData Get(int id)
         {
-            throw new NotImplementedException();
+            var zoo = _zooRepository.GetById(id);
+            return zoo;
         }
 
         public List<ZooData> GetAll()
         {
-            throw new NotImplementedException();
+            var zoos = _zooRepository.GetAll();
+            return zoos;
         }
 
-        public void Update(ZooData model)
+        public void Update(ZooData zooData)
         {
-            throw new NotImplementedException();
+            var zoo = _zooRepository.GetById(zooData.Id);
+            zoo.Name = zooData.Name;
+            zoo.Description = zooData.Description;
+            zoo.Address = zooData.Address;
+            _zooRepository.Update(zoo);
         }
     }
 }

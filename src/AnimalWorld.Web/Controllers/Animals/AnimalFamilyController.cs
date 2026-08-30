@@ -28,7 +28,6 @@ namespace AnimalWorld.Web.Controllers.Animals
             var animalFamilyData = _mapper.ReverseMap(viewModel);
             if (viewModel.Id == 0)
             {
-                
                 _animalFamilyService.Create(animalFamilyData);
             }
             else
@@ -45,8 +44,8 @@ namespace AnimalWorld.Web.Controllers.Animals
             var viewModel = new AnimalFamilyViewModel { Id = id };
             if (id != 0)
             {
-                var animalFamolyData = _animalFamilyService.Get(id);
-                viewModel = _mapper.Map(animalFamolyData);
+                var animalFamilyData = _animalFamilyService.Get(id);
+                viewModel = _mapper.Map(animalFamilyData);
             }
 
             return View(viewModel);
