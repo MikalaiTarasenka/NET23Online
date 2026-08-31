@@ -33,7 +33,12 @@ namespace AnimalWorld.Web.Controllers.Zoos
             var zooData = _mapper.ReverseMap(viewModel);
             if (viewModel.Id == 0)
             {
-                _zooService.Create(zooData);
+                var response = _zooService.Create(zooData);
+                if (!response.Success)
+                {
+                    ModelState.AddModelError("Name", response.Error);
+                    return View(viewModel);
+                }
             }
             else
             {

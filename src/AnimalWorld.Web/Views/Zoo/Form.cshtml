@@ -6,7 +6,7 @@
 
 <div>
     <h2>@(Model.Id == 0 ? "Create" : "Edit") Zoo</h2>
-    <form method="post" asp-controller="Zoos" asp-action="@(Model.Id == 0 ? "Create" : "Edit")">
+    <form method="post" asp-controller="Zoo" asp-action="Form">
         @if (Model.Id != 0)
         {
             <input type="hidden" asp-for="Id" />
@@ -25,10 +25,6 @@
             <label>Description:</label><br />
             @Html.TextAreaFor(x => x.Description, new { placeholder = "Description", rows = 5 })
             @Html.ValidationMessageFor(x => x.Description)
-        </div>
-        <div>
-            <label>Animal Families (comma-separated):</label><br />
-            @Html.TextBoxFor(x => x.AnimalFamilies, new { placeholder = "Family1, Family2", Value = Model.AnimalFamilies != null ? string.Join(", ", Model.AnimalFamilies) : "" })
         </div>
         <div>
             <button type="submit">@(Model.Id == 0 ? "Create" : "Save")</button>

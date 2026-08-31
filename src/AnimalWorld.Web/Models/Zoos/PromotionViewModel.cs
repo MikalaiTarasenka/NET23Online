@@ -17,7 +17,7 @@ namespace AnimalWorld.Web.Models.Zoos
 
         public string Place { get; set; }
 
-        public List<SelectListItem>? Zoos { get; set; }
+        public List<SelectListItem>? Zoos { get; set; } = new();
 
         [Required]
         public DateTime EndDate { get; set; }

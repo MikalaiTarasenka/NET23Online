@@ -21,8 +21,8 @@
                     <tr>
                         <td style="padding: 10px; border: 1px solid #ddd;">@zoo.Name</td>
                         <td style="padding: 10px; text-align: center; border: 1px solid #ddd;">
-                            <a href="/Zoos/Create?Id=@zoo.Id" style="margin-right: 10px; color: #2980b9;">Изменить</a>
-                            <form method="post" asp-controller="Zoos" asp-action="Delete" style="display: inline;">
+                            <a href="/Zoo/Form?Id=@zoo.Id" style="margin-right: 10px; color: #2980b9;">Изменить</a>
+                            <form method="post" asp-controller="Zoo" asp-action="Delete" style="display: inline;">
                                 <input type="hidden" name="Id" value="@zoo.Id" />
                                 <button type="submit" style="color: #c0392b; background: none; border: none; cursor: pointer;" onclick="return confirm('Are you sure?')">Удалить</button>
                             </form>

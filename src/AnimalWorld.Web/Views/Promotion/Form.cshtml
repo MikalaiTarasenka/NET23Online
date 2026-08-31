@@ -6,7 +6,7 @@
 
 <div>
     <h2>@(Model.Id == 0 ? "Create" : "Edit") Promotion</h2>
-    <form method="post" asp-controller="Promotions" asp-action="@(Model.Id == 0 ? "Create" : "Edit")">
+    <form method="post" asp-controller="Promotion" asp-action="Form">
         @if (Model.Id != 0)
         {
             <input type="hidden" asp-for="Id" />

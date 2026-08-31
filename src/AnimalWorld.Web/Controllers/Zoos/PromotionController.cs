@@ -9,12 +9,14 @@ namespace AnimalWorld.Web.Controllers.Zoos
     public class PromotionController : Controller
     {
         private IPromotionService _promotionService;
+        private IZooService _zooService;
         private IReverseMapper<PromotionData, PromotionViewModel> _mapper;
 
-        public PromotionController(IPromotionService promotionService, IReverseMapper<PromotionData, PromotionViewModel> mapper)
+        public PromotionController(IPromotionService promotionService, IReverseMapper<PromotionData, PromotionViewModel> mapper, IZooService zooService)
         {
             _promotionService = promotionService;
             _mapper = mapper;
+            _zooService = zooService;
         }
 
         public IActionResult Index()
@@ -35,7 +37,12 @@ namespace AnimalWorld.Web.Controllers.Zoos
             var promotionData = _mapper.ReverseMap(viewModel);
             if (viewModel.Id == 0)
             {
-                _promotionService.Create(promotionData);
+                var response = _promotionService.Create(promotionData);
+                if (!response.Success)
+                {
+                    ModelState.AddModelError("Name", response.Error);
+                    return View(viewModel);
+                }
             }
             else
             {
@@ -55,6 +62,7 @@ namespace AnimalWorld.Web.Controllers.Zoos
                 viewModel = _mapper.Map(promotionData);
             }
 
+            viewModel.Zoos = _zooService.GetSelectListsZoo();
             return View(viewModel);
         }
 

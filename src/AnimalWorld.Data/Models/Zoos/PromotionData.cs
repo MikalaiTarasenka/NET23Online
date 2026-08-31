@@ -1,5 +1,6 @@
 ﻿using AnimalWorld.Data.Models.Common;
 using AnimalWorld.Data.Models.Users;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AnimalWorld.Data.Models.Zoos
 {
@@ -7,6 +8,7 @@ namespace AnimalWorld.Data.Models.Zoos
     {
         public string Description { get; set; }
 
+        [Column(TypeName = "date")]
         public DateTime EndDate { get; set; }
 
         public int VenueId { get; set; }

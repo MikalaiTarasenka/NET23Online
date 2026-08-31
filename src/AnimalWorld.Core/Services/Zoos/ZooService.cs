@@ -3,6 +3,7 @@ using AnimalWorld.Core.Services.Interfaces.Users;
 using AnimalWorld.Core.Services.Interfaces.Zoos;
 using AnimalWorld.Data.Models.Zoos;
 using AnimalWorld.Data.Repositories.Interfaces.Zoos;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AnimalWorld.Core.Services.Zoos
 {
@@ -50,6 +51,17 @@ namespace AnimalWorld.Core.Services.Zoos
         {
             var zoos = _zooRepository.GetAll();
             return zoos;
+        }
+
+        public List<SelectListItem> GetSelectListsZoo()
+        {
+            var zoos = _zooRepository.GetAll();
+            var selectZoosList = zoos.Select(zoo => new SelectListItem
+            {
+                Text = zoo.Name,
+                Value = zoo.Id.ToString()
+            }).ToList();
+            return selectZoosList;
         }
 
         public void Update(ZooData zooData)

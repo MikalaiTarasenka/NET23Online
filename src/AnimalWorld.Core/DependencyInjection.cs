@@ -1,13 +1,10 @@
 ﻿using AnimalWorld.Core.Services.Animals;
 using AnimalWorld.Core.Services.Interfaces.Animals;
 using AnimalWorld.Core.Services.Interfaces.Users;
+using AnimalWorld.Core.Services.Interfaces.Zoos;
 using AnimalWorld.Core.Services.Users;
+using AnimalWorld.Core.Services.Zoos;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnimalWorld.Core
 {
@@ -17,6 +14,8 @@ namespace AnimalWorld.Core
         {
             services.AddScoped<IAnimalFamilyService, AnimalFamilyService>();
             services.AddScoped<IAnimalSpeciesService, AnimalSpeciesService>();
+            services.AddScoped<IPromotionService, PromotionService>();
+            services.AddScoped<IZooService, ZooService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IUserProfileService, UserProfileService>();
             services.AddScoped<IAnimalGalleryService, AnimalGalleryService>();
