@@ -3,6 +3,7 @@ using AnimalWorld.Core.Services.Interfaces.Animals;
 using AnimalWorld.Core.Services.Interfaces.Users;
 using AnimalWorld.Data.Models.Animals;
 using AnimalWorld.Data.Repositories.Interfaces.Animals;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AnimalWorld.Core.Services.Animals
 {
@@ -64,6 +65,17 @@ namespace AnimalWorld.Core.Services.Animals
         public void Delete(int id)
         {
             _animalFamilyRepository.Delete(id);
+        }
+
+        public List<SelectListItem> GetSelectListAnimalFamilies()
+        {
+            var animalFamlies = _animalFamilyRepository.GetAll();
+            var animalFamilySelectedList = animalFamlies.Select(animalFamily => new SelectListItem
+            {
+                Text = animalFamily.Name,
+                Value = animalFamily.Id.ToString()
+            });
+            return animalFamilySelectedList.ToList();
         }
     }
 }

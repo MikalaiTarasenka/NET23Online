@@ -4,7 +4,7 @@ using AnimalWorld.Web.Models.Animals;
 
 namespace AnimalWorld.Web.Mappers.Animals
 {
-    public class AnimalSpeciesMapper : IMapper<AnimalSpeciesData, AnimalSpeciesViewModel>
+    public class AnimalSpeciesMapper : IReverseMapper<AnimalSpeciesData, AnimalSpeciesViewModel>
     {
         public AnimalSpeciesViewModel Map(AnimalSpeciesData source)
         {
@@ -15,6 +15,19 @@ namespace AnimalWorld.Web.Mappers.Animals
                 NativeRange = source.NativeRange,
                 Url = source.Url,
                 Zoos = source.Zoos?.Select(s => s.Name).ToList() ?? new List<string>(),
+            };
+        }
+
+        public AnimalSpeciesData ReverseMap(AnimalSpeciesViewModel destination)
+        {
+            return new AnimalSpeciesData
+            {
+                Id = destination.Id,
+                Name = destination.Name,
+                Description = destination.Description,
+                NativeRange = destination.NativeRange,
+                Url = destination.Url,
+                AnimalFamilyId = destination.AnimalFamilyId,
             };
         }
     }

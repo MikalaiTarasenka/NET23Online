@@ -8,7 +8,7 @@ namespace AnimalWorld.Core.Services.Animals
 {
     internal class AnimalSpeciesService : IAnimalSpeciesService
     {
-        public const string DEFAULT_URL = "/images/animal-world/default.jpg";
+        public const string DEFAULT_URL = "/images/animal-species/default.jpg";
         private IAnimalSpeciesRepository _animalSpeciesRepository;
         private IAnimalFamilyRepository _animalFamilyRepository;
         private IAuthService _authService;
@@ -39,6 +39,11 @@ namespace AnimalWorld.Core.Services.Animals
 
             var user = _authService.GetUser();
             var animalFamily = _animalFamilyRepository.GetById(animalSpeciesData.AnimalFamilyId);
+            if (animalSpeciesData.Url == null)
+            {
+                animalSpeciesData.Url = DEFAULT_URL;
+            }
+
             animalSpeciesData.Creator = user;
             animalSpeciesData.CreatorId = user.Id;
             animalSpeciesData.AnimalFamily = animalFamily;
@@ -49,22 +54,31 @@ namespace AnimalWorld.Core.Services.Animals
 
         public List<AnimalSpeciesData> GetAll()
         {
-            throw new NotImplementedException();
+            var animalSpecies = _animalSpeciesRepository.GetAll();
+            return animalSpecies;
         }
 
-        public void Update(AnimalSpeciesData model)
+        public void Update(AnimalSpeciesData modelData)
         {
-            throw new NotImplementedException();
+            var animalSpecies = _animalSpeciesRepository.GetById(modelData.Id);
+            animalSpecies.Name = modelData.Name;
+            animalSpecies.Description = modelData.Description;
+            animalSpecies.NativeRange = modelData.NativeRange;
+            animalSpecies.Url = modelData.Url;
+            animalSpecies.AnimalFamily = modelData.AnimalFamily;
+            animalSpecies.AnimalFamilyId = modelData.AnimalFamilyId;
+            _animalSpeciesRepository.Update(animalSpecies);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _animalSpeciesRepository.Delete(id);
         }
 
         public AnimalSpeciesData Get(int id)
         {
-            throw new NotImplementedException();
+            var animalSpecies = _animalSpeciesRepository.GetById(id);
+            return animalSpecies;
         }
     }
 }
