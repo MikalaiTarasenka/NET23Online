@@ -18,7 +18,7 @@
 
             var pathToWwwRootFolder = _webHostEnvironment.WebRootPath;
             var fileName = $"{DateTime.Now:yyyy-MM-dd-HH-mm-ss}-{namePrefix}.jpeg";
-            var url = $"/images/animal-species/{fileName}";
+            var url = $"/images/animals/{fileName}";
             var path = Path.Combine(pathToWwwRootFolder, folder, fileName);
             using (var animalSpeciesImage = new FileStream(path, FileMode.Create))
             {

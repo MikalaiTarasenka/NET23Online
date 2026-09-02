@@ -31,11 +31,12 @@ namespace AnimalWorld.Web.Controllers.Animals
         {
             if (!ModelState.IsValid)
             {
+                viewModel.AnimalFamilies = _animalFamilyService.GetSelectListAnimalFamilies();
                 return View(viewModel);
             }
 
             var userName = _authService.GetUserName();
-            string url = _imageUploadHelper.SaveAsync(viewModel.Image, "images\\animal-world", userName).Result;
+            string url = _imageUploadHelper.SaveAsync(viewModel.Image, "images\\animals", userName).Result;
             viewModel.Url = url;
             var animalSpeciesData = _mapper.ReverseMap(viewModel);
             if (viewModel.Id == 0)

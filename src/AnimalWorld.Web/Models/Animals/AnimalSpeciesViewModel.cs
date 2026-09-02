@@ -10,14 +10,14 @@ namespace AnimalWorld.Web.Models.Animals
         [Required]
         public string Name { get; set; }
 
-        public IFormFile Image { get; set; }
+        public IFormFile? Image { get; set; }
 
-        public string Url { get; set; }
+        public string? Url { get; set; }
 
         [Required]
         public int AnimalFamilyId { get; set; }
 
-        public List<SelectListItem> AnimalFamilies { get; set; }
+        public List<SelectListItem>? AnimalFamilies { get; set; }
 
         [Required]
         public string NativeRange { get; set; }
@@ -26,6 +26,6 @@ namespace AnimalWorld.Web.Models.Animals
         [StringLength(2000)]
         public string Description { get; set; }
 
-        public List<string> Zoos { get; set; }
+        public List<string>? Zoos { get; set; }
     }
 }

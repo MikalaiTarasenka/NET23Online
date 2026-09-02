@@ -16,11 +16,11 @@ namespace AnimalWorld.Web.Controllers
         private IAnimalSpeciesService _animalSpeciesService;
         private IAnimalGalleryService _animalGalleryService;
         private IReverseMapper<AnimalFamilyData, AnimalFamilyViewModel> _animalFamilyMapper;
-        private IMapper<AnimalSpeciesData, AnimalSpeciesViewModel> _animalSpeciesMapper;
+        private IReverseMapper<AnimalSpeciesData, AnimalSpeciesViewModel> _animalSpeciesMapper;
         private IMapper<RandomAnimalDto, RandomAnimalViewModel> _randomAnimalMapper;
 
         public HomeController(IAnimalFamilyService animalFamilyService, IAnimalSpeciesService animalSpeciesService,
-            IReverseMapper<AnimalFamilyData, AnimalFamilyViewModel> animalFamilyMapper, IMapper<AnimalSpeciesData, AnimalSpeciesViewModel> animalSpeciesMapper,
+            IReverseMapper<AnimalFamilyData, AnimalFamilyViewModel> animalFamilyMapper, IReverseMapper<AnimalSpeciesData, AnimalSpeciesViewModel> animalSpeciesMapper,
             IAnimalGalleryService animalGalleryService, IMapper<RandomAnimalDto, RandomAnimalViewModel> randomAnimalMapper)
         {
             _animalFamilyService = animalFamilyService;

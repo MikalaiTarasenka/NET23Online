@@ -31,6 +31,7 @@ namespace AnimalWorld.Web.Controllers.Zoos
         {
             if (!ModelState.IsValid)
             {
+                viewModel.Zoos = _zooService.GetSelectListsZoo();
                 return View(viewModel);
             }
 
