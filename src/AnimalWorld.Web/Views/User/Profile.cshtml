@@ -6,7 +6,7 @@
 }
 
 <div>
-    <form method="post" asp-controller="Auth" asp-action="Profile">
+    <form method="post" asp-controller="User" asp-action="Profile">
         <div>
             <label>First Name:</label><br />
             @Html.TextBoxFor(x => x.FirstName, new { placeholder = "First Name" })
