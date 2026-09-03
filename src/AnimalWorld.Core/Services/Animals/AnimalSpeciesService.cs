@@ -64,7 +64,11 @@ namespace AnimalWorld.Core.Services.Animals
             animalSpecies.Name = modelData.Name;
             animalSpecies.Description = modelData.Description;
             animalSpecies.NativeRange = modelData.NativeRange;
-            animalSpecies.Url = modelData.Url;
+            if (!string.IsNullOrEmpty(modelData.Url))
+            {
+                animalSpecies.Url = modelData.Url;
+            }
+            
             animalSpecies.AnimalFamily = modelData.AnimalFamily;
             animalSpecies.AnimalFamilyId = modelData.AnimalFamilyId;
             _animalSpeciesRepository.Update(animalSpecies);

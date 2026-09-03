@@ -10,10 +10,12 @@ namespace AnimalWorld.Web.Mappers.Animals
         {
             return new AnimalSpeciesViewModel
             {
+                Id = source.Id,
                 Name = source.Name,
                 Description = source.Description,
                 NativeRange = source.NativeRange,
                 Url = source.Url,
+                AnimalFamilyId = source.AnimalFamilyId,
                 Zoos = source.Zoos?.Select(s => s.Name).ToList() ?? new List<string>(),
             };
         }

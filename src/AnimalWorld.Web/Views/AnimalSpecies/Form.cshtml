@@ -22,7 +22,11 @@
             <input type="file" name="Image" accept="image/*" />
             @if (Model.Id != 0 && !string.IsNullOrEmpty(Model.Url))
             {
-                <p>Current image: <a href="@Model.Url" target="_blank">View</a></p>
+                <div style="margin-top: 10px;">
+                    <p style="margin: 0 0 5px 0; color: #666; font-size: 0.9rem;">Current image:</p>
+                    <img src="@Model.Url" alt="Current image"
+                         style="max-width: 300px; max-height: 200px; border: 1px solid #ddd; border-radius: 4px; object-fit: cover;" />
+                </div>
             }
         </div>
         <div>

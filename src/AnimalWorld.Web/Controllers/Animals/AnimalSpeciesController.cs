@@ -36,8 +36,12 @@ namespace AnimalWorld.Web.Controllers.Animals
             }
 
             var userName = _authService.GetUserName();
-            string url = _imageUploadHelper.SaveAsync(viewModel.Image, "images\\animals", userName).Result;
-            viewModel.Url = url;
+            if (viewModel.Image != null)
+            {
+                string url = _imageUploadHelper.SaveAsync(viewModel.Image, "images\\animals", userName).Result;
+                viewModel.Url = url;
+            }
+
             var animalSpeciesData = _mapper.ReverseMap(viewModel);
             if (viewModel.Id == 0)
             {
