@@ -1,7 +1,9 @@
 ﻿using AnimalWorld.Core.Dtos.Users;
 using AnimalWorld.Core.Services.Interfaces.Users;
 using AnimalWorld.Core.Services.Interfaces.Zoos;
+using AnimalWorld.Data.Models.Animals;
 using AnimalWorld.Data.Models.Zoos;
+using AnimalWorld.Data.Repositories.Interfaces.Animals;
 using AnimalWorld.Data.Repositories.Interfaces.Zoos;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -45,6 +47,18 @@ namespace AnimalWorld.Core.Services.Zoos
         {
             var zoo = _zooRepository.GetById(id);
             return zoo;
+        }
+
+        public ZooData GetWithAnimals(int id)
+        {
+            var zoo = _zooRepository.GetWithAnimals(id);
+            return zoo;
+        }
+
+        public List<int> ZooAnimalSpeciesIds(List<AnimalSpeciesData> animalSpecies)
+        {
+            var animalSpeciesIds = animalSpecies.Select(animal => animal.Id).ToList();
+            return animalSpeciesIds;
         }
 
         public List<ZooData> GetAll()

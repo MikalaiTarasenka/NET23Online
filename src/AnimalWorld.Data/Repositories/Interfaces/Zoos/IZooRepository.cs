@@ -13,5 +13,7 @@ namespace AnimalWorld.Data.Repositories.Interfaces.Zoos
         List<ZooData> GetZoos(int page, int count);
 
         int GetZoosCount();
+
+        ZooData GetWithAnimals(int id);
     }
 }

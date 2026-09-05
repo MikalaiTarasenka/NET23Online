@@ -47,6 +47,12 @@ namespace AnimalWorld.Data.Repositories.Zoos
                 .ToList();
         }
 
+        public ZooData GetWithAnimals(int id)
+        {
+            var zoo = _dbSet.Include(z => z.AnimalSpecies).First(z => z.Id == id);
+            return zoo;
+        }
+
         public List<ZooData> GetZoos(int page, int count)
         {
             return _dbSet

@@ -1,0 +1,55 @@
+﻿@model AnimalWorld.Web.Models.Zoos.BindingViewModel
+
+@{
+    ViewData["Title"] = "Zoo Animals Binding";
+}
+
+<div>
+    @if (Model?.Zoo != null)
+    {
+        <h2>Zoo: @Model.Zoo.Name</h2>
+        <p><strong>Address:</strong> @Model.Zoo.Address</p>
+        <p><strong>Description:</strong> @Model.Zoo.Description</p>
+    }
+
+    <hr />
+
+    <h3>Select Animal Species</h3>
+
+    <div asp-validation-summary="ModelOnly"></div>
+
+    <form method="post" asp-controller="Zoo" asp-action="Binding">
+
+        <input type="hidden" name="Zoo.Id" value="@Model.Zoo.Id" />
+
+        <div style="border: 1px solid #ddd; border-radius: 4px; padding: 15px; max-height: 400px; overflow-y: auto; margin-bottom: 15px;">
+            @if (Model?.AnimalSpecies != null && Model.AnimalSpecies.Any())
+            {
+                foreach (var item in Model.AnimalSpecies)
+                {
+                    var isChecked = Model.SelectedAnimalSpeciesIds != null
+                                    && Model.SelectedAnimalSpeciesIds.Contains(int.Parse(item.Value));
+                    <div style="margin-bottom: 8px;">
+                        <label>
+                            <input type="checkbox"
+                                   name="SelectedAnimalSpeciesIds"
+                                   value="@item.Value"
+                            @(isChecked ? "checked" : "") />
+                            @item.Text
+                        </label>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>No species available.</p>
+            }
+        </div>
+
+        @Html.ValidationMessageFor(x => x.SelectedAnimalSpeciesIds)
+
+        <div>
+            <button type="submit">Save</button>
+        </div>
+    </form>
+</div>

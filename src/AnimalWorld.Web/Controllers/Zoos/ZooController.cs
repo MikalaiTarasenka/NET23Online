@@ -1,4 +1,5 @@
-﻿using AnimalWorld.Core.Services.Interfaces.Zoos;
+﻿using AnimalWorld.Core.Services.Interfaces.Animals;
+using AnimalWorld.Core.Services.Interfaces.Zoos;
 using AnimalWorld.Data.Models.Zoos;
 using AnimalWorld.Web.Mappers.Interfaces;
 using AnimalWorld.Web.Models.Zoos;
@@ -9,12 +10,14 @@ namespace AnimalWorld.Web.Controllers.Zoos
     public class ZooController : Controller
     {
         private IZooService _zooService;
+        private IAnimalSpeciesService _animalSpeciesService;
         private IReverseMapper<ZooData, ZooViewModel> _mapper;
 
-        public ZooController(IZooService zooService, IReverseMapper<ZooData, ZooViewModel> mapper)
+        public ZooController(IZooService zooService, IReverseMapper<ZooData, ZooViewModel> mapper, IAnimalSpeciesService animalSpeciesService)
         {
             _zooService = zooService;
             _mapper = mapper;
+            _animalSpeciesService = animalSpeciesService;
         }
 
         public IActionResult Index()
@@ -73,6 +76,27 @@ namespace AnimalWorld.Web.Controllers.Zoos
         {
             _zooService.Delete(id);
             return RedirectToAction("List");
+        }
+
+        [HttpGet]
+        public IActionResult Binding(int id)
+        {
+            var zooData = _zooService.GetWithAnimals(id);
+            var zooViewModel = _mapper.Map(zooData);
+            var selectListAnimalSpecies = _animalSpeciesService.SelectListAnimalSpecies();
+            var viewModel = new BindingViewModel
+            {
+                Zoo = zooViewModel,
+                AnimalSpecies = selectListAnimalSpecies,
+                SelectedAnimalSpeciesIds = _zooService.ZooAnimalSpeciesIds(zooData.AnimalSpecies)
+            };
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult Binding(BindingViewModel viewModel)
+        {
+            return View(viewModel);
         }
     }
 }

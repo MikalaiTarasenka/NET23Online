@@ -3,12 +3,13 @@ using AnimalWorld.Core.Services.Interfaces.Animals;
 using AnimalWorld.Core.Services.Interfaces.Users;
 using AnimalWorld.Data.Models.Animals;
 using AnimalWorld.Data.Repositories.Interfaces.Animals;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AnimalWorld.Core.Services.Animals
 {
     internal class AnimalSpeciesService : IAnimalSpeciesService
     {
-        public const string DEFAULT_URL = "/images/animal-species/default.jpg";
+        public const string DEFAULT_URL = "/images/animals/default.jpg";
         private IAnimalSpeciesRepository _animalSpeciesRepository;
         private IAnimalFamilyRepository _animalFamilyRepository;
         private IAuthService _authService;
@@ -83,6 +84,17 @@ namespace AnimalWorld.Core.Services.Animals
         {
             var animalSpecies = _animalSpeciesRepository.GetById(id);
             return animalSpecies;
+        }
+
+        public List<SelectListItem> SelectListAnimalSpecies()
+        {
+            var animals = _animalSpeciesRepository.GetAll();
+            var selectList = animals.Select(animal => new SelectListItem
+            {
+                Text = animal.Name,
+                Value = animal.Id.ToString()
+            });
+            return selectList.ToList();
         }
     }
 }
