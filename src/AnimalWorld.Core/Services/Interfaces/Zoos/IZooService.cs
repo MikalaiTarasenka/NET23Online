@@ -11,5 +11,7 @@ namespace AnimalWorld.Core.Services.Interfaces.Zoos
         ZooData GetWithAnimals(int id);
 
         List<int> ZooAnimalSpeciesIds(List<AnimalSpeciesData> animalSpecies);
+
+        void BindAnimalSpecies(ZooData zoo, List<int> selectedAnimalSpeciesIds);
     }
 }

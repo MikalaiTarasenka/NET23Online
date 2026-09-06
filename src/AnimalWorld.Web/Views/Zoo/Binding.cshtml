@@ -20,7 +20,7 @@
 
     <form method="post" asp-controller="Zoo" asp-action="Binding">
 
-        <input type="hidden" name="Zoo.Id" value="@Model.Zoo.Id" />
+        <input type="hidden" name="ZooId" value="@Model.ZooId" />
 
         <div style="border: 1px solid #ddd; border-radius: 4px; padding: 15px; max-height: 400px; overflow-y: auto; margin-bottom: 15px;">
             @if (Model?.AnimalSpecies != null && Model.AnimalSpecies.Any())

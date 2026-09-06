@@ -10,24 +10,32 @@ namespace AnimalWorld.Data.Repositories.Zoos
     {
         public ZooRepository(WebContext context) : base(context) { }
 
-        public void AddAnimalSpecies(int zooId, List<int> animalSpeciesIds)
+        public void BindAnimalSpecies(ZooData zooData, List<int> idsToAdd, List<int> idsToRemove)
         {
-            var zoo = _dbSet
-                .Include(animal => animal.AnimalSpecies)
-                .First(zoo => zoo.Id == zooId);
-            var existsAnimalSpeciesIds = zoo.AnimalSpecies.Select(a => a.Id);
-            var animalSpeciesToAdd = animalSpeciesIds
-                .Except(existsAnimalSpeciesIds)
-                .ToList();
-            if (!animalSpeciesToAdd.Any())
+            if (!idsToAdd.Any() && !idsToRemove.Any())
             {
                 return;
             }
+            
+            if (idsToAdd.Any())
+            {
+                var animalSpecies = _context.AnimalSpecies.Where(animalSpecies => idsToAdd
+                .Contains(animalSpecies.Id))
+                    .ToList();
+                zooData.AnimalSpecies.AddRange(animalSpecies);
+            }
 
-            var animalSpecies = _context.AnimalSpecies
-                .Where(animalSpecies => animalSpeciesToAdd.Contains(animalSpecies.Id))
-                .ToList();
-            zoo.AnimalSpecies.AddRange(animalSpecies);
+            if (idsToRemove.Any())
+            {
+                var animalSpecies = zooData.AnimalSpecies.Where(animalSpecies => idsToRemove
+                .Contains(animalSpecies.Id))
+                    .ToList();
+                foreach (var animal in animalSpecies)
+                {
+                    zooData.AnimalSpecies.Remove(animal);
+                }
+            }
+
             _context.SaveChanges();
         }
 

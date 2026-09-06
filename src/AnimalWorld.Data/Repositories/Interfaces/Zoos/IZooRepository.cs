@@ -6,7 +6,7 @@ namespace AnimalWorld.Data.Repositories.Interfaces.Zoos
 {
     public interface IZooRepository : INamedBaseRepository<ZooData>
     {
-        void AddAnimalSpecies(int zooId, List<int> animalSpeciesIds);
+        void BindAnimalSpecies(ZooData zooData, List<int> idsToAdd, List<int> idsToRemove);
 
         List<ZooAnimalFamilyDto> GetAnimalFamiliesByZooIds(List<int> ids);
 

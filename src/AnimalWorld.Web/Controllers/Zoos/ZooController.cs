@@ -83,11 +83,11 @@ namespace AnimalWorld.Web.Controllers.Zoos
         {
             var zooData = _zooService.GetWithAnimals(id);
             var zooViewModel = _mapper.Map(zooData);
-            var selectListAnimalSpecies = _animalSpeciesService.SelectListAnimalSpecies();
             var viewModel = new BindingViewModel
             {
+                ZooId = id,
                 Zoo = zooViewModel,
-                AnimalSpecies = selectListAnimalSpecies,
+                AnimalSpecies = _animalSpeciesService.SelectListAnimalSpecies(),
                 SelectedAnimalSpeciesIds = _zooService.ZooAnimalSpeciesIds(zooData.AnimalSpecies)
             };
             return View(viewModel);
@@ -96,7 +96,21 @@ namespace AnimalWorld.Web.Controllers.Zoos
         [HttpPost]
         public IActionResult Binding(BindingViewModel viewModel)
         {
-            return View(viewModel);
+            var zooData = _zooService.GetWithAnimals(viewModel.ZooId);
+            if (!ModelState.IsValid)
+            {
+                var zooViewModel = _mapper.Map(zooData);
+                viewModel = new BindingViewModel
+                {
+                    Zoo = zooViewModel,
+                    AnimalSpecies = _animalSpeciesService.SelectListAnimalSpecies(),
+                    SelectedAnimalSpeciesIds = _zooService.ZooAnimalSpeciesIds(zooData.AnimalSpecies)
+                };
+                return View(viewModel);
+            }
+
+            _zooService.BindAnimalSpecies(zooData, viewModel.SelectedAnimalSpeciesIds);
+            return RedirectToAction("List");
         }
     }
 }

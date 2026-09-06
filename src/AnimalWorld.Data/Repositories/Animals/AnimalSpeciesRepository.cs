@@ -16,6 +16,7 @@ namespace AnimalWorld.Data.Repositories.Animals
         public List<AnimalSpeciesData> GetRandomElements()
         {
             return _dbSet
+                .Include(p => p.Zoos)
                 .OrderBy(p => EF.Functions.Random())
                 .Take(START_PAGE_COUNT_ANIMAL_SPECIES)
                 .ToList();

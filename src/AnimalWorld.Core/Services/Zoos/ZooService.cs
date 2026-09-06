@@ -78,6 +78,14 @@ namespace AnimalWorld.Core.Services.Zoos
             return selectZoosList;
         }
 
+        public void BindAnimalSpecies(ZooData zoo, List<int> selectedAnimalSpeciesIds)
+        {
+            var zooCurentAnimalSpeciesIds = ZooAnimalSpeciesIds(zoo.AnimalSpecies);
+            var idsToAdd = selectedAnimalSpeciesIds.Except(zooCurentAnimalSpeciesIds).ToList();
+            var IdsToRemove = zooCurentAnimalSpeciesIds.Except(selectedAnimalSpeciesIds).ToList();
+            _zooRepository.BindAnimalSpecies(zoo, idsToAdd, IdsToRemove);
+        }
+
         public void Update(ZooData zooData)
         {
             var zoo = _zooRepository.GetById(zooData.Id);

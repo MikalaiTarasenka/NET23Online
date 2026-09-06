@@ -5,9 +5,11 @@ namespace AnimalWorld.Web.Models.Zoos
 {
     public class BindingViewModel
     {
-        public ZooViewModel Zoo { get; set; }
+        public int ZooId { get; set; }
 
-        public List<SelectListItem> AnimalSpecies { get; set; }
+        public ZooViewModel? Zoo { get; set; }
+
+        public List<SelectListItem>? AnimalSpecies { get; set; }
 
         [Required(ErrorMessage = "Необходимо выбрать хотя бы один вид животных")]
         public List<int> SelectedAnimalSpeciesIds { get; set; }
