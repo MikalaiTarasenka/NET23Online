@@ -20,9 +20,11 @@ namespace AnimalWorld.Web.Controllers.Zoos
             _animalSpeciesService = animalSpeciesService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1)
         {
-            return View();
+            var zooDatas = _zooService.GetAll();
+            var zooViewModels = _mapper.MapList(zooDatas);
+            return View(zooViewModels);
         }
 
         [HttpPost]
