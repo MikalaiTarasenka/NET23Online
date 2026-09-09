@@ -35,6 +35,7 @@ builder.Services.AddScoped<IReverseMapper<PromotionData, PromotionViewModel>, Pr
 builder.Services.AddScoped<IReverseMapper<ZooData, ZooViewModel>, ZooMapper>();
 builder.Services.AddScoped<IReverseMapper<AnimalSpeciesData, AnimalSpeciesViewModel>, AnimalSpeciesMapper>();
 builder.Services.AddScoped<IMapper<RandomAnimalDto, RandomAnimalViewModel>, RandomAnimalMapper>();
+builder.Services.AddScoped<IMapper<TicketData, TicketViewModel>, TicketMapper>();
 builder.Services.AddScoped<IImageUploadHelper, ImageUploadHelper>();
 
 builder.Services.AddHttpClient<RandomAnimalApi>(x =>

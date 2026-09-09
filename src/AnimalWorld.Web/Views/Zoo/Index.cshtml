@@ -44,14 +44,20 @@
 
                     <!-- Кнопки -->
                     <div style="display: flex; justify-content: space-between; gap: 10px; margin-top: auto;">
-                        <a href="/Zoos/Booking/@zoo.Id"
-                           style="flex: 1; padding: 10px; background-color: #27ae60; color: white; text-align: center; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background-color 0.2s;"
-                           onmouseover="this.style.backgroundColor='#229954'"
-                           onmouseout="this.style.backgroundColor='#27ae60'">
-                            Бронирование
-                        </a>
-                        <a href="/Zoos/Comments/@zoo.Id"
-                           style="flex: 1; padding: 10px; background-color: #2980b9; color: white; text-align: center; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background-color 0.2s;"
+                        <!-- Бронирование - POST форма -->
+                        <form method="post" asp-controller="Ticket" asp-action="Book" style="flex: 1; margin: 0;">
+                            <input type="hidden" name="zooId" value="@zoo.Id" />
+                            <button type="submit"
+                                    style="width: 100%; padding: 10px; background-color: #27ae60; color: white; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; font-size: 1rem; transition: background-color 0.2s;"
+                                    onmouseover="this.style.backgroundColor='#229954'"
+                                    onmouseout="this.style.backgroundColor='#27ae60'">
+                                Бронирование
+                            </button>
+                        </form>
+
+                        <!-- Комментарии - GET ссылка -->
+                        <a href="/Comment/Comments?zooId=@zoo.Id"
+                           style="flex: 1; padding: 10px; background-color: #2980b9; color: white; text-align: center; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background-color 0.2s; box-sizing: border-box;"
                            onmouseover="this.style.backgroundColor='#2471a3'"
                            onmouseout="this.style.backgroundColor='#2980b9'">
                             Комментарии

@@ -18,10 +18,10 @@ namespace AnimalWorld.Core.Services.Zoos
             _zooRepository = zooRepository;
         }
 
-        public void BookZooVisit(string zooName)
+        public void BookZooVisit(int zooId)
         {
             var user = _authService.GetUser();
-            var zoo = _zooRepository.GetByName(zooName);
+            var zoo = _zooRepository.GetById(zooId);
             TicketData ticketData = new TicketData
             {
                 User = user,
@@ -35,8 +35,9 @@ namespace AnimalWorld.Core.Services.Zoos
             _ticketRepository.Create(ticketData);
         }
 
-        public List<TicketData> GetUserTickets(int userId)
+        public List<TicketData> GetUserTickets()
         {
+            var userId = _authService.GetUserId();
             var tickets = _ticketRepository.GetUserTickets(userId);
             return tickets;
         }

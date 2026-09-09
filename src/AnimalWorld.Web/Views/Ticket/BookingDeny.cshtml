@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Booking Failed";
+}
+
+<div style="display: flex; justify-content: center; align-items: center; min-height: 70vh; padding: 20px 0;">
+    <div style="width: 100%; max-width: 500px; background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 40px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); text-align: center;">
+
+        <!-- Иконка ошибки -->
+        <div style="font-size: 4rem; margin-bottom: 20px;">✗</div>
+
+        <h2 style="color: #c0392b; margin: 0 0 15px 0; font-size: 1.8rem;">Ошибка бронирования</h2>
+
+        <p style="color: #555; font-size: 1rem; line-height: 1.6; margin: 0 0 30px 0;">
+            К сожалению, не удалось забронировать билет. Пожалуйста, попробуйте ещё раз или свяжитесь с поддержкой.
+        </p>
+
+        <div style="display: flex; gap: 15px; justify-content: center;">
+            <a href="/User/Profile"
+               style="flex: 1; padding: 12px 20px; background-color: #2980b9; color: white; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background-color 0.2s;"
+               onmouseover="this.style.backgroundColor='#2471a3'"
+               onmouseout="this.style.backgroundColor='#2980b9'">
+                Личный кабинет
+            </a>
+            <a href="/Zoo/Index"
+               style="flex: 1; padding: 12px 20px; background-color: #27ae60; color: white; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background-color 0.2s;"
+               onmouseover="this.style.backgroundColor='#229954'"
+               onmouseout="this.style.backgroundColor='#27ae60'">
+                Список зоопарков
+            </a>
+        </div>
+    </div>
+</div>

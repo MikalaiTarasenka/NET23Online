@@ -1,0 +1,75 @@
+﻿@model List<AnimalWorld.Web.Models.Users.TicketViewModel>
+
+@{
+    ViewData["Title"] = "My Tickets";
+}
+
+<div style="padding: 20px;">
+    <h1 style="text-align: center; color: #2c3e50; margin-bottom: 30px;">Мои билеты</h1>
+
+    @if (Model != null && Model.Any())
+    {
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px;">
+            @foreach (var ticket in Model)
+            {
+                var isUsed = ticket.IsUsed;
+                var opacity = isUsed ? "0.6" : "1";
+                var borderColor = isUsed ? "#ccc" : "#e0e0e0";
+                var backgroundColor = isUsed ? "#f5f5f5" : "white";
+
+                <div style="background: @backgroundColor; border: 2px solid @borderColor; border-radius: 8px; padding: 25px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); opacity: @opacity; position: relative; overflow: hidden;">
+
+                    @if (isUsed)
+                    {
+                        <div style="position: absolute; top: 10px; right: -30px; background-color: #95a5a6; color: white; padding: 5px 40px; transform: rotate(45deg); font-size: 0.75rem; font-weight: bold;">
+                            ИСПОЛЬЗОВАН
+                        </div>
+                    }
+
+                    <!-- Номер билета -->
+                    <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px dashed #ddd;">
+                        <span style="font-size: 0.75rem; text-transform: uppercase; color: #888; font-weight: bold; display: block; margin-bottom: 4px;">Номер билета</span>
+                        <p style="margin: 0; color: #2c3e50; font-size: 1rem; font-weight: 600; font-family: 'Courier New', monospace; letter-spacing: 1px;">@ticket.UniqueKey</p>
+                    </div>
+
+                    <!-- Зоопарк -->
+                    <div style="margin-bottom: 15px;">
+                        <span style="font-size: 0.75rem; text-transform: uppercase; color: #888; font-weight: bold; display: block; margin-bottom: 4px;">Зоопарк</span>
+                        <p style="margin: 0; color: #2980b9; font-size: 1.1rem; font-weight: 600;">@ticket.ZooName</p>
+                    </div>
+
+                    <!-- Дата события -->
+                    <div style="margin-bottom: 15px;">
+                        <span style="font-size: 0.75rem; text-transform: uppercase; color: #888; font-weight: bold; display: block; margin-bottom: 4px;">Дата посещения</span>
+                        <p style="margin: 0; color: #333; font-size: 0.95rem;">@ticket.EventDate.ToString("dd MMMM yyyy", new System.Globalization.CultureInfo("ru-RU"))</p>
+                    </div>
+
+                    <!-- Статус -->
+                    <div style="padding-top: 15px; border-top: 1px solid #f0f0f0;">
+                        <span style="font-size: 0.75rem; text-transform: uppercase; color: #888; font-weight: bold; display: block; margin-bottom: 4px;">Статус</span>
+                        @if (ticket.IsUsed)
+                        {
+                            <span style="display: inline-block; padding: 4px 12px; background-color: #95a5a6; color: white; border-radius: 12px; font-size: 0.85rem; font-weight: 600;">Использован</span>
+                        }
+                        else
+                        {
+                            <span style="display: inline-block; padding: 4px 12px; background-color: #27ae60; color: white; border-radius: 12px; font-size: 0.85rem; font-weight: 600;">Действителен</span>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div style="text-align: center; padding: 60px 20px; background: white; border: 1px solid #e0e0e0; border-radius: 8px;">
+            <p style="color: #777; font-size: 1.1rem; margin: 0 0 20px 0;">У вас пока нет билетов.</p>
+            <a href="/Zoo/Index"
+               style="display: inline-block; padding: 12px 30px; background-color: #2980b9; color: white; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background-color 0.2s;"
+               onmouseover="this.style.backgroundColor='#2471a3'"
+               onmouseout="this.style.backgroundColor='#2980b9'">
+                Посмотреть зоопарки
+            </a>
+        </div>
+    }
+</div>

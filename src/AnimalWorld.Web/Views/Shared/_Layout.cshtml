@@ -95,6 +95,43 @@
                     color: #2c3e50;
                 }
 
+            /* Выпадающее меню для личного кабинета (правая часть) */
+            .user-dropdown {
+                position: relative;
+            }
+
+            .user-dropdown-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: white;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                min-width: 180px;
+                z-index: 100;
+                padding: 13px 0 5px 0; /* было margin-top: 8px + padding: 5px 0 */
+            }
+
+            .user-dropdown:hover .user-dropdown-menu {
+                display: block;
+            }
+
+            .user-dropdown-menu a {
+                display: block;
+                padding: 10px 15px;
+                color: #333;
+                text-decoration: none;
+                font-size: 0.9rem;
+                transition: background-color 0.2s;
+            }
+
+                .user-dropdown-menu a:hover {
+                    background-color: #f1f1f1;
+                    color: #2c3e50;
+                }
+
             /* Правая часть навигации */
             .auth-section {
                 display: flex;
@@ -109,6 +146,8 @@
                 text-decoration: none;
                 font-size: 0.9rem;
                 font-weight: 500;
+                cursor: pointer;
+                display: inline-block;
             }
 
             .btn-login {
@@ -169,7 +208,6 @@
                     <li><a href="/Home/Moderating">Панель управления</a></li>
                 }
                 <li><a href="/Zoo/Index">Зоопарки</a></li>
-
             </ul>
 
             <div class="auth-section">
@@ -177,7 +215,15 @@
                 @if (authService.IsAuthenticated())
                 {
                     <span>Здравствуйте, @authService.GetUserName()</span>
-                    <a href="/User/Profile" class="btn btn-register">Личный кабинет</a>
+
+                    <!-- Выпадающее меню личного кабинета -->
+                    <div class="user-dropdown">
+                        <a href="/User/Profile" class="btn btn-register">Личный кабинет ▼</a>
+                        <div class="user-dropdown-menu">
+                            <a href="/Ticket/Tickets">Мои билеты</a>
+                        </div>
+                    </div>
+
                     <a href="/Auth/Logout" class="btn btn-login">Выход</a>
                 }
                 else
