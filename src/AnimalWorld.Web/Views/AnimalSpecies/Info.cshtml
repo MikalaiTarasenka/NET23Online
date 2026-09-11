@@ -1,0 +1,55 @@
+﻿@model AnimalWorld.Web.Models.Animals.AnimalSpeciesInfoViewModel
+
+@{
+    ViewData["Title"] = "Animal Species";
+}
+
+<div style="padding: 20px;">
+    <h1 style="text-align: center; color: #2c3e50; margin-bottom: 30px;">Виды животных</h1>
+
+    <!-- Форма поиска -->
+    <form asp-controller="AnimalSpecies" asp-action="Info" style="margin-bottom: 30px; display: flex; gap: 10px; align-items: center;">
+        <select name="searchCategory" style="padding: 8px 12px; border: 1px solid #d0d0d0; border-radius: 4px; font-size: 0.95rem; min-width: 150px;">
+            <option value="All" selected="@(Model.SearchCategory == "All")">Все поля</option>
+            <option value="Species" selected="@(Model.SearchCategory == "Species")">Вид</option>
+            <option value="Family" selected="@(Model.SearchCategory == "Family")">Семейство</option>
+            <option value="Range" selected="@(Model.SearchCategory == "Range")">Место обитания</option>
+        </select>
+
+        <input type="text" name="searchQuery" value="@Model.SearchQuery" placeholder="Поиск..."
+               style="flex: 1; padding: 8px 12px; border: 1px solid #d0d0d0; border-radius: 4px; font-size: 0.95rem;" />
+
+        <button type="submit" style="padding: 8px 20px; background-color: #2980b9; color: white; border: none; border-radius: 4px; font-weight: 600; cursor: pointer;">
+            Найти
+        </button>
+    </form>
+
+    <!-- Список видов -->
+    @if (Model?.BriefAnimalSpecies != null && Model.BriefAnimalSpecies.Any())
+    {
+        <div style="border: 1px solid #e0e0e0; border-radius: 4px; overflow: hidden;">
+            <!-- Заголовки -->
+            <div style="display: flex; background-color: #f0f0f0; padding: 12px 15px; font-weight: bold; border-bottom: 2px solid #ddd;">
+                <div style="flex: 2;">Вид</div>
+                <div style="flex: 2;">Семейство</div>
+                <div style="flex: 3;">Место обитания</div>
+            </div>
+
+            <!-- Строки -->
+            @foreach (var species in Model.BriefAnimalSpecies)
+            {
+                <div style="display: flex; padding: 12px 15px; border-bottom: 1px solid #f0f0f0; transition: background-color 0.2s;"
+                     onmouseover="this.style.backgroundColor='#f9f9f9'"
+                     onmouseout="this.style.backgroundColor='white'">
+                    <div style="flex: 2; color: #2c3e50; font-weight: 500;">@species.AnimalSpeciesName</div>
+                    <div style="flex: 2; color: #555;">@species.AnimalFamilyName</div>
+                    <div style="flex: 3; color: #555;">@species.NativeRange</div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p style="text-align: center; color: #777; padding: 40px;">Виды животных не найдены.</p>
+    }
+</div>

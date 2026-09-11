@@ -8,5 +8,7 @@ namespace AnimalWorld.Core.Services.Interfaces.Animals
         List<AnimalSpeciesData> GetRandomAnimals();
 
         List<SelectListItem> SelectListAnimalSpecies();
+
+        List<AnimalSpeciesData> GetWithAnimalFamily(string searchCategory, string searchQuery);
     }
 }

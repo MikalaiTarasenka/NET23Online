@@ -96,5 +96,11 @@ namespace AnimalWorld.Core.Services.Animals
             });
             return selectList.ToList();
         }
+
+        public List<AnimalSpeciesData> GetWithAnimalFamily(string searchCategory, string searchQuery)
+        {
+            var animals = _animalSpeciesRepository.GetAllWithFamily(searchCategory, searchQuery);
+            return animals;
+        }
     }
 }

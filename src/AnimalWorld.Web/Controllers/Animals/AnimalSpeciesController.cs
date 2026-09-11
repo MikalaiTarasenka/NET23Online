@@ -13,17 +13,19 @@ namespace AnimalWorld.Web.Controllers.Animals
         private IAnimalSpeciesService _animalSpeciesService;
         private IAnimalFamilyService _animalFamilyService;
         private IAuthService _authService;
-        private IReverseMapper<AnimalSpeciesData, AnimalSpeciesViewModel> _mapper;
+        private IReverseMapper<AnimalSpeciesData, AnimalSpeciesViewModel> _speciesMapper;
+        private IMapper<AnimalSpeciesData, AnimalSpeciesBriefViewModel> _briefMapper;
         private IImageUploadHelper _imageUploadHelper;
 
         public AnimalSpeciesController(IAnimalSpeciesService animalSpeciesService, IReverseMapper<AnimalSpeciesData, AnimalSpeciesViewModel> mapper,
-            IAnimalFamilyService animalFamilyService, IImageUploadHelper imageUploadHelper, IAuthService authService)
+            IAnimalFamilyService animalFamilyService, IImageUploadHelper imageUploadHelper, IAuthService authService, IMapper<AnimalSpeciesData, AnimalSpeciesBriefViewModel> briefMapper)
         {
             _animalSpeciesService = animalSpeciesService;
-            _mapper = mapper;
+            _speciesMapper = mapper;
             _animalFamilyService = animalFamilyService;
             _imageUploadHelper = imageUploadHelper;
             _authService = authService;
+            _briefMapper = briefMapper;
         }
 
         [HttpPost]
@@ -42,7 +44,7 @@ namespace AnimalWorld.Web.Controllers.Animals
                 viewModel.Url = url;
             }
 
-            var animalSpeciesData = _mapper.ReverseMap(viewModel);
+            var animalSpeciesData = _speciesMapper.ReverseMap(viewModel);
             if (viewModel.Id == 0)
             {
                 var response = _animalSpeciesService.Create(animalSpeciesData);
@@ -67,7 +69,7 @@ namespace AnimalWorld.Web.Controllers.Animals
             if (id != 0)
             {
                 var animalSpeciesData = _animalSpeciesService.Get(id);
-                viewModel = _mapper.Map(animalSpeciesData);
+                viewModel = _speciesMapper.Map(animalSpeciesData);
             }
 
             viewModel.AnimalFamilies = _animalFamilyService.GetSelectListAnimalFamilies();
@@ -77,7 +79,7 @@ namespace AnimalWorld.Web.Controllers.Animals
         public IActionResult List()
         {
             var animalSpecies = _animalSpeciesService.GetAll();
-            var viewModel = _mapper.MapList(animalSpecies);
+            var viewModel = _speciesMapper.MapList(animalSpecies);
             return View(viewModel);
         }
 
@@ -86,6 +88,19 @@ namespace AnimalWorld.Web.Controllers.Animals
         {
             _animalSpeciesService.Delete(id);
             return RedirectToAction("List");
+        }
+
+        public IActionResult Info(string? searchCategory = null, string? searchQuery = null)
+        {
+            var animals = _animalSpeciesService.GetWithAnimalFamily(searchCategory, searchQuery);
+            var briefViewModel = _briefMapper.MapList(animals);
+            var viewModel = new AnimalSpeciesInfoViewModel
+            {
+                BriefAnimalSpecies = briefViewModel,
+                SearchCategory = searchCategory,
+                SearchQuery = searchQuery
+            };
+            return View(viewModel);
         }
     }
 }
