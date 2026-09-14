@@ -9,12 +9,12 @@ namespace AnimalWorld.Data.Repositories.Zoos
     {
         public TicketRepository(WebContext context) : base(context) { }
 
-        public List<TicketData> GetUserTickets(int userId)
+        public async Task<List<TicketData>> GetUserTickets(int userId)
         {
-            return _dbSet
+            return await _dbSet
                 .Where(x => x.UserId == userId)
                 .Include(x => x.Zoo)
-                .ToList();
+                .ToListAsync();
         }
     }
 }

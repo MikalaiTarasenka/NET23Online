@@ -4,14 +4,14 @@ namespace AnimalWorld.Data.Repositories.Interfaces.Common
 {
     public interface IBaseRepository<DataModel> where DataModel : BaseModel
     {
-        List<DataModel> GetAll();
+        Task<List<DataModel>> GetAll();
 
-        DataModel GetById(int id);
+        Task<DataModel> GetById(int id);
 
-        void Create(DataModel model);
+        Task Create(DataModel model);
 
-        void Update(DataModel model);
+        Task Update(DataModel model);
 
-        void Delete(int id);
+        Task Delete(int id);
     }
 }

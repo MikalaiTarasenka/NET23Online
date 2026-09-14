@@ -13,32 +13,32 @@ namespace AnimalWorld.Data.Repositories.Animals
 
         public AnimalSpeciesRepository(WebContext context) : base(context) { }
 
-        public List<AnimalSpeciesData> GetRandomElements()
+        public async Task<List<AnimalSpeciesData>> GetRandomElements()
         {
-            return _dbSet
+            return await _dbSet
                 .Include(p => p.Zoos)
                 .OrderBy(p => EF.Functions.Random())
                 .Take(START_PAGE_COUNT_ANIMAL_SPECIES)
-                .ToList();
+                .ToListAsync();
         }
 
-        public List<string> GetAllAnimalSpeciesNames()
+        public async Task<List<string>> GetAllAnimalSpeciesNames()
         {
             var sql = @$"SELECT Name
                          FROM animal_species";
-            return _context.Database
+            return await _context.Database
                 .SqlQueryRaw<string>(sql)
-                .ToList();
+                .ToListAsync();
         }
 
-        public List<AnimalSpeciesData> GetAllWithFamily(string searchCategory, string searchQuery)
+        public async Task<List<AnimalSpeciesData>> GetAllWithFamily(string searchCategory, string searchQuery)
         {
             var dataSource = _dbSet
                 .Include(s => s.AnimalFamily)
                 .AsQueryable();
             if (string.IsNullOrEmpty(searchCategory) || string.IsNullOrEmpty(searchQuery))
             {
-                return dataSource.ToList();
+                return await dataSource.ToListAsync();
             }
 
             var queryValue = searchQuery.ToLower();
@@ -82,7 +82,7 @@ namespace AnimalWorld.Data.Repositories.Animals
                 dataSource = dataSource.Where(lambda);
             }
 
-            return dataSource.ToList();
+            return await dataSource.ToListAsync();
         }
 
         private Expression BuildContainsExpression(Expression propertyField, MethodInfo toLowerMethod, MethodInfo containsMethod, ConstantExpression constQuery)

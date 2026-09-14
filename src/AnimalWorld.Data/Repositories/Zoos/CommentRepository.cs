@@ -9,12 +9,12 @@ namespace AnimalWorld.Data.Repositories.Zoos
     {
         public CommentRepository(WebContext context) : base(context) { }
 
-        public List<CommentData> GetZooComments(int zooId)
+        public async Task<List<CommentData>> GetZooComments(int zooId)
         {
-            return _dbSet
+            return await _dbSet
                 .Include(x => x.Author)
                 .Where(x => x.ZooId == zooId)
-                .ToList();
+                .ToListAsync();
         }
     }
 }

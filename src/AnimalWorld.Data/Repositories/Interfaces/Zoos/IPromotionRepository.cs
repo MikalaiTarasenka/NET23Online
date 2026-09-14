@@ -10,6 +10,6 @@ namespace AnimalWorld.Data.Repositories.Interfaces.Zoos
 {
     public interface IPromotionRepository : INamedBaseRepository<PromotionData>
     {
-        List<PromotionData> GetPromotionsIncludeZoo();
+        Task<List<PromotionData>> GetPromotionsIncludeZoo();
     }
 }

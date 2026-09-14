@@ -5,6 +5,6 @@ namespace AnimalWorld.Data.Repositories.Interfaces.Zoos
 {
     public interface ITicketRepository : IBaseRepository<TicketData>
     {
-        List<TicketData> GetUserTickets(int userId);
+        Task<List<TicketData>> GetUserTickets(int userId);
     }
 }

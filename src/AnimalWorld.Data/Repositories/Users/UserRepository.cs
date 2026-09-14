@@ -1,6 +1,7 @@
 ﻿using AnimalWorld.Data.Models.Users;
 using AnimalWorld.Data.Repositories.Common;
 using AnimalWorld.Data.Repositories.Interfaces.Users;
+using Microsoft.EntityFrameworkCore;
 
 namespace AnimalWorld.Data.Repositories.Users
 {
@@ -8,14 +9,14 @@ namespace AnimalWorld.Data.Repositories.Users
     {
         public UserRepository(WebContext context) : base(context) { }
 
-        public bool UserNameIsFree(string userName)
+        public async Task<bool> UserNameIsFree(string userName)
         {
-            return _dbSet.FirstOrDefault(x => x.UserName == userName) == null;
+            return await _dbSet.FirstOrDefaultAsync(x => x.UserName == userName) == null;
         }
 
-        public UserData GetUser(string userName)
+        public async Task<UserData> GetUser(string userName)
         {
-            return _dbSet.FirstOrDefault(x => x.UserName == userName);
+            return await _dbSet.FirstOrDefaultAsync(x => x.UserName == userName);
         }
     }
 }

@@ -5,10 +5,10 @@ namespace AnimalWorld.Data.Repositories.Interfaces.Animals
 {
     public interface IAnimalSpeciesRepository : INamedBaseRepository<AnimalSpeciesData>
     {
-        List<AnimalSpeciesData> GetRandomElements();
+        Task<List<AnimalSpeciesData>> GetRandomElements();
 
-        List<string> GetAllAnimalSpeciesNames();
+        Task<List<string>> GetAllAnimalSpeciesNames();
 
-        List<AnimalSpeciesData> GetAllWithFamily(string searchCategory, string searchQuery);
+        Task<List<AnimalSpeciesData>> GetAllWithFamily(string searchCategory, string searchQuery);
     }
 }

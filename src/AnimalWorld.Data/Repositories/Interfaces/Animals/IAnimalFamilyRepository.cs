@@ -5,6 +5,6 @@ namespace AnimalWorld.Data.Repositories.Interfaces.Animals
 {
     public interface IAnimalFamilyRepository : INamedBaseRepository<AnimalFamilyData>
     {
-        List<AnimalFamilyData> GetRandomElements();
+        Task<List<AnimalFamilyData>> GetRandomElements();
     }
 }

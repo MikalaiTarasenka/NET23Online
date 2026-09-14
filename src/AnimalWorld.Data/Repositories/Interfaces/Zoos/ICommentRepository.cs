@@ -5,6 +5,6 @@ namespace AnimalWorld.Data.Repositories.Interfaces.Zoos
 {
     public interface ICommentRepository : IBaseRepository<CommentData>
     {
-        List<CommentData> GetZooComments(int zooId);
+        Task<List<CommentData>> GetZooComments(int zooId);
     }
 }

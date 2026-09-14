@@ -1,5 +1,6 @@
 ﻿using AnimalWorld.Data.Models.Common;
 using AnimalWorld.Data.Repositories.Interfaces.Common;
+using Microsoft.EntityFrameworkCore;
 
 namespace AnimalWorld.Data.Repositories.Common
 {
@@ -7,9 +8,9 @@ namespace AnimalWorld.Data.Repositories.Common
     {
         public NamedBaseRepository(WebContext context) : base(context) { }
 
-        public virtual DataModel GetByName(string name)
+        public virtual async Task<DataModel> GetByName(string name)
         {
-            return _dbSet.FirstOrDefault(x => x.Name == name);
+            return await _dbSet.FirstOrDefaultAsync(x => x.Name == name);
         }
     }
 }

@@ -9,11 +9,11 @@ namespace AnimalWorld.Data.Repositories.Zoos
     {
         public PromotionRepository(WebContext context) : base(context) { }
 
-        public List<PromotionData> GetPromotionsIncludeZoo()
+        public async Task<List<PromotionData>> GetPromotionsIncludeZoo()
         {
-            return _dbSet
+            return await _dbSet
                 .Include(p => p.Venue)
-                .ToList();
+                .ToListAsync();
         }
     }
 }

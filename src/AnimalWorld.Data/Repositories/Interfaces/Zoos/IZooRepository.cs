@@ -6,14 +6,14 @@ namespace AnimalWorld.Data.Repositories.Interfaces.Zoos
 {
     public interface IZooRepository : INamedBaseRepository<ZooData>
     {
-        void BindAnimalSpecies(ZooData zooData, List<int> idsToAdd, List<int> idsToRemove);
+        Task BindAnimalSpecies(ZooData zooData, List<int> idsToAdd, List<int> idsToRemove);
 
-        List<ZooAnimalFamilyDto> GetAnimalFamiliesByZooIds(List<int> ids);
+        Task<List<ZooAnimalFamilyDto>> GetAnimalFamiliesByZooIds(List<int> ids);
 
-        List<ZooData> GetZoos(int page, int count);
+        Task<List<ZooData>> GetZoos(int page, int count);
 
-        int GetZoosCount();
+        Task<int> GetZoosCount();
 
-        ZooData GetWithAnimals(int id);
+        Task<ZooData> GetWithAnimals(int id);
     }
 }

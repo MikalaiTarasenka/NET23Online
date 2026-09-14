@@ -10,7 +10,7 @@ namespace AnimalWorld.Data.Repositories.Zoos
     {
         public ZooRepository(WebContext context) : base(context) { }
 
-        public void BindAnimalSpecies(ZooData zooData, List<int> idsToAdd, List<int> idsToRemove)
+        public async Task BindAnimalSpecies(ZooData zooData, List<int> idsToAdd, List<int> idsToRemove)
         {
             if (!idsToAdd.Any() && !idsToRemove.Any())
             {
@@ -36,10 +36,10 @@ namespace AnimalWorld.Data.Repositories.Zoos
                 }
             }
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public List<ZooAnimalFamilyDto> GetAnimalFamiliesByZooIds(List<int> ids)
+        public async Task<List<ZooAnimalFamilyDto>> GetAnimalFamiliesByZooIds(List<int> ids)
         {
             var sql = @$"SELECT [BZAAS].ZooId, [AF].AnimalFamilyName
             FROM 
@@ -50,29 +50,29 @@ namespace AnimalWorld.Data.Repositories.Zoos
                 AnimalFamilies [AF] ON [AF].Id = [AS].AnimalFamilyId
             WHERE 
                 [BZAAS].ZooDataId IN ({string.Join(",", ids)})";
-            return _context.Database
+            return await _context.Database
                 .SqlQueryRaw<ZooAnimalFamilyDto>(sql)
-                .ToList();
+                .ToListAsync();
         }
 
-        public ZooData GetWithAnimals(int id)
+        public async Task<ZooData> GetWithAnimals(int id)
         {
-            var zoo = _dbSet.Include(z => z.AnimalSpecies).First(z => z.Id == id);
+            var zoo = await _dbSet.Include(z => z.AnimalSpecies).FirstAsync(z => z.Id == id);
             return zoo;
         }
 
-        public List<ZooData> GetZoos(int page, int count)
+        public async Task<List<ZooData>> GetZoos(int page, int count)
         {
-            return _dbSet
+            return await _dbSet
                 .Skip((page - 1) * count)
                 .Take(count)
-                .ToList();
+                .ToListAsync();
         }
 
-        public int GetZoosCount()
+        public async Task<int> GetZoosCount()
         {
-            return _dbSet
-                .Count();
+            return await _dbSet
+                .CountAsync();
         }
     }
 }

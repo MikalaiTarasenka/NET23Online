@@ -15,35 +15,35 @@ namespace AnimalWorld.Data.Repositories.Common
             _dbSet = _context.Set<DataModel>();
         }
 
-        public virtual List<DataModel> GetAll()
+        public virtual async Task<List<DataModel>> GetAll()
         {
-            return _dbSet.ToList();
+            return await _dbSet.ToListAsync();
         }
 
-        public virtual DataModel GetById(int id)
+        public virtual async Task<DataModel> GetById(int id)
         {
-            return _dbSet.FirstOrDefault(x => x.Id == id);
+            return await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public virtual void Create(DataModel model)
+        public virtual async Task Create(DataModel model)
         {
             _dbSet.Add(model);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public virtual void Update(DataModel model)
+        public virtual async Task Update(DataModel model)
         {
             _dbSet.Update(model);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public virtual void Delete(int id)
+        public virtual async Task Delete(int id)
         {
-            var model = _dbSet.FirstOrDefault(x => x.Id == id);
+            var model = await _dbSet.FirstOrDefaultAsync(x => x.Id == id);
             if (model != null)
             {
                 _dbSet.Remove(model);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
             }
         }
     }

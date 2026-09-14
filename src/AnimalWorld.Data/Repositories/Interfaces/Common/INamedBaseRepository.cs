@@ -4,6 +4,6 @@ namespace AnimalWorld.Data.Repositories.Interfaces.Common
 {
     public interface INamedBaseRepository<DataModel> : IBaseRepository<DataModel> where DataModel : NamedBaseModel
     {
-        DataModel GetByName(string name);
+        Task<DataModel> GetByName(string name);
     }
 }

@@ -11,12 +11,12 @@ namespace AnimalWorld.Data.Repositories.Animals
 
         public AnimalFamilyRepository(WebContext context) : base(context) { }
 
-        public List<AnimalFamilyData> GetRandomElements()
+        public async Task<List<AnimalFamilyData>> GetRandomElements()
         {
-            return _dbSet
+            return await _dbSet
                 .OrderBy(p => EF.Functions.Random())
                 .Take(START_PAGE_COUNT_ANIMAL_FAMILIES)
-                .ToList();
+                .ToListAsync();
         }
     }
 }
