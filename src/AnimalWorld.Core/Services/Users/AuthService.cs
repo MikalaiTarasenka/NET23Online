@@ -3,10 +3,8 @@ using AnimalWorld.Core.Services.Interfaces.Users;
 using AnimalWorld.Data.Enums;
 using AnimalWorld.Data.Models.Users;
 using AnimalWorld.Data.Repositories.Interfaces.Users;
-using BCrypt.Net;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity.Data;
 using System.Security.Claims;
 
 namespace AnimalWorld.Core.Services.Users
@@ -45,7 +43,7 @@ namespace AnimalWorld.Core.Services.Users
             return userName;
         }
 
-        public UserData GetUser()
+        public async Task<UserData> GetUser()
         {
             var userId = GetUserId();
             if (userId <= 0)
@@ -53,7 +51,8 @@ namespace AnimalWorld.Core.Services.Users
                 return null;
             }
 
-            return _userRepository.GetById(userId);
+            var user = await _userRepository.GetById(userId);
+            return user;
         }
 
         public bool IsAuthenticated()
@@ -96,9 +95,9 @@ namespace AnimalWorld.Core.Services.Users
             return language;
         }
 
-        public ResponseDto Login(CredentialsDto credentialsDto)
+        public async Task<ResponseDto> Login(CredentialsDto credentialsDto)
         {
-            var user = _userRepository.GetUser(credentialsDto.UserName);
+            var user = await _userRepository.GetUser(credentialsDto.UserName);
             if (user == null)
             {
                 return new ResponseDto
@@ -117,16 +116,16 @@ namespace AnimalWorld.Core.Services.Users
                 };
             }
 
-            SignIn(user);
+            await SignIn(user);
             return new ResponseDto
             {
                 Success = true
             };
         }
 
-        public ResponseDto Register(CredentialsDto credentialsDto)
+        public async Task<ResponseDto> Register(CredentialsDto credentialsDto)
         {
-            if (!_userRepository.UserNameIsFree(credentialsDto.UserName))
+            if (!await _userRepository.UserNameIsFree(credentialsDto.UserName))
             {
                 return new ResponseDto
                 {
@@ -142,14 +141,14 @@ namespace AnimalWorld.Core.Services.Users
                 Role = UserRole.User,
                 Language = Language.English
             };
-            _userRepository.Create(user);
+            await _userRepository.Create(user);
             return new ResponseDto
             {
                 Success = true
             };
         }
 
-        public void SignIn(UserData user)
+        public async Task SignIn(UserData user)
         {
             var claims = new List<Claim>
             {
@@ -161,9 +160,7 @@ namespace AnimalWorld.Core.Services.Users
             };
             var identity = new ClaimsIdentity(claims, AUTH_KEY);
             var principal = new ClaimsPrincipal(identity);
-            _httpContextAccessor.HttpContext!
-                .SignInAsync(AUTH_KEY, principal)
-                .Wait();
+            await _httpContextAccessor.HttpContext!.SignInAsync(AUTH_KEY, principal);
         }
     }
 }

@@ -10,7 +10,7 @@ namespace AnimalWorld.Core.Services.Interfaces.Users
 
         string GetUserName();
 
-        UserData GetUser();
+        Task<UserData> GetUser();
 
         bool IsAuthenticated();
 
@@ -20,10 +20,10 @@ namespace AnimalWorld.Core.Services.Interfaces.Users
 
         Language GetLanguage();
 
-        ResponseDto Login(CredentialsDto credentialsDto);
+        Task<ResponseDto> Login(CredentialsDto credentialsDto);
 
-        ResponseDto Register(CredentialsDto credentialsDto);
+        Task<ResponseDto> Register(CredentialsDto credentialsDto);
 
-        void SignIn(UserData user);
+        Task SignIn(UserData user);
     }
 }

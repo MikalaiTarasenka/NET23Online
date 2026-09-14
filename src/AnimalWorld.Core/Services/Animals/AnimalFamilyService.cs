@@ -18,27 +18,27 @@ namespace AnimalWorld.Core.Services.Animals
             _authService = authService;
         }
 
-        public List<AnimalFamilyData> GetRandomAnimals()
+        public async Task<List<AnimalFamilyData>> GetRandomAnimals()
         {
-            var animalFamilies = _animalFamilyRepository.GetRandomElements();
+            var animalFamilies = await _animalFamilyRepository.GetRandomElements();
             return animalFamilies;
         }
 
-        public AnimalFamilyData Get(int id)
+        public async Task<AnimalFamilyData> Get(int id)
         {
-            var animalFamilyData = _animalFamilyRepository.GetById(id);
+            var animalFamilyData = await _animalFamilyRepository.GetById(id);
             return animalFamilyData;
         }
 
-        public List<AnimalFamilyData> GetAll()
+        public async Task<List<AnimalFamilyData>> GetAll()
         {
-            var animalFamilies = _animalFamilyRepository.GetAll();
+            var animalFamilies = await _animalFamilyRepository.GetAll();
             return animalFamilies;
         }
 
-        public ResponseDto Create(AnimalFamilyData animalFamilyData)
+        public async Task<ResponseDto> Create(AnimalFamilyData animalFamilyData)
         {
-            if (_animalFamilyRepository.GetByName(animalFamilyData.Name) != null)
+            if (await _animalFamilyRepository.GetByName(animalFamilyData.Name) != null)
             {
                 return new ResponseDto
                 {
@@ -47,29 +47,29 @@ namespace AnimalWorld.Core.Services.Animals
                 };
             }
 
-            var user = _authService.GetUser();
+            var user = await _authService.GetUser();
             animalFamilyData.Creator = user;
             animalFamilyData.CreatorId = user.Id;
-            _animalFamilyRepository.Create(animalFamilyData);
+            await _animalFamilyRepository.Create(animalFamilyData);
             return new ResponseDto { Success = true };
         }
 
-        public void Update(AnimalFamilyData animalFamilyData)
+        public async Task Update(AnimalFamilyData animalFamilyData)
         {
-            var family = _animalFamilyRepository.GetById(animalFamilyData.Id);
+            var family = await _animalFamilyRepository.GetById(animalFamilyData.Id);
             family.Name = animalFamilyData.Name;
             family.Description = animalFamilyData.Description;
-            _animalFamilyRepository.Update(family);
+            await _animalFamilyRepository.Update(family);
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            _animalFamilyRepository.Delete(id);
+            await _animalFamilyRepository.Delete(id);
         }
 
-        public List<SelectListItem> GetSelectListAnimalFamilies()
+        public async Task<List<SelectListItem>> GetSelectListAnimalFamilies()
         {
-            var animalFamlies = _animalFamilyRepository.GetAll();
+            var animalFamlies = await _animalFamilyRepository.GetAll();
             var animalFamilySelectedList = animalFamlies.Select(animalFamily => new SelectListItem
             {
                 Text = animalFamily.Name,

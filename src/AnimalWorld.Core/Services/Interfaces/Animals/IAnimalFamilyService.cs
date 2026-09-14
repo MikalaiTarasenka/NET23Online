@@ -5,8 +5,8 @@ namespace AnimalWorld.Core.Services.Interfaces.Animals
 {
     public interface IAnimalFamilyService : IBaseService<AnimalFamilyData>
     {
-        List<AnimalFamilyData> GetRandomAnimals();
+        Task<List<AnimalFamilyData>> GetRandomAnimals();
 
-        List<SelectListItem> GetSelectListAnimalFamilies();
+        Task<List<SelectListItem>> GetSelectListAnimalFamilies();
     }
 }

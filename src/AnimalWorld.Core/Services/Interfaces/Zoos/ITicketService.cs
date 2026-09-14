@@ -4,8 +4,8 @@ namespace AnimalWorld.Core.Services.Interfaces.Zoos
 {
     public interface ITicketService
     {
-        void BookZooVisit(int zooId);
+        Task BookZooVisit(int zooId);
 
-        List<TicketData> GetUserTickets();
+        Task<List<TicketData>> GetUserTickets();
     }
 }

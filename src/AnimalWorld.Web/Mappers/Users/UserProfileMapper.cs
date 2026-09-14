@@ -1,7 +1,5 @@
-﻿using AnimalWorld.Data.Models.Animals;
-using AnimalWorld.Data.Models.Users;
+﻿using AnimalWorld.Data.Models.Users;
 using AnimalWorld.Web.Mappers.Interfaces;
-using AnimalWorld.Web.Models.Animals;
 using AnimalWorld.Web.Models.Users;
 
 namespace AnimalWorld.Web.Mappers.Users

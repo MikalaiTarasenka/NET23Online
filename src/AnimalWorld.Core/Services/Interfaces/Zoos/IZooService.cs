@@ -6,12 +6,12 @@ namespace AnimalWorld.Core.Services.Interfaces.Zoos
 {
     public interface IZooService : IBaseService<ZooData>
     {
-        List<SelectListItem> GetSelectListsZoo();
+        Task<List<SelectListItem>> GetSelectListsZoo();
 
-        ZooData GetWithAnimals(int id);
+        Task<ZooData> GetWithAnimals(int id);
 
         List<int> ZooAnimalSpeciesIds(List<AnimalSpeciesData> animalSpecies);
 
-        void BindAnimalSpecies(ZooData zoo, List<int> selectedAnimalSpeciesIds);
+        Task BindAnimalSpecies(ZooData zoo, List<int> selectedAnimalSpeciesIds);
     }
 }

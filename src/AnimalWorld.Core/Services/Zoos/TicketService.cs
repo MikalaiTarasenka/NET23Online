@@ -18,10 +18,10 @@ namespace AnimalWorld.Core.Services.Zoos
             _zooRepository = zooRepository;
         }
 
-        public void BookZooVisit(int zooId)
+        public async Task BookZooVisit(int zooId)
         {
-            var user = _authService.GetUser();
-            var zoo = _zooRepository.GetById(zooId);
+            var user = await _authService.GetUser();
+            var zoo = await _zooRepository.GetById(zooId);
             TicketData ticketData = new TicketData
             {
                 User = user,
@@ -32,13 +32,13 @@ namespace AnimalWorld.Core.Services.Zoos
                 UniqueKey = Guid.NewGuid().ToString()
             };
 
-            _ticketRepository.Create(ticketData);
+            await _ticketRepository.Create(ticketData);
         }
 
-        public List<TicketData> GetUserTickets()
+        public async Task<List<TicketData>> GetUserTickets()
         {
             var userId = _authService.GetUserId();
-            var tickets = _ticketRepository.GetUserTickets(userId);
+            var tickets = await _ticketRepository.GetUserTickets(userId);
             return tickets;
         }
     }

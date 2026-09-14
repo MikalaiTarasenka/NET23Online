@@ -5,14 +5,14 @@ namespace AnimalWorld.Core.Services.Interfaces
 {
     public interface IBaseService<DataModel> where DataModel : BaseModel
     {
-        DataModel Get(int id);
+        Task<DataModel> Get(int id);
 
-        List<DataModel> GetAll();
+        Task<List<DataModel>> GetAll();
 
-        ResponseDto Create(DataModel model);
+        Task<ResponseDto> Create(DataModel model);
 
-        void Update(DataModel model);
+        Task Update(DataModel model);
 
-        void Delete(int id);
+        Task Delete(int id);
     }
 }

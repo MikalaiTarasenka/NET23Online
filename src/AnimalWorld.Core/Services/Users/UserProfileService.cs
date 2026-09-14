@@ -1,11 +1,6 @@
 ﻿using AnimalWorld.Core.Services.Interfaces.Users;
 using AnimalWorld.Data.Models.Users;
 using AnimalWorld.Data.Repositories.Interfaces.Users;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnimalWorld.Core.Services.Users
 {
@@ -20,22 +15,21 @@ namespace AnimalWorld.Core.Services.Users
             _authService = authService;
         }
 
-        public UserData Get()
+        public async Task<UserData> Get()
         {
             var userId = _authService.GetUserId();
-            var user = _userRepository.GetById(userId);
+            var user = await _userRepository.GetById(userId);
             return user;
         }
 
-        public void Update(UserData userData)
+        public async Task Update(UserData userData)
         {
-            var userId = _authService.GetUserId();
-            var user = _userRepository.GetById(userId);
+            var user = await Get();
             user.FirstName = userData.FirstName;
             user.LastName = userData.LastName;
             user.PhoneNumber = userData.PhoneNumber;
             user.Language = userData.Language;
-            _userRepository.Update(user);
+            await _userRepository.Update(user);
         }
     }
 }

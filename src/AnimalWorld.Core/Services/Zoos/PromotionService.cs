@@ -17,9 +17,9 @@ namespace AnimalWorld.Core.Services.Zoos
             _authService = authService;
         }
 
-        public ResponseDto Create(PromotionData promotionData)
+        public async Task<ResponseDto> Create(PromotionData promotionData)
         {
-            if (_promotionRepository.GetByName(promotionData.Name) != null)
+            if (await _promotionRepository.GetByName(promotionData.Name) != null)
             {
                 return new ResponseDto
                 {
@@ -28,39 +28,39 @@ namespace AnimalWorld.Core.Services.Zoos
                 };
             }
 
-            var user = _authService.GetUser();
+            var user = await _authService.GetUser();
             promotionData.Creator = user;
             promotionData.CreatorId = user.Id;
-            _promotionRepository.Create(promotionData);
+            await _promotionRepository.Create(promotionData);
             return new ResponseDto { Success = true };
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            _promotionRepository.Delete(id);
+            await _promotionRepository.Delete(id);
         }
 
-        public PromotionData Get(int id)
+        public async Task<PromotionData> Get(int id)
         {
-            var promotion = _promotionRepository.GetById(id);
+            var promotion = await _promotionRepository.GetById(id);
             return promotion;
         }
 
-        public List<PromotionData> GetAll()
+        public async Task<List<PromotionData>> GetAll()
         {
-            var promotions = _promotionRepository.GetAll();
+            var promotions = await _promotionRepository.GetAll();
             return promotions;
         }
 
-        public void Update(PromotionData promotionData)
+        public async Task Update(PromotionData promotionData)
         {
-            var promotion = _promotionRepository.GetById(promotionData.Id);
+            var promotion = await _promotionRepository.GetById(promotionData.Id);
             promotion.Name = promotionData.Name;
             promotion.Description = promotionData.Description;
             promotion.EndDate = promotionData.EndDate;
             promotion.Venue = promotionData.Venue;
             promotion.VenueId = promotionData.VenueId;
-            _promotionRepository.Update(promotion);
+            await _promotionRepository.Update(promotion);
         }
     }
 }

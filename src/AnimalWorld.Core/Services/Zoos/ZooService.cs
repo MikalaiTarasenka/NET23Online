@@ -3,7 +3,6 @@ using AnimalWorld.Core.Services.Interfaces.Users;
 using AnimalWorld.Core.Services.Interfaces.Zoos;
 using AnimalWorld.Data.Models.Animals;
 using AnimalWorld.Data.Models.Zoos;
-using AnimalWorld.Data.Repositories.Interfaces.Animals;
 using AnimalWorld.Data.Repositories.Interfaces.Zoos;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
@@ -20,9 +19,9 @@ namespace AnimalWorld.Core.Services.Zoos
             _authService = authService;
         }
 
-        public ResponseDto Create(ZooData zooData)
+        public async Task<ResponseDto> Create(ZooData zooData)
         {
-            if (_zooRepository.GetByName(zooData.Name) != null)
+            if (await _zooRepository.GetByName(zooData.Name) != null)
             {
                 return new ResponseDto
                 {
@@ -31,27 +30,27 @@ namespace AnimalWorld.Core.Services.Zoos
                 };
             }
 
-            var user = _authService.GetUser();
+            var user = await _authService.GetUser();
             zooData.Creator = user;
             zooData.CreatorId = user.Id;
-            _zooRepository.Create(zooData);
+            await _zooRepository.Create(zooData);
             return new ResponseDto { Success = true };
         }
 
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            _zooRepository.Delete(id);
+            await _zooRepository.Delete(id);
         }
 
-        public ZooData Get(int id)
+        public async Task<ZooData> Get(int id)
         {
-            var zoo = _zooRepository.GetById(id);
+            var zoo = await _zooRepository.GetById(id);
             return zoo;
         }
 
-        public ZooData GetWithAnimals(int id)
+        public async Task<ZooData> GetWithAnimals(int id)
         {
-            var zoo = _zooRepository.GetWithAnimals(id);
+            var zoo = await _zooRepository.GetWithAnimals(id);
             return zoo;
         }
 
@@ -61,15 +60,15 @@ namespace AnimalWorld.Core.Services.Zoos
             return animalSpeciesIds;
         }
 
-        public List<ZooData> GetAll()
+        public async Task<List<ZooData>> GetAll()
         {
-            var zoos = _zooRepository.GetAll();
+            var zoos = await _zooRepository.GetAll();
             return zoos;
         }
 
-        public List<SelectListItem> GetSelectListsZoo()
+        public async Task<List<SelectListItem>> GetSelectListsZoo()
         {
-            var zoos = _zooRepository.GetAll();
+            var zoos = await _zooRepository.GetAll();
             var selectZoosList = zoos.Select(zoo => new SelectListItem
             {
                 Text = zoo.Name,
@@ -78,21 +77,21 @@ namespace AnimalWorld.Core.Services.Zoos
             return selectZoosList;
         }
 
-        public void BindAnimalSpecies(ZooData zoo, List<int> selectedAnimalSpeciesIds)
+        public async Task BindAnimalSpecies(ZooData zoo, List<int> selectedAnimalSpeciesIds)
         {
             var zooCurentAnimalSpeciesIds = ZooAnimalSpeciesIds(zoo.AnimalSpecies);
             var idsToAdd = selectedAnimalSpeciesIds.Except(zooCurentAnimalSpeciesIds).ToList();
             var IdsToRemove = zooCurentAnimalSpeciesIds.Except(selectedAnimalSpeciesIds).ToList();
-            _zooRepository.BindAnimalSpecies(zoo, idsToAdd, IdsToRemove);
+            await _zooRepository.BindAnimalSpecies(zoo, idsToAdd, IdsToRemove);
         }
 
-        public void Update(ZooData zooData)
+        public async Task Update(ZooData zooData)
         {
-            var zoo = _zooRepository.GetById(zooData.Id);
+            var zoo = await _zooRepository.GetById(zooData.Id);
             zoo.Name = zooData.Name;
             zoo.Description = zooData.Description;
             zoo.Address = zooData.Address;
-            _zooRepository.Update(zoo);
+            await _zooRepository.Update(zoo);
         }
     }
 }
