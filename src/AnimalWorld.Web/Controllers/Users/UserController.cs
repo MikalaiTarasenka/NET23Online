@@ -20,9 +20,9 @@ namespace AnimalWorld.Web.Controllers.Users
         }
 
         [HttpGet]
-        public IActionResult Profile()
+        public async Task<IActionResult> Profile()
         {
-            var userData = _userProfileService.Get();
+            var userData = await _userProfileService.Get();
             var userProfileViewModel = _userMapper.Map(userData);
             userProfileViewModel.Languages = Enum
                 .GetNames<Language>()
@@ -37,10 +37,10 @@ namespace AnimalWorld.Web.Controllers.Users
         }
 
         [HttpPost]
-        public IActionResult Profile(UserProfileViewModel viewModel)
+        public async Task<IActionResult> Profile(UserProfileViewModel viewModel)
         {
             var userData = _userMapper.ReverseMap(viewModel);
-            _userProfileService.Update(userData);
+            await _userProfileService.Update(userData);
             return RedirectToAction("Profile");
         }
     }

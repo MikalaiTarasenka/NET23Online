@@ -19,26 +19,26 @@ namespace AnimalWorld.Web.Controllers.Zoos
             _zooService = zooService;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var promotions = _promotionService.GetAll();
+            var promotions = await _promotionService.GetAll();
             var viewModel = _mapper.MapList(promotions);
             return View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult Form(PromotionViewModel viewModel)
+        public async Task<IActionResult> Form(PromotionViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
-                viewModel.Zoos = _zooService.GetSelectListsZoo();
+                viewModel.Zoos = await _zooService.GetSelectListsZoo();
                 return View(viewModel);
             }
 
             var promotionData = _mapper.ReverseMap(viewModel);
             if (viewModel.Id == 0)
             {
-                var response = _promotionService.Create(promotionData);
+                var response = await _promotionService.Create(promotionData);
                 if (!response.Success)
                 {
                     ModelState.AddModelError("Name", response.Error);
@@ -47,37 +47,37 @@ namespace AnimalWorld.Web.Controllers.Zoos
             }
             else
             {
-                _promotionService.Update(promotionData);
+                await _promotionService.Update(promotionData);
             }
 
             return RedirectToAction("Moderating", "Home");
         }
 
         [HttpGet]
-        public IActionResult Form(int id)
+        public async Task<IActionResult> Form(int id)
         {
             var viewModel = new PromotionViewModel { Id = id };
             if (id != 0)
             {
-                var promotionData = _promotionService.Get(id);
+                var promotionData = await _promotionService.Get(id);
                 viewModel = _mapper.Map(promotionData);
             }
 
-            viewModel.Zoos = _zooService.GetSelectListsZoo();
+            viewModel.Zoos = await _zooService.GetSelectListsZoo();
             return View(viewModel);
         }
 
-        public IActionResult List()
+        public async Task<IActionResult> List()
         {
-            var promotions = _promotionService.GetAll();
+            var promotions = await _promotionService.GetAll();
             var viewModel = _mapper.MapList(promotions);
             return View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            _promotionService.Delete(id);
+            await _promotionService.Delete(id);
             return RedirectToAction("List");
         }
     }

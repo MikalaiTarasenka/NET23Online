@@ -6,20 +6,20 @@ namespace AnimalWorld.Web.Attributes
 {
     public class BookingAttribute : ActionFilterAttribute
     {
-        public override void OnActionExecuting(ActionExecutingContext context)
+        public override async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
         {
             var authService = context
                 .HttpContext
                 .RequestServices
                 .GetRequiredService<IAuthService>();
-            var user = authService.GetUser();
+            var user = await authService.GetUser();
             if (string.IsNullOrEmpty(user.FirstName) || string.IsNullOrEmpty(user.LastName) || string.IsNullOrEmpty(user.PhoneNumber))
             {
                 context.Result = ((Controller)context.Controller).RedirectToAction("BookingDeny", "Ticket");
                 return;
             }
 
-            base.OnActionExecuting(context);
+            await next();
         }
     }
 }

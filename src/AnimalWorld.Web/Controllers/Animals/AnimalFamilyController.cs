@@ -18,7 +18,7 @@ namespace AnimalWorld.Web.Controllers.Animals
         }
 
         [HttpPost]
-        public IActionResult Form(AnimalFamilyViewModel viewModel)
+        public async Task<IActionResult> Form(AnimalFamilyViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -28,7 +28,7 @@ namespace AnimalWorld.Web.Controllers.Animals
             var animalFamilyData = _mapper.ReverseMap(viewModel);
             if (viewModel.Id == 0)
             {
-                var response = _animalFamilyService.Create(animalFamilyData);
+                var response = await _animalFamilyService.Create(animalFamilyData);
                 if (!response.Success)
                 {
                     ModelState.AddModelError("Name", response.Error);
@@ -37,36 +37,36 @@ namespace AnimalWorld.Web.Controllers.Animals
             }
             else
             {
-                _animalFamilyService.Update(animalFamilyData);
+                await _animalFamilyService.Update(animalFamilyData);
             }
 
             return RedirectToAction("Moderating", "Home");
         }
 
         [HttpGet]
-        public IActionResult Form(int id)
+        public async Task<IActionResult> Form(int id)
         {
             var viewModel = new AnimalFamilyViewModel { Id = id };
             if (id != 0)
             {
-                var animalFamilyData = _animalFamilyService.Get(id);
+                var animalFamilyData = await _animalFamilyService.Get(id);
                 viewModel = _mapper.Map(animalFamilyData);
             }
 
             return View(viewModel);
         }
 
-        public IActionResult List()
+        public async Task<IActionResult> List()
         {
-            var animalfamilies = _animalFamilyService.GetAll();
+            var animalfamilies = await _animalFamilyService.GetAll();
             var viewModel = _mapper.MapList(animalfamilies);
             return View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            _animalFamilyService.Delete(id);
+            await _animalFamilyService.Delete(id);
             return RedirectToAction("List", "AnimalFamily");
         }
     }

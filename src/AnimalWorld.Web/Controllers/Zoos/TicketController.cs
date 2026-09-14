@@ -21,9 +21,9 @@ namespace AnimalWorld.Web.Controllers.Zoos
         }
 
         [Booking]
-        public IActionResult Book(int zooId)
+        public async Task<IActionResult> Book(int zooId)
         {
-            _ticketService.BookZooVisit(zooId);
+            await _ticketService.BookZooVisit(zooId);
             return View();
         }
 
@@ -32,9 +32,9 @@ namespace AnimalWorld.Web.Controllers.Zoos
             return View();
         }
 
-        public IActionResult Tickets()
+        public async Task<IActionResult> Tickets()
         {
-            var ticketDatas = _ticketService.GetUserTickets();
+            var ticketDatas = await _ticketService.GetUserTickets();
             var tickets = _mapper.MapList(ticketDatas);
             return View(tickets);
         }

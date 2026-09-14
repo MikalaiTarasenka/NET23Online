@@ -20,15 +20,15 @@ namespace AnimalWorld.Web.Controllers.Zoos
             _animalSpeciesService = animalSpeciesService;
         }
 
-        public IActionResult Index(int page = 1)
+        public async Task<IActionResult> Index(int page = 1)
         {
-            var zooDatas = _zooService.GetAll();
+            var zooDatas = await _zooService.GetAll();
             var zooViewModels = _mapper.MapList(zooDatas);
             return View(zooViewModels);
         }
 
         [HttpPost]
-        public IActionResult Form(ZooViewModel viewModel)
+        public async Task<IActionResult> Form(ZooViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -38,7 +38,7 @@ namespace AnimalWorld.Web.Controllers.Zoos
             var zooData = _mapper.ReverseMap(viewModel);
             if (viewModel.Id == 0)
             {
-                var response = _zooService.Create(zooData);
+                var response = await _zooService.Create(zooData);
                 if (!response.Success)
                 {
                     ModelState.AddModelError("Name", response.Error);
@@ -47,71 +47,71 @@ namespace AnimalWorld.Web.Controllers.Zoos
             }
             else
             {
-                _zooService.Update(zooData);
+                await _zooService.Update(zooData);
             }
 
             return RedirectToAction("Moderating", "Home");
         }
 
         [HttpGet]
-        public IActionResult Form(int id)
+        public async Task<IActionResult> Form(int id)
         {
             var viewModel = new ZooViewModel { Id = id };
             if (id != 0)
             {
-                var zooData = _zooService.Get(id);
+                var zooData = await _zooService.Get(id);
                 viewModel = _mapper.Map(zooData);
             }
 
             return View(viewModel);
         }
 
-        public IActionResult List()
+        public async Task<IActionResult> List()
         {
-            var zoos = _zooService.GetAll();
+            var zoos = await _zooService.GetAll();
             var viewModel = _mapper.MapList(zoos);
             return View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            _zooService.Delete(id);
+            await _zooService.Delete(id);
             return RedirectToAction("List");
         }
 
         [HttpGet]
-        public IActionResult Binding(int id)
+        public async Task<IActionResult> Binding(int id)
         {
-            var zooData = _zooService.GetWithAnimals(id);
+            var zooData = await _zooService.GetWithAnimals(id);
             var zooViewModel = _mapper.Map(zooData);
             var viewModel = new BindingViewModel
             {
                 ZooId = id,
                 Zoo = zooViewModel,
-                AnimalSpecies = _animalSpeciesService.SelectListAnimalSpecies(),
+                AnimalSpecies = await _animalSpeciesService.SelectListAnimalSpecies(),
                 SelectedAnimalSpeciesIds = _zooService.ZooAnimalSpeciesIds(zooData.AnimalSpecies)
             };
             return View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult Binding(BindingViewModel viewModel)
+        public async Task<IActionResult> Binding(BindingViewModel viewModel)
         {
-            var zooData = _zooService.GetWithAnimals(viewModel.ZooId);
+            var zooData = await _zooService.GetWithAnimals(viewModel.ZooId);
             if (!ModelState.IsValid)
             {
                 var zooViewModel = _mapper.Map(zooData);
                 viewModel = new BindingViewModel
                 {
                     Zoo = zooViewModel,
-                    AnimalSpecies = _animalSpeciesService.SelectListAnimalSpecies(),
+                    AnimalSpecies = await _animalSpeciesService.SelectListAnimalSpecies(),
                     SelectedAnimalSpeciesIds = _zooService.ZooAnimalSpeciesIds(zooData.AnimalSpecies)
                 };
                 return View(viewModel);
             }
 
-            _zooService.BindAnimalSpecies(zooData, viewModel.SelectedAnimalSpeciesIds);
+            await _zooService.BindAnimalSpecies(zooData, viewModel.SelectedAnimalSpeciesIds);
             return RedirectToAction("List");
         }
     }

@@ -29,10 +29,10 @@ namespace AnimalWorld.Web.Controllers
             _randomAnimalMapper = randomAnimalMapper;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var animalFamilies = _animalFamilyService.GetRandomAnimals();
-            var animalSpecies = _animalSpeciesService.GetRandomAnimals();
+            var animalFamilies = await _animalFamilyService.GetRandomAnimals();
+            var animalSpecies = await _animalSpeciesService.GetRandomAnimals();
             var animalFamilyViewModels = _animalFamilyMapper.MapList(animalFamilies);
             var animalSpeciesViewModels = _animalSpeciesMapper.MapList(animalSpecies);
             var viewModel = new HomePageViewModel

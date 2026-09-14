@@ -25,7 +25,7 @@ namespace AnimalWorld.Web.Controllers.Users
         }
 
         [HttpPost]
-        public IActionResult Login(CredentialsViewModel viewModel)
+        public async Task<IActionResult> Login(CredentialsViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -33,7 +33,7 @@ namespace AnimalWorld.Web.Controllers.Users
             }
 
             var credentialsDto = _authMapper.Map(viewModel);
-            var loginResult = _authService.Login(credentialsDto);
+            var loginResult = await _authService.Login(credentialsDto);
             if (loginResult.Success)
             {
                 return RedirectToAction("Index", "Home");
@@ -52,7 +52,7 @@ namespace AnimalWorld.Web.Controllers.Users
         }
 
         [HttpPost]
-        public IActionResult Register(CredentialsViewModel viewModel)
+        public async Task<IActionResult> Register(CredentialsViewModel viewModel)
         {
             if (!ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace AnimalWorld.Web.Controllers.Users
             }
 
             var credentialsDto = _authMapper.Map(viewModel);
-            var registerResult = _authService.Register(credentialsDto);
+            var registerResult = await _authService.Register(credentialsDto);
             if (registerResult.Success)
             {
                 return RedirectToAction("Index", "Home");
@@ -72,9 +72,9 @@ namespace AnimalWorld.Web.Controllers.Users
             }
         }
 
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
-            HttpContext.SignOutAsync().Wait();
+            await HttpContext.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
     }

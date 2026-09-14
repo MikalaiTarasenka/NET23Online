@@ -9,7 +9,7 @@
             _webHostEnvironment = webHostEnvironment;
         }
 
-        public async Task<string?> SaveAsync(IFormFile? file, string folder, string namePrefix)
+        public async Task<string> SaveAsync(IFormFile file, string folder, string namePrefix)
         {
             var pathToWwwRootFolder = _webHostEnvironment.WebRootPath;
             var fileName = $"{DateTime.Now:yyyy-MM-dd-HH-mm-ss}-{namePrefix}.jpeg";
