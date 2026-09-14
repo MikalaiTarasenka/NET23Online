@@ -2,6 +2,7 @@ using AnimalWorld.Core;
 using AnimalWorld.Core.Apis;
 using AnimalWorld.Core.Dtos.Animals;
 using AnimalWorld.Core.Dtos.Users;
+using AnimalWorld.Core.Settings;
 using AnimalWorld.Data;
 using AnimalWorld.Data.Models.Animals;
 using AnimalWorld.Data.Models.Users;
@@ -20,8 +21,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpContextAccessor();
-builder.Services.AddAuthentication("QGHyrFBGxnQR")
-    .AddCookie("QGHyrFBGxnQR", options =>
+builder.Services.AddAuthentication(AuthConstants.AUTH_KEY)
+    .AddCookie(AuthConstants.AUTH_KEY, options =>
     {
         options.LoginPath = "/Auth/Login";
     });

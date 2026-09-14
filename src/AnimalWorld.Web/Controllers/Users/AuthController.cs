@@ -77,5 +77,10 @@ namespace AnimalWorld.Web.Controllers.Users
             await HttpContext.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
+
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }

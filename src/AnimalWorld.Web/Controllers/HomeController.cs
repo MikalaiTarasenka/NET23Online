@@ -1,6 +1,7 @@
 ﻿using AnimalWorld.Core.Dtos.Animals;
 using AnimalWorld.Core.Services.Interfaces.Animals;
 using AnimalWorld.Data.Models.Animals;
+using AnimalWorld.Web.Attributes;
 using AnimalWorld.Web.Mappers.Interfaces;
 using AnimalWorld.Web.Models.Animals;
 using AnimalWorld.Web.Models.Home;
@@ -54,6 +55,7 @@ namespace AnimalWorld.Web.Controllers
             return View(animalGalleryViewModel);
         }
 
+        [AtLeastModerator]
         public IActionResult Moderating()
         {
             return View();

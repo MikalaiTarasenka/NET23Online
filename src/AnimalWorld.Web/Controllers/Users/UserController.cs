@@ -3,11 +3,13 @@ using AnimalWorld.Data.Enums;
 using AnimalWorld.Data.Models.Users;
 using AnimalWorld.Web.Mappers.Interfaces;
 using AnimalWorld.Web.Models.Users;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AnimalWorld.Web.Controllers.Users
 {
+    [Authorize]
     public class UserController : Controller
     {
         private IUserProfileService _userProfileService;

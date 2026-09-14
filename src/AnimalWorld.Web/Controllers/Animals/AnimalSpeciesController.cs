@@ -1,6 +1,7 @@
 ﻿using AnimalWorld.Core.Services.Interfaces.Animals;
 using AnimalWorld.Core.Services.Interfaces.Users;
 using AnimalWorld.Data.Models.Animals;
+using AnimalWorld.Web.Attributes;
 using AnimalWorld.Web.Helpers;
 using AnimalWorld.Web.Mappers.Interfaces;
 using AnimalWorld.Web.Models.Animals;
@@ -29,6 +30,7 @@ namespace AnimalWorld.Web.Controllers.Animals
         }
 
         [HttpPost]
+        [AtLeastModerator]
         public async Task<IActionResult> Form(AnimalSpeciesViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -63,6 +65,7 @@ namespace AnimalWorld.Web.Controllers.Animals
         }
 
         [HttpGet]
+        [AtLeastModerator]
         public async Task<IActionResult> Form(int id)
         {
             var viewModel = new AnimalSpeciesViewModel { Id = id };
@@ -76,6 +79,7 @@ namespace AnimalWorld.Web.Controllers.Animals
             return View(viewModel);
         }
 
+        [AtLeastModerator]
         public async Task<IActionResult> List()
         {
             var animalSpecies = await _animalSpeciesService.GetAll();
@@ -84,6 +88,7 @@ namespace AnimalWorld.Web.Controllers.Animals
         }
 
         [HttpPost]
+        [AtLeastModerator]
         public async Task<IActionResult> Delete(int id)
         {
             await _animalSpeciesService.Delete(id);

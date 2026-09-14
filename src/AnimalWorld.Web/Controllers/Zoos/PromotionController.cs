@@ -1,5 +1,6 @@
 ﻿using AnimalWorld.Core.Services.Interfaces.Zoos;
 using AnimalWorld.Data.Models.Zoos;
+using AnimalWorld.Web.Attributes;
 using AnimalWorld.Web.Mappers.Interfaces;
 using AnimalWorld.Web.Models.Zoos;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +28,7 @@ namespace AnimalWorld.Web.Controllers.Zoos
         }
 
         [HttpPost]
+        [AtLeastModerator]
         public async Task<IActionResult> Form(PromotionViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -54,6 +56,7 @@ namespace AnimalWorld.Web.Controllers.Zoos
         }
 
         [HttpGet]
+        [AtLeastModerator]
         public async Task<IActionResult> Form(int id)
         {
             var viewModel = new PromotionViewModel { Id = id };
@@ -67,6 +70,7 @@ namespace AnimalWorld.Web.Controllers.Zoos
             return View(viewModel);
         }
 
+        [AtLeastModerator]
         public async Task<IActionResult> List()
         {
             var promotions = await _promotionService.GetAll();
@@ -75,6 +79,7 @@ namespace AnimalWorld.Web.Controllers.Zoos
         }
 
         [HttpPost]
+        [AtLeastModerator]
         public async Task<IActionResult> Delete(int id)
         {
             await _promotionService.Delete(id);

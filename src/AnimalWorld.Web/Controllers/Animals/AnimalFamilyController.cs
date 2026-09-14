@@ -1,11 +1,13 @@
 ﻿using AnimalWorld.Core.Services.Interfaces.Animals;
 using AnimalWorld.Data.Models.Animals;
+using AnimalWorld.Web.Attributes;
 using AnimalWorld.Web.Mappers.Interfaces;
 using AnimalWorld.Web.Models.Animals;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AnimalWorld.Web.Controllers.Animals
 {
+    [AtLeastModerator]
     public class AnimalFamilyController : Controller
     {
         private IAnimalFamilyService _animalFamilyService;

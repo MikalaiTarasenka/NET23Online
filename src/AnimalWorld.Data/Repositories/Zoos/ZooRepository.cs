@@ -43,11 +43,11 @@ namespace AnimalWorld.Data.Repositories.Zoos
         {
             var sql = @$"SELECT [BZAAS].ZooId, [AF].AnimalFamilyName
             FROM 
-                BindZooAndAnimalSpecies [BZAAS]
+                zoo_species_bindings [BZAAS]
             JOIN 
-                AnimalSpecies [AS] ON [AS].Id = [BZAAS].AnimalSpeciesId
+                animal_species [AS] ON [AS].Id = [BZAAS].AnimalSpeciesId
             JOIN 
-                AnimalFamilies [AF] ON [AF].Id = [AS].AnimalFamilyId
+                animal_families [AF] ON [AF].Id = [AS].AnimalFamilyId
             WHERE 
                 [BZAAS].ZooDataId IN ({string.Join(",", ids)})";
             return await _context.Database

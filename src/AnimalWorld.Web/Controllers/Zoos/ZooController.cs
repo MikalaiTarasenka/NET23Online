@@ -1,12 +1,15 @@
 ﻿using AnimalWorld.Core.Services.Interfaces.Animals;
 using AnimalWorld.Core.Services.Interfaces.Zoos;
 using AnimalWorld.Data.Models.Zoos;
+using AnimalWorld.Web.Attributes;
 using AnimalWorld.Web.Mappers.Interfaces;
 using AnimalWorld.Web.Models.Zoos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AnimalWorld.Web.Controllers.Zoos
 {
+    [Authorize]
     public class ZooController : Controller
     {
         private IZooService _zooService;
@@ -28,6 +31,7 @@ namespace AnimalWorld.Web.Controllers.Zoos
         }
 
         [HttpPost]
+        [AtLeastModerator]
         public async Task<IActionResult> Form(ZooViewModel viewModel)
         {
             if (!ModelState.IsValid)
@@ -54,6 +58,7 @@ namespace AnimalWorld.Web.Controllers.Zoos
         }
 
         [HttpGet]
+        [AtLeastModerator]
         public async Task<IActionResult> Form(int id)
         {
             var viewModel = new ZooViewModel { Id = id };
@@ -74,6 +79,7 @@ namespace AnimalWorld.Web.Controllers.Zoos
         }
 
         [HttpPost]
+        [AtLeastModerator]
         public async Task<IActionResult> Delete(int id)
         {
             await _zooService.Delete(id);
@@ -81,6 +87,7 @@ namespace AnimalWorld.Web.Controllers.Zoos
         }
 
         [HttpGet]
+        [AtLeastModerator]
         public async Task<IActionResult> Binding(int id)
         {
             var zooData = await _zooService.GetWithAnimals(id);
@@ -96,6 +103,7 @@ namespace AnimalWorld.Web.Controllers.Zoos
         }
 
         [HttpPost]
+        [AtLeastModerator]
         public async Task<IActionResult> Binding(BindingViewModel viewModel)
         {
             var zooData = await _zooService.GetWithAnimals(viewModel.ZooId);

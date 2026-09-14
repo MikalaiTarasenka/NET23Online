@@ -1,5 +1,6 @@
 ﻿using AnimalWorld.Core.Dtos.Users;
 using AnimalWorld.Core.Services.Interfaces.Users;
+using AnimalWorld.Core.Settings;
 using AnimalWorld.Data.Enums;
 using AnimalWorld.Data.Models.Users;
 using AnimalWorld.Data.Repositories.Interfaces.Users;
@@ -11,11 +12,6 @@ namespace AnimalWorld.Core.Services.Users
 {
     internal class AuthService : IAuthService
     {
-        public const string AUTH_KEY = "QGHyrFBGxnQR";
-        public const string COOCKIE_ID_KEY = "Id";
-        public const string COOCKIE_ROLE_KEY = "Role";
-        public const string COOCKIE_NAME_KEY = "UserName";
-        public const string COOCKIE_LANGUAGE_KEY = "Language";
         private IHttpContextAccessor _httpContextAccessor;
         private readonly IUserRepository _userRepository;
 
@@ -27,7 +23,7 @@ namespace AnimalWorld.Core.Services.Users
 
         public int GetUserId()
         {
-            var userIdStr = _httpContextAccessor.HttpContext!.User?.Claims.FirstOrDefault(x => x.Type == COOCKIE_ID_KEY)?.Value;
+            var userIdStr = _httpContextAccessor.HttpContext!.User?.Claims.FirstOrDefault(x => x.Type == AuthConstants.COOCKIE_ID_KEY)?.Value;
             if (userIdStr is null)
             {
                 return 0;
@@ -39,7 +35,7 @@ namespace AnimalWorld.Core.Services.Users
 
         public string GetUserName()
         {
-            var userName = _httpContextAccessor.HttpContext!.User?.Claims.FirstOrDefault(x => x.Type == COOCKIE_NAME_KEY)?.Value;
+            var userName = _httpContextAccessor.HttpContext!.User?.Claims.FirstOrDefault(x => x.Type == AuthConstants.COOCKIE_NAME_KEY)?.Value;
             return userName;
         }
 
@@ -67,7 +63,7 @@ namespace AnimalWorld.Core.Services.Users
                 throw new InvalidOperationException();
             }
 
-            var roleStr = _httpContextAccessor.HttpContext!.User.Claims.First(x => x.Type == COOCKIE_ROLE_KEY).Value;
+            var roleStr = _httpContextAccessor.HttpContext!.User.Claims.First(x => x.Type == AuthConstants.COOCKIE_ROLE_KEY).Value;
             var role = Enum.Parse<UserRole>(roleStr);
             return role;
         }
@@ -90,7 +86,7 @@ namespace AnimalWorld.Core.Services.Users
                 return Language.English;
             }
 
-            var languageStr = _httpContextAccessor.HttpContext!.User.Claims.First(x => x.Type == COOCKIE_LANGUAGE_KEY).Value;
+            var languageStr = _httpContextAccessor.HttpContext!.User.Claims.First(x => x.Type == AuthConstants.COOCKIE_LANGUAGE_KEY).Value;
             var language = Enum.Parse<Language>(languageStr);
             return language;
         }
@@ -152,15 +148,15 @@ namespace AnimalWorld.Core.Services.Users
         {
             var claims = new List<Claim>
             {
-                new Claim(COOCKIE_ID_KEY, user.Id.ToString()),
-                new Claim(COOCKIE_ROLE_KEY, user.Role.ToString()),
-                new Claim(COOCKIE_NAME_KEY, user.UserName),
-                new Claim(COOCKIE_LANGUAGE_KEY, user.Language.ToString()),
-                new Claim(ClaimTypes.AuthenticationMethod, AUTH_KEY)
+                new Claim(AuthConstants.COOCKIE_ID_KEY, user.Id.ToString()),
+                new Claim(AuthConstants.COOCKIE_ROLE_KEY, user.Role.ToString()),
+                new Claim(AuthConstants.COOCKIE_NAME_KEY, user.UserName),
+                new Claim(AuthConstants.COOCKIE_LANGUAGE_KEY, user.Language.ToString()),
+                new Claim(ClaimTypes.AuthenticationMethod, AuthConstants.AUTH_KEY)
             };
-            var identity = new ClaimsIdentity(claims, AUTH_KEY);
+            var identity = new ClaimsIdentity(claims, AuthConstants.AUTH_KEY);
             var principal = new ClaimsPrincipal(identity);
-            await _httpContextAccessor.HttpContext!.SignInAsync(AUTH_KEY, principal);
+            await _httpContextAccessor.HttpContext!.SignInAsync(AuthConstants.AUTH_KEY, principal);
         }
     }
 }
