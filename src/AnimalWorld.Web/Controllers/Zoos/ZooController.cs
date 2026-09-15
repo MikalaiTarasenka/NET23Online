@@ -3,6 +3,7 @@ using AnimalWorld.Core.Services.Interfaces.Zoos;
 using AnimalWorld.Data.Models.Zoos;
 using AnimalWorld.Web.Attributes;
 using AnimalWorld.Web.Mappers.Interfaces;
+using AnimalWorld.Web.Mappers.Interfaces.CustomMappers;
 using AnimalWorld.Web.Models.Zoos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -14,19 +15,21 @@ namespace AnimalWorld.Web.Controllers.Zoos
     {
         private IZooService _zooService;
         private IAnimalSpeciesService _animalSpeciesService;
-        private IReverseMapper<ZooData, ZooViewModel> _mapper;
+        private IZooMapper _zooMapper;
+        private IAnimalSpeciesMapper _animalSpeciesMapper;
 
-        public ZooController(IZooService zooService, IReverseMapper<ZooData, ZooViewModel> mapper, IAnimalSpeciesService animalSpeciesService)
+        public ZooController(IZooService zooService, IZooMapper zooMapper, IAnimalSpeciesService animalSpeciesService, IAnimalSpeciesMapper animalSpeciesMapper)
         {
             _zooService = zooService;
-            _mapper = mapper;
+            _zooMapper = zooMapper;
             _animalSpeciesService = animalSpeciesService;
+            _animalSpeciesMapper = animalSpeciesMapper;
         }
 
         public async Task<IActionResult> Index(int page = 1)
         {
             var zooDatas = await _zooService.GetAll();
-            var zooViewModels = _mapper.MapList(zooDatas);
+            var zooViewModels = _zooMapper.MapList(zooDatas);
             return View(zooViewModels);
         }
 
@@ -39,7 +42,7 @@ namespace AnimalWorld.Web.Controllers.Zoos
                 return View(viewModel);
             }
 
-            var zooData = _mapper.ReverseMap(viewModel);
+            var zooData = _zooMapper.ReverseMap(viewModel);
             if (viewModel.Id == 0)
             {
                 var response = await _zooService.Create(zooData);
@@ -65,7 +68,7 @@ namespace AnimalWorld.Web.Controllers.Zoos
             if (id != 0)
             {
                 var zooData = await _zooService.Get(id);
-                viewModel = _mapper.Map(zooData);
+                viewModel = _zooMapper.Map(zooData);
             }
 
             return View(viewModel);
@@ -74,7 +77,7 @@ namespace AnimalWorld.Web.Controllers.Zoos
         public async Task<IActionResult> List()
         {
             var zoos = await _zooService.GetAll();
-            var viewModel = _mapper.MapList(zoos);
+            var viewModel = _zooMapper.MapList(zoos);
             return View(viewModel);
         }
 
@@ -91,12 +94,13 @@ namespace AnimalWorld.Web.Controllers.Zoos
         public async Task<IActionResult> Binding(int id)
         {
             var zooData = await _zooService.GetWithAnimals(id);
-            var zooViewModel = _mapper.Map(zooData);
+            var zooViewModel = _zooMapper.Map(zooData);
+            var animalSpecies = await _animalSpeciesService.GetAll();
             var viewModel = new BindingViewModel
             {
                 ZooId = id,
                 Zoo = zooViewModel,
-                AnimalSpecies = await _animalSpeciesService.SelectListAnimalSpecies(),
+                AnimalSpecies = _animalSpeciesMapper.ToSelectListItems(animalSpecies),
                 SelectedAnimalSpeciesIds = _zooService.ZooAnimalSpeciesIds(zooData.AnimalSpecies)
             };
             return View(viewModel);
@@ -109,11 +113,12 @@ namespace AnimalWorld.Web.Controllers.Zoos
             var zooData = await _zooService.GetWithAnimals(viewModel.ZooId);
             if (!ModelState.IsValid)
             {
-                var zooViewModel = _mapper.Map(zooData);
+                var zooViewModel = _zooMapper.Map(zooData);
+                var animalSpecies = await _animalSpeciesService.GetAll();
                 viewModel = new BindingViewModel
                 {
                     Zoo = zooViewModel,
-                    AnimalSpecies = await _animalSpeciesService.SelectListAnimalSpecies(),
+                    AnimalSpecies = _animalSpeciesMapper.ToSelectListItems(animalSpecies),
                     SelectedAnimalSpeciesIds = _zooService.ZooAnimalSpeciesIds(zooData.AnimalSpecies)
                 };
                 return View(viewModel);

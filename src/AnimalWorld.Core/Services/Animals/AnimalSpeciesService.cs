@@ -86,17 +86,6 @@ namespace AnimalWorld.Core.Services.Animals
             return animalSpecies;
         }
 
-        public async Task<List<SelectListItem>> SelectListAnimalSpecies()
-        {
-            var animals = await _animalSpeciesRepository.GetAll();
-            var selectList = animals.Select(animal => new SelectListItem
-            {
-                Text = animal.Name,
-                Value = animal.Id.ToString()
-            });
-            return selectList.ToList();
-        }
-
         public async Task<List<AnimalSpeciesData>> GetWithAnimalFamily(string searchCategory, string searchQuery)
         {
             var animals = await _animalSpeciesRepository.GetAllWithFamily(searchCategory, searchQuery);

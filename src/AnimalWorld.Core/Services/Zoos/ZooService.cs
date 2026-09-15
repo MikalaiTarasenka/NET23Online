@@ -4,7 +4,6 @@ using AnimalWorld.Core.Services.Interfaces.Zoos;
 using AnimalWorld.Data.Models.Animals;
 using AnimalWorld.Data.Models.Zoos;
 using AnimalWorld.Data.Repositories.Interfaces.Zoos;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AnimalWorld.Core.Services.Zoos
 {
@@ -64,17 +63,6 @@ namespace AnimalWorld.Core.Services.Zoos
         {
             var zoos = await _zooRepository.GetAll();
             return zoos;
-        }
-
-        public async Task<List<SelectListItem>> GetSelectListsZoo()
-        {
-            var zoos = await _zooRepository.GetAll();
-            var selectZoosList = zoos.Select(zoo => new SelectListItem
-            {
-                Text = zoo.Name,
-                Value = zoo.Id.ToString()
-            }).ToList();
-            return selectZoosList;
         }
 
         public async Task BindAnimalSpecies(ZooData zoo, List<int> selectedAnimalSpeciesIds)

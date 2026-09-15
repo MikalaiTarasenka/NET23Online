@@ -1,10 +1,11 @@
 ﻿using AnimalWorld.Data.Models.Animals;
-using AnimalWorld.Web.Mappers.Interfaces;
+using AnimalWorld.Web.Mappers.Interfaces.CustomMappers;
 using AnimalWorld.Web.Models.Animals;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AnimalWorld.Web.Mappers.Animals
 {
-    public class AnimalSpeciesMapper : IReverseMapper<AnimalSpeciesData, AnimalSpeciesViewModel>
+    public class AnimalSpeciesMapper : IAnimalSpeciesMapper
     {
         public AnimalSpeciesViewModel Map(AnimalSpeciesData source)
         {
@@ -31,6 +32,26 @@ namespace AnimalWorld.Web.Mappers.Animals
                 Url = destination.Url,
                 AnimalFamilyId = destination.AnimalFamilyId,
             };
+        }
+
+        public AnimalSpeciesBriefViewModel MapBrief(AnimalSpeciesData source)
+        {
+            return new AnimalSpeciesBriefViewModel
+            {
+                AnimalSpeciesName = source.Name,
+                AnimalFamilyName = source.AnimalFamily.Name,
+                NativeRange = source.NativeRange,
+            };
+        }
+
+        public List<SelectListItem> ToSelectListItems(List<AnimalSpeciesData> source)
+        {
+            var selectList = source.Select(animal => new SelectListItem
+            {
+                Text = animal.Name,
+                Value = animal.Id.ToString()
+            });
+            return selectList.ToList();
         }
     }
 }

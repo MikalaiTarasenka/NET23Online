@@ -4,6 +4,7 @@ using AnimalWorld.Data.Models.Animals;
 using AnimalWorld.Web.Attributes;
 using AnimalWorld.Web.Helpers;
 using AnimalWorld.Web.Mappers.Interfaces;
+using AnimalWorld.Web.Mappers.Interfaces.CustomMappers;
 using AnimalWorld.Web.Models.Animals;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,19 +15,19 @@ namespace AnimalWorld.Web.Controllers.Animals
         private IAnimalSpeciesService _animalSpeciesService;
         private IAnimalFamilyService _animalFamilyService;
         private IAuthService _authService;
-        private IReverseMapper<AnimalSpeciesData, AnimalSpeciesViewModel> _speciesMapper;
-        private IMapper<AnimalSpeciesData, AnimalSpeciesBriefViewModel> _briefMapper;
+        private IAnimalSpeciesMapper _speciesMapper;
+        private IAnimalFamilyMapper _familyMapper;
         private IImageUploadHelper _imageUploadHelper;
 
-        public AnimalSpeciesController(IAnimalSpeciesService animalSpeciesService, IReverseMapper<AnimalSpeciesData, AnimalSpeciesViewModel> mapper,
-            IAnimalFamilyService animalFamilyService, IImageUploadHelper imageUploadHelper, IAuthService authService, IMapper<AnimalSpeciesData, AnimalSpeciesBriefViewModel> briefMapper)
+        public AnimalSpeciesController(IAnimalSpeciesService animalSpeciesService, IAnimalSpeciesMapper speciesMapper,
+            IAnimalFamilyService animalFamilyService, IImageUploadHelper imageUploadHelper, IAuthService authService, IAnimalFamilyMapper familyMapper)
         {
             _animalSpeciesService = animalSpeciesService;
-            _speciesMapper = mapper;
+            _speciesMapper = speciesMapper;
             _animalFamilyService = animalFamilyService;
             _imageUploadHelper = imageUploadHelper;
             _authService = authService;
-            _briefMapper = briefMapper;
+            _familyMapper = familyMapper;
         }
 
         [HttpPost]
@@ -35,7 +36,8 @@ namespace AnimalWorld.Web.Controllers.Animals
         {
             if (!ModelState.IsValid)
             {
-                viewModel.AnimalFamilies = await _animalFamilyService.GetSelectListAnimalFamilies();
+                var animalFamilies = await _animalFamilyService.GetAll();
+                viewModel.AnimalFamilies = _familyMapper.ToSelectListItems(animalFamilies);
                 return View(viewModel);
             }
 
@@ -75,7 +77,8 @@ namespace AnimalWorld.Web.Controllers.Animals
                 viewModel = _speciesMapper.Map(animalSpeciesData);
             }
 
-            viewModel.AnimalFamilies = await _animalFamilyService.GetSelectListAnimalFamilies();
+            var animalFamilies = await _animalFamilyService.GetAll();
+            viewModel.AnimalFamilies = _familyMapper.ToSelectListItems(animalFamilies);
             return View(viewModel);
         }
 
@@ -98,7 +101,7 @@ namespace AnimalWorld.Web.Controllers.Animals
         public async Task<IActionResult> Info(string? searchCategory = null, string? searchQuery = null)
         {
             var animals = await _animalSpeciesService.GetWithAnimalFamily(searchCategory, searchQuery);
-            var briefViewModel = _briefMapper.MapList(animals);
+            var briefViewModel = _speciesMapper.MapBriefList(animals);
             var viewModel = new AnimalSpeciesInfoViewModel
             {
                 BriefAnimalSpecies = briefViewModel,

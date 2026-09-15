@@ -10,6 +10,7 @@ using AnimalWorld.Data.Models.Zoos;
 using AnimalWorld.Web.Helpers;
 using AnimalWorld.Web.Mappers.Animals;
 using AnimalWorld.Web.Mappers.Interfaces;
+using AnimalWorld.Web.Mappers.Interfaces.CustomMappers;
 using AnimalWorld.Web.Mappers.Users;
 using AnimalWorld.Web.Mappers.Zoos;
 using AnimalWorld.Web.Models.Animals;
@@ -31,13 +32,12 @@ builder.Services.AddAnimalWorldData(builder.Configuration.GetConnectionString("D
 builder.Services.AddAnimalWorldCore();
 builder.Services.AddScoped<IMapper<CredentialsViewModel, CredentialsDto>, AuthMapper>();
 builder.Services.AddScoped<IReverseMapper<UserData, UserProfileViewModel>, UserProfileMapper>();
-builder.Services.AddScoped<IReverseMapper<AnimalFamilyData, AnimalFamilyViewModel>, AnimalFamilyMapper>();
+builder.Services.AddScoped<IAnimalFamilyMapper, AnimalFamilyMapper>();
 builder.Services.AddScoped<IReverseMapper<PromotionData, PromotionViewModel>, PromotionMapper>();
-builder.Services.AddScoped<IReverseMapper<ZooData, ZooViewModel>, ZooMapper>();
-builder.Services.AddScoped<IReverseMapper<AnimalSpeciesData, AnimalSpeciesViewModel>, AnimalSpeciesMapper>();
+builder.Services.AddScoped<IZooMapper, ZooMapper>();
+builder.Services.AddScoped<IAnimalSpeciesMapper, AnimalSpeciesMapper>();
 builder.Services.AddScoped<IMapper<RandomAnimalDto, RandomAnimalViewModel>, RandomAnimalMapper>();
 builder.Services.AddScoped<IMapper<TicketData, TicketViewModel>, TicketMapper>();
-builder.Services.AddScoped<IMapper<AnimalSpeciesData, AnimalSpeciesBriefViewModel>, AnimalSpeciesBriefMapper>();
 builder.Services.AddScoped<IImageUploadHelper, ImageUploadHelper>();
 
 builder.Services.AddHttpClient<RandomAnimalApi>(x =>

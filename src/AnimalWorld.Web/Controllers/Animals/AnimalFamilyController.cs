@@ -2,6 +2,7 @@
 using AnimalWorld.Data.Models.Animals;
 using AnimalWorld.Web.Attributes;
 using AnimalWorld.Web.Mappers.Interfaces;
+using AnimalWorld.Web.Mappers.Interfaces.CustomMappers;
 using AnimalWorld.Web.Models.Animals;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,9 +12,9 @@ namespace AnimalWorld.Web.Controllers.Animals
     public class AnimalFamilyController : Controller
     {
         private IAnimalFamilyService _animalFamilyService;
-        private IReverseMapper<AnimalFamilyData, AnimalFamilyViewModel> _mapper;
+        private IAnimalFamilyMapper _mapper;
 
-        public AnimalFamilyController(IAnimalFamilyService animalFamilyService, IReverseMapper<AnimalFamilyData, AnimalFamilyViewModel> mapper)
+        public AnimalFamilyController(IAnimalFamilyService animalFamilyService, IAnimalFamilyMapper mapper)
         {
             _animalFamilyService = animalFamilyService;
             _mapper = mapper;

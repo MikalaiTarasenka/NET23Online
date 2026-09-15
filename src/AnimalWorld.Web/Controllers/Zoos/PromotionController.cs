@@ -2,6 +2,7 @@
 using AnimalWorld.Data.Models.Zoos;
 using AnimalWorld.Web.Attributes;
 using AnimalWorld.Web.Mappers.Interfaces;
+using AnimalWorld.Web.Mappers.Interfaces.CustomMappers;
 using AnimalWorld.Web.Models.Zoos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,19 +12,21 @@ namespace AnimalWorld.Web.Controllers.Zoos
     {
         private IPromotionService _promotionService;
         private IZooService _zooService;
-        private IReverseMapper<PromotionData, PromotionViewModel> _mapper;
+        private IReverseMapper<PromotionData, PromotionViewModel> _promotionMapper;
+        private IZooMapper _zooMapper;
 
-        public PromotionController(IPromotionService promotionService, IReverseMapper<PromotionData, PromotionViewModel> mapper, IZooService zooService)
+        public PromotionController(IPromotionService promotionService, IReverseMapper<PromotionData, PromotionViewModel> mapper, IZooService zooService, IZooMapper zooMapper)
         {
             _promotionService = promotionService;
-            _mapper = mapper;
+            _promotionMapper = mapper;
             _zooService = zooService;
+            _zooMapper = zooMapper;
         }
 
         public async Task<IActionResult> Index()
         {
             var promotions = await _promotionService.GetAll();
-            var viewModel = _mapper.MapList(promotions);
+            var viewModel = _promotionMapper.MapList(promotions);
             return View(viewModel);
         }
 
@@ -33,11 +36,12 @@ namespace AnimalWorld.Web.Controllers.Zoos
         {
             if (!ModelState.IsValid)
             {
-                viewModel.Zoos = await _zooService.GetSelectListsZoo();
+                var zoos = await _zooService.GetAll();
+                viewModel.Zoos = _zooMapper.ToSelectListItems(zoos);
                 return View(viewModel);
             }
 
-            var promotionData = _mapper.ReverseMap(viewModel);
+            var promotionData = _promotionMapper.ReverseMap(viewModel);
             if (viewModel.Id == 0)
             {
                 var response = await _promotionService.Create(promotionData);
@@ -63,10 +67,11 @@ namespace AnimalWorld.Web.Controllers.Zoos
             if (id != 0)
             {
                 var promotionData = await _promotionService.Get(id);
-                viewModel = _mapper.Map(promotionData);
+                viewModel = _promotionMapper.Map(promotionData);
             }
 
-            viewModel.Zoos = await _zooService.GetSelectListsZoo();
+            var zoos = await _zooService.GetAll();
+            viewModel.Zoos = _zooMapper.ToSelectListItems(zoos);
             return View(viewModel);
         }
 
@@ -74,7 +79,7 @@ namespace AnimalWorld.Web.Controllers.Zoos
         public async Task<IActionResult> List()
         {
             var promotions = await _promotionService.GetAll();
-            var viewModel = _mapper.MapList(promotions);
+            var viewModel = _promotionMapper.MapList(promotions);
             return View(viewModel);
         }
 

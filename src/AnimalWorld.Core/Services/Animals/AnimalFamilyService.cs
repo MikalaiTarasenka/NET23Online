@@ -66,16 +66,5 @@ namespace AnimalWorld.Core.Services.Animals
         {
             await _animalFamilyRepository.Delete(id);
         }
-
-        public async Task<List<SelectListItem>> GetSelectListAnimalFamilies()
-        {
-            var animalFamlies = await _animalFamilyRepository.GetAll();
-            var animalFamilySelectedList = animalFamlies.Select(animalFamily => new SelectListItem
-            {
-                Text = animalFamily.Name,
-                Value = animalFamily.Id.ToString()
-            });
-            return animalFamilySelectedList.ToList();
-        }
     }
 }

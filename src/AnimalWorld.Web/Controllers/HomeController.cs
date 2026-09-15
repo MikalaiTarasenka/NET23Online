@@ -3,6 +3,7 @@ using AnimalWorld.Core.Services.Interfaces.Animals;
 using AnimalWorld.Data.Models.Animals;
 using AnimalWorld.Web.Attributes;
 using AnimalWorld.Web.Mappers.Interfaces;
+using AnimalWorld.Web.Mappers.Interfaces.CustomMappers;
 using AnimalWorld.Web.Models.Animals;
 using AnimalWorld.Web.Models.Home;
 using Microsoft.AspNetCore.Mvc;
@@ -14,12 +15,12 @@ namespace AnimalWorld.Web.Controllers
         private IAnimalFamilyService _animalFamilyService;
         private IAnimalSpeciesService _animalSpeciesService;
         private IAnimalGalleryService _animalGalleryService;
-        private IReverseMapper<AnimalFamilyData, AnimalFamilyViewModel> _animalFamilyMapper;
-        private IReverseMapper<AnimalSpeciesData, AnimalSpeciesViewModel> _animalSpeciesMapper;
+        private IAnimalFamilyMapper _animalFamilyMapper;
+        private IAnimalSpeciesMapper _animalSpeciesMapper;
         private IMapper<RandomAnimalDto, RandomAnimalViewModel> _randomAnimalMapper;
 
         public HomeController(IAnimalFamilyService animalFamilyService, IAnimalSpeciesService animalSpeciesService,
-            IReverseMapper<AnimalFamilyData, AnimalFamilyViewModel> animalFamilyMapper, IReverseMapper<AnimalSpeciesData, AnimalSpeciesViewModel> animalSpeciesMapper,
+            IAnimalFamilyMapper animalFamilyMapper, IAnimalSpeciesMapper animalSpeciesMapper,
             IAnimalGalleryService animalGalleryService, IMapper<RandomAnimalDto, RandomAnimalViewModel> randomAnimalMapper)
         {
             _animalFamilyService = animalFamilyService;
