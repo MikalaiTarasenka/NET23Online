@@ -26,6 +26,6 @@ namespace AnimalWorld.Web.Models.Animals
         [StringLength(2000)]
         public string Description { get; set; }
 
-        public List<string>? Zoos { get; set; }
+        public List<string> Zoos { get; set; }
     }
 }

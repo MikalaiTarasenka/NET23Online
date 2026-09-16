@@ -1,0 +1,147 @@
+﻿/* Хедер и навигация */
+.main-header {
+    background: linear-gradient(135deg, var(--primary) 0%, #3d5a45 100%);
+    border-bottom: none;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+    .nav-links a {
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.85);
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: color var(--transition);
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+    }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+/* Выпадающее меню */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    list-style: none;
+    min-width: 180px;
+    border-radius: var(--radius);
+    padding: 0.5rem 0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: all var(--transition);
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li a {
+    padding: 0.6rem 1rem;
+    display: block;
+    color: var(--text-main);
+}
+
+    .dropdown-menu li a:hover {
+        background-color: var(--bg-page);
+        color: var(--primary);
+    }
+
+/* Действия пользователя */
+.user-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.greeting {
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 0.95rem;
+}
+
+/* Футер */
+.main-footer {
+    background-color: var(--primary);
+    color: rgba(255, 255, 255, 0.85);
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+/* Основной контент */
+main {
+    flex: 1;
+    width: 100%;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        gap: 0.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        margin-top: 0.5rem;
+    }
+
+    .user-actions {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        margin-top: 0.5rem;
+    }
+}

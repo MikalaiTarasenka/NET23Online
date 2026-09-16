@@ -1,6 +1,5 @@
 ﻿using AnimalWorld.Data.Models.Animals;
 using AnimalWorld.Data.Models.Zoos;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AnimalWorld.Core.Services.Interfaces.Zoos
 {

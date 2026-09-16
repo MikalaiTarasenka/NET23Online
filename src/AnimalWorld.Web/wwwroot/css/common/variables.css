@@ -1,0 +1,14 @@
+﻿:root {
+    --bg-page: #f0f2f1;
+    --bg-card: #ffffff;
+    --bg-input: #ffffff;
+    --primary: #5c7c64;
+    --primary-hover: #4a6551;
+    --secondary: #8c7b6c;
+    --text-main: #2c3333;
+    --text-muted: #6b7280;
+    --border: #d1d9d6;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    --radius: 8px;
+    --transition: 0.2s ease;
+}

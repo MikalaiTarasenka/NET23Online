@@ -19,17 +19,13 @@ namespace AnimalWorld.Data.Repositories.Zoos
             
             if (idsToAdd.Any())
             {
-                var animalSpecies = _context.AnimalSpecies.Where(animalSpecies => idsToAdd
-                .Contains(animalSpecies.Id))
-                    .ToList();
+                var animalSpecies = await _context.AnimalSpecies.Where(animalSpecies => idsToAdd.Contains(animalSpecies.Id)).ToListAsync();
                 zooData.AnimalSpecies.AddRange(animalSpecies);
             }
 
             if (idsToRemove.Any())
             {
-                var animalSpecies = zooData.AnimalSpecies.Where(animalSpecies => idsToRemove
-                .Contains(animalSpecies.Id))
-                    .ToList();
+                var animalSpecies = zooData.AnimalSpecies.Where(animalSpecies => idsToRemove.Contains(animalSpecies.Id)).ToList();
                 foreach (var animal in animalSpecies)
                 {
                     zooData.AnimalSpecies.Remove(animal);

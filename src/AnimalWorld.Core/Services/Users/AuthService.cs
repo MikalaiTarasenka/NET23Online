@@ -23,7 +23,7 @@ namespace AnimalWorld.Core.Services.Users
 
         public int GetUserId()
         {
-            var userIdStr = _httpContextAccessor.HttpContext!.User?.Claims.FirstOrDefault(x => x.Type == AuthConstants.COOCKIE_ID_KEY)?.Value;
+            var userIdStr = _httpContextAccessor.HttpContext!.User?.Claims.FirstOrDefault(x => x.Type == AuthConstants.COOKIE_ID_KEY)?.Value;
             if (userIdStr is null)
             {
                 return 0;
@@ -35,7 +35,7 @@ namespace AnimalWorld.Core.Services.Users
 
         public string GetUserName()
         {
-            var userName = _httpContextAccessor.HttpContext!.User?.Claims.FirstOrDefault(x => x.Type == AuthConstants.COOCKIE_NAME_KEY)?.Value;
+            var userName = _httpContextAccessor.HttpContext!.User?.Claims.FirstOrDefault(x => x.Type == AuthConstants.COOKIE_NAME_KEY)?.Value;
             return userName;
         }
 
@@ -63,7 +63,7 @@ namespace AnimalWorld.Core.Services.Users
                 throw new InvalidOperationException();
             }
 
-            var roleStr = _httpContextAccessor.HttpContext!.User.Claims.First(x => x.Type == AuthConstants.COOCKIE_ROLE_KEY).Value;
+            var roleStr = _httpContextAccessor.HttpContext!.User.Claims.First(x => x.Type == AuthConstants.COOKIE_ROLE_KEY).Value;
             var role = Enum.Parse<UserRole>(roleStr);
             return role;
         }
@@ -86,7 +86,7 @@ namespace AnimalWorld.Core.Services.Users
                 return Language.English;
             }
 
-            var languageStr = _httpContextAccessor.HttpContext!.User.Claims.First(x => x.Type == AuthConstants.COOCKIE_LANGUAGE_KEY).Value;
+            var languageStr = _httpContextAccessor.HttpContext!.User.Claims.First(x => x.Type == AuthConstants.COOKIE_LANGUAGE_KEY).Value;
             var language = Enum.Parse<Language>(languageStr);
             return language;
         }
@@ -148,10 +148,10 @@ namespace AnimalWorld.Core.Services.Users
         {
             var claims = new List<Claim>
             {
-                new Claim(AuthConstants.COOCKIE_ID_KEY, user.Id.ToString()),
-                new Claim(AuthConstants.COOCKIE_ROLE_KEY, user.Role.ToString()),
-                new Claim(AuthConstants.COOCKIE_NAME_KEY, user.UserName),
-                new Claim(AuthConstants.COOCKIE_LANGUAGE_KEY, user.Language.ToString()),
+                new Claim(AuthConstants.COOKIE_ID_KEY, user.Id.ToString()),
+                new Claim(AuthConstants.COOKIE_ROLE_KEY, user.Role.ToString()),
+                new Claim(AuthConstants.COOKIE_NAME_KEY, user.UserName),
+                new Claim(AuthConstants.COOKIE_LANGUAGE_KEY, user.Language.ToString()),
                 new Claim(ClaimTypes.AuthenticationMethod, AuthConstants.AUTH_KEY)
             };
             var identity = new ClaimsIdentity(claims, AuthConstants.AUTH_KEY);
