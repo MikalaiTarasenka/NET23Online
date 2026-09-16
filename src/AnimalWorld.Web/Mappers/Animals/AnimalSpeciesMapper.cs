@@ -17,7 +17,7 @@ namespace AnimalWorld.Web.Mappers.Animals
                 NativeRange = source.NativeRange,
                 Url = source.Url,
                 AnimalFamilyId = source.AnimalFamilyId,
-                Zoos = source.Zoos.Select(s => s.Name).ToList(),
+                Zoos = source.Zoos?.Select(s => s.Name).ToList(),
             };
         }
 

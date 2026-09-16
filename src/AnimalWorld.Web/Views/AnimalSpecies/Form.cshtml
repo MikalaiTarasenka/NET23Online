@@ -1,51 +1,75 @@
 ﻿@model AnimalWorld.Web.Models.Animals.AnimalSpeciesViewModel
-
 @{
-    ViewData["Title"] = Model.Id == 0 ? "Create Species" : "Edit Species";
+    ViewData["Title"] = Model.Id == 0 ? "Создание вида животных" : "Редактирование вида";
 }
 
-<div>
-    <h2>@(Model.Id == 0 ? "Create" : "Edit") Animal Species</h2>
-    <form method="post" enctype="multipart/form-data" asp-controller="AnimalSpecies" asp-action="Form">
-        @if (Model.Id != 0)
-        {
-            <input type="hidden" asp-for="Id" />
-            <input type="hidden" asp-for="Url" />
-        }
-        <div>
-            <label>Name:</label><br />
-            @Html.TextBoxFor(x => x.Name, new { placeholder = "Species name" })
-            @Html.ValidationMessageFor(x => x.Name)
-        </div>
-        <div>
-            <label>Image:</label><br />
-            <input type="file" name="Image" accept="image/*" />
-            @if (Model.Id != 0 && !string.IsNullOrEmpty(Model.Url))
+<div class="card">
+    <div class="create-form">
+        <h2 class="admin-title" style="margin-top: 0;">@(Model.Id == 0 ? "Создание вида животных" : "Редактирование вида")</h2>
+
+        <form method="post" enctype="multipart/form-data" asp-controller="AnimalSpecies" asp-action="Form">
+            <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+            @if (Model.Id != 0)
             {
-                <div style="margin-top: 10px;">
-                    <p style="margin: 0 0 5px 0; color: #666; font-size: 0.9rem;">Current image:</p>
-                    <img src="@Model.Url" alt="Current image"
-                         style="max-width: 300px; max-height: 200px; border: 1px solid #ddd; border-radius: 4px; object-fit: cover;" />
-                </div>
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="Url" />
             }
-        </div>
-        <div>
-            <label>Animal Family:</label><br />
-            @Html.DropDownListFor(x => x.AnimalFamilyId, Model.AnimalFamilies, "-- Select --")
-            @Html.ValidationMessageFor(x => x.AnimalFamilyId)
-        </div>
-        <div>
-            <label>Native Range:</label><br />
-            @Html.TextBoxFor(x => x.NativeRange, new { placeholder = "Native range" })
-            @Html.ValidationMessageFor(x => x.NativeRange)
-        </div>
-        <div>
-            <label>Description:</label><br />
-            @Html.TextAreaFor(x => x.Description, new { placeholder = "Description", rows = 5 })
-            @Html.ValidationMessageFor(x => x.Description)
-        </div>
-        <div>
-            <button type="submit">@(Model.Id == 0 ? "Create" : "Save")</button>
-        </div>
-    </form>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label asp-for="Name">Название вида</label>
+                    <input asp-for="Name" placeholder="Название вида" />
+                    <span asp-validation-for="Name" class="field-validation-error"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NativeRange">Место обитания</label>
+                    <input asp-for="NativeRange" placeholder="Место обитания" />
+                    <span asp-validation-for="NativeRange" class="field-validation-error"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AnimalFamilyId">Семейство</label>
+                <select asp-for="AnimalFamilyId" asp-items="Model.AnimalFamilies">
+                    <option value="">-- Выберите семейство --</option>
+                </select>
+                <span asp-validation-for="AnimalFamilyId" class="field-validation-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Image">Изображение</label>
+                <input type="file" asp-for="Image" accept="image/*" id="imageInput" />
+
+                @if (Model.Id != 0 && !string.IsNullOrEmpty(Model.Url))
+                {
+                    <div class="image-preview" id="imagePreview">
+                        <img src="@Model.Url" alt="Текущее изображение" />
+                    </div>
+                }
+                else
+                {
+                    <div class="image-preview" id="imagePreview" style="display: none;">
+                        <img src="" alt="Предварительный просмотр" />
+                    </div>
+                }
+                <span asp-validation-for="Image" class="field-validation-error"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description">Описание</label>
+                <textarea asp-for="Description" placeholder="Описание вида" rows="5"></textarea>
+                <span asp-validation-for="Description" class="field-validation-error"></span>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">@(Model.Id == 0 ? "Создать" : "Сохранить")</button>
+                <a href="/Home/Moderating" class="btn btn-secondary">Отмена</a>
+            </div>
+        </form>
+    </div>
 </div>
+
+@section Scripts {
+    <script src="~/js/image-preview.js"></script>
+}

@@ -1,0 +1,41 @@
+﻿/* Группа карточек модерирования */
+.moderating-group {
+    margin-bottom: 2.5rem;
+}
+
+    .moderating-group:last-child {
+        margin-bottom: 0;
+    }
+
+/* Подзаголовок группы */
+.group-title {
+    color: var(--text-main);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+/* Карточка модерирования */
+.moderating-card .card-content {
+    padding: 1.5rem;
+}
+
+.moderating-card .card-heading {
+    color: var(--secondary);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0 0 1.25rem 0;
+}
+
+/* Кнопки в карточке модерирования — одинаковой ширины */
+.moderating-card .card-actions {
+    border-top: none;
+    padding-top: 0;
+    margin-top: auto;
+}
+
+    .moderating-card .card-actions .btn {
+        flex: 1;
+    }
