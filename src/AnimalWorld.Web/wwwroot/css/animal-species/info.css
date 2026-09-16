@@ -1,0 +1,175 @@
+﻿/* Форма поиска */
+.search-form {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.search-select {
+    min-width: 180px;
+    padding: 0.7rem 1rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%235c7c64' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+}
+
+    .search-select:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(92, 124, 100, 0.15);
+    }
+
+.search-input {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.7rem 1rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+    .search-input:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(92, 124, 100, 0.15);
+    }
+
+.search-button {
+    padding: 0.7rem 1.5rem;
+    background-color: var(--primary);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color var(--transition);
+    white-space: nowrap;
+}
+
+    .search-button:hover {
+        background-color: var(--primary-hover);
+    }
+
+/* Таблица на div */
+.data-table {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.data-table-header {
+    display: grid;
+    grid-template-columns: 2fr 2fr 3fr;
+    background-color: var(--bg-page);
+    border-bottom: 2px solid var(--border);
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+    .data-table-header .data-table-cell {
+        padding: 1rem 1.25rem;
+    }
+
+.data-table-row {
+    display: grid;
+    grid-template-columns: 2fr 2fr 3fr;
+    border-bottom: 1px solid var(--border);
+    transition: background-color var(--transition);
+}
+
+    .data-table-row:last-child {
+        border-bottom: none;
+    }
+
+    .data-table-row:hover {
+        background-color: var(--bg-page);
+    }
+
+.data-table-cell {
+    padding: 1rem 1.25rem;
+    color: var(--text-main);
+    font-size: 0.95rem;
+}
+
+    .data-table-cell:first-child {
+        font-weight: 500;
+    }
+
+    .data-table-cell:not(:first-child) {
+        color: var(--text-muted);
+    }
+
+/* Пустое состояние */
+.data-table-empty {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 3rem 1rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+/* Адаптивность: карточки на мобильных */
+@media (max-width: 768px) {
+    .search-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-select,
+    .search-input,
+    .search-button {
+        width: 100%;
+    }
+
+    .data-table-header {
+        display: none;
+    }
+
+    .data-table-row {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem 1.25rem;
+        gap: 0.75rem;
+    }
+
+    .data-table-cell {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+        .data-table-cell::before {
+            content: attr(data-label);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .data-table-cell:first-child {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+}

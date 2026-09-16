@@ -61,6 +61,45 @@
     flex-wrap: wrap;
 }
 
+/* Ошибки валидации */
+.validation-summary {
+    background-color: rgba(192, 57, 43, 0.08);
+    border: 1px solid rgba(192, 57, 43, 0.2);
+    border-radius: var(--radius);
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.25rem;
+    color: #c0392b;
+    font-size: 0.9rem;
+}
+
+    .validation-summary ul {
+        margin: 0;
+        padding-left: 1.25rem;
+    }
+
+    .validation-summary:empty {
+        display: none;
+    }
+
+.field-validation-error {
+    display: block;
+    color: #c0392b;
+    font-size: 0.8rem;
+    margin-top: 0.35rem;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border-color: #c0392b !important;
+}
+
+    .input-validation-error:focus {
+        box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.15) !important;
+    }
+
 /* Адаптивность */
 @media (max-width: 768px) {
     .form-row {
