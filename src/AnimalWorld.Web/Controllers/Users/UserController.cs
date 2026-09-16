@@ -41,6 +41,11 @@ namespace AnimalWorld.Web.Controllers.Users
         [HttpPost]
         public async Task<IActionResult> Profile(UserProfileViewModel viewModel)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
             var userData = _userMapper.ReverseMap(viewModel);
             await _userProfileService.Update(userData);
             return RedirectToAction("Profile");

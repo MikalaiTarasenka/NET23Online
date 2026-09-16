@@ -135,6 +135,37 @@
         box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.15) !important;
     }
 
+/* Нативный date picker — ограничение размеров */
+.form-group input[type="date"] {
+    padding: 0.65rem 0.75rem;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    max-width: 280px;
+    height: auto;
+}
+
+    .form-group input[type="date"]:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(92, 124, 100, 0.15);
+    }
+
+    /* Убираем лишние отступы в Safari */
+    .form-group input[type="date"]::-webkit-calendar-picker-indicator {
+        cursor: pointer;
+        opacity: 0.6;
+        transition: opacity var(--transition);
+    }
+
+        .form-group input[type="date"]::-webkit-calendar-picker-indicator:hover {
+            opacity: 1;
+        }
+
 /* Адаптивность */
 @media (max-width: 768px) {
     .form-row {

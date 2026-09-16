@@ -1,33 +1,47 @@
 ﻿@model AnimalWorld.Web.Models.Zoos.ZooViewModel
-
 @{
-    ViewData["Title"] = Model.Id == 0 ? "Create Zoo" : "Edit Zoo";
+    ViewData["Title"] = Model.Id == 0 ? "Создание зоопарка" : "Редактирование зоопарка";
 }
 
-<div>
-    <h2>@(Model.Id == 0 ? "Create" : "Edit") Zoo</h2>
-    <form method="post" asp-controller="Zoo" asp-action="Form">
-        @if (Model.Id != 0)
-        {
-            <input type="hidden" asp-for="Id" />
-        }
-        <div>
-            <label>Name:</label><br />
-            @Html.TextBoxFor(x => x.Name, new { placeholder = "Zoo name" })
-            @Html.ValidationMessageFor(x => x.Name)
-        </div>
-        <div>
-            <label>Address:</label><br />
-            @Html.TextBoxFor(x => x.Address, new { placeholder = "Address" })
-            @Html.ValidationMessageFor(x => x.Address)
-        </div>
-        <div>
-            <label>Description:</label><br />
-            @Html.TextAreaFor(x => x.Description, new { placeholder = "Description", rows = 5 })
-            @Html.ValidationMessageFor(x => x.Description)
-        </div>
-        <div>
-            <button type="submit">@(Model.Id == 0 ? "Create" : "Save")</button>
-        </div>
-    </form>
+@section Styles {
+    <!-- Общие стили форм уже подключены в _Layout -->
+}
+
+<div class="card">
+    <div class="create-form">
+        <h2 class="admin-title" style="margin-top: 0;">@(Model.Id == 0 ? "Создание зоопарка" : "Редактирование зоопарка")</h2>
+
+        <form method="post" asp-controller="Zoo" asp-action="Form">
+            <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+            @if (Model.Id != 0)
+            {
+                <input type="hidden" asp-for="Id" />
+            }
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label asp-for="Name">Название</label>
+                    <input asp-for="Name" placeholder="Название зоопарка" />
+                    <span asp-validation-for="Name" class="field-validation-error"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Address">Адрес</label>
+                    <input asp-for="Address" placeholder="Адрес зоопарка" />
+                    <span asp-validation-for="Address" class="field-validation-error"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description">Описание</label>
+                <textarea asp-for="Description" placeholder="Описание зоопарка" rows="5"></textarea>
+                <span asp-validation-for="Description" class="field-validation-error"></span>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">@(Model.Id == 0 ? "Создать" : "Сохранить")</button>
+                <a href="/Home/Moderating" class="btn btn-secondary">Отмена</a>
+            </div>
+        </form>
+    </div>
 </div>

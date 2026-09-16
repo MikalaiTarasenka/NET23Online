@@ -1,0 +1,70 @@
+﻿/* Контейнер для центрирования карточки */
+.info-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: 2rem 1rem;
+}
+
+/* Карточка с информацией */
+.info-card {
+    width: 100%;
+    max-width: 500px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+/* Заголовок */
+.info-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+}
+
+.info-title-success {
+    color: var(--primary);
+}
+
+.info-title-error {
+    color: #c0392b;
+}
+
+/* Текст сообщения */
+.info-message {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0 0 2rem 0;
+}
+
+/* Кнопки действий */
+.info-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Адаптивность */
+@media (max-width: 480px) {
+    .info-card {
+        padding: 2rem 1.25rem;
+    }
+
+    .info-title {
+        font-size: 1.5rem;
+    }
+
+    .info-actions {
+        flex-direction: column;
+    }
+
+        .info-actions .btn {
+            width: 100%;
+        }
+}

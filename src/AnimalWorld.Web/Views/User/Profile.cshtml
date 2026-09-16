@@ -1,35 +1,49 @@
 ﻿@model AnimalWorld.Web.Models.Users.UserProfileViewModel
-
 @{
-    Layout = "_Layout";
-    ViewData["Title"] = "Profile";
+    ViewData["Title"] = "Личный кабинет";
 }
 
-<div>
-    <form method="post" asp-controller="User" asp-action="Profile">
-        <div>
-            <label>First Name:</label><br />
-            @Html.TextBoxFor(x => x.FirstName, new { placeholder = "First Name" })
-            @Html.ValidationMessageFor(x => x.FirstName)
-        </div>
-        <div>
-            <label>Last Name:</label><br />
-            @Html.TextBoxFor(x => x.LastName, new { placeholder = "Last Name" })
-            @Html.ValidationMessageFor(x => x.LastName)
-        </div>
-        <div>
-            <label>Phone Number:</label><br />
-            @Html.TextBoxFor(x => x.PhoneNumber, new { placeholder = "+375..." })
-            @Html.ValidationMessageFor(x => x.PhoneNumber)
-        </div>
-        <div>
-            <label>Language:</label><br />
-            @Html.DropDownListFor(x => x.Language, Model.Languages)
-            @Html.ValidationMessageFor(x => x.Language)
-        </div>
-        <div>
-            <button type="submit">Save</button>
-        </div>
-    </form>
+@section Styles {
+    <link rel="stylesheet" href="~/css/common/admin.css" />
+}
 
-</div>
+<section class="section">
+    <div class="card">
+        <div class="create-form">
+            <h2 class="admin-title">Личный кабинет</h2>
+
+            <form method="post" asp-controller="User" asp-action="Profile">
+                <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+                <div class="form-group">
+                    <label asp-for="FirstName">Имя</label>
+                    <input asp-for="FirstName" placeholder="Имя" />
+                    <span asp-validation-for="FirstName" class="field-validation-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="LastName">Фамилия</label>
+                    <input asp-for="LastName" placeholder="Фамилия" />
+                    <span asp-validation-for="LastName" class="field-validation-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="PhoneNumber">Телефон</label>
+                    <input asp-for="PhoneNumber" placeholder="+375..." />
+                    <span asp-validation-for="PhoneNumber" class="field-validation-error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="Language">Язык</label>
+                    <select asp-for="Language" asp-items="Model.Languages"></select>
+                    <span asp-validation-for="Language" class="field-validation-error"></span>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                    <a href="/" class="btn btn-secondary">Отмена</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

@@ -1,55 +1,66 @@
 ﻿@model AnimalWorld.Web.Models.Zoos.BindingViewModel
-
 @{
-    ViewData["Title"] = "Zoo Animals Binding";
+    ViewData["Title"] = $"Животные зоопарка {Model?.Zoo?.Name}";
 }
 
-<div>
+@section Styles {
+    <link rel="stylesheet" href="~/css/zoo/binding.css" />
+}
+
+<section class="section">
+    <div class="binding-header">
+        <h2 class="binding-title">Животные зоопарка @(Model?.Zoo?.Name)</h2>
+    </div>
+
+    <a href="/Zoo/List" class="binding-back">← Назад к списку зоопарков</a>
+
     @if (Model?.Zoo != null)
     {
-        <h2>Zoo: @Model.Zoo.Name</h2>
-        <p><strong>Address:</strong> @Model.Zoo.Address</p>
-        <p><strong>Description:</strong> @Model.Zoo.Description</p>
+        <!-- Информация о зоопарке -->
+        <div class="binding-info">
+            <h3 class="binding-info-name">@Model.Zoo.Name</h3>
+            <p class="binding-info-address">@Model.Zoo.Address</p>
+        </div>
     }
 
-    <hr />
-
-    <h3>Select Animal Species</h3>
-
-    <div asp-validation-summary="ModelOnly"></div>
-
+    <!-- Форма привязки животных -->
     <form method="post" asp-controller="Zoo" asp-action="Binding">
+        <input type="hidden" asp-for="ZooId" />
 
-        <input type="hidden" name="ZooId" value="@Model.ZooId" />
+        <h3 class="binding-section-title">Выберите виды животных</h3>
 
-        <div style="border: 1px solid #ddd; border-radius: 4px; padding: 15px; max-height: 400px; overflow-y: auto; margin-bottom: 15px;">
+        <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+        <div class="binding-checkboxes">
             @if (Model?.AnimalSpecies != null && Model.AnimalSpecies.Any())
             {
-                foreach (var item in Model.AnimalSpecies)
+                @foreach (var item in Model.AnimalSpecies)
                 {
                     var isChecked = Model.SelectedAnimalSpeciesIds != null
                                     && Model.SelectedAnimalSpeciesIds.Contains(int.Parse(item.Value));
-                    <div style="margin-bottom: 8px;">
-                        <label>
-                            <input type="checkbox"
-                                   name="SelectedAnimalSpeciesIds"
-                                   value="@item.Value"
-                            @(isChecked ? "checked" : "") />
-                            @item.Text
-                        </label>
+                    var checkboxId = $"species-{item.Value}";
+
+                    <div class="binding-checkbox-item">
+                        <input type="checkbox"
+                               id="@checkboxId"
+                               name="SelectedAnimalSpeciesIds"
+                               value="@item.Value"
+                               @(isChecked ? "checked" : "") />
+                        <label for="@checkboxId">@item.Text</label>
                     </div>
                 }
             }
             else
             {
-                <p>No species available.</p>
+                <p class="binding-empty">Нет доступных видов животных.</p>
             }
         </div>
 
-        @Html.ValidationMessageFor(x => x.SelectedAnimalSpeciesIds)
+        <span asp-validation-for="SelectedAnimalSpeciesIds" class="binding-validation-error"></span>
 
-        <div>
-            <button type="submit">Save</button>
+        <div class="binding-actions">
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+            <a href="/Zoo/List" class="btn btn-secondary">Отмена</a>
         </div>
     </form>
-</div>
+</section>
