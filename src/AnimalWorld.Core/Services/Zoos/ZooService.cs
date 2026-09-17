@@ -1,4 +1,5 @@
-﻿using AnimalWorld.Core.Dtos.Users;
+﻿using AnimalWorld.Core.Dtos;
+using AnimalWorld.Core.Dtos.Users;
 using AnimalWorld.Core.Services.Interfaces.Users;
 using AnimalWorld.Core.Services.Interfaces.Zoos;
 using AnimalWorld.Data.Models.Animals;
@@ -11,6 +12,7 @@ namespace AnimalWorld.Core.Services.Zoos
     {
         private IZooRepository _zooRepository;
         private IAuthService _authService;
+        public const int COUNT_ZOOS_PER_PAGE = 4;
 
         public ZooService(IZooRepository zooRepository, IAuthService authService)
         {
@@ -80,6 +82,52 @@ namespace AnimalWorld.Core.Services.Zoos
             zoo.Description = zooData.Description;
             zoo.Address = zooData.Address;
             await _zooRepository.Update(zoo);
+        }
+
+        public async Task<PagedResult<ZooDto>> GetPagedZoos(int page)
+        {
+            var count = await _zooRepository.GetZoosCount();
+            if (count == 0)
+            {
+                return new PagedResult<ZooDto> { Items = new List<ZooDto>() };
+            }
+
+            var totalPages = (count + COUNT_ZOOS_PER_PAGE - 1) / COUNT_ZOOS_PER_PAGE;
+            if (page < 1)
+            {
+                page = 1;
+            }
+
+            if (page > totalPages)
+            {
+                page = totalPages;
+            }
+
+            var zooDatas = await _zooRepository.GetZoos(page, COUNT_ZOOS_PER_PAGE);
+            var zoos = zooDatas.Select(zoo => new ZooDto
+            {
+                Id = zoo.Id,
+                Name = zoo.Name,
+                Address = zoo.Address,
+                Description = zoo.Description,
+            }).ToList();
+            var zooIds = zoos.Select(z => z.Id).ToList();
+            var families = await _zooRepository.GetAnimalFamiliesByZooIds(zooIds);
+            var familiesByZooId = families.ToLookup(f => f.ZooId, f => f.AnimalFamilyName);
+            foreach (var zoo in zoos)
+            {
+                zoo.AnimalFamilies = familiesByZooId[zoo.Id].Distinct().ToList();
+            }
+
+            return new PagedResult<ZooDto>
+            {
+                Items = zoos,
+                CurrentPage = page,
+                HasNextPage = page < totalPages,
+                HasPreviousPage = page > 1,
+                PageNumbers = Enumerable.Range(1, totalPages).ToList(),
+                TotalPages = totalPages
+            };
         }
     }
 }

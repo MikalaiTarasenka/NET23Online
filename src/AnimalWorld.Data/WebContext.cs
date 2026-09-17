@@ -1,4 +1,5 @@
-﻿using AnimalWorld.Data.Models.Animals;
+﻿using AnimalWorld.Data.Dtos;
+using AnimalWorld.Data.Models.Animals;
 using AnimalWorld.Data.Models.Users;
 using AnimalWorld.Data.Models.Zoos;
 using Microsoft.EntityFrameworkCore;
@@ -81,6 +82,10 @@ namespace AnimalWorld.Data
                 .HasOne(x => x.Creator)
                 .WithMany(x => x.CreatedZoos)
                 .HasForeignKey(x => x.CreatorId);
+
+            modelBuilder.Entity<ZooAnimalFamilyDto>()
+                .HasNoKey()
+                .ToView(null);
 
             base.OnModelCreating(modelBuilder);
         }

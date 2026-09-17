@@ -28,8 +28,8 @@ namespace AnimalWorld.Web.Controllers.Zoos
 
         public async Task<IActionResult> Index(int page = 1)
         {
-            var zooDatas = await _zooService.GetAll();
-            var zooViewModels = _zooMapper.MapList(zooDatas);
+            var zoos = await _zooService.GetPagedZoos(page);
+            var zooViewModels = _zooMapper.ToPagedZoos(zoos);
             return View(zooViewModels);
         }
 

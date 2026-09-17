@@ -1,4 +1,5 @@
-﻿using AnimalWorld.Data.Models.Zoos;
+﻿using AnimalWorld.Core.Dtos;
+using AnimalWorld.Data.Models.Zoos;
 using AnimalWorld.Web.Mappers.Interfaces.CustomMappers;
 using AnimalWorld.Web.Models.Zoos;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -37,6 +38,26 @@ namespace AnimalWorld.Web.Mappers.Zoos
                 Value = zoo.Id.ToString()
             }).ToList();
             return selectZoosList;
+        }
+
+        public ZooListViewModel ToPagedZoos(PagedResult<ZooDto> source)
+        {
+            return new ZooListViewModel
+            {
+                Zoos = source.Items.Select(zoo => new ZooViewModel
+                {
+                    Id = zoo.Id,
+                    Name = zoo.Name,
+                    Address = zoo.Address,
+                    Description = zoo.Description,
+                    AnimalFamilies = zoo.AnimalFamilies
+                }).ToList(),
+                HasNextPage = source.HasNextPage,
+                CurrentPage = source.CurrentPage,
+                HasPreviousPage = source.HasPreviousPage,
+                PageNumbers = source.PageNumbers,
+                TotalPages = source.TotalPages,
+            };
         }
     }
 }

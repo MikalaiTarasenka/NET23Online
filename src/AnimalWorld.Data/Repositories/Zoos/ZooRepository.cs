@@ -37,18 +37,16 @@ namespace AnimalWorld.Data.Repositories.Zoos
 
         public async Task<List<ZooAnimalFamilyDto>> GetAnimalFamiliesByZooIds(List<int> ids)
         {
-            var sql = @$"SELECT [BZAAS].ZooId, [AF].AnimalFamilyName
-            FROM 
-                zoo_species_bindings [BZAAS]
-            JOIN 
-                animal_species [AS] ON [AS].Id = [BZAAS].AnimalSpeciesId
-            JOIN 
-                animal_families [AF] ON [AF].Id = [AS].AnimalFamilyId
-            WHERE 
-                [BZAAS].ZooDataId IN ({string.Join(",", ids)})";
-            return await _context.Database
-                .SqlQueryRaw<ZooAnimalFamilyDto>(sql)
-                .ToListAsync();
+            var families = await _context.Set<ZooAnimalFamilyDto>()
+            .FromSqlRaw(@"
+                SELECT DISTINCT z.id AS zoo_id, f.name AS animal_family_name
+                FROM zoos z
+                JOIN zoo_species_bindings b ON z.id = b.zoos_id
+                JOIN animal_species s ON b.animal_species_id = s.id
+                JOIN animal_families f ON s.animal_family_id = f.id
+                WHERE z.id = ANY({0})", ids)
+            .ToListAsync();
+            return families;
         }
 
         public async Task<ZooData> GetWithAnimals(int id)

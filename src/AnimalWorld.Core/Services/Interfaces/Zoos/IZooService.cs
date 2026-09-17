@@ -1,4 +1,5 @@
-﻿using AnimalWorld.Data.Models.Animals;
+﻿using AnimalWorld.Core.Dtos;
+using AnimalWorld.Data.Models.Animals;
 using AnimalWorld.Data.Models.Zoos;
 
 namespace AnimalWorld.Core.Services.Interfaces.Zoos
@@ -10,5 +11,7 @@ namespace AnimalWorld.Core.Services.Interfaces.Zoos
         List<int> ZooAnimalSpeciesIds(List<AnimalSpeciesData> animalSpecies);
 
         Task BindAnimalSpecies(ZooData zoo, List<int> selectedAnimalSpeciesIds);
+
+        Task<PagedResult<ZooDto>> GetPagedZoos(int page);
     }
 }
