@@ -1,74 +1,50 @@
-﻿@model List<AnimalWorld.Web.Models.Zoos.ZooViewModel>
-
+﻿@model AnimalWorld.Web.Models.Zoos.ZooListViewModel
 @{
-    ViewData["Title"] = "Zoos";
+    ViewData["Title"] = "Зоопарки";
 }
 
-<div style="padding: 20px;">
-    <h1 style="text-align: center; color: #2c3e50; margin-bottom: 30px;">Зоопарки</h1>
+@section Styles {
+    <link rel="stylesheet" href="~/css/zoo/index.css" />
+}
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 25px;">
-        @if (Model != null && Model.Any())
-        {
-            foreach (var zoo in Model)
+<section class="section">
+    <div class="zoo-header">
+        <h2 class="zoo-title">Зоопарки</h2>
+    </div>
+
+    @if (Model?.Zoos != null && Model.Zoos.Any())
+    {
+        <div class="zoo-grid">
+            @foreach (var zoo in Model.Zoos)
             {
-                <div style="background: white; border: 1px solid #e0e0e0; border-radius: 8px; padding: 25px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); display: flex; flex-direction: column;">
+                <div class="zoo-card">
+                    <h3 class="zoo-card-name">@zoo.Name</h3>
+                    <p class="zoo-card-address">@zoo.Address</p>
+                    <p class="zoo-card-description">@(zoo.Description?.Length > 150 ? zoo.Description.Substring(0, 150) + "..." : zoo.Description)</p>
 
-                    <!-- Название -->
-                    <h2 style="margin: 0 0 15px 0; color: #2980b9; font-size: 1.4rem;">@zoo.Name</h2>
-
-                    <!-- Адрес -->
-                    <div style="margin-bottom: 15px;">
-                        <span style="font-size: 0.85rem; text-transform: uppercase; color: #888; font-weight: bold; display: block; margin-bottom: 4px;">Адрес</span>
-                        <p style="margin: 0; color: #333; font-size: 0.95rem;">@zoo.Address</p>
-                    </div>
-
-                    <!-- Описание -->
-                    <div style="margin-bottom: 15px; flex-grow: 1;">
-                        <span style="font-size: 0.85rem; text-transform: uppercase; color: #888; font-weight: bold; display: block; margin-bottom: 4px;">Описание</span>
-                        <p style="margin: 0; color: #555; font-size: 0.9rem; line-height: 1.5;">
-                            @(zoo.Description.Length > 150 ? zoo.Description.Substring(0, 150) + "..." : zoo.Description)
-                        </p>
-                    </div>
-
-                    <!-- Семейства животных -->
-                    @if (zoo.AnimalFamilies != null && zoo.AnimalFamilies.Any())
-                    {
-                        <div style="margin-bottom: 20px; padding-top: 15px; border-top: 1px solid #f0f0f0;">
-                            <span style="font-size: 0.85rem; text-transform: uppercase; color: #888; font-weight: bold; display: block; margin-bottom: 4px;">Семейства животных</span>
-                            <p style="margin: 0; color: #2980b9; font-size: 0.9rem; font-style: italic;">
-                                @string.Join(", ", zoo.AnimalFamilies)
-                            </p>
-                        </div>
-                    }
-
-                    <!-- Кнопки -->
-                    <div style="display: flex; justify-content: space-between; gap: 10px; margin-top: auto;">
-                        <!-- Бронирование - POST форма -->
-                        <form method="post" asp-controller="Ticket" asp-action="Book" style="flex: 1; margin: 0;">
-                            <input type="hidden" name="zooId" value="@zoo.Id" />
-                            <button type="submit"
-                                    style="width: 100%; padding: 10px; background-color: #27ae60; color: white; border: none; border-radius: 4px; font-weight: 600; cursor: pointer; font-size: 1rem; transition: background-color 0.2s;"
-                                    onmouseover="this.style.backgroundColor='#229954'"
-                                    onmouseout="this.style.backgroundColor='#27ae60'">
-                                Бронирование
-                            </button>
-                        </form>
-
-                        <!-- Комментарии - GET ссылка -->
-                        <a href="/Comment/Comments?zooId=@zoo.Id"
-                           style="flex: 1; padding: 10px; background-color: #2980b9; color: white; text-align: center; text-decoration: none; border-radius: 4px; font-weight: 600; transition: background-color 0.2s; box-sizing: border-box;"
-                           onmouseover="this.style.backgroundColor='#2471a3'"
-                           onmouseout="this.style.backgroundColor='#2980b9'">
-                            Комментарии
-                        </a>
+                    <div class="zoo-card-actions">
+                        <a href="/Ticket/Book?zooId=@zoo.Id" class="btn btn-primary">Забронировать</a>
+                        <a href="/Zoo/Comments?id=@zoo.Id" class="btn btn-secondary">Комментарии</a>
                     </div>
                 </div>
             }
-        }
-        else
-        {
-            <p style="grid-column: 1 / -1; text-align: center; color: #777;">Нет доступных зоопарков.</p>
-        }
-    </div>
-</div>
+        </div>
+
+        <!-- Пагинация (статичная для демонстрации) -->
+        <nav class="pagination" aria-label="Навигация по страницам">
+            <a href="#" class="pagination-item disabled" aria-label="Предыдущая страница">←</a>
+            <a href="#" class="pagination-item active" aria-current="page">1</a>
+            <a href="#" class="pagination-item">2</a>
+            <a href="#" class="pagination-item">3</a>
+            <a href="#" class="pagination-item">...</a>
+            <a href="#" class="pagination-item">10</a>
+            <a href="#" class="pagination-item" aria-label="Следующая страница">→</a>
+        </nav>
+    }
+    else
+    {
+        <div class="admin-empty">
+            <p>Зоопарки не найдены.</p>
+        </div>
+    }
+</section>

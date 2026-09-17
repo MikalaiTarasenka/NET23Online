@@ -1,0 +1,216 @@
+﻿/* Заголовок страницы */
+.tickets-header {
+    margin-bottom: 2rem;
+}
+
+.tickets-title {
+    color: var(--text-main);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 1.5rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary);
+    display: inline-block;
+}
+
+/* Кнопка "Назад" */
+.tickets-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    transition: all var(--transition);
+}
+
+    .tickets-back:hover {
+        background-color: var(--bg-page);
+        border-color: var(--primary);
+        color: var(--primary);
+    }
+
+/* Сетка билетов */
+.tickets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Карточка билета */
+.ticket-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+    .ticket-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        border-color: var(--primary);
+    }
+
+    .ticket-card.used {
+        opacity: 0.6;
+        border-color: var(--border);
+    }
+
+        .ticket-card.used:hover {
+            transform: none;
+            box-shadow: none;
+            border-color: var(--border);
+        }
+
+/* Лейбл "ИСПОЛЬЗОВАН" */
+.ticket-used-label {
+    position: absolute;
+    top: 1rem;
+    right: -2.5rem;
+    background-color: var(--text-muted);
+    color: #ffffff;
+    padding: 0.3rem 3rem;
+    transform: rotate(45deg);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Зоопарк */
+.ticket-zoo {
+    color: var(--primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px dashed var(--border);
+}
+
+/* Дата посещения */
+.ticket-date {
+    margin-bottom: 1rem;
+}
+
+.ticket-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.ticket-date-value {
+    color: var(--text-main);
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* Блок с QR-кодом и ключом */
+.ticket-qr-section {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-top: 1px dashed var(--border);
+    border-bottom: 1px dashed var(--border);
+    margin-bottom: 1rem;
+}
+
+.ticket-qr-container {
+    flex-shrink: 0;
+    width: 160px;
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-page);
+    border-radius: var(--radius);
+    padding: 0.5rem;
+}
+
+    .ticket-qr-container canvas,
+    .ticket-qr-container img {
+        max-width: 100% !important;
+        max-height: 100% !important;
+    }
+
+.ticket-key {
+    flex: 1;
+}
+
+.ticket-key-value {
+    color: var(--text-main);
+    font-size: 0.85rem;
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    word-break: break-all;
+    margin: 0;
+}
+
+/* Статус */
+.ticket-status {
+    padding-top: 0.5rem;
+}
+
+.ticket-status-badge {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+    .ticket-status-badge.active {
+        background-color: var(--primary);
+        color: #ffffff;
+    }
+
+    .ticket-status-badge.used {
+        background-color: var(--text-muted);
+        color: #ffffff;
+    }
+
+/* Пустое состояние */
+.tickets-empty {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-muted);
+}
+
+    .tickets-empty p {
+        margin: 0 0 1.5rem 0;
+        font-size: 1rem;
+    }
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .tickets-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ticket-qr-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .ticket-key {
+        width: 100%;
+    }
+}
