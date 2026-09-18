@@ -20,6 +20,15 @@
                 <div class="zoo-card">
                     <h3 class="zoo-card-name">@zoo.Name</h3>
                     <p class="zoo-card-address">@zoo.Address</p>
+
+                    @if (zoo.AnimalFamilies != null && zoo.AnimalFamilies.Any())
+                    {
+                        <p class="zoo-card-families">
+                            <span class="zoo-card-families-label">Животные:</span>
+                            @string.Join(", ", zoo.AnimalFamilies)
+                        </p>
+                    }
+
                     <p class="zoo-card-description">@(zoo.Description?.Length > 150 ? zoo.Description.Substring(0, 150) + "..." : zoo.Description)</p>
 
                     <div class="zoo-card-actions">
@@ -30,16 +39,41 @@
             }
         </div>
 
-        <!-- Пагинация (статичная для демонстрации) -->
-        <nav class="pagination" aria-label="Навигация по страницам">
-            <a href="#" class="pagination-item disabled" aria-label="Предыдущая страница">←</a>
-            <a href="#" class="pagination-item active" aria-current="page">1</a>
-            <a href="#" class="pagination-item">2</a>
-            <a href="#" class="pagination-item">3</a>
-            <a href="#" class="pagination-item">...</a>
-            <a href="#" class="pagination-item">10</a>
-            <a href="#" class="pagination-item" aria-label="Следующая страница">→</a>
-        </nav>
+        <!-- Пагинация -->
+        @if (Model.TotalPages > 1)
+        {
+            <nav class="pagination" aria-label="Навигация по страницам">
+                @if (Model.HasPreviousPage)
+                {
+                    <a href="?page=@(Model.CurrentPage - 1)" class="pagination-item" aria-label="Предыдущая страница">←</a>
+                }
+                else
+                {
+                    <span class="pagination-item disabled" aria-label="Предыдущая страница">←</span>
+                }
+
+                @foreach (var pageNumber in Model.PageNumbers)
+                {
+                    @if (pageNumber == Model.CurrentPage)
+                    {
+                        <span class="pagination-item active" aria-current="page">@pageNumber</span>
+                    }
+                    else
+                    {
+                        <a href="?page=@pageNumber" class="pagination-item">@pageNumber</a>
+                    }
+                }
+
+                @if (Model.HasNextPage)
+                {
+                    <a href="?page=@(Model.CurrentPage + 1)" class="pagination-item" aria-label="Следующая страница">→</a>
+                }
+                else
+                {
+                    <span class="pagination-item disabled" aria-label="Следующая страница">→</span>
+                }
+            </nav>
+        }
     }
     else
     {
