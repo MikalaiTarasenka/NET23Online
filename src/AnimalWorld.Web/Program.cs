@@ -38,6 +38,7 @@ builder.Services.AddScoped<IZooMapper, ZooMapper>();
 builder.Services.AddScoped<IAnimalSpeciesMapper, AnimalSpeciesMapper>();
 builder.Services.AddScoped<IMapper<RandomAnimalDto, RandomAnimalViewModel>, RandomAnimalMapper>();
 builder.Services.AddScoped<IMapper<TicketData, TicketViewModel>, TicketMapper>();
+builder.Services.AddScoped<IMapper<CommentData, CommentViewModel>, CommentMapper>();
 builder.Services.AddScoped<IImageUploadHelper, ImageUploadHelper>();
 
 builder.Services.AddHttpClient<RandomAnimalApi>(x =>

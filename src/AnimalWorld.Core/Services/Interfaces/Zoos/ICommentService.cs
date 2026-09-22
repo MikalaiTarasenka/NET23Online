@@ -1,6 +1,11 @@
-﻿namespace AnimalWorld.Core.Services.Interfaces.Zoos
+﻿using AnimalWorld.Data.Models.Zoos;
+
+namespace AnimalWorld.Core.Services.Interfaces.Zoos
 {
-    internal interface ICommentService
+    public interface ICommentService
     {
+        public Task<List<CommentData>> GetZooComments(int zooId);
+
+        public Task<CommentData> AddZooComment(int zooId, string text);
     }
 }

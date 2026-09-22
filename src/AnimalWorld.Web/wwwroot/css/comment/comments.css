@@ -1,0 +1,216 @@
+﻿/* Карточка с информацией о зоопарке */
+.comments-zoo-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    margin-bottom: 2rem;
+}
+
+.comments-zoo-name {
+    color: var(--text-main);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0 0 0.5rem 0;
+}
+
+.comments-zoo-address {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin: 0 0 1rem 0;
+}
+
+.comments-zoo-description {
+    color: var(--text-main);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Карточка формы комментария */
+.comments-form-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.comments-form-title {
+    color: var(--text-main);
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+}
+
+.comments-form .form-group {
+    margin-bottom: 0;
+}
+
+.comments-textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 100px;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+    .comments-textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(92, 124, 100, 0.15);
+    }
+
+.comments-form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0.5rem;
+    min-height: 1.25rem;
+}
+
+.comments-counter {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-left: auto;
+}
+
+.comments-error {
+    color: #c0392b;
+    font-size: 0.85rem;
+}
+
+.comments-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+}
+
+    .comments-form-actions .btn {
+        min-width: 140px;
+    }
+
+/* Секция комментариев */
+.comments-section {
+    margin-top: 1rem;
+}
+
+.comments-title {
+    color: var(--text-main);
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 1.25rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary);
+    display: inline-block;
+}
+
+/* Список комментариев */
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Карточка комментария */
+.comment-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.25rem;
+    transition: border-color var(--transition);
+}
+
+    .comment-card:hover {
+        border-color: var(--primary);
+    }
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.comment-author {
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.comment-date {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.comment-text {
+    color: var(--text-main);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Анимация появления нового комментария */
+.comment-card-new {
+    animation: commentFadeIn 0.4s ease;
+}
+
+@keyframes commentFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Пустое состояние */
+.comments-empty {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text-muted);
+}
+
+    .comments-empty p {
+        margin: 0;
+        font-size: 1rem;
+    }
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .comments-zoo-card {
+        padding: 1.25rem;
+    }
+
+    .comments-zoo-name {
+        font-size: 1.25rem;
+    }
+
+    .comments-form-card {
+        padding: 1.25rem;
+    }
+
+    .comment-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+}

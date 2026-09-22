@@ -293,6 +293,61 @@
     border-radius: var(--radius);
 }
 
+/* Disabled состояние для всех кнопок */
+.btn:disabled,
+.btn[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+    .btn:disabled:hover,
+    .btn[disabled]:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .btn:disabled:active,
+    .btn[disabled]:active {
+        transform: none;
+    }
+
+/* Специфично для primary кнопки */
+.btn-primary:disabled,
+.btn-primary[disabled] {
+    background-color: var(--primary);
+    opacity: 0.5;
+}
+
+    .btn-primary:disabled:hover,
+    .btn-primary[disabled]:hover {
+        background-color: var(--primary);
+    }
+
+/* Специфично для secondary кнопки */
+.btn-secondary:disabled,
+.btn-secondary[disabled] {
+    background-color: var(--bg-page);
+    opacity: 0.5;
+}
+
+    .btn-secondary:disabled:hover,
+    .btn-secondary[disabled]:hover {
+        background-color: var(--bg-page);
+    }
+
+/* Специфично для danger кнопки */
+.btn-danger:disabled,
+.btn-danger[disabled] {
+    background-color: #c0392b;
+    opacity: 0.5;
+}
+
+    .btn-danger:disabled:hover,
+    .btn-danger[disabled]:hover {
+        background-color: #c0392b;
+    }
+
 /* Адаптивность */
 @media (max-width: 900px) {
     .grid-3 {

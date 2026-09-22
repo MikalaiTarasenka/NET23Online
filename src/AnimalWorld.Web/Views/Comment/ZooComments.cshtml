@@ -1,0 +1,82 @@
+﻿@model AnimalWorld.Web.Models.Zoos.CommentsViewModel
+@{
+    ViewData["Title"] = $"Комментарии — {Model.Zoo.Name}";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/comment/comments.css" />
+}
+
+<section class="section">
+    <!-- Шапка с информацией о зоопарке -->
+    <div class="comments-zoo-card">
+        <h2 class="comments-zoo-name">@Model.Zoo.Name</h2>
+        <p class="comments-zoo-address">@Model.Zoo.Address</p>
+        <p class="comments-zoo-description">@Model.Zoo.Description</p>
+    </div>
+
+    <!-- Форма добавления комментария -->
+    <div class="comments-form-card">
+        <h3 class="comments-form-title">Оставить комментарий</h3>
+        <form id="commentForm" class="comments-form">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="ZooId" value="@Model.Zoo.Id" />
+
+            <div class="form-group">
+                <textarea id="commentText"
+                          name="CommentText"
+                          class="comments-textarea"
+                          placeholder="Напишите ваш комментарий..."
+                          maxlength=@Model.MAX_COMMENT_LENGTH
+                          rows="4"></textarea>
+                <div class="comments-form-footer">
+                    <span id="commentError" class="comments-error" style="display: none;">
+                        Не удалось отправить комментарий
+                    </span>
+                    <span id="charCounter" class="comments-counter">
+                        Осталось: <span id="charCount">@Model.MAX_COMMENT_LENGTH</span> символов
+                    </span>
+                </div>
+            </div>
+
+            <div class="comments-form-actions">
+                <button type="submit" id="submitBtn" class="btn btn-primary" disabled>
+                    <span id="submitText">Отправить</span>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Секция комментариев -->
+    <div class="comments-section">
+        <h3 class="comments-title">
+            Комментарии (<span id="commentsCount">@Model.Comments.Count</span>)
+        </h3>
+
+        <div id="commentsList" class="comments-list">
+            @if (Model.Comments != null && Model.Comments.Any())
+            {
+                foreach (var comment in Model.Comments)
+                {
+                    <div class="comment-card">
+                        <div class="comment-header">
+                            <span class="comment-author">@comment.AuthorName</span>
+                            <span class="comment-date">@comment.CreatedAt</span>
+                        </div>
+                        <p class="comment-text">@comment.Text</p>
+                    </div>
+                }
+            }
+            else
+            {
+                <div id="commentsEmpty" class="comments-empty">
+                    <p>Будьте первым, кто оставит комментарий!</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/comments.js"></script>
+}
