@@ -91,5 +91,11 @@ namespace AnimalWorld.Core.Services.Animals
             var animals = await _animalSpeciesRepository.GetAllWithFamily(searchCategory, searchQuery);
             return animals;
         }
+
+        public async Task<List<string>> GetAnimalSpeciesNames()
+        {
+            var animals = await _animalSpeciesRepository.GetAllAnimalSpeciesNames();
+            return animals;
+        }
     }
 }

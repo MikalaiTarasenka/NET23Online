@@ -1,0 +1,54 @@
+﻿@model AnimalWorld.Web.Models.Animals.InterestingFactsViewModel
+@{
+    ViewData["Title"] = "Интересные факты";
+    const int MAX_LENGTH = 1000;
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/animal-species/animal-facts.css" />
+}
+
+<section class="section">
+    <h2 class="section-title">Интересные факты о животных</h2>
+
+    <!-- Форма добавления факта -->
+    <div class="card facts-form-card" data-api-url="@Model.FactsApiUrl">
+        <div class="create-form">
+            <div class="form-group">
+                <label for="animalSpeciesSelect">Вид животного</label>
+                <select id="animalSpeciesSelect" class="form-control">
+                    <option value="">-- Выберите вид животного --</option>
+                    @if (Model.AnimalSpeciesNames != null)
+                    {
+                        foreach (var species in Model.AnimalSpeciesNames)
+                        {
+                            <option value="@species">@species</option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="factText">Текст факта</label>
+                <textarea id="factText" maxlength="@MAX_LENGTH" rows="4" placeholder="Введите интересный факт..."></textarea>
+                <div class="facts-form-footer">
+                    <span id="addError" class="facts-error" style="display: none;">Не удалось добавить факт</span>
+                    <span class="facts-counter">Осталось: <span id="charCount">@MAX_LENGTH</span> символов</span>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="button" id="submitFactBtn" class="btn btn-primary" disabled>Добавить факт</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Контейнер для списка фактов / пустого состояния / ошибки загрузки -->
+    <div id="factsContainer" class="facts-container">
+        <div class="facts-loading">Загрузка фактов...</div>
+    </div>
+</section>
+
+@section Scripts {
+    <script src="~/js/animal-facts.js"></script>
+}

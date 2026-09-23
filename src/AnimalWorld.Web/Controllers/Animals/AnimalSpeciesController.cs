@@ -18,9 +18,10 @@ namespace AnimalWorld.Web.Controllers.Animals
         private IAnimalSpeciesMapper _speciesMapper;
         private IAnimalFamilyMapper _familyMapper;
         private IImageUploadHelper _imageUploadHelper;
+        private IConfiguration _configuration;
 
         public AnimalSpeciesController(IAnimalSpeciesService animalSpeciesService, IAnimalSpeciesMapper speciesMapper,
-            IAnimalFamilyService animalFamilyService, IImageUploadHelper imageUploadHelper, IAuthService authService, IAnimalFamilyMapper familyMapper)
+            IAnimalFamilyService animalFamilyService, IImageUploadHelper imageUploadHelper, IAuthService authService, IAnimalFamilyMapper familyMapper, IConfiguration configuration)
         {
             _animalSpeciesService = animalSpeciesService;
             _speciesMapper = speciesMapper;
@@ -28,6 +29,7 @@ namespace AnimalWorld.Web.Controllers.Animals
             _imageUploadHelper = imageUploadHelper;
             _authService = authService;
             _familyMapper = familyMapper;
+            _configuration = configuration;
         }
 
         [HttpPost]
@@ -107,6 +109,17 @@ namespace AnimalWorld.Web.Controllers.Animals
                 BriefAnimalSpecies = briefViewModel,
                 SearchCategory = searchCategory,
                 SearchQuery = searchQuery
+            };
+            return View(viewModel);
+        }
+
+        public async Task<IActionResult> Facts()
+        {
+            var animals = await _animalSpeciesService.GetAnimalSpeciesNames();
+            var viewModel = new InterestingFactsViewModel
+            {
+                AnimalSpeciesNames = animals,
+                FactsApiUrl = _configuration["ApiEndpoints:FactsApi"]
             };
             return View(viewModel);
         }
