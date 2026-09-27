@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="~/css/common/layout.css" />
     <link rel="stylesheet" href="~/css/common/components.css" />
     <link rel="stylesheet" href="~/css/common/forms.css" />
+    <link rel="stylesheet" href="~/css/common/notifications.css" />
 
     <!-- Уникальные стили страниц -->
     @RenderSection("Styles", required: false)
@@ -74,6 +75,17 @@
     <!-- jQuery -->
     <script src="~/js/jquery.min.js"></script>
     
+    <!-- SignalR -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.7/signalr.min.js"></script>
+
+    <!-- Уведомления и хабы -->
+    <script src="~/js/notifications.js"></script>
+    <script src="~/js/zoos-hub.js"></script>
+    <script src="~/js/promotions-hub.js"></script>
+
+    <!-- Контейнер уведомлений -->
+    <div class="notifications-container"></div>
+
     <!-- Скрипты страниц -->
     @RenderSection("Scripts", required: false)
 </body>
