@@ -2,11 +2,14 @@
 using AnimalWorld.Core.Services.Interfaces.Zoos;
 using AnimalWorld.Data.Models.Zoos;
 using AnimalWorld.Web.Attributes;
+using AnimalWorld.Web.Hubs;
+using AnimalWorld.Web.Hubs.Interfaces;
 using AnimalWorld.Web.Mappers.Interfaces;
 using AnimalWorld.Web.Mappers.Interfaces.CustomMappers;
 using AnimalWorld.Web.Models.Zoos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 
 namespace AnimalWorld.Web.Controllers.Zoos
 {
@@ -17,13 +20,16 @@ namespace AnimalWorld.Web.Controllers.Zoos
         private IAnimalSpeciesService _animalSpeciesService;
         private IZooMapper _zooMapper;
         private IAnimalSpeciesMapper _animalSpeciesMapper;
+        private IHubContext<ZoosHub, IZoosHub> _hub;
 
-        public ZooController(IZooService zooService, IZooMapper zooMapper, IAnimalSpeciesService animalSpeciesService, IAnimalSpeciesMapper animalSpeciesMapper)
+        public ZooController(IZooService zooService, IZooMapper zooMapper, IAnimalSpeciesService animalSpeciesService, IAnimalSpeciesMapper animalSpeciesMapper,
+            IHubContext<ZoosHub, IZoosHub> hub)
         {
             _zooService = zooService;
             _zooMapper = zooMapper;
             _animalSpeciesService = animalSpeciesService;
             _animalSpeciesMapper = animalSpeciesMapper;
+            _hub = hub;
         }
 
         public async Task<IActionResult> Index(int page = 1)
@@ -125,6 +131,7 @@ namespace AnimalWorld.Web.Controllers.Zoos
             }
 
             await _zooService.BindAnimalSpecies(zooData, viewModel.SelectedAnimalSpeciesIds);
+            _hub.Clients.All.AnimalAppearedMessage($"В зоопарке {zooData.Name} появились новые животные.");
             return RedirectToAction("List");
         }
     }

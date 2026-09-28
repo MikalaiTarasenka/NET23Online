@@ -8,6 +8,8 @@ using AnimalWorld.Data.Models.Animals;
 using AnimalWorld.Data.Models.Users;
 using AnimalWorld.Data.Models.Zoos;
 using AnimalWorld.Web.Helpers;
+using AnimalWorld.Web.Hubs;
+using AnimalWorld.Web.Jobs;
 using AnimalWorld.Web.Mappers.Animals;
 using AnimalWorld.Web.Mappers.Interfaces;
 using AnimalWorld.Web.Mappers.Interfaces.CustomMappers;
@@ -17,6 +19,7 @@ using AnimalWorld.Web.Models.Animals;
 using AnimalWorld.Web.Models.Home;
 using AnimalWorld.Web.Models.Users;
 using AnimalWorld.Web.Models.Zoos;
+using Quartz;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -46,6 +49,20 @@ builder.Services.AddHttpClient<RandomAnimalApi>(x =>
     x.BaseAddress = new Uri("https://api.some-random-api.com");
 });
 
+builder.Services.AddQuartz(q =>
+{
+    var jobKey = new JobKey("ZooPromotion");
+    q.AddJob<PromotionsCheckJob>(opts => opts.WithIdentity(jobKey));
+    q.AddTrigger(opts => opts
+        .ForJob(jobKey)
+        .WithCronSchedule("0 0 9-20 ? * *"));
+});
+
+builder.Services.AddQuartzHostedService(options =>
+{
+    options.WaitForJobsToComplete = true;
+});
+
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -58,6 +75,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();
+
+app.MapHub<ZoosHub>("/my-hub/zoos");
+app.MapHub<PromotionsHub>("/my-hub/promotions");
 
 app.MapControllerRoute(
     name: "default",
