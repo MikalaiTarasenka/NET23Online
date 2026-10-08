@@ -46,7 +46,13 @@ namespace AnimalWorld.Web.Controllers.Animals
             var userName = _authService.GetUserName();
             if (viewModel.Image != null)
             {
-                var url = await _imageUploadHelper.SaveAsync(viewModel.Image, "images\\animals", userName);
+                var url = await _imageUploadHelper.SaveAsync(viewModel.Image, "images/animals", userName);
+                if (url == null)
+                {
+                    ModelState.AddModelError("", "Файл не является действительным изображением (поврежден или подменен).");
+                    return View(viewModel);
+                }
+
                 viewModel.Url = url;
             }
 

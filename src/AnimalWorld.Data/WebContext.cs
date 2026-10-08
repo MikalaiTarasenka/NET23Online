@@ -36,10 +36,18 @@ namespace AnimalWorld.Data
                 .WithMany(x => x.CreatedAnimalFamilies)
                 .HasForeignKey(x => x.CreatorId);
 
+            modelBuilder.Entity<AnimalFamilyData>()
+                .HasIndex(x => x.Name)
+                .IsUnique();
+
             modelBuilder.Entity<AnimalSpeciesData>()
                 .HasOne(x => x.Creator)
                 .WithMany(x => x.CreatedAnimalSpecies)
                 .HasForeignKey(x => x.CreatorId);
+
+            modelBuilder.Entity<AnimalSpeciesData>()
+                .HasIndex(x => x.Name)
+                .IsUnique();
 
             modelBuilder.Entity<CommentData>()
                 .HasOne(x => x.Author)
@@ -63,6 +71,10 @@ namespace AnimalWorld.Data
                 .HasForeignKey(x => x.VenueId)
                 .OnDelete(DeleteBehavior.Cascade);
 
+            modelBuilder.Entity<PromotionData>()
+                .HasIndex(x => x.Name)
+                .IsUnique();
+
             modelBuilder.Entity<TicketData>()
                 .HasOne(x => x.User)
                 .WithMany(x => x.Tickets)
@@ -82,6 +94,10 @@ namespace AnimalWorld.Data
                 .HasOne(x => x.Creator)
                 .WithMany(x => x.CreatedZoos)
                 .HasForeignKey(x => x.CreatorId);
+
+            modelBuilder.Entity<ZooData>()
+                .HasIndex(x => x.Name)
+                .IsUnique();
 
             modelBuilder.Entity<ZooAnimalFamilyDto>()
                 .HasNoKey()
