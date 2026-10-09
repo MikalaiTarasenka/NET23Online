@@ -33,7 +33,7 @@
                             <h3>@family.Name</h3>
                         </div>
                         <p class="description">
-                            @(family.Description.Length > 180 ? family.Description.Substring(0, 180) + "..." : family.Description)
+                            @family.ShortDescription
                         </p>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                             </div>
                             <div class="meta-item">
                                 <strong>Описание:</strong>
-                                <span>@(species.Description.Length > 120 ? species.Description.Substring(0, 120) + "..." : species.Description)</span>
+                                <span>@species.ShortDescription</span>
                             </div>
                             <div class="meta-item">
                                 <strong>Зоопарки:</strong>

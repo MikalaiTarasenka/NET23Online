@@ -3,6 +3,7 @@
     internal class ImageUploadHelper : IImageUploadHelper
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private const int IMAGE_HEADER_SIZE = 4;
 
         public ImageUploadHelper(IWebHostEnvironment webHostEnvironment)
         {
@@ -33,7 +34,7 @@
             using (var stream = file.OpenReadStream())
             {
                 var header = new byte[4];
-                await stream.ReadAsync(header, 0, 4);
+                await stream.ReadAsync(header, 0, IMAGE_HEADER_SIZE);
                 bool isImage = (header[0] == 0xFF && header[1] == 0xD8 && header[2] == 0xFF) || (header[0] == 0x89 && header[1] == 0x50 && header[2] == 0x4E && header[3] == 0x47);
                 return isImage;
             }

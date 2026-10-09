@@ -28,7 +28,7 @@
                     </div>
                     <div class="card-content">
                         <p class="fact-text">
-                            @(animal.Fact?.Length > 150 ? animal.Fact.Substring(0, 150) + "..." : animal.Fact)
+                            @animal.ShortFact
                         </p>
                     </div>
                 </div>

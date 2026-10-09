@@ -29,7 +29,7 @@
                         </p>
                     }
 
-                    <p class="zoo-card-description">@(zoo.Description?.Length > 150 ? zoo.Description.Substring(0, 150) + "..." : zoo.Description)</p>
+                    <p class="zoo-card-description">@zoo.ShortDescription</p>
 
                     <div class="zoo-card-actions">
                         <a href="/Ticket/Book?zooId=@zoo.Id" class="btn btn-primary">Забронировать</a>
