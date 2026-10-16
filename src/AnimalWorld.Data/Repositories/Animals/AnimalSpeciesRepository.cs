@@ -31,14 +31,17 @@ namespace AnimalWorld.Data.Repositories.Animals
                 .ToListAsync();
         }
 
-        public async Task<List<AnimalSpeciesData>> GetAllWithFamily(string searchCategory, string searchQuery)
+        public async Task<List<AnimalSpeciesData>> GetAllWithFamily(string searchCategory, string searchQuery, int page, int count)
         {
             var dataSource = _dbSet
                 .Include(s => s.AnimalFamily)
                 .AsQueryable();
             if (string.IsNullOrEmpty(searchCategory) || string.IsNullOrEmpty(searchQuery))
             {
-                return await dataSource.ToListAsync();
+                return await dataSource
+                    .Skip((page - 1) * count)
+                    .Take(count)
+                    .ToListAsync();
             }
 
             var queryValue = searchQuery.ToLower();
@@ -82,13 +85,21 @@ namespace AnimalWorld.Data.Repositories.Animals
                 dataSource = dataSource.Where(lambda);
             }
 
-            return await dataSource.ToListAsync();
+            return await dataSource
+                .Skip((page - 1) * count)
+                .Take(count)
+                .ToListAsync();
         }
 
         private Expression BuildContainsExpression(Expression propertyField, MethodInfo toLowerMethod, MethodInfo containsMethod, ConstantExpression constQuery)
         {
             var toLowerCall = Expression.Call(propertyField, toLowerMethod);
             return Expression.Call(toLowerCall, containsMethod, constQuery);
+        }
+
+        public async Task<int> Count()
+        {
+            return await _dbSet.CountAsync();
         }
     }
 }

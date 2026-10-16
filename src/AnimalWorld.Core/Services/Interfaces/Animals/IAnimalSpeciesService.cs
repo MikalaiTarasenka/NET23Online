@@ -6,7 +6,7 @@ namespace AnimalWorld.Core.Services.Interfaces.Animals
     {
         Task<List<AnimalSpeciesData>> GetRandomAnimals();
 
-        Task<List<AnimalSpeciesData>> GetWithAnimalFamily(string searchCategory, string searchQuery);
+        Task<List<AnimalSpeciesData>> GetWithAnimalFamily(string searchCategory, string searchQuery, int page);
 
         Task<List<string>> GetAnimalSpeciesNames();
     }

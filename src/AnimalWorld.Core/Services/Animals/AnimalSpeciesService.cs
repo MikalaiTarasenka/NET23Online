@@ -1,8 +1,10 @@
-﻿using AnimalWorld.Core.Dtos.Users;
+﻿using AnimalWorld.Core.Dtos;
+using AnimalWorld.Core.Dtos.Users;
 using AnimalWorld.Core.Services.Interfaces.Animals;
 using AnimalWorld.Core.Services.Interfaces.Users;
 using AnimalWorld.Data.Models.Animals;
 using AnimalWorld.Data.Repositories.Interfaces.Animals;
+using AnimalWorld.Data.Repositories.Interfaces.Zoos;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AnimalWorld.Core.Services.Animals
@@ -13,6 +15,7 @@ namespace AnimalWorld.Core.Services.Animals
         private IAnimalSpeciesRepository _animalSpeciesRepository;
         private IAnimalFamilyRepository _animalFamilyRepository;
         private IAuthService _authService;
+        public const int COUNT_ANIMALS_PER_PAGE = 10;
 
         public AnimalSpeciesService(IAnimalSpeciesRepository animalSpeciesRepository, IAnimalFamilyRepository animalFamilyRepository, IAuthService authService)
         {
@@ -86,9 +89,26 @@ namespace AnimalWorld.Core.Services.Animals
             return animalSpecies;
         }
 
-        public async Task<List<AnimalSpeciesData>> GetWithAnimalFamily(string searchCategory, string searchQuery)
+        public async Task<List<AnimalSpeciesData>> GetWithAnimalFamily(string searchCategory, string searchQuery, int page)
         {
-            var animals = await _animalSpeciesRepository.GetAllWithFamily(searchCategory, searchQuery);
+            var count = await _animalSpeciesRepository.Count();
+            if (count == 0)
+            {
+                return new PagedResult<ZooDto> { Items = new List<ZooDto>() };
+            }
+
+            var totalPages = (count + COUNT_ANIMALS_PER_PAGE - 1) / COUNT_ANIMALS_PER_PAGE;
+            if (page < 1)
+            {
+                page = 1;
+            }
+
+            if (page > totalPages)
+            {
+                page = totalPages;
+            }
+
+            var animals = await _animalSpeciesRepository.GetAllWithFamily(searchCategory, searchQuery, page, count);
             return animals;
         }
 

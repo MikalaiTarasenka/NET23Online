@@ -9,6 +9,8 @@ namespace AnimalWorld.Data.Repositories.Interfaces.Animals
 
         Task<List<string>> GetAllAnimalSpeciesNames();
 
-        Task<List<AnimalSpeciesData>> GetAllWithFamily(string searchCategory, string searchQuery);
+        Task<List<AnimalSpeciesData>> GetAllWithFamily(string searchCategory, string searchQuery, int page, int count);
+
+        Task<int> Count();
     }
 }
