@@ -88,58 +88,6 @@
         flex: 1;
     }
 
-/* Пагинация */
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-}
-
-.pagination-item {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 40px;
-    height: 40px;
-    padding: 0 0.75rem;
-    background-color: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    color: var(--text-main);
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    transition: all var(--transition);
-    cursor: pointer;
-}
-
-    .pagination-item:hover {
-        background-color: var(--bg-page);
-        border-color: var(--primary);
-        color: var(--primary);
-    }
-
-    .pagination-item.active {
-        background-color: var(--primary);
-        border-color: var(--primary);
-        color: #ffffff;
-        cursor: default;
-    }
-
-        .pagination-item.active:hover {
-            background-color: var(--primary);
-            color: #ffffff;
-        }
-
-    .pagination-item.disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-        pointer-events: none;
-    }
-
 /* Адаптивность */
 @media (max-width: 768px) {
     .zoo-grid {
@@ -148,21 +96,5 @@
 
     .zoo-card-actions {
         flex-direction: column;
-    }
-
-    .pagination {
-        gap: 0.35rem;
-    }
-
-    .pagination-item {
-        min-width: 36px;
-        height: 36px;
-        font-size: 0.85rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .pagination {
-        justify-content: flex-start;
     }
 }

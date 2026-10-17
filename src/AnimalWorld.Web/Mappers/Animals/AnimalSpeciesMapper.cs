@@ -1,4 +1,6 @@
-﻿using AnimalWorld.Data.Models.Animals;
+﻿using AnimalWorld.Core.Dtos;
+using AnimalWorld.Core.Dtos.Animals;
+using AnimalWorld.Data.Models.Animals;
 using AnimalWorld.Web.Mappers.Interfaces.CustomMappers;
 using AnimalWorld.Web.Models.Animals;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -34,13 +36,23 @@ namespace AnimalWorld.Web.Mappers.Animals
             };
         }
 
-        public AnimalSpeciesBriefViewModel MapBrief(AnimalSpeciesData source)
+        public AnimalSpeciesInfoListViewModel MapPaginationInfo(PagedResult<AnimalInfoDto> source, string? searchCategory, string? searchQuery)
         {
-            return new AnimalSpeciesBriefViewModel
+            return new AnimalSpeciesInfoListViewModel
             {
-                AnimalSpeciesName = source.Name,
-                AnimalFamilyName = source.AnimalFamily.Name,
-                NativeRange = source.NativeRange,
+                Animals = source.Items.Select(x => new AnimalSpeciesBriefViewModel
+                {
+                    AnimalSpeciesName = x.AnimalSpecies,
+                    AnimalFamilyName = x.AnimalFamily,
+                    NativeRange = x.Habitat,
+                }).ToList(),
+                CurrentPage = source.CurrentPage,
+                HasNextPage = source.HasNextPage,
+                HasPreviousPage = source.HasPreviousPage,
+                PageNumbers = source.PageNumbers,
+                TotalPages = source.TotalPages,
+                SearchQuery = searchQuery,
+                SearchCategory = searchCategory
             };
         }
 

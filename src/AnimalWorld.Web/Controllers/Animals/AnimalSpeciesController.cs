@@ -106,16 +106,10 @@ namespace AnimalWorld.Web.Controllers.Animals
             return RedirectToAction("List");
         }
 
-        public async Task<IActionResult> Info(string? searchCategory = null, string? searchQuery = null)
+        public async Task<IActionResult> Info(string? searchCategory = null, string? searchQuery = null, int page = 1)
         {
-            var animals = await _animalSpeciesService.GetWithAnimalFamily(searchCategory, searchQuery);
-            var briefViewModel = _speciesMapper.MapBriefList(animals);
-            var viewModel = new AnimalSpeciesInfoViewModel
-            {
-                BriefAnimalSpecies = briefViewModel,
-                SearchCategory = searchCategory,
-                SearchQuery = searchQuery
-            };
+            var animals = await _animalSpeciesService.GetWithAnimalFamily(searchCategory, searchQuery, page);
+            var viewModel = _speciesMapper.MapPaginationInfo(animals, searchCategory, searchQuery);
             return View(viewModel);
         }
 

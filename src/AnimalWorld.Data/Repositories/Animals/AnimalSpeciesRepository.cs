@@ -33,15 +33,21 @@ namespace AnimalWorld.Data.Repositories.Animals
 
         public async Task<List<AnimalSpeciesData>> GetAllWithFamily(string searchCategory, string searchQuery, int page, int count)
         {
+            var dataSource = ApplyFilter(searchCategory, searchQuery);
+            return await dataSource
+                .Skip((page - 1) * count)
+                .Take(count)
+                .ToListAsync();
+        }
+
+        private IQueryable<AnimalSpeciesData> ApplyFilter(string searchCategory, string searchQuery)
+        {
             var dataSource = _dbSet
                 .Include(s => s.AnimalFamily)
                 .AsQueryable();
             if (string.IsNullOrEmpty(searchCategory) || string.IsNullOrEmpty(searchQuery))
             {
-                return await dataSource
-                    .Skip((page - 1) * count)
-                    .Take(count)
-                    .ToListAsync();
+                return dataSource;
             }
 
             var queryValue = searchQuery.ToLower();
@@ -85,10 +91,7 @@ namespace AnimalWorld.Data.Repositories.Animals
                 dataSource = dataSource.Where(lambda);
             }
 
-            return await dataSource
-                .Skip((page - 1) * count)
-                .Take(count)
-                .ToListAsync();
+            return dataSource;
         }
 
         private Expression BuildContainsExpression(Expression propertyField, MethodInfo toLowerMethod, MethodInfo containsMethod, ConstantExpression constQuery)
@@ -97,9 +100,10 @@ namespace AnimalWorld.Data.Repositories.Animals
             return Expression.Call(toLowerCall, containsMethod, constQuery);
         }
 
-        public async Task<int> Count()
+        public async Task<int> Count(string searchCategory, string searchQuery)
         {
-            return await _dbSet.CountAsync();
+            var dataSource = ApplyFilter(searchCategory, searchQuery);
+            return await dataSource.CountAsync();
         }
     }
 }

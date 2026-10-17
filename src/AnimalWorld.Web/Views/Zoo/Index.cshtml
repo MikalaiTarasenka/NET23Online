@@ -2,11 +2,9 @@
 @{
     ViewData["Title"] = "Зоопарки";
 }
-
 @section Styles {
     <link rel="stylesheet" href="~/css/zoo/index.css" />
 }
-
 <section class="section">
     <div class="zoo-header">
         <h2 class="zoo-title">Зоопарки</h2>
@@ -20,7 +18,6 @@
                 <div class="zoo-card">
                     <h3 class="zoo-card-name">@zoo.Name</h3>
                     <p class="zoo-card-address">@zoo.Address</p>
-
                     @if (zoo.AnimalFamilies != null && zoo.AnimalFamilies.Any())
                     {
                         <p class="zoo-card-families">
@@ -28,9 +25,7 @@
                             @string.Join(", ", zoo.AnimalFamilies)
                         </p>
                     }
-
                     <p class="zoo-card-description">@zoo.ShortDescription</p>
-
                     <div class="zoo-card-actions">
                         <a href="/Ticket/Book?zooId=@zoo.Id" class="btn btn-primary">Забронировать</a>
                         <a href="/Comment/ZooComments?zooId=@zoo.Id" class="btn btn-secondary">Комментарии</a>
@@ -45,7 +40,8 @@
             <nav class="pagination" aria-label="Навигация по страницам">
                 @if (Model.HasPreviousPage)
                 {
-                    <a href="?page=@(Model.CurrentPage - 1)" class="pagination-item" aria-label="Предыдущая страница">←</a>
+                    <a href="@Url.Action("Index", "Zoo", new { page = Model.CurrentPage - 1 })"
+                       class="pagination-item" aria-label="Предыдущая страница">←</a>
                 }
                 else
                 {
@@ -60,13 +56,15 @@
                     }
                     else
                     {
-                        <a href="?page=@pageNumber" class="pagination-item">@pageNumber</a>
+                        <a href="@Url.Action("Index", "Zoo", new { page = pageNumber })"
+                           class="pagination-item">@pageNumber</a>
                     }
                 }
 
                 @if (Model.HasNextPage)
                 {
-                    <a href="?page=@(Model.CurrentPage + 1)" class="pagination-item" aria-label="Следующая страница">→</a>
+                    <a href="@Url.Action("Index", "Zoo", new { page = Model.CurrentPage + 1 })"
+                       class="pagination-item" aria-label="Следующая страница">→</a>
                 }
                 else
                 {

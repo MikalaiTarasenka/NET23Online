@@ -131,7 +131,7 @@ namespace AnimalWorld.Web.Controllers.Zoos
             }
 
             await _zooService.BindAnimalSpecies(zooData, viewModel.SelectedAnimalSpeciesIds);
-            _hub.Clients.All.AnimalAppearedMessage($"В зоопарке {zooData.Name} появились новые животные.");
+            await _hub.Clients.All.AnimalAppearedMessage($"В зоопарке {zooData.Name} появились новые животные.");
             return RedirectToAction("List");
         }
     }

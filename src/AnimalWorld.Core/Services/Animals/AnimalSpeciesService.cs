@@ -1,11 +1,10 @@
 ﻿using AnimalWorld.Core.Dtos;
+using AnimalWorld.Core.Dtos.Animals;
 using AnimalWorld.Core.Dtos.Users;
 using AnimalWorld.Core.Services.Interfaces.Animals;
 using AnimalWorld.Core.Services.Interfaces.Users;
 using AnimalWorld.Data.Models.Animals;
 using AnimalWorld.Data.Repositories.Interfaces.Animals;
-using AnimalWorld.Data.Repositories.Interfaces.Zoos;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AnimalWorld.Core.Services.Animals
 {
@@ -89,12 +88,12 @@ namespace AnimalWorld.Core.Services.Animals
             return animalSpecies;
         }
 
-        public async Task<List<AnimalSpeciesData>> GetWithAnimalFamily(string searchCategory, string searchQuery, int page)
+        public async Task<PagedResult<AnimalInfoDto>> GetWithAnimalFamily(string searchCategory, string searchQuery, int page)
         {
-            var count = await _animalSpeciesRepository.Count();
+            var count = await _animalSpeciesRepository.Count(searchCategory, searchQuery);
             if (count == 0)
             {
-                return new PagedResult<ZooDto> { Items = new List<ZooDto>() };
+                return new PagedResult<AnimalInfoDto> { Items = new List<AnimalInfoDto>() };
             }
 
             var totalPages = (count + COUNT_ANIMALS_PER_PAGE - 1) / COUNT_ANIMALS_PER_PAGE;
@@ -108,8 +107,23 @@ namespace AnimalWorld.Core.Services.Animals
                 page = totalPages;
             }
 
-            var animals = await _animalSpeciesRepository.GetAllWithFamily(searchCategory, searchQuery, page, count);
-            return animals;
+            var animals = await _animalSpeciesRepository.GetAllWithFamily(searchCategory, searchQuery, page, COUNT_ANIMALS_PER_PAGE);
+            var animalInfo = animals.Select(x => new AnimalInfoDto
+            {
+                Id = x.Id,
+                AnimalSpecies = x.Name,
+                AnimalFamily = x.AnimalFamily.Name,
+                Habitat = x.NativeRange
+            }).ToList();
+            return new PagedResult<AnimalInfoDto>
+            {
+                Items = animalInfo,
+                CurrentPage = page,
+                HasNextPage = page < totalPages,
+                HasPreviousPage = page > 1,
+                PageNumbers = Enumerable.Range(1, totalPages).ToList(),
+                TotalPages = totalPages,
+            };
         }
 
         public async Task<List<string>> GetAnimalSpeciesNames()

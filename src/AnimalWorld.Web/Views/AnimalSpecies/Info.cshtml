@@ -1,12 +1,10 @@
-﻿@model AnimalWorld.Web.Models.Animals.AnimalSpeciesInfoViewModel
+﻿@model AnimalWorld.Web.Models.Animals.AnimalSpeciesInfoListViewModel
 @{
     ViewData["Title"] = "Виды животных";
 }
-
 @section Styles {
     <link rel="stylesheet" href="~/css/animal-species/info.css" />
 }
-
 <section class="section">
     <h2 class="section-title">Виды животных</h2>
 
@@ -18,18 +16,16 @@
             <option value="Family" selected="@(Model.SearchCategory == "Family")">Семейство</option>
             <option value="Range" selected="@(Model.SearchCategory == "Range")">Место обитания</option>
         </select>
-
         <input type="text"
                name="searchQuery"
                value="@Model.SearchQuery"
                placeholder="Поиск по видам, семействам, местам обитания..."
                class="search-input" />
-
         <button type="submit" class="search-button">Найти</button>
     </form>
 
     <!-- Таблица видов -->
-    @if (Model?.BriefAnimalSpecies != null && Model.BriefAnimalSpecies.Any())
+    @if (Model.Animals != null && Model.Animals.Any())
     {
         <div class="data-table">
             <!-- Заголовки -->
@@ -38,9 +34,8 @@
                 <div class="data-table-cell">Семейство</div>
                 <div class="data-table-cell">Место обитания</div>
             </div>
-
             <!-- Строки -->
-            @foreach (var species in Model.BriefAnimalSpecies)
+            @foreach (var species in Model.Animals)
             {
                 <div class="data-table-row">
                     <div class="data-table-cell" data-label="Вид">@species.AnimalSpeciesName</div>
@@ -49,6 +44,45 @@
                 </div>
             }
         </div>
+
+        <!-- Пагинация -->
+        @if (Model.TotalPages > 1)
+        {
+            <nav class="pagination" aria-label="Навигация по страницам">
+                @if (Model.HasPreviousPage)
+                {
+                    <a href="@Url.Action("Info", "AnimalSpecies", new { page = Model.CurrentPage - 1, searchCategory = Model.SearchCategory, searchQuery = Model.SearchQuery })"
+                       class="pagination-item" aria-label="Предыдущая страница">←</a>
+                }
+                else
+                {
+                    <span class="pagination-item disabled" aria-label="Предыдущая страница">←</span>
+                }
+
+                @foreach (var pageNumber in Model.PageNumbers)
+                {
+                    @if (pageNumber == Model.CurrentPage)
+                    {
+                        <span class="pagination-item active" aria-current="page">@pageNumber</span>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("Info", "AnimalSpecies", new { page = pageNumber, searchCategory = Model.SearchCategory, searchQuery = Model.SearchQuery })"
+                           class="pagination-item">@pageNumber</a>
+                    }
+                }
+
+                @if (Model.HasNextPage)
+                {
+                    <a href="@Url.Action("Info", "AnimalSpecies", new { page = Model.CurrentPage + 1, searchCategory = Model.SearchCategory, searchQuery = Model.SearchQuery })"
+                       class="pagination-item" aria-label="Следующая страница">→</a>
+                }
+                else
+                {
+                    <span class="pagination-item disabled" aria-label="Следующая страница">→</span>
+                }
+            </nav>
+        }
     }
     else
     {
